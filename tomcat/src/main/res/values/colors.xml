@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#039BE5</color>
+    <!--<color name="colorPrimaryDark">#9B26AF</color>-->
+    <color name="colorAccent">#68EFAD</color>
+
+    <color name="backgroundColor">#EFEFEF</color>
+    <color name="backgroundContainerColor">#FAFAFA</color>
+    <color name="backgroundLineColor">#D8D8D8</color>
+    <color name="backgroundTextColor">#222222</color>
+
+    <color name="isReadColor">#D6C498</color>
+
+    <color name="typeColor_video">#8BC151</color>
+    <color name="typeColor_app">#1F90E2</color>
+    <color name="typeColor_news">#F5CD19</color>
+</resources>

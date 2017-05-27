@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Yuan7Application.iml" filepath="$PROJECT_DIR$/Yuan7Application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib-banner/lib-banner.iml" filepath="$PROJECT_DIR$/lib-banner/lib-banner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib-download/lib-download.iml" filepath="$PROJECT_DIR$/lib-download/lib-download.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib-videoplayer/lib-videoplayer.iml" filepath="$PROJECT_DIR$/lib-videoplayer/lib-videoplayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomcat/tomcat.iml" filepath="$PROJECT_DIR$/tomcat/tomcat.iml" />
+    </modules>
+  </component>
+</project>
