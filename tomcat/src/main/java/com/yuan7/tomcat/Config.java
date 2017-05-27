@@ -14,5 +14,21 @@ public class Config {
     public static int raidersPageNo = 1;
     public static int recommendPageNo = 1;
 
+    /**
+     * "isOpen": "0"//0关闭，1开启
+     */
+    private static final String OPEN_TAG = "1";
+    private static final String CLOSE_TAG = "0";
+
+    public static String getOpenTag() {
+        return OPEN_TAG;
+    }
+
+    public static String getCloseTag() {
+        return CLOSE_TAG;
+    }
+
+    public static String TAB_TAG = "1";
+
 
 }

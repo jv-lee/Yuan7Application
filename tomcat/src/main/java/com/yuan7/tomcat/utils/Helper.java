@@ -9,15 +9,9 @@ import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.base.module.ServiceModule;
-import com.yuan7.tomcat.bean.impl.BannerBean;
-import com.yuan7.tomcat.bean.impl.NewsBean;
-import com.yuan7.tomcat.bean.impl.ProPagateBean;
-import com.yuan7.tomcat.bean.impl.RaidersBean;
-import com.yuan7.tomcat.bean.impl.RecommendBean;
-import com.yuan7.tomcat.bean.impl.VideoBean;
+import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.ui.content.app.AppDataActivity;
 import com.yuan7.tomcat.ui.content.raiders.RaidersDataActivity;
 import com.yuan7.tomcat.ui.content.video.VideoDataActivity;
@@ -34,42 +28,20 @@ import java.util.TimeZone;
 
 public class Helper {
 
-    public static void startContentActivity(Context context, Object bean) {
-        if (bean instanceof NewsBean.ResultBean) {
-            NewsBean.ResultBean newsBean = (NewsBean.ResultBean) bean;
-            toTypeActivity(context, newsBean.getType(), newsBean.getContentUrl(), newsBean.getVedioUrl(), newsBean.getId() + "", newsBean.getTitle(), newsBean.getImgUrl(), newsBean.getAppName());
-        } else if (bean instanceof BannerBean.ResultBean) {
-            BannerBean.ResultBean bannerBean = (BannerBean.ResultBean) bean;
-            toTypeActivity(context, bannerBean.getType(), bannerBean.getContentUrl(), bannerBean.getVedioUrl(), bannerBean.getId() + "", bannerBean.getTitle(), bannerBean.getImgUrl(), bannerBean.getAppName());
-        } else if (bean instanceof ProPagateBean.ResultBean) {
-            ProPagateBean.ResultBean proBean = (ProPagateBean.ResultBean) bean;
-            toTypeActivity(context, proBean.getType(), proBean.getContentUrl(), proBean.getVedioUrl(), proBean.getId(), proBean.getTitle(), proBean.getImgUrl(), proBean.getAppName());
-        } else if (bean instanceof RaidersBean.ResultBean) {
-            RaidersBean.ResultBean raidersBean = (RaidersBean.ResultBean) bean;
-            toTypeActivity(context, raidersBean.getType(), raidersBean.getContentUrl(), raidersBean.getVedioUrl(), raidersBean.getId() + "", raidersBean.getTitle(), raidersBean.getImgUrl(), raidersBean.getAppName());
-        } else if (bean instanceof VideoBean.ResultBean) {
-            VideoBean.ResultBean videoBean = (VideoBean.ResultBean) bean;
-            toTypeActivity(context, videoBean.getType(), videoBean.getContentUrl(), videoBean.getVedioUrl(), videoBean.getId(), videoBean.getTitle(), videoBean.getImgUrl(), videoBean.getAppName());
-        } else if (bean instanceof RecommendBean.ResultBean) {
-            RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) bean;
-            toTypeActivity(context, recommendBean.getType(), recommendBean.getContentUrl(), recommendBean.getVedioUrl(), recommendBean.getId() + "", recommendBean.getTitle(), recommendBean.getImgUrl(), recommendBean.getAppName());
-        }
-
-    }
-
-    public static void toTypeActivity(Context context, String type, String contentUrl, String apiUrl, String id, String title, String image, String apkPackage) {
-        Log.i("Helper contentUrl->", contentUrl);
-        Log.i("Helper apiUrl->", apiUrl);
-        Log.i("Helper id->", id);
-        switch (type) {
+    public static void startContentActivity(Context context, ResultBean bean) {
+        switch (bean.getType()) {
             case Config.TYPE_NEWS:
-                context.startActivity(new Intent(context, RaidersDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + contentUrl));
+                context.startActivity(new Intent(context, RaidersDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()));
                 break;
             case Config.TYPE_VIDEO:
-                context.startActivity(new Intent(context, VideoDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + contentUrl).putExtra("apiUrl", ServiceModule.BASE_URL + apiUrl).putExtra("title", title).putExtra("imageUrl", ServiceModule.BASE_URL + image));
+                context.startActivity(new Intent(context, VideoDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()).putExtra("apiUrl", ServiceModule.BASE_URL + bean.getVedioUrl()).putExtra("title", bean.getTitle()).putExtra("imageUrl", ServiceModule.BASE_URL + bean.getImgUrl()));
                 break;
             case Config.TYPE_APP:
-                context.startActivity(new Intent(context, AppDataActivity.class).putExtra("id", id).putExtra("apkPackage", apkPackage));
+                if (Config.TAB_TAG.equals(Config.getCloseTag())) {
+                    context.startActivity(new Intent(context, RaidersDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()));
+                } else if (Config.TAB_TAG.equals(Config.getOpenTag())) {
+                    context.startActivity(new Intent(context, AppDataActivity.class).putExtra("id", String.valueOf(bean.getId())).putExtra("apkPackage", bean.getAppName()));
+                }
                 break;
         }
     }
@@ -175,8 +147,12 @@ public class Helper {
         File[] files = file.listFiles();
         if (files != null) {
             for (int i = 0; i < files.length; i++) {
-                if (readFilePackage(context, files[i].getAbsolutePath()).equals(apkPackage)) {
-                    return files[i].getAbsolutePath();
+                try {
+                    if (readFilePackage(context, files[i].getAbsolutePath()).equals(apkPackage)) {
+                        return files[i].getAbsolutePath();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -201,12 +177,17 @@ public class Helper {
      */
     public static String readFilePackage(Context context, String path) {
         String packageName = null;
-        PackageManager pm = context.getPackageManager();
-        PackageInfo info = pm.getPackageArchiveInfo(path, PackageManager.GET_ACTIVITIES);
-        ApplicationInfo appInfo = null;
-        if (info != null) {
-            appInfo = info.applicationInfo;
-            packageName = appInfo.packageName;
+        try {
+            PackageManager pm = context.getPackageManager();
+            PackageInfo info = pm.getPackageArchiveInfo(path, PackageManager.GET_ACTIVITIES);
+            ApplicationInfo appInfo = null;
+            if (info != null) {
+                appInfo = info.applicationInfo;
+                packageName = appInfo.packageName;
+            }
+            return packageName;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return packageName;
     }

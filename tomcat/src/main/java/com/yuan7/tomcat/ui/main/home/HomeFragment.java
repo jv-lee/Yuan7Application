@@ -24,6 +24,7 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.module.ServiceModule;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.BannerBean;
 import com.yuan7.tomcat.bean.impl.NewsBean;
 import com.yuan7.tomcat.bean.impl.ProPagateBean;
@@ -91,7 +92,7 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
         ivHome1 = (ImageView) headView.findViewById(R.id.iv_homePic1);
         ivHome2 = (ImageView) headView.findViewById(R.id.iv_homePic2);
 
-        adapter = new NewsAdapter(new ArrayList<NewsBean.ResultBean>());
+        adapter = new NewsAdapter(new ArrayList<ResultBean>());
         adapter.setOnLoadMoreListener(this);
         adapter.addHeaderView(headView);
         adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
@@ -134,10 +135,39 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
         super.onFragmentResume();
         mainControlInterface.setToolbarVisibility(false);
         mainControlInterface.setTileText("主页");
+        Log.i(TAG, "onFragmentResume()");
+        if (banner != null && banner.hasStart() == false) {
+            banner.start();
+        }
     }
 
     @Override
-    public void bindBannerData(final List<BannerBean.ResultBean> result, List<String> images) {
+    public void onResume() {
+        super.onResume();
+        if (banner != null && banner.hasStart() == false) {
+            banner.start();
+        }
+    }
+
+    @Override
+    protected void onFragmentPause() {
+        super.onFragmentPause();
+        Log.i(TAG, "onFragmentPause()");
+        if (banner != null && banner.hasStart()) {
+            banner.stopAutoPlay();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (banner != null && banner.hasStart()) {
+            banner.stopAutoPlay();
+        }
+    }
+
+    @Override
+    public void bindBannerData(final List<ResultBean> result, List<String> images) {
         if (result != null) {
             if (banner.getImageUrls().size() == 0) {
                 banner.setIndicatorGravity(BannerConfig.CENTER)
@@ -159,7 +189,7 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     }
 
     @Override
-    public void bindPropagateData(final List<ProPagateBean.ResultBean> result) {
+    public void bindPropagateData(final List<ResultBean> result) {
         if (result != null) {
             if (result.size() > 0) {
                 GlideImageLoader.loadImage(mActivity, ServiceModule.BASE_URL + result.get(0).getImgUrl(), ivHome1);

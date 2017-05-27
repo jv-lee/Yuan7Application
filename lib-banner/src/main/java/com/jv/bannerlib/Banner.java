@@ -270,7 +270,14 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
         setBannerStyleUI();
         setImageList(imageUrls);
         setData();
+        startFlag = true;
         return this;
+    }
+
+    private boolean startFlag = false;
+
+    public boolean hasStart() {
+        return startFlag;
     }
 
     private void setTitleStyleUI() {
@@ -452,6 +459,7 @@ public class Banner extends FrameLayout implements OnPageChangeListener {
 
     public void stopAutoPlay() {
         handler.removeCallbacks(task);
+        startFlag = false;
     }
 
     private final Runnable task = new Runnable() {

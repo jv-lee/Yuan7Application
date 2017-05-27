@@ -19,6 +19,7 @@ import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.RaidersBean;
 import com.yuan7.tomcat.ui.ToolbarControlInterface;
 import com.yuan7.tomcat.ui.main.home.adapter.NewsAdapter;
@@ -67,7 +68,7 @@ public class RaidersFragment extends BaseFragment<RaidersContract.Presenter> imp
 
     @Override
     protected void bindData() {
-        adapter = new RaidersAdapter(new ArrayList<RaidersBean.ResultBean>());
+        adapter = new RaidersAdapter(new ArrayList<ResultBean>());
         adapter.setOnLoadMoreListener(this);
         adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
 

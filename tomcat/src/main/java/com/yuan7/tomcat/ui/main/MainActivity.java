@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
@@ -36,14 +37,24 @@ public class MainActivity extends BaseActivity implements ToolbarControlInterfac
     @BindView(R.id.tv_title)
     TextView tvTitle;
 
-    private Fragment[] fragments = {
+    private Fragment[] fragments;
+    private Fragment[] openFragments = {
             new HomeFragment(this), new VideoFragment(this), new RaidersFragment(this), new RecommendFragment(this)
     };
-    private BottomNavigationItem[] items = {
+    private Fragment[] closeFragments = {
+            new HomeFragment(this), new VideoFragment(this), new RaidersFragment(this)};
+
+    private BottomNavigationItem[] items;
+    private BottomNavigationItem[] openItems = {
             new BottomNavigationItem(R.drawable.ic_home, "首页").setActiveColorResource(R.color.colorPrimary)
             , new BottomNavigationItem(R.drawable.ic_video, "视频").setActiveColorResource(R.color.colorPrimary)
             , new BottomNavigationItem(R.drawable.ic_raiders, "攻略").setActiveColorResource(R.color.colorPrimary)
             , new BottomNavigationItem(R.drawable.ic_recommend, "推荐").setActiveColorResource(R.color.colorPrimary)
+    };
+    private BottomNavigationItem[] closeItems = {
+            new BottomNavigationItem(R.drawable.ic_home, "首页").setActiveColorResource(R.color.colorPrimary)
+            , new BottomNavigationItem(R.drawable.ic_video, "视频").setActiveColorResource(R.color.colorPrimary)
+            , new BottomNavigationItem(R.drawable.ic_raiders, "攻略").setActiveColorResource(R.color.colorPrimary)
     };
 
     @Override
@@ -54,15 +65,23 @@ public class MainActivity extends BaseActivity implements ToolbarControlInterfac
     @Override
     protected void bindData() {
         setSwipeBackEnable(false);
+
+        if (Config.TAB_TAG.equals(Config.getCloseTag())) {
+            items = closeItems;
+            fragments = closeFragments;
+        } else {
+            items = openItems;
+            fragments = openFragments;
+        }
+
         vpContainer.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), fragments));
         vpContainer.setNoScroll(true);
         vpContainer.setOffscreenPageLimit(fragments.length - 1);
 
-        navigationBar.addItem(items[0])
-                .addItem(items[1])
-                .addItem(items[2])
-                .addItem(items[3])
-                .initialise();
+        for (int i = 0; i < items.length; i++) {
+            navigationBar.addItem(items[i]);
+        }
+        navigationBar.initialise();
         navigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {

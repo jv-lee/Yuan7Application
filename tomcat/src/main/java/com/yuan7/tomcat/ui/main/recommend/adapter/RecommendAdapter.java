@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.module.ServiceModule;
+import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.RecommendBean;
 import com.yuan7.tomcat.utils.GlideImageLoader;
 import com.yuan7.tomcat.utils.Helper;
@@ -18,14 +19,14 @@ import java.util.List;
  * Created by Administrator on 2017/5/19.
  */
 
-public class RecommendAdapter extends BaseQuickAdapter<RecommendBean.ResultBean, BaseViewHolder> {
+public class RecommendAdapter extends BaseQuickAdapter<ResultBean, BaseViewHolder> {
 
-    public RecommendAdapter(@Nullable List<RecommendBean.ResultBean> data) {
+    public RecommendAdapter(@Nullable List<ResultBean> data) {
         super(R.layout.item_recommend, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, RecommendBean.ResultBean item) {
+    protected void convert(BaseViewHolder helper, ResultBean item) {
         if (item != null) {
             GlideImageLoader.loadImage(mContext, ServiceModule.BASE_URL + item.getImgUrl(), (ImageView) helper.getView(R.id.iv_pic));
             helper.setText(R.id.tv_title, item.getTitle())
@@ -33,8 +34,8 @@ public class RecommendAdapter extends BaseQuickAdapter<RecommendBean.ResultBean,
                     .setText(R.id.tv_content, item.getDesc())
                     .setText(R.id.tv_download_count, "已下载:" + item.getDownloadTimes())
                     .setText(R.id.tv_size, Helper.getPrintSize(item.getSize()));
-            if (!TextUtils.isEmpty(item.getAddType())) {
-                helper.setText(R.id.tv_game_type, item.getAddType());
+            if (!TextUtils.isEmpty(item.getAppType())) {
+                helper.setText(R.id.tv_game_type, item.getAppType());
             } else {
                 helper.setText(R.id.tv_game_type, "角色扮演");
             }

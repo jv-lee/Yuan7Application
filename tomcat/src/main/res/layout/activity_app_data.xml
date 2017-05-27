@@ -190,6 +190,7 @@
             android:id="@+id/btn_download"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:progress_btn_background_color="@color/colorPrimary"
             app:progress_btn_ball_style="STYLE_BALL_JUMP"
             app:progress_btn_border_width="10dp"
             app:progress_btn_radius="10dp"

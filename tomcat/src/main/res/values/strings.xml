@@ -13,5 +13,16 @@
     <string name="str_details">详情</string>
     <string name="str_score">评分:</string>
 
+    <!-- downloadManager -->
+    <string name="downStr_waiting">等待中</string>
+    <string name="downStr_loading">连接中</string>
+    <string name="downStr_downloading">下载中</string>
+    <string name="downStr_install">安装</string>
+    <string name="downStr_open">打开</string>
+    <string name="downStr_continue">继续</string>
+    <string name="downStr_retry">重试</string>
+    <string name="downStr_requestError">请求异常</string>
+    <string name="downStr_saveFileError">存储异常</string>
+
 
 </resources>

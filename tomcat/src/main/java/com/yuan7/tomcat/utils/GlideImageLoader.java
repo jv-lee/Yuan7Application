@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jv.bannerlib.loader.ImageLoader;
 import com.yuan7.tomcat.R;
 
@@ -22,7 +23,11 @@ public class GlideImageLoader extends ImageLoader {
          切记不要胡乱强转！
          */
         //Glide 加载图片简单用法
-        Glide.with(context).load(path).crossFade().into(imageView);
+        Glide.with(context)
+                .load(path)
+                .diskCacheStrategy(DiskCacheStrategy.ALL) //设置缓存
+                .crossFade()
+                .into(imageView);
     }
 
     public static void loadImage(Context context, Object path, ImageView imageView) {
@@ -34,6 +39,12 @@ public class GlideImageLoader extends ImageLoader {
          切记不要胡乱强转！
          */
         //Glide 加载图片简单用法
-        Glide.with(context).load(path).placeholder(context.getResources().getDrawable(R.drawable.ic_photo)).error(context.getResources().getDrawable(R.drawable.ic_photo)).crossFade().into(imageView);
+        Glide.with(context)
+                .load(path)
+                .placeholder(context.getResources().getDrawable(R.drawable.ic_photo)) //设置占位图
+                .error(context.getResources().getDrawable(R.drawable.ic_photo)) //设置错误图
+                .diskCacheStrategy(DiskCacheStrategy.ALL) //设置缓存
+                .crossFade() //设置默认显示动画
+                .into(imageView);
     }
 }

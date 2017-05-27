@@ -1,4 +1,4 @@
-package com.yuan7.tomcat.simple;
+package com.yuan7.tomcat.bean;
 
 import java.util.List;
 

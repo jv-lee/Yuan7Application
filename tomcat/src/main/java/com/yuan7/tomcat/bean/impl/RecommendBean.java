@@ -2,6 +2,7 @@ package com.yuan7.tomcat.bean.impl;
 
 
 import com.yuan7.tomcat.bean.BaseBean;
+import com.yuan7.tomcat.bean.ResultBean;
 
 import java.util.List;
 
@@ -23,21 +24,6 @@ public class RecommendBean extends BaseBean {
     private int pageCount;
     private String pageNo;
     private String pageSize;
-    /**
-     * addTime : 2017-04-30 08:24
-     * source : 未知
-     * title : 会说话的汤姆猫
-     * type : 3
-     * clickTimes : 0
-     * imgUrl : catServer//upload/images/bdfa6f56-5b9e-43e4-975a-ec71e8a62c65.jpg
-     * contentUrl : catServer/content.action?id=14
-     * vedioUrl :
-     * dlUrl : catServer/download.action?id=14
-     * size : null
-     * downloadTimes : 0
-     * id : 14
-     * desc : 超可爱的宠物养成游戏
-     */
 
     private List<ResultBean> result;
 
@@ -73,150 +59,19 @@ public class RecommendBean extends BaseBean {
         this.result = result;
     }
 
-    public static class ResultBean {
-        private String addTime;
-        private String source;
-        private String title;
-        private String type;
-        private int clickTimes;
-        private String imgUrl;
-        private String contentUrl;
-        private String vedioUrl;
-        private String dlUrl;
-        private long size;
-        private int downloadTimes;
-        private int id;
-        private String desc;
-        private String appName;
-        private String addType;
-        private String appScore;
-
-        public String getAppScore() {
-            return appScore;
-        }
-
-        public void setAppScore(String appScore) {
-            this.appScore = appScore;
-        }
-
-        public String getAddType() {
-            return addType;
-        }
-
-        public void setAddType(String addType) {
-            this.addType = addType;
-        }
-
-        public String getAppName() {
-            return appName;
-        }
-
-        public String getAddTime() {
-            return addTime;
-        }
-
-        public void setAddTime(String addTime) {
-            this.addTime = addTime;
-        }
-
-        public String getSource() {
-            return source;
-        }
-
-        public void setSource(String source) {
-            this.source = source;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public int getClickTimes() {
-            return clickTimes;
-        }
-
-        public void setClickTimes(int clickTimes) {
-            this.clickTimes = clickTimes;
-        }
-
-        public String getImgUrl() {
-            return imgUrl;
-        }
-
-        public void setImgUrl(String imgUrl) {
-            this.imgUrl = imgUrl;
-        }
-
-        public String getContentUrl() {
-            return contentUrl;
-        }
-
-        public void setContentUrl(String contentUrl) {
-            this.contentUrl = contentUrl;
-        }
-
-        public String getVedioUrl() {
-            return vedioUrl;
-        }
-
-        public void setVedioUrl(String vedioUrl) {
-            this.vedioUrl = vedioUrl;
-        }
-
-        public String getDlUrl() {
-            return dlUrl;
-        }
-
-        public void setDlUrl(String dlUrl) {
-            this.dlUrl = dlUrl;
-        }
-
-        public long getSize() {
-            return size;
-        }
-
-        public void setSize(long size) {
-            this.size = size;
-        }
-
-        public void setAppName(String appName) {
-            this.appName = appName;
-        }
-
-        public int getDownloadTimes() {
-            return downloadTimes;
-        }
-
-        public void setDownloadTimes(int downloadTimes) {
-            this.downloadTimes = downloadTimes;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getDesc() {
-            return desc;
-        }
-
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
-    }
+    /**
+     * addTime : 2017-04-30 08:24
+     * source : 未知
+     * title : 会说话的汤姆猫
+     * type : 3
+     * clickTimes : 0
+     * imgUrl : catServer//upload/images/bdfa6f56-5b9e-43e4-975a-ec71e8a62c65.jpg
+     * contentUrl : catServer/content.action?id=14
+     * vedioUrl :
+     * dlUrl : catServer/download.action?id=14
+     * size : null
+     * downloadTimes : 0
+     * id : 14
+     * desc : 超可爱的宠物养成游戏
+     */
 }

@@ -1,9 +1,10 @@
 package com.yuan7.tomcat.ui.content.app;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
+import android.content.IntentFilter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,7 +19,6 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.lcodecore.tkrefreshlayout.utils.LogUtil;
 import com.yuan.library.dmanager.download.DownloadManager;
 import com.yuan.library.dmanager.download.DownloadTask;
 import com.yuan.library.dmanager.download.DownloadTaskListener;
@@ -27,6 +27,7 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.module.ServiceModule;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
+import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.DetailBean;
 import com.yuan7.tomcat.bean.impl.HotAdBean;
 import com.yuan7.tomcat.ui.content.app.adapter.DataHotAdapter;
@@ -88,6 +89,8 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
     // 下载管理器
     private DownloadManager mDownloadManager;
 
+    private PackageReceiver receiver;
+
     @Override
     protected int bindRootView() {
         return R.layout.activity_app_data;
@@ -116,13 +119,14 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
         wvAppContent.setBackgroundColor(0);
         wvAppContent.setBackgroundColor(getResources().getColor(R.color.backgroundContainerColor));
 
-        hotAdapter = new DataHotAdapter(new ArrayList<HotAdBean.ResultBean>());
+        hotAdapter = new DataHotAdapter(new ArrayList<ResultBean>());
         hotAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         rvApps.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         rvApps.setAdapter(hotAdapter);
         rvApps.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Helper.startContentActivity(mContext, ((DataHotAdapter) adapter).getData().get(position));
             }
         });
 
@@ -138,6 +142,18 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
 
         mPresenter.bindDetailData(getIntent().getStringExtra("id"));
         mPresenter.bindHotData();
+
+        receiver = new PackageReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
+        intentFilter.addDataScheme("package");
+        registerReceiver(receiver, intentFilter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receiver);
     }
 
     @Override
@@ -169,6 +185,16 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
 
     }
 
+    @Override
+    public void bindHotData(HotAdBean bean) {
+        hotAdapter.getData().addAll(bean.getResult());
+    }
+
+    @Override
+    public void bindDataEvent(int failCode, String message) {
+        Toast.makeText(this, "code:" + failCode + "; message:" + message, Toast.LENGTH_SHORT).show();
+    }
+
     /**
      * 初始化下载按钮
      */
@@ -181,15 +207,15 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
         switch (code) {
             case 0:
                 btnDownload.setState(DownloadProgressButton.STATE_NORMAL);
-                btnDownload.setCurrentText("下载");
+                btnDownload.setCurrentText(getResources().getString(R.string.str_download));
                 break;
             case 1:
                 btnDownload.setState(DownloadProgressButton.STATE_FINISH);
-                btnDownload.setCurrentText("打开");
+                btnDownload.setCurrentText(getResources().getString(R.string.downStr_open));
                 break;
             case 2:
                 btnDownload.setState(DownloadProgressButton.STATE_FINISH);
-                btnDownload.setCurrentText("安装");
+                btnDownload.setCurrentText(getResources().getString(R.string.downStr_install));
                 break;
         }
         btnDownload.setOnClickListener(new View.OnClickListener() {
@@ -234,12 +260,18 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
                     mDownloadManager.resumeTask(itemTask);
                     break;
                 case TASK_STATUS_FINISH:
-                    switch (btnDownload.getCurrentText()) {
-                        case "安装":
+                    int code = 0;
+                    if (btnDownload.getCurrentText().equals(getResources().getString(R.string.downStr_install))) {
+                        code = 0;
+                    } else if (btnDownload.getCurrentText().equals(getResources().getString(R.string.downStr_open))) {
+                        code = 1;
+                    }
+                    switch (code) {
+                        case 0:
                             Log.i(TAG, taskEntity.getFilePath() + taskEntity.getFileName());
                             Helper.openInstallApp(mContext, taskEntity.getFilePath() + "/" + taskEntity.getFileName());
                             break;
-                        case "打开":
+                        case 1:
                             Helper.openApp(mContext, apkPackage);
                             break;
                     }
@@ -261,122 +293,69 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
             @Override
             public void onQueue(DownloadTask downloadTask) {
                 btnDownload.setState(DownloadProgressButton.STATE_PAUSE);
-                btnDownload.setCurrentText("等待中");
+                btnDownload.setCurrentText(getResources().getString(R.string.downStr_waiting));
             }
 
             @Override
             public void onConnecting(DownloadTask downloadTask) {
                 btnDownload.setState(DownloadProgressButton.STATE_PAUSE);
-                btnDownload.setCurrentText("链接中");
+                btnDownload.setCurrentText(getResources().getString(R.string.downStr_loading));
             }
 
             @Override
             public void onStart(DownloadTask downloadTask) {
                 btnDownload.setState(DownloadProgressButton.STATE_DOWNLOADING);
-                btnDownload.setProgressText("下载中:", Integer.parseInt(Helper.getPercent(taskEntity.getCompletedSize(), taskEntity.getTotalSize())));
+                btnDownload.setProgressText(getResources().getString(R.string.downStr_downloading) + ":", Integer.parseInt(Helper.getPercent(taskEntity.getCompletedSize(), taskEntity.getTotalSize())));
             }
 
             @Override
             public void onPause(DownloadTask downloadTask) {
                 btnDownload.setState(DownloadProgressButton.STATE_PAUSE);
-                btnDownload.setCurrentText("继续");
+                btnDownload.setCurrentText(getResources().getString(R.string.downStr_continue));
             }
 
             @Override
             public void onCancel(DownloadTask downloadTask) {
                 Log.e(TAG, "onCancel------" + downloadTask.getTaskEntity().getFilePath() + downloadTask.getTaskEntity().getFileName());
                 btnDownload.setState(DownloadProgressButton.STATE_NORMAL);
-                btnDownload.setCurrentText("下载");
+                btnDownload.setCurrentText(getResources().getString(R.string.str_download));
             }
 
             @Override
             public void onFinish(DownloadTask downloadTask) {
                 btnDownload.setState(DownloadProgressButton.STATE_FINISH);
-                btnDownload.setCurrentText("安装");
+                btnDownload.setCurrentText(getResources().getString(R.string.downStr_install));
                 Log.e(TAG, downloadTask.getTaskEntity().getFilePath() + "/" + downloadTask.getTaskEntity().getFileName());
             }
 
             @Override
             public void onError(DownloadTask downloadTask, int codeError) {
                 btnDownload.setState(DownloadProgressButton.STATE_PAUSE);
-                btnDownload.setCurrentText("重试");
+                btnDownload.setCurrentText(getResources().getString(R.string.downStr_retry));
                 switch (codeError) {
                     case TASK_STATUS_REQUEST_ERROR:
-                        Toast.makeText(AppDataActivity.this, "请求异常", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppDataActivity.this, getResources().getString(R.string.downStr_requestError), Toast.LENGTH_SHORT).show();
                         break;
                     case TASK_STATUS_STORAGE_ERROR:
-                        Toast.makeText(AppDataActivity.this, "存储异常", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppDataActivity.this, getResources().getString(R.string.downStr_saveFileError), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
         });
     }
 
-//    /**
-//     * 下载按钮点击事件
-//     */
-//    private void showTheButtonRx() {
-//        if (btnDownload.getState() == DownloadProgressButton.STATE_NORMAL || btnDownload.getState() == DownloadProgressButton.STATE_PAUSE) {
-//            btnDownload.setState(DownloadProgressButton.STATE_PAUSE);
-//            btnDownload.setCurrentText("连接中");
-//            downloadRx();
-//        } else if (btnDownload.getState() == DownloadProgressButton.STATE_DOWNLOADING) {
-//            stopDownloadRx();
-//        } else if (btnDownload.getState() == DownloadProgressButton.STATE_FINISH) {
-//            switch (btnDownload.getCurrentText()) {
-//                case "安装":
-//                    Helper.openInstallApp(mContext, apkPath);
-//                    break;
-//                case "打开":
-//                    Helper.openApp(mContext, apkPath);
-//                    break;
-//            }
-//        }
-//    }
+    public class PackageReceiver extends BroadcastReceiver {
 
-
-//    /**
-//     * 建立下载任务
-//     */
-//    private void downloadRx() {
-//        disposable = RxDownload.getInstance(this)
-//                .defaultSavePath(Environment.getExternalStorageDirectory().getPath() + "/.y7application")
-//                .download(apkUrl)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Consumer<DownloadStatus>() {
-//                    @Override
-//                    public void accept(@NonNull DownloadStatus downloadStatus) throws Exception {
-//                        btnDownload.setState(DownloadProgressButton.STATE_DOWNLOADING);
-//                        btnDownload.setProgress(downloadStatus.getPercentNumber());
-//                        btnDownload.setProgressText("下载中:", downloadStatus.getPercentNumber());
-//                    }
-//                }, new Consumer<Throwable>() {
-//                    @Override
-//                    public void accept(@NonNull Throwable throwable) throws Exception {
-//                        btnDownload.setCurrentText("连接失败");
-//                        btnDownload.setState(DownloadProgressButton.STATE_PAUSE);
-//                        Toast.makeText(mContext, "下载失败", Toast.LENGTH_SHORT).show();
-//                    }
-//                }, new Action() {
-//                    @Override
-//                    public void run() throws Exception {
-//                        btnDownload.setState(DownloadProgressButton.STATE_FINISH);
-//                        btnDownload.setCurrentText("安装");
-//                        Toast.makeText(mContext, "下载成功", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//    }
-
-    @Override
-    public void bindHotData(HotAdBean bean) {
-        hotAdapter.getData().addAll(bean.getResult());
-    }
-
-    @Override
-    public void bindDataEvent(int failCode, String message) {
-        Toast.makeText(this, "code:" + failCode + "; message:" + message, Toast.LENGTH_SHORT).show();
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)) {
+                String packageName = intent.getData().getSchemeSpecificPart();
+                if (packageName.equals(apkPackage)) {
+                    btnDownload.setState(DownloadProgressButton.STATE_FINISH);
+                    btnDownload.setCurrentText(getResources().getString(R.string.downStr_open));
+                }
+            }
+        }
     }
 
 }

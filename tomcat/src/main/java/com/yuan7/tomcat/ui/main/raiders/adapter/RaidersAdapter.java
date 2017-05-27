@@ -7,6 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.module.ServiceModule;
+import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.RaidersBean;
 import com.yuan7.tomcat.utils.GlideImageLoader;
 
@@ -16,13 +17,13 @@ import java.util.List;
  * Created by Administrator on 2017/5/19.
  */
 
-public class RaidersAdapter extends BaseQuickAdapter<RaidersBean.ResultBean, BaseViewHolder> {
-    public RaidersAdapter(@Nullable List<RaidersBean.ResultBean> data) {
+public class RaidersAdapter extends BaseQuickAdapter<ResultBean, BaseViewHolder> {
+    public RaidersAdapter(@Nullable List<ResultBean> data) {
         super(R.layout.item_raiders, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, RaidersBean.ResultBean item) {
+    protected void convert(BaseViewHolder helper, ResultBean item) {
         if (item != null) {
             GlideImageLoader.loadImage(mContext, ServiceModule.BASE_URL + item.getImgUrl(), (ImageView) helper.getView(R.id.iv_pic));
             String source = item.getSource() == "" ? mContext.getResources().getString(R.string.str_unknown) : item.getSource();

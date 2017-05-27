@@ -5,6 +5,7 @@ import android.util.Log;
 import com.yuan7.tomcat.base.module.ServiceModule;
 import com.yuan7.tomcat.base.mvp.BasePresenter;
 import com.yuan7.tomcat.base.scope.ActivityScope;
+import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.BannerBean;
 import com.yuan7.tomcat.bean.impl.NewsBean;
 import com.yuan7.tomcat.bean.impl.ProPagateBean;
@@ -52,7 +53,7 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
                     @Override
                     public void onNext(BannerBean bannerBean) {
                         List<String> images = new ArrayList<>();
-                        for (BannerBean.ResultBean bean : bannerBean.getResult()) {
+                        for (ResultBean bean : bannerBean.getResult()) {
                             Log.e("image:", ServiceModule.BASE_URL + bean.getImgUrl());
                             images.add(ServiceModule.BASE_URL + bean.getImgUrl());
                         }

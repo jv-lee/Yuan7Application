@@ -5,12 +5,23 @@ import com.yuan7.tomcat.bean.BaseBean;
 
 import java.util.List;
 
+
 /**
  * Created by Ly on 2017/5/4.
  * 详情页面
  */
 
 public class DetailBean extends BaseBean {
+
+    private ResultBean result;
+
+    public ResultBean getResult() {
+        return result;
+    }
+
+    public void setResult(ResultBean result) {
+        this.result = result;
+    }
 
     /**
      * imgUrl : catServer/
@@ -26,16 +37,6 @@ public class DetailBean extends BaseBean {
      * desc :
      * clickTimes : 0
      */
-
-    private ResultBean result;
-
-    public ResultBean getResult() {
-        return result;
-    }
-
-    public void setResult(ResultBean result) {
-        this.result = result;
-    }
 
     public static class ResultBean {
         private String imgUrl;
@@ -163,4 +164,5 @@ public class DetailBean extends BaseBean {
             this.appImgs = appImgs;
         }
     }
+
 }

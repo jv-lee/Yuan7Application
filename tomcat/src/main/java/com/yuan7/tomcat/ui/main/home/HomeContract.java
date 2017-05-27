@@ -3,6 +3,7 @@ package com.yuan7.tomcat.ui.main.home;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
+import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.BannerBean;
 import com.yuan7.tomcat.bean.impl.NewsBean;
 import com.yuan7.tomcat.bean.impl.ProPagateBean;
@@ -19,9 +20,9 @@ import io.reactivex.Observable;
 public interface HomeContract {
 
     interface View extends IView {
-        void bindBannerData(List<BannerBean.ResultBean> result, List<String> images);
+        void bindBannerData(List<ResultBean> result, List<String> images);
 
-        void bindPropagateData(List<ProPagateBean.ResultBean> result);
+        void bindPropagateData(List<ResultBean> result);
 
         void bindNewsData(int pageNo, NewsBean newsBean);
 

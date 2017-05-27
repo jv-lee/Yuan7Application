@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.module.ServiceModule;
+import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.NewsBean;
 import com.yuan7.tomcat.utils.GlideImageLoader;
 
@@ -17,14 +18,14 @@ import java.util.List;
  * Created by Administrator on 2017/5/18.
  */
 
-public class NewsAdapter extends BaseQuickAdapter<NewsBean.ResultBean, BaseViewHolder> {
+public class NewsAdapter extends BaseQuickAdapter<ResultBean, BaseViewHolder> {
 
-    public NewsAdapter(@Nullable List<NewsBean.ResultBean> data) {
+    public NewsAdapter(@Nullable List<ResultBean> data) {
         super(R.layout.item_home, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, NewsBean.ResultBean item) {
+    protected void convert(BaseViewHolder helper, ResultBean item) {
         GlideImageLoader.loadImage(mContext,ServiceModule.BASE_URL + item.getImgUrl(),(ImageView) helper.getView(R.id.iv_pic));
         helper.setText(R.id.tv_title, item.getTitle())
                 .setText(R.id.tv_content, item.getDesc())
