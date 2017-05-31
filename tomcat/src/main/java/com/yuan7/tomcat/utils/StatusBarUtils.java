@@ -95,4 +95,14 @@ public class StatusBarUtils {
         return false;
     }
 
+    /**
+     * 直接隐藏statusBar 为不可见
+     *
+     * @param activity
+     */
+    public static void hideStatusBar(Activity activity) {
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, //设置隐藏状态栏
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
 }
