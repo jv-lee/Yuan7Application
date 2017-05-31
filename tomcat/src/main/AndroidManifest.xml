@@ -22,8 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity">
-        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.Main"/>
+
         <activity android:name=".ui.content.app.AppDataActivity" />
         <activity android:name=".ui.content.raiders.RaidersDataActivity" />
         <activity
