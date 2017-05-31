@@ -31,6 +31,7 @@
         <activity android:name=".ui.content.raiders.RaidersDataActivity" />
         <activity
             android:name=".ui.content.video.VideoDataActivity"
+            android:theme="@style/AppTheme.Main"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
     </application>
