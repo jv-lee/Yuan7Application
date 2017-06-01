@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/tomcat_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.welcome.WelcomeActivity">
+        <activity
+            android:name=".ui.welcome.WelcomeActivity"
+            android:theme="@style/AppTheme.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,13 +27,13 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.Main"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Main" />
 
         <activity android:name=".ui.content.app.AppDataActivity" />
         <activity android:name=".ui.content.raiders.RaidersDataActivity" />
         <activity
             android:name=".ui.content.video.VideoDataActivity"
-            android:theme="@style/AppTheme.Main"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
     </application>

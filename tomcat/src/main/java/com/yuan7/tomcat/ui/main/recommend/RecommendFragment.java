@@ -1,5 +1,6 @@
 package com.yuan7.tomcat.ui.main.recommend;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,7 +35,7 @@ import butterknife.BindView;
 /**
  * Created by Administrator on 2017/5/17.
  */
-
+@SuppressLint("ValidFragment")
 public class RecommendFragment extends BaseFragment<RecommendContract.Presenter> implements RecommendContract.View, BaseQuickAdapter.RequestLoadMoreListener {
 
     @BindView(R.id.rv_container)

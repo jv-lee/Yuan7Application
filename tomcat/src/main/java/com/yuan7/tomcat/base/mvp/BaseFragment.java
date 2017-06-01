@@ -34,6 +34,9 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment {
     protected P mPresenter;
     private Unbinder unBinder;
 
+    public BaseFragment() {
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
