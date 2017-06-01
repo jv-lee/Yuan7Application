@@ -35,7 +35,8 @@
         <activity
             android:name=".ui.content.video.VideoDataActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppVideo" />
     </application>
 
 </manifest>
