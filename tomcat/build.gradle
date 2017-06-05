@@ -26,6 +26,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:$rootProject.versions.libSupport"
     compile "com.android.support:design:$rootProject.versions.libSupport"
     compile "com.android.support:cardview-v7:$rootProject.versions.libSupport"
+    compile "com.android.support.constraint:constraint-layout:$rootProject.versions.constraint"
     //retrofit
     compile "com.squareup.retrofit2:retrofit:$rootProject.versions.libRetrofit"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.versions.libRetrofit"
@@ -39,27 +40,19 @@ dependencies {
     compile "com.google.code.gson:gson:$rootProject.versions.libGson"
     //谷歌图片 加载库
     compile "com.github.bumptech.glide:glide:$rootProject.versions.libGlide"
-    /**
-     * butterknife 依赖
-     */
+    //butterknife 依赖
     compile "com.jakewharton:butterknife:$rootProject.versions.libButterknife"
     apt "com.jakewharton:butterknife-compiler:$rootProject.versions.libButterknife"
-    /**
-     * 依赖注入库
-     */
+    //依赖注入库
     compile "com.google.dagger:dagger:$rootProject.versions.libDagger"
     apt "com.google.dagger:dagger-compiler:$rootProject.versions.libDagger"
-
-    /**
-     * 基础控件
-     */
-    //    compile "com.yuan.library.dmanager:downloadmanager-okhttp-release:1.1.8"
-
+    //Rv 适配器
+    compile "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.versions.libBaseAdapter"
+    compile "com.ashokvarma.android:bottom-navigation-bar:$rootProject.versions.libBottom"
+    compile "com.lcodecorex:tkrefreshlayout:$rootProject.versions.libTkrefresh"
     compile project(path: ':lib-banner')
     compile project(path: ':lib-videoplayer')
     compile project(path: ':lib-download')
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.17'
-    compile 'com.ashokvarma.android:bottom-navigation-bar:1.3.0'
-    compile 'com.lcodecorex:tkrefreshlayout:1.0.7'
+
+
 }
