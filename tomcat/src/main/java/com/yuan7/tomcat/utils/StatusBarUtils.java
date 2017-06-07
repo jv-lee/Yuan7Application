@@ -33,8 +33,8 @@ public class StatusBarUtils {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
-        setMiuiStatusBarDarkMode(context, true);
-        setMeizuStatusBarDarkIcon(context, true);
+        setMiuiStatusBarDarkMode(context, false);
+        setMeizuStatusBarDarkIcon(context, false);
     }
 
     /**
