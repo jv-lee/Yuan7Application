@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'org.greenrobot.greendao'
 android {
-    compileSdkVersion rootProject.setup.compileSdk
-    buildToolsVersion rootProject.setup.buildTools
+    compileSdkVersion rootProject.android.compileSdk
+    buildToolsVersion rootProject.android.buildTools
     defaultConfig {
-        minSdkVersion rootProject.setup.minSdk
-        targetSdkVersion rootProject.setup.targetSdk
-        versionCode rootProject.setup.vcode
-        versionName rootProject.setup.vname
+        minSdkVersion rootProject.android.minSdk
+        targetSdkVersion rootProject.android.targetSdk
+        versionCode rootProject.android.vcode
+        versionName rootProject.android.vname
 
     }
     buildTypes {
@@ -49,10 +49,10 @@ publish {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile "com.android.support:appcompat-v7:$rootProject.versions.libSupport"
-    compile "com.squareup.okhttp3:okhttp:$rootProject.versions.libOkhttp3"
-    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.versions.libOkhttp3"
-    compile "com.google.code.gson:gson:$rootProject.versions.libGson"
-    compile "org.greenrobot:greendao:$rootProject.versions.libGreendao"
+    compile "com.android.support:appcompat-v7:$rootProject.library.support_version"
+    compile "com.squareup.okhttp3:okhttp:$rootProject.library.okhttp_version"
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.library.okhttp_version"
+    compile "com.google.code.gson:gson:$rootProject.library.gson_version"
+    compile "org.greenrobot:greendao:$rootProject.library.greendao_version"
 }
 
