@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar1_layout" />
 
-    <ScrollView
+    <com.yuan7.tomcat.widget.ParallaxScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -32,6 +32,6 @@
         </LinearLayout>
 
 
-    </ScrollView>
+    </com.yuan7.tomcat.widget.ParallaxScrollView>
 
 </LinearLayout>

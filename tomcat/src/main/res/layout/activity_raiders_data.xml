@@ -8,10 +8,15 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar1_layout" />
 
-    <WebView
-        android:id="@+id/wv_container"
+    <com.yuan7.tomcat.widget.ParallaxScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="this is raiders data activity" />
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/wv_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="this is raiders data activity" />
+    </com.yuan7.tomcat.widget.ParallaxScrollView>
 
 </LinearLayout>

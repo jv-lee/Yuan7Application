@@ -22,11 +22,11 @@ import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.RecommendBean;
 import com.yuan7.tomcat.ui.ToolbarControlInterface;
-import com.yuan7.tomcat.ui.main.home.adapter.NewsAdapter;
 import com.yuan7.tomcat.ui.main.recommend.adapter.RecommendAdapter;
 import com.yuan7.tomcat.ui.main.recommend.inject.DaggerRecommendComponent;
 import com.yuan7.tomcat.ui.main.recommend.inject.RecommendModule;
 import com.yuan7.tomcat.utils.Helper;
+import com.yuan7.tomcat.widget.ParallaxRecyclerView;
 
 import java.util.ArrayList;
 

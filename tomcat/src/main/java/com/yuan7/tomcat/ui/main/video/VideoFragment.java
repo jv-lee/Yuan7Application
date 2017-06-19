@@ -22,7 +22,6 @@ import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.VideoBean;
 import com.yuan7.tomcat.ui.ToolbarControlInterface;
-import com.yuan7.tomcat.ui.main.raiders.adapter.RaidersAdapter;
 import com.yuan7.tomcat.ui.main.video.adapter.VideoAdapter;
 import com.yuan7.tomcat.ui.main.video.inject.DaggerVideoComponent;
 import com.yuan7.tomcat.ui.main.video.inject.VideoModule;
