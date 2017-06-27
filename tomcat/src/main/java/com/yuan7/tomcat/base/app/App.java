@@ -2,6 +2,7 @@ package com.yuan7.tomcat.base.app;
 
 import android.app.Application;
 
+import com.github.client.m.Am;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.GoogleDotView;
 import com.lcodecore.tkrefreshlayout.header.SinaRefreshView;
@@ -28,6 +29,7 @@ public class App extends Application {
                 .serviceModule(new ServiceModule())
                 .build();
         DownloadManager.getInstance().init(this, 3);
+        Am.getInstance(getApplicationContext());
     }
 
     public AppComponent getAppComponent() {

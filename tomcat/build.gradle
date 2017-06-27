@@ -18,10 +18,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
     compile "com.android.support:appcompat-v7:$rootProject.library.support_version"
     compile "com.android.support:design:$rootProject.library.support_version"
@@ -51,6 +52,5 @@ dependencies {
     compile project(path: ':lib-banner')
     compile project(path: ':lib-videoplayer')
     compile project(path: ':lib-download')
-
-
+    compile files('libs/adclient_v3.0.0.jar')
 }
