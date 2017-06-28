@@ -1,5 +1,6 @@
 package com.yuan7.tomcat.ui.main.home;
 
+import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
 import com.yuan7.tomcat.bean.impl.BannerBean;
@@ -27,16 +28,16 @@ public class HomeModel extends BaseModel implements HomeContract.Model {
 
     @Override
     public Observable<BannerBean> doGetBanner() {
-        return service.doGetBanner();
+        return service.doGetBanner(Config.APP_ID);
     }
 
     @Override
     public Observable<ProPagateBean> doGetProPatate() {
-        return service.doGetProPatate();
+        return service.doGetProPatate(Config.APP_ID);
     }
 
     @Override
     public Observable<NewsBean> doGetNews(int pageNo) {
-        return service.doGetNews(pageNo);
+        return service.doGetNews(pageNo,Config.APP_ID);
     }
 }

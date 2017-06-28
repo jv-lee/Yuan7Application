@@ -20,7 +20,8 @@ ext {
                dagger_version          : "2.6",
                baseAdapter_version     : "2.9.18",
                bottomNavigation_version: "1.3.0",
-               tkrefresh_version       : "1.0.7"]
+               tkrefresh_version       : "1.0.7",
+               photoView_version       : "2.0.0"]
 }
 buildscript {
     repositories {

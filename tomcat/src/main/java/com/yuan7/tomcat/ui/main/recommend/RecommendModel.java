@@ -1,5 +1,6 @@
 package com.yuan7.tomcat.ui.main.recommend;
 
+import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
 import com.yuan7.tomcat.bean.impl.RecommendBean;
@@ -26,6 +27,6 @@ public class RecommendModel extends BaseModel implements RecommendContract.Model
 
     @Override
     public Observable<RecommendBean> doGetRecommend(int pageNo) {
-        return service.doGetRecommend(pageNo);
+        return service.doGetRecommend(pageNo, Config.APP_ID);
     }
 }

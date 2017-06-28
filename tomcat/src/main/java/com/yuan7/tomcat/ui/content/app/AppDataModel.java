@@ -1,5 +1,6 @@
 package com.yuan7.tomcat.ui.content.app;
 
+import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
 import com.yuan7.tomcat.bean.impl.DetailBean;
@@ -26,11 +27,11 @@ public class AppDataModel extends BaseModel implements AppDataContract.Model {
 
     @Override
     public Observable<DetailBean> doGetDetail(String id) {
-        return service.doGetDetail(id);
+        return service.doGetDetail(id, Config.APP_ID);
     }
 
     @Override
     public Observable<HotAdBean> doGetHot() {
-        return service.doGetHot();
+        return service.doGetHot(Config.APP_ID);
     }
 }

@@ -49,6 +49,8 @@ dependencies {
     compile "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.library.baseAdapter_version"
     compile "com.ashokvarma.android:bottom-navigation-bar:$rootProject.library.bottomNavigation_version"
     compile "com.lcodecorex:tkrefreshlayout:$rootProject.library.tkrefresh_version"
+    //photoView
+    compile "com.github.chrisbanes:PhotoView:$rootProject.library.photoView_version"
     compile project(path: ':lib-banner')
     compile project(path: ':lib-videoplayer')
     compile project(path: ':lib-download')

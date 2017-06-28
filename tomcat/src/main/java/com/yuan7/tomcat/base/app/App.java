@@ -29,7 +29,7 @@ public class App extends Application {
                 .serviceModule(new ServiceModule())
                 .build();
         DownloadManager.getInstance().init(this, 3);
-        Am.getInstance(getApplicationContext());
+//        Am.getInstance(getApplicationContext());
     }
 
     public AppComponent getAppComponent() {

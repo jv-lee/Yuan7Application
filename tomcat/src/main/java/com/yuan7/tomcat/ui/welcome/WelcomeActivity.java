@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.R;
@@ -53,16 +54,18 @@ public class WelcomeActivity extends AppCompatActivity {
                     @Override
                     public void onSubscribe(Disposable d) {
                     }
+
                     @Override
                     public void onNext(Long aLong) {
                     }
+
                     @Override
                     public void onError(Throwable e) {
                     }
 
                     @Override
                     public void onComplete() {
-                        service.isOpen()
+                        service.isOpen(Config.APP_ID)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new Observer<IsOpenBean>() {

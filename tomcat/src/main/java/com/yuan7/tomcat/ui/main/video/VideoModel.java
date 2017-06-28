@@ -1,5 +1,6 @@
 package com.yuan7.tomcat.ui.main.video;
 
+import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
 import com.yuan7.tomcat.bean.impl.VideoBean;
@@ -25,6 +26,6 @@ public class VideoModel extends BaseModel implements VideoContract.Model {
 
     @Override
     public Observable<VideoBean> doGetVideo(int pageNo) {
-        return service.doGetVideo(pageNo);
+        return service.doGetVideo(pageNo, Config.APP_ID);
     }
 }

@@ -11,13 +11,9 @@ import com.yuan7.tomcat.bean.impl.RecommendBean;
 import com.yuan7.tomcat.bean.impl.VideoBean;
 
 import io.reactivex.Observable;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Url;
 
 /**
  * Created by Administrator on 2017/5/17.
@@ -30,16 +26,18 @@ public interface ApiService {
      *
      * @return
      */
+    @FormUrlEncoded
     @POST("catServer/banner.action")
-    Observable<BannerBean> doGetBanner();
+    Observable<BannerBean> doGetBanner(@Field("appId") String appId);
 
     /**
      * 获取宣传图
      *
      * @return
      */
+    @FormUrlEncoded
     @POST("catServer/propagate.action")
-    Observable<ProPagateBean> doGetProPatate();
+    Observable<ProPagateBean> doGetProPatate(@Field("appId") String appId);
 
     /**
      * 获取新闻内容
@@ -49,7 +47,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("catServer/news.action")
-    Observable<NewsBean> doGetNews(@Field("pageNo") int pageNo);
+    Observable<NewsBean> doGetNews(@Field("pageNo") int pageNo, @Field("appId") String appId);
 
     /**
      * 获取视频
@@ -59,7 +57,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("catServer/vedio.action")
-    Observable<VideoBean> doGetVideo(@Field("pageNo") int pageNo);
+    Observable<VideoBean> doGetVideo(@Field("pageNo") int pageNo, @Field("appId") String appId);
 
     /**
      * 获取攻略
@@ -69,7 +67,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("catServer/guide.action")
-    Observable<RaidersBean> doGetRaiders(@Field("pageNo") int pageNo);
+    Observable<RaidersBean> doGetRaiders(@Field("pageNo") int pageNo, @Field("appId") String appId);
 
     /**
      * 获取推荐
@@ -79,7 +77,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("catServer/recommend.action")
-    Observable<RecommendBean> doGetRecommend(@Field("pageNo") int pageNo);
+    Observable<RecommendBean> doGetRecommend(@Field("pageNo") int pageNo, @Field("appId") String appId);
 
     /**
      * 详情页面
@@ -89,7 +87,7 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("catServer/recommend!detail.action")
-    Observable<DetailBean> doGetDetail(@Field("id") String id);
+    Observable<DetailBean> doGetDetail(@Field("id") String id, @Field("appId") String appId);
 
 
     /**
@@ -97,24 +95,17 @@ public interface ApiService {
      *
      * @return
      */
+    @FormUrlEncoded
     @POST("catServer/recommend!hot.action")
-    Observable<HotAdBean> doGetHot();
+    Observable<HotAdBean> doGetHot(@Field("appId") String appId);
 
     /**
      * 是否开启
      *
      * @return
      */
+    @FormUrlEncoded
     @POST("catServer/recommend!status.action")
-    Observable<IsOpenBean> isOpen();
-
-    /**
-     * 下载文件  小文件
-     *
-     * @param fileUrl
-     * @return
-     */
-    @GET
-    Call<ResponseBody> downloadFileWithDynamicUrlSync(@Url String fileUrl);
+    Observable<IsOpenBean> isOpen(@Field("appId") String appId);
 
 }

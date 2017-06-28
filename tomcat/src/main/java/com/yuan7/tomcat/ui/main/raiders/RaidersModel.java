@@ -1,5 +1,6 @@
 package com.yuan7.tomcat.ui.main.raiders;
 
+import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
 import com.yuan7.tomcat.bean.impl.RaidersBean;
@@ -25,6 +26,6 @@ public class RaidersModel extends BaseModel implements RaidersContract.Model {
 
     @Override
     public Observable<RaidersBean> doGetRaiders(int pageNo) {
-        return service.doGetRaiders(pageNo);
+        return service.doGetRaiders(pageNo, Config.APP_ID);
     }
 }

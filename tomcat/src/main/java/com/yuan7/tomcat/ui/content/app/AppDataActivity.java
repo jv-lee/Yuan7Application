@@ -37,6 +37,7 @@ import com.yuan7.tomcat.ui.content.app.inject.DaggerAppDataComponent;
 import com.yuan7.tomcat.utils.GlideImageLoader;
 import com.yuan7.tomcat.utils.Helper;
 import com.yuan7.tomcat.widget.DownloadProgressButton;
+import com.yuan7.tomcat.widget.ImageViewDialog;
 
 import java.util.ArrayList;
 
@@ -91,6 +92,8 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
 
     private PackageReceiver receiver;
 
+    private ImageViewDialog imageViewDialog;
+
     @Override
     protected int bindRootView() {
         return R.layout.activity_app_data;
@@ -137,6 +140,17 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
         rvImages.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+                if (adapter.getData() != null) {
+                    ArrayList<String> images = (ArrayList<String>) adapter.getData();
+                    if (images.size() > 0) {
+                        if (imageViewDialog != null) {
+                            imageViewDialog.show();
+                        } else {
+                            imageViewDialog = new ImageViewDialog(mContext, images, position);
+                            imageViewDialog.show();
+                        }
+                    }
+                }
             }
         });
 
