@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import com.yuan7.tomcat.base.app.App;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.utils.StatusBarUtils;
-import com.yuan7.tomcat.widget.parallax.ParallaxActivity;
+import com.yuan7.tomcat.widget.back.IosBackActivity;
 
 import javax.inject.Inject;
 
@@ -19,7 +19,7 @@ import butterknife.Unbinder;
  * Created by Administrator on 2017/4/10.
  */
 
-public abstract class BaseActivity<P extends IPresenter> extends ParallaxActivity {
+public abstract class BaseActivity<P extends IPresenter> extends IosBackActivity {
     protected final String TAG = this.getClass().getSimpleName();
     private Unbinder unBinder;
 

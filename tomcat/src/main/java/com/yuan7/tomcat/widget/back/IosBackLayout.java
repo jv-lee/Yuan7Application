@@ -1,4 +1,4 @@
-package com.yuan7.tomcat.widget.parallax;
+package com.yuan7.tomcat.widget.back;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,7 +13,7 @@ import android.widget.FrameLayout;
 import com.yuan7.tomcat.R;
 
 
-public class ParallaxBackLayout extends FrameLayout {
+public class IosBackLayout extends FrameLayout {
 
     private static final int DEFAULT_SCRIM_COLOR = 0x99000000;
 
@@ -34,7 +34,7 @@ public class ParallaxBackLayout extends FrameLayout {
      */
     private float mScrollThreshold = DEFAULT_SCROLL_THRESHOLD;
 
-    private ParallaxBackActivityHelper mSwipeHelper;
+    private IosBackHelper mIosBackHelper;
 
     private boolean mEnable = true;
 
@@ -63,15 +63,15 @@ public class ParallaxBackLayout extends FrameLayout {
      */
     private int mTrackingEdge;
 
-    public ParallaxBackLayout(Context context) {
+    public IosBackLayout(Context context) {
         this(context, null);
     }
 
-    public ParallaxBackLayout(Context context, AttributeSet attrs) {
+    public IosBackLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ParallaxBackLayout(Context context, AttributeSet attrs, int defStyle) {
+    public IosBackLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs);
         mDragHelper = ViewDragHelper.create(this, new ViewDragCallback());
         mShadowLeft = getResources().getDrawable(R.drawable.shadow_left);
@@ -126,7 +126,7 @@ public class ParallaxBackLayout extends FrameLayout {
      */
     public void scrollToFinishActivity() {
         if (!mEnable) {
-            mSwipeHelper.getActivity().finish();
+            mIosBackHelper.getActivity().finish();
             return;
         }
         final int childWidth = mContentView.getWidth();
@@ -181,7 +181,7 @@ public class ParallaxBackLayout extends FrameLayout {
     @Override
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
         final boolean drawContent = child == mContentView;
-        if (mEnable && mSwipeHelper.hasSecondActivity())
+        if (mEnable && mIosBackHelper.hasSecondActivity())
             drawThumb(canvas, child);
         boolean ret = super.drawChild(canvas, child, drawingTime);
         if (mScrimOpacity > 0 && drawContent
@@ -210,7 +210,7 @@ public class ParallaxBackLayout extends FrameLayout {
         int left = (child.getLeft() - getWidth()) / 2;
         canvas.translate(left, 0);
         canvas.clipRect(0, 0, (child.getLeft() + getWidth()) / 2, child.getBottom());
-        ParallaxBackActivityHelper activityBase = mSwipeHelper.getSecondActivity();
+        IosBackHelper activityBase = mIosBackHelper.getSecondActivity();
         if (activityBase != null)
             activityBase.drawThumb(canvas);
         canvas.restoreToCount(store);
@@ -223,8 +223,8 @@ public class ParallaxBackLayout extends FrameLayout {
         mShadowLeft.draw(canvas);
     }
 
-    public void attachToActivity(ParallaxBackActivityHelper activity) {
-        mSwipeHelper = activity;
+    public void attachToActivity(IosBackHelper activity) {
+        mIosBackHelper = activity;
         ViewGroup decor = (ViewGroup) activity.getActivity().getWindow().getDecorView();
         ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
         decor.removeView(decorChild);
@@ -280,9 +280,9 @@ public class ParallaxBackLayout extends FrameLayout {
             }
 
             if (mScrollPercent >= 1) {
-                if (!mSwipeHelper.getActivity().isFinishing()) {
-                    mSwipeHelper.getActivity().finish();
-                    mSwipeHelper.getActivity().overridePendingTransition(0, 0);
+                if (!mIosBackHelper.getActivity().isFinishing()) {
+                    mIosBackHelper.getActivity().finish();
+                    mIosBackHelper.getActivity().overridePendingTransition(0, 0);
                 }
             }
         }

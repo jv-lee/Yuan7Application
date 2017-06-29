@@ -184,7 +184,8 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
         if (bean == null) return;
         GlideImageLoader.loadImage(this, ServiceModule.BASE_URL + bean.getResult().getImgUrl(), ivAppIcon);
         tvAppTitle.setText(bean.getResult().getTitle());
-        tvAppScore.setText(getResources().getString(R.string.str_score) + bean.getResult().getAppScore());
+        String score = bean.getResult().getAppScore() == null ? "0.0" : bean.getResult().getAppScore();
+        tvAppScore.setText(getResources().getString(R.string.str_score) + score);
         tvAppSize.setText(Helper.getPrintSize(bean.getResult().getSize()));
         tvDownloadCount.setText(getResources().getString(R.string.str_download) + "\t" + bean.getResult().getDownloadTimes());
         wvAppContent.loadDataWithBaseURL(null,

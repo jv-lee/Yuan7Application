@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yuan7.tomcat.widget.parallax;
+package com.yuan7.tomcat.widget.back;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;

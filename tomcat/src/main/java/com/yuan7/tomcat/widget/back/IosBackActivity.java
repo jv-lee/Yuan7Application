@@ -1,4 +1,4 @@
-package com.yuan7.tomcat.widget.parallax;
+package com.yuan7.tomcat.widget.back;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,8 +15,8 @@ import com.yuan7.tomcat.R;
  * Created by Administrator on 2017/6/29.
  */
 
-public class ParallaxActivity extends AppCompatActivity {
-    protected ParallaxBackActivityHelper mHelper;
+public class IosBackActivity extends AppCompatActivity {
+    protected IosBackHelper mHelper;
 
     protected Context mContext;
 
@@ -24,7 +24,7 @@ public class ParallaxActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-        mHelper = new ParallaxBackActivityHelper(this);
+        mHelper = new IosBackHelper(this);
     }
 
 
@@ -49,7 +49,7 @@ public class ParallaxActivity extends AppCompatActivity {
         mHelper.onActivityDestroy();
     }
 
-    protected ParallaxBackLayout getBackLayout() {
+    protected IosBackLayout getBackLayout() {
         return mHelper.getBackLayout();
     }
 

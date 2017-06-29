@@ -1,4 +1,4 @@
-package com.yuan7.tomcat.widget.parallax;
+package com.yuan7.tomcat.widget.back;
 
 import android.app.Activity;
 import android.graphics.Canvas;
@@ -9,8 +9,8 @@ import java.util.Stack;
 /**
  * Created by sunshuntao.
  */
-public class ParallaxBackActivityHelper {
-    private static final Stack<ParallaxBackActivityHelper> sActivities = new Stack<>();
+public class IosBackHelper {
+    private static final Stack<IosBackHelper> sActivities = new Stack<>();
 
     public Activity getActivity() {
         return mActivity;
@@ -18,11 +18,11 @@ public class ParallaxBackActivityHelper {
 
     private Activity mActivity;
 
-    private ParallaxBackLayout mParallaxBackLayout;
+    private IosBackLayout mIosBackLayout;
 
-    public ParallaxBackActivityHelper(Activity activity) {
+    public IosBackHelper(Activity activity) {
         mActivity = activity;
-        mParallaxBackLayout = new ParallaxBackLayout(mActivity);
+        mIosBackLayout = new IosBackLayout(mActivity);
         sActivities.push(this);
     }
 
@@ -31,14 +31,14 @@ public class ParallaxBackActivityHelper {
     }
 
     public void onPostCreate() {
-        mParallaxBackLayout.attachToActivity(this);
+        mIosBackLayout.attachToActivity(this);
     }
 
     public void onActivityDestroy() {
         sActivities.remove(this);
     }
 
-    public ParallaxBackActivityHelper getSecondActivity() {
+    public IosBackHelper getSecondActivity() {
         if (sActivities.size() >= 2)
             return sActivities.elementAt(sActivities.size() - 2);
         return null;
@@ -50,8 +50,8 @@ public class ParallaxBackActivityHelper {
     }
 
     public View findViewById(int id) {
-        if (mParallaxBackLayout != null) {
-            return mParallaxBackLayout.findViewById(id);
+        if (mIosBackLayout != null) {
+            return mIosBackLayout.findViewById(id);
         }
         return null;
     }
@@ -64,7 +64,7 @@ public class ParallaxBackActivityHelper {
         getBackLayout().setEnableGesture(enable);
     }
 
-    public ParallaxBackLayout getBackLayout() {
-        return mParallaxBackLayout;
+    public IosBackLayout getBackLayout() {
+        return mIosBackLayout;
     }
 }
