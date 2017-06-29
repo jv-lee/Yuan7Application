@@ -16,9 +16,10 @@ import com.yuan7.tomcat.R;
  */
 
 public class IosBackActivity extends AppCompatActivity {
-    protected IosBackHelper mHelper;
+    private IosBackHelper mHelper;
 
-    protected Context mContext;
+    private Context mContext;
+    private boolean hasFinishFlag = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +62,10 @@ public class IosBackActivity extends AppCompatActivity {
         mHelper.scrollToFinishActivity();
     }
 
+    protected void setFinishFlag(boolean flag) {
+        this.hasFinishFlag = flag;
+    }
+
     @Override
     public void onBackPressed() {
         if (!getSupportFragmentManager().popBackStackImmediate()) {
@@ -86,8 +91,10 @@ public class IosBackActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.slide_left_in,
-                R.anim.slide_right_out);
+        if (hasFinishFlag) {
+            overridePendingTransition(R.anim.slide_left_in,
+                    R.anim.slide_right_out);
+        }
     }
 
 }

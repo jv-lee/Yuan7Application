@@ -37,16 +37,15 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtils.setStatusBar(this);//设置隐藏状态栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, //设置隐藏状态栏
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        StatusBarUtils.setStatusBar(this);//设置沉浸状态栏
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN); //设置隐藏状态栏
         setContentView(R.layout.activity_welcome);
         registerDagger();
         bindData();
     }
 
     private void bindData() {
-
+        //2s 记时跳转
         Observable.timer(2000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

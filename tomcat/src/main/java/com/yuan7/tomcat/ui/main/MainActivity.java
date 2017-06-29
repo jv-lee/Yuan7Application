@@ -64,8 +64,8 @@ public class MainActivity extends BaseActivity implements ToolbarControlInterfac
 
     @Override
     protected void bindData() {
-//        setSwipeBackEnable(false);
         setBackEnable(false);
+        setFinishFlag(false);
         if (Config.TAB_TAG.equals(Config.getCloseTag())) {
             items = closeItems;
             fragments = closeFragments;
