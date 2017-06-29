@@ -40,7 +40,7 @@ public class ImageViewDialog {
     private void initDialog() {
         if (dialog == null) {
             dialog = new Dialog(context, android.R.style.Animation_Dialog);
-            View view = LayoutInflater.from(context).inflate(R.layout.dialog_view, null);
+            View view = LayoutInflater.from(context).inflate(R.layout.layout_dialog_photo, null);
             viewPager = (ViewPager) view.findViewById(R.id.viewpager);
             tvNum = (TextView) view.findViewById(R.id.num);
             tvNum.setText(position + 1 + "/" + imgList.size());

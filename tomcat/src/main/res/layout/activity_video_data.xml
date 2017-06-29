@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar1_layout" />
+        layout="@layout/layout_toolbar" />
 
     <com.yuan7.tomcat.widget.ParallaxScrollView
         android:layout_width="match_parent"

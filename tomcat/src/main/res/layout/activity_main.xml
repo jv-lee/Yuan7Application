@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar1_layout" />
+        layout="@layout/layout_toolbar" />
 
     <com.yuan7.tomcat.widget.NoScrollViewPager
         android:id="@+id/vp_container"
