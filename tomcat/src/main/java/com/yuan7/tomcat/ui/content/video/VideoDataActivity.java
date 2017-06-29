@@ -38,7 +38,7 @@ public class VideoDataActivity extends BaseActivity {
 
     @Override
     protected void bindData() {
-        mSwipeBackLayout.setEnableGesture(false);
+//        mSwipeBackLayout.setEnableGesture(false);
 
         tvTitle.setText(getResources().getString(R.string.str_video));
         ivLeft.setImageDrawable(getResources().getDrawable(R.drawable.ic_back));
@@ -73,7 +73,6 @@ public class VideoDataActivity extends BaseActivity {
         VideoPlayer.releaseAllVideos();
     }
 
-    @Override
     protected void setupActivityComponent(AppComponent appComponent) {
 
     }

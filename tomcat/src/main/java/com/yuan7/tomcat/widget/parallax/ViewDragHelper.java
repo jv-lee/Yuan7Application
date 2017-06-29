@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yuan7.tomcat.widget.swipe;
+package com.yuan7.tomcat.widget.parallax;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
@@ -489,9 +489,9 @@ public class ViewDragHelper {
     /**
      * Enable edge tracking for the selected edges of the parent view. The
      * callback's
-     * {@link me.imid.swipebacklayout.lib.ViewDragHelper.Callback#onEdgeTouched(int, int)}
+     * {@link Callback#onEdgeTouched(int, int)}
      * and
-     * {@link me.imid.swipebacklayout.lib.ViewDragHelper.Callback#onEdgeDragStarted(int, int)}
+     * {@link Callback#onEdgeDragStarted(int, int)}
      * methods will only be invoked for edges for which edge tracking has been
      * enabled.
      *
@@ -531,7 +531,7 @@ public class ViewDragHelper {
     /**
      * Capture a specific child view for dragging within the parent. The
      * callback will be notified but
-     * {@link me.imid.swipebacklayout.lib.ViewDragHelper.Callback#tryCaptureView(View, int)}
+     * {@link Callback#tryCaptureView(View, int)}
      * will not be asked permission to capture this view.
      *
      * @param childView       Child view to capture
@@ -1544,7 +1544,7 @@ public class ViewDragHelper {
     /**
      * Find the topmost child under the given point within the parent view's
      * coordinate system. The child order is determined using
-     * {@link me.imid.swipebacklayout.lib.ViewDragHelper.Callback#getOrderedChildIndex(int)}
+     * {@link Callback#getOrderedChildIndex(int)}
      * .
      *
      * @param x X position to test in the parent's coordinate system
