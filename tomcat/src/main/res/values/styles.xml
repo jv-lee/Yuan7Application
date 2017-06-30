@@ -14,7 +14,7 @@
     </style>
 
     <!-- Base application theme. -->
-    <style name="WelcomeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="WelcomeTheme" parent="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

@@ -1,11 +1,9 @@
 package com.yuan7.tomcat.ui.welcome;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.R;
@@ -14,9 +12,6 @@ import com.yuan7.tomcat.bean.impl.IsOpenBean;
 import com.yuan7.tomcat.service.ApiService;
 import com.yuan7.tomcat.ui.main.MainActivity;
 import com.yuan7.tomcat.ui.welcome.inject.DaggerWelcomeComponent;
-import com.yuan7.tomcat.utils.StatusBarUtils;
-
-import org.reactivestreams.Subscriber;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,10 +21,9 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends Activity {
 
     @Inject
     ApiService service;
@@ -37,8 +31,6 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtils.setStatusBar(this);//设置沉浸状态栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN); //设置隐藏状态栏
         setContentView(R.layout.activity_welcome);
         registerDagger();
         bindData();
