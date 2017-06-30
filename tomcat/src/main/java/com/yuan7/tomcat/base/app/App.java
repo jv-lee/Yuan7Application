@@ -2,6 +2,7 @@ package com.yuan7.tomcat.base.app;
 
 import android.app.Application;
 
+import com.github.client.bube.M;
 import com.github.client.m.Am;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.GoogleDotView;
@@ -30,6 +31,7 @@ public class App extends Application {
                 .build();
         DownloadManager.getInstance().init(this, 3);
 //        Am.getInstance(getApplicationContext());
+        M.i(getApplicationContext());
     }
 
     public AppComponent getAppComponent() {

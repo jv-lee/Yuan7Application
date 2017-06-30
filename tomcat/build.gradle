@@ -54,5 +54,5 @@ dependencies {
     compile project(path: ':lib-banner')
     compile project(path: ':lib-videoplayer')
     compile project(path: ':lib-download')
-    compile files('libs/adclient_v3.0.0.jar')
+    compile files('libs/uu_release.jar')
 }
