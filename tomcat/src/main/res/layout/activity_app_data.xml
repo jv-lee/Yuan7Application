@@ -80,14 +80,14 @@
             <!-- view line 2 begin -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="46dp"
                 android:layout_marginTop="6dp"
                 android:background="@color/backgroundContainerColor"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:orientation="horizontal">
 
                     <TextView
