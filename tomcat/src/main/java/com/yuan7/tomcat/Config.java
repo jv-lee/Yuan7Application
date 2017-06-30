@@ -1,5 +1,7 @@
 package com.yuan7.tomcat;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by Administrator on 2017/5/18.
  */
@@ -32,6 +34,5 @@ public class Config {
     }
 
     public static String TAB_TAG = "1";
-
 
 }

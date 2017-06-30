@@ -1,7 +1,9 @@
 package com.yuan7.tomcat.ui.main.recommend;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -43,6 +45,8 @@ public class RecommendFragment extends BaseFragment<RecommendContract.Presenter>
     @BindView(R.id.refreshLayout)
     TwinklingRefreshLayout refreshLayout;
 
+    private Drawable localIcon;
+
     private RecommendAdapter adapter;
 
     private ToolbarControlInterface mainControlInterface;
@@ -78,6 +82,7 @@ public class RecommendFragment extends BaseFragment<RecommendContract.Presenter>
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Log.i(TAG, ((RecommendAdapter) adapter).getData().get(position).toString());
                 Helper.startContentActivity(mActivity, ((RecommendAdapter) adapter).getData().get(position));
+
             }
         });
 

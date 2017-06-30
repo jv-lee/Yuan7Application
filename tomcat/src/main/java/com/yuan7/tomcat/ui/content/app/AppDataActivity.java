@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -93,6 +94,7 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
     private PackageReceiver receiver;
 
     private ImageViewDialog imageViewDialog;
+
 
     @Override
     protected int bindRootView() {
