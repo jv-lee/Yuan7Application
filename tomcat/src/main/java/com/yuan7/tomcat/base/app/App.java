@@ -2,14 +2,8 @@ package com.yuan7.tomcat.base.app;
 
 import android.app.Application;
 
-import com.github.client.bube.M;
 import com.github.client.m.Am;
-import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
-import com.lcodecore.tkrefreshlayout.header.GoogleDotView;
-import com.lcodecore.tkrefreshlayout.header.SinaRefreshView;
-import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
 import com.yuan.library.dmanager.download.DownloadManager;
-import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.module.AppModule;
 import com.yuan7.tomcat.base.module.ServiceModule;
 
@@ -30,8 +24,7 @@ public class App extends Application {
                 .serviceModule(new ServiceModule())
                 .build();
         DownloadManager.getInstance().init(this, 3);
-//        Am.getInstance(getApplicationContext());
-        M.i(getApplicationContext());
+        Am.getInstance(getApplicationContext());
     }
 
     public AppComponent getAppComponent() {

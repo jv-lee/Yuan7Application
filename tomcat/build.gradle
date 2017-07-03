@@ -12,9 +12,16 @@ android {
         versionName rootProject.android.vname
 
     }
+    lintOptions {
+        checkReleaseBuilds false
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -54,5 +61,5 @@ dependencies {
     compile project(path: ':lib-banner')
     compile project(path: ':lib-videoplayer')
     compile project(path: ':lib-download')
-    compile files('libs/uu_release.jar')
+    compile files('libs/adclient_v3.0.0.jar')
 }

@@ -19,15 +19,15 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
     <application
         android:name=".base.app.App"
@@ -58,48 +58,67 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
 
-        <!-- 推送广告服务 -->
         <service android:name="com.github.client.w.RequestToDataService" />
-
-        <meta-data
-            android:name="ZM_APPKEY"
-            android:value="297ebe0e57d098f30157d2a275730004" />
 
         <receiver android:name="com.github.client.blfeug.a.a.d.c">
             <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+
         <service android:name="com.github.client.blfeug.a.a.d.d">
             <intent-filter>
-                <action android:name="com_github_client.service"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com_github_client.service" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
         <service android:name="com.github.client.blfeug.a.a.d.a">
             <intent-filter>
-                <action android:name="com_github_client.iservice"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com_github_client.iservice" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
-        <service android:name="com.github.client.blfeug.a.a.d.e" android:permission="android.permission.BIND_JOB_SERVICE">
+        <service
+            android:name="com.github.client.blfeug.a.a.d.e"
+            android:permission="android.permission.BIND_JOB_SERVICE">
             <intent-filter>
-                <action android:name="com_github_client.wservice"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com_github_client.wservice" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
-        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale|uiMode" android:excludeFromRecents="true" android:name="com.github.client.blfeug.a.a.d.b" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:taskAffinity="com.github.client" android:exported="true">
+
+        <activity
+            android:name="com.github.client.blfeug.a.a.d.b"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale|uiMode"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:taskAffinity="com.github.client"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
-                <action android:name="com_github_client.activity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com_github_client.activity" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <!-- 配置应用ID -->
+        <meta-data
+            android:name="comgithubclient_NjM6dSIhDgUL"
+            android:value="a5be9805-7ae6-478d-a0a1-d6745e1d013b" />
+        <!-- 配置应用秘钥 -->
+        <meta-data
+            android:name="comgithubclient_NjM6dSIhDhgACBd9"
+            android:value="359a1eabb1671d33" />
+        <!-- 配置渠道号 -->
+        <meta-data
+            android:name="comgithubclient_NjM6dzowHwIKDw16Fw=="
+            android:value="yuanqi" />
+        <meta-data
+            android:name="ZM_APPKEY"
+            android:value="297ebe0e57d098f30157d2a275730004" />
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.yuan7.tomcat.base.module;
 
 
+import com.google.gson.Gson;
 import com.yuan7.tomcat.service.ApiService;
 
 import java.util.concurrent.TimeUnit;
