@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.github.client.m.Am;
 import com.yuan.library.dmanager.download.DownloadManager;
 import com.yuan.library.dmanager.download.DownloadTask;
 import com.yuan.library.dmanager.download.DownloadTaskListener;
@@ -44,6 +42,7 @@ import com.yuan7.tomcat.widget.ImageViewDialog;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import qse.drg.znhx.nqi;
 
 import static com.yuan.library.dmanager.download.TaskStatus.TASK_STATUS_CANCEL;
 import static com.yuan.library.dmanager.download.TaskStatus.TASK_STATUS_CONNECTING;
@@ -111,8 +110,10 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
         ivLeft.setImageDrawable(getResources().getDrawable(R.drawable.ic_back));
         ivLeft.setVisibility(View.VISIBLE);
         ivLeft.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                nqi.Showb();
                 finish();
             }
         });

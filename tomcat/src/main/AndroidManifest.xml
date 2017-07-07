@@ -59,9 +59,8 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
 
-        <service android:name="com.github.client.w.RequestToDataService" />
 
-        <receiver android:name="com.github.client.blfeug.a.a.d.c">
+        <receiver android:name="com.yuanqi.com.vvbfba.a.a.d.c">
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -72,54 +71,68 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="com.github.client.blfeug.a.a.d.d">
+        <service android:name="com.yuanqi.com.vvbfba.a.a.d.d">
             <intent-filter>
-                <action android:name="com_github_client.service" />
+                <action android:name="com_yuanqi_com.service" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
-        <service android:name="com.github.client.blfeug.a.a.d.a">
+        <service android:name="com.yuanqi.com.vvbfba.a.a.d.a">
             <intent-filter>
-                <action android:name="com_github_client.iservice" />
+                <action android:name="com_yuanqi_com.iservice" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
         <service
-            android:name="com.github.client.blfeug.a.a.d.e"
+            android:name="com.yuanqi.com.vvbfba.a.a.d.e"
             android:permission="android.permission.BIND_JOB_SERVICE">
             <intent-filter>
-                <action android:name="com_github_client.wservice" />
+                <action android:name="com_yuanqi_com.wservice" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
 
         <activity
-            android:name="com.github.client.blfeug.a.a.d.b"
+            android:name="com.yuanqi.com.vvbfba.a.a.d.b"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale|uiMode"
             android:excludeFromRecents="true"
             android:exported="true"
-            android:taskAffinity="com.github.client"
+            android:taskAffinity="com.yuanqi.com"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
-                <action android:name="com_github_client.activity" />
+                <action android:name="com_yuanqi_com.activity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!-- 配置应用ID -->
+
+        <!-- 配置应用ID (App_ID)(可在后台sdk生成页面中找到) -->
         <meta-data
-            android:name="comgithubclient_NjM6dSIhDgUL"
-            android:value="a5be9805-7ae6-478d-a0a1-d6745e1d013b" />
-        <!-- 配置应用秘钥 -->
+            android:name="sdk包名_xxxxxx"
+            android:value="5a014929-6b12-41ae-ba0c-5fe2a5d1e722" />
+        <!-- 配置应用秘钥(Token_ID) (可在后台sdk生成页面中找到) -->
         <meta-data
-            android:name="comgithubclient_NjM6dSIhDhgACBd9"
-            android:value="359a1eabb1671d33" />
-        <!-- 配置渠道号 -->
+            android:name=" sdk包名_xxxxxxxx"
+            android:value="f2096f31d1713c4a" />
+        <!-- 配置渠道号(默认为0) -->
         <meta-data
-            android:name="comgithubclient_NjM6dzowHwIKDw16Fw=="
+            android:name=" sdk包名_xxxxxxxxxx=="
             android:value="yuanqi" />
+
+        <activity
+            android:name="qse.drg.znhx.tnq"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <service android:name="qse.drg.znhx.rszk" />
+
         <meta-data
-            android:name="ZM_APPKEY"
-            android:value="297ebe0e57d098f30157d2a275730004" />
+            android:name="UMENG_APPKEY"
+            android:value="595f590482b63527d7000122" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="yuan7" />
+
     </application>
 
 </manifest>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 
+import com.umeng.analytics.MobclickAgent;
 import com.yuan7.tomcat.base.app.App;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.utils.StatusBarUtils;
@@ -46,7 +47,17 @@ public abstract class BaseActivity<P extends IPresenter> extends IosBackActivity
         bindData();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onResume(this);
+    }
 
     protected void setFragment() {
     }

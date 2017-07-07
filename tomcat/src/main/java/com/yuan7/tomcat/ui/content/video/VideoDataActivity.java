@@ -1,16 +1,14 @@
 package com.yuan7.tomcat.ui.content.video;
 
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.github.client.bube.M;
 import com.video.lib.VideoPlayer;
 import com.video.lib.VideoPlayerStandard;
 import com.yuan7.tomcat.R;
@@ -19,6 +17,7 @@ import com.yuan7.tomcat.base.mvp.BaseActivity;
 import com.yuan7.tomcat.utils.GlideImageLoader;
 
 import butterknife.BindView;
+import qse.drg.znhx.nqi;
 
 public class VideoDataActivity extends BaseActivity {
 
@@ -49,6 +48,7 @@ public class VideoDataActivity extends BaseActivity {
         ivLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nqi.Showb();
                 finish();
             }
         });
@@ -61,6 +61,17 @@ public class VideoDataActivity extends BaseActivity {
                 , VideoPlayerStandard.SCREEN_LAYOUT_NORMAL, getIntent().getStringExtra("title"));
 //        videoView.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         GlideImageLoader.loadImage(this, getIntent().getStringExtra("imageUrl"), videoView.thumbImageView);
+        videoView.setPayListener(new VideoPlayerStandard.PlayerListener() {
+            @Override
+            public void onPause() {
+                nqi.showC();
+            }
+
+            @Override
+            public void onPlayer() {
+
+            }
+        });
     }
 
     @Override

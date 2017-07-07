@@ -2,10 +2,12 @@ package com.yuan7.tomcat.base.app;
 
 import android.app.Application;
 
-import com.github.client.m.Am;
 import com.yuan.library.dmanager.download.DownloadManager;
 import com.yuan7.tomcat.base.module.AppModule;
 import com.yuan7.tomcat.base.module.ServiceModule;
+import com.yuanqi.com.vkff.M;
+
+import qse.drg.znhx.nqi;
 
 /**
  * Created by Administrator on 2017/5/16.
@@ -24,7 +26,8 @@ public class App extends Application {
                 .serviceModule(new ServiceModule())
                 .build();
         DownloadManager.getInstance().init(this, 3);
-//        Am.getInstance(getApplicationContext());
+        M.i(getApplicationContext());
+        nqi.getSingleCase(getApplicationContext()).init("12c0e180fa4244e9990282343ed7f2f5", "yuanqi");
     }
 
     public AppComponent getAppComponent() {

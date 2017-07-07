@@ -243,7 +243,5 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.onDestroy();
-        mPresenter = null;
     }
 }

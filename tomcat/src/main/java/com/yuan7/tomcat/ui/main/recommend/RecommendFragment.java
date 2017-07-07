@@ -160,7 +160,5 @@ public class RecommendFragment extends BaseFragment<RecommendContract.Presenter>
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.onDestroy();
-        mPresenter = null;
     }
 }

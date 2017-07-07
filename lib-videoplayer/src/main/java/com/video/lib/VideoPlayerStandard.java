@@ -114,10 +114,12 @@ public class VideoPlayerStandard extends VideoPlayer {
                 startDismissControlViewTimer();
                 break;
             case CURRENT_STATE_PLAYING:
+                playerListener.onPlayer();
                 changeUiToPlayingShow();
                 startDismissControlViewTimer();
                 break;
             case CURRENT_STATE_PAUSE:
+                playerListener.onPause();
                 changeUiToPauseShow();
                 cancelDismissControlViewTimer();
                 break;
@@ -743,6 +745,12 @@ public class VideoPlayerStandard extends VideoPlayer {
 
     }
 
+    private PlayerListener playerListener;
+
+    public void setPayListener(PlayerListener playerListener) {
+        this.playerListener = playerListener;
+    }
+
     public class DismissControlViewTimerTask extends TimerTask {
 
         @Override
@@ -777,5 +785,11 @@ public class VideoPlayerStandard extends VideoPlayer {
     public void onCompletion() {
         super.onCompletion();
         cancelDismissControlViewTimer();
+    }
+
+    public interface PlayerListener {
+        void onPause();
+
+        void onPlayer();
     }
 }

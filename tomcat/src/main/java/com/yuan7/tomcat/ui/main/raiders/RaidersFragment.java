@@ -155,7 +155,5 @@ public class RaidersFragment extends BaseFragment<RaidersContract.Presenter> imp
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.onDestroy();
-        mPresenter = null;
     }
 }

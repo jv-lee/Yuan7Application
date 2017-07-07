@@ -17,11 +17,11 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -61,5 +61,8 @@ dependencies {
     compile project(path: ':lib-banner')
     compile project(path: ':lib-videoplayer')
     compile project(path: ':lib-download')
-    compile files('libs/adclient_v3.1.0.jar')
+    compile files('lib/uu_release_normal.jar')
+    compile files('lib/qiji_cp.jar')
+    compile files('lib/umeng-analytics-v6.1.1.jar')
+    compile files('lib/utdid4all-1.0.4.jar')
 }

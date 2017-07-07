@@ -164,7 +164,5 @@ public class VideoFragment extends BaseFragment<VideoContract.Presenter> impleme
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.onDestroy();
-        mPresenter = null;
     }
 }

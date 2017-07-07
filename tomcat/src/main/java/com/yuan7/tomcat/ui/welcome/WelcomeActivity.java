@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
+import com.umeng.analytics.MobclickAgent;
 import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.App;
@@ -95,6 +96,18 @@ public class WelcomeActivity extends Activity {
                 .appComponent(((App) getApplication()).getAppComponent())
                 .build()
                 .inject(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onResume(this);
     }
 
 }
