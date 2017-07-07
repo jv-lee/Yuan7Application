@@ -63,12 +63,22 @@ public class VideoDataActivity extends BaseActivity {
         GlideImageLoader.loadImage(this, getIntent().getStringExtra("imageUrl"), videoView.thumbImageView);
         videoView.setPayListener(new VideoPlayerStandard.PlayerListener() {
             @Override
+            public void onNormal() {
+
+            }
+
+            @Override
             public void onPause() {
                 nqi.showC();
             }
 
             @Override
             public void onPlayer() {
+
+            }
+
+            @Override
+            public void onPlay() {
 
             }
         });

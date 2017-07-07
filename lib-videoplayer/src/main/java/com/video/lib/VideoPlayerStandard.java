@@ -114,14 +114,18 @@ public class VideoPlayerStandard extends VideoPlayer {
                 startDismissControlViewTimer();
                 break;
             case CURRENT_STATE_PLAYING:
-                playerListener.onPlayer();
                 changeUiToPlayingShow();
                 startDismissControlViewTimer();
+                if (playerListener != null) {
+                    playerListener.onPlayer();
+                }
                 break;
             case CURRENT_STATE_PAUSE:
-                playerListener.onPause();
                 changeUiToPauseShow();
                 cancelDismissControlViewTimer();
+                if (playerListener != null) {
+                    playerListener.onPause();
+                }
                 break;
             case CURRENT_STATE_ERROR:
                 changeUiToError();
@@ -788,8 +792,12 @@ public class VideoPlayerStandard extends VideoPlayer {
     }
 
     public interface PlayerListener {
+        void onNormal();
+
         void onPause();
 
         void onPlayer();
+
+        void onPlay();
     }
 }
