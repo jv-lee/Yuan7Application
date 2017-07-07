@@ -134,34 +134,34 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
         mainControlInterface.setToolbarVisibility(false);
         mainControlInterface.setTileText("主页");
         Log.i(TAG, "onFragmentResume()");
-        if (banner != null && banner.hasStart() == false) {
-            banner.start();
-        }
+//        if (banner != null && banner.hasStart() == false) {
+//            banner.start();
+//        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (banner != null && banner.hasStart() == false) {
-            banner.start();
-        }
+//        if (banner != null && banner.hasStart() == false) {
+//            banner.start();
+//        }
     }
 
     @Override
     protected void onFragmentPause() {
         super.onFragmentPause();
         Log.i(TAG, "onFragmentPause()");
-        if (banner != null && banner.hasStart()) {
-            banner.stopAutoPlay();
-        }
+//        if (banner != null && banner.hasStart()) {
+//            banner.stopAutoPlay();
+//        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (banner != null && banner.hasStart()) {
-            banner.stopAutoPlay();
-        }
+//        if (banner != null && banner.hasStart()) {
+//            banner.stopAutoPlay();
+//        }
     }
 
     @Override
@@ -172,6 +172,7 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
                         .setImages(images)
                         .setImageLoader(new GlideImageLoader())
                         .setBannerStyle(CIRCLE_INDICATOR)
+                        .setDelayTime(5000)
                         .start();
                 banner.setOnBannerListener(new OnBannerListener() {
                     @Override
@@ -237,5 +238,12 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     @Override
     public void onLoadMoreRequested() {
         mPresenter.bindNewsData(Config.homePageNo);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
+        mPresenter = null;
     }
 }

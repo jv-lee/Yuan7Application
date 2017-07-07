@@ -35,6 +35,8 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
 
     @Override
     public void onDestroy() {
+        mView = null;
+        mModel = null;
     }
 
     @Override

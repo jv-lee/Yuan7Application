@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -21,6 +22,7 @@ import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.VideoBean;
+import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.ui.ToolbarControlInterface;
 import com.yuan7.tomcat.ui.main.video.adapter.VideoAdapter;
 import com.yuan7.tomcat.ui.main.video.inject.DaggerVideoComponent;
@@ -41,6 +43,8 @@ public class VideoFragment extends BaseFragment<VideoContract.Presenter> impleme
     RecyclerView rvContainer;
     @BindView(R.id.refreshLayout)
     TwinklingRefreshLayout refreshLayout;
+    @BindView(R.id.tv_errorMessage)
+    TextView tvErrorMessage;
 
     private VideoAdapter adapter;
 
@@ -131,11 +135,36 @@ public class VideoFragment extends BaseFragment<VideoContract.Presenter> impleme
     public void bindDataEvent(int eventCode, String message) {
         refreshLayout.finishRefreshing();
         adapter.loadMoreComplete();
+//        switch (eventCode) {
+//            case Constant.EVENT_SUCCESS:
+//                tvErrorMessage.setVisibility(View.GONE);
+//                refreshLayout.setVisibility(View.VISIBLE);
+//                adapter.loadMoreComplete();
+//                break;
+//            case Constant.EVENT_ERROR:
+//                tvErrorMessage.setVisibility(View.VISIBLE);
+//                refreshLayout.setVisibility(View.GONE);
+//                adapter.loadMoreComplete();
+//                break;
+//            case Constant.EVENT_LOAD_ERROR:
+//                adapter.loadMoreFail();
+//                break;
+//            case Constant.EVENT_LOAD_SUCCESS:
+//                adapter.loadMoreComplete();
+//                break;
+//        }
         Toast.makeText(mActivity, "code:" + eventCode + "; message:" + message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onLoadMoreRequested() {
         mPresenter.bindVideoData(Config.videoPageNo);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
+        mPresenter = null;
     }
 }

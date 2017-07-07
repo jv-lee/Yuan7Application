@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.github.client.m.Am;
 import com.yuan.library.dmanager.download.DownloadManager;
 import com.yuan.library.dmanager.download.DownloadTask;
 import com.yuan.library.dmanager.download.DownloadTaskListener;
@@ -164,12 +165,15 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
         intentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
         intentFilter.addDataScheme("package");
         registerReceiver(receiver, intentFilter);
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
+        mPresenter.onDestroy();
+        mPresenter = null;
     }
 
     @Override
@@ -192,8 +196,8 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
         tvDownloadCount.setText(getResources().getString(R.string.str_download) + "\t" + bean.getResult().getDownloadTimes());
         wvAppContent.loadDataWithBaseURL(null,
                 String.valueOf(bean.getResult().getContent()), "text/html", "utf-8", null);
-
         imageAdapter.getData().addAll(bean.getResult().getAppImgs());
+        imageAdapter.notifyDataSetChanged();
 
         if (bean.getResult().getDlUrl() != null) {
             apkUrl = ServiceModule.BASE_URL + bean.getResult().getDlUrl();
@@ -205,6 +209,7 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
     @Override
     public void bindHotData(HotAdBean bean) {
         hotAdapter.getData().addAll(bean.getResult());
+        hotAdapter.notifyDataSetChanged();
     }
 
     @Override

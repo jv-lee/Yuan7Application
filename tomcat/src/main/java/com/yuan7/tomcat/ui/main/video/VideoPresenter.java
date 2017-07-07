@@ -25,7 +25,8 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
 
     @Override
     public void onDestroy() {
-
+        mView = null;
+        mModel = null;
     }
 
     @Override

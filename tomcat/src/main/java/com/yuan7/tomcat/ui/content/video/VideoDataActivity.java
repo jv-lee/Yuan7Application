@@ -1,13 +1,16 @@
 package com.yuan7.tomcat.ui.content.video;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.github.client.bube.M;
 import com.video.lib.VideoPlayer;
 import com.video.lib.VideoPlayerStandard;
 import com.yuan7.tomcat.R;
@@ -56,6 +59,7 @@ public class VideoDataActivity extends BaseActivity {
 
         videoView.setUp(getIntent().getStringExtra("apiUrl")
                 , VideoPlayerStandard.SCREEN_LAYOUT_NORMAL, getIntent().getStringExtra("title"));
+//        videoView.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         GlideImageLoader.loadImage(this, getIntent().getStringExtra("imageUrl"), videoView.thumbImageView);
     }
 

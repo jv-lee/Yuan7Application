@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -21,6 +22,7 @@ import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.RaidersBean;
+import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.ui.ToolbarControlInterface;
 import com.yuan7.tomcat.ui.main.raiders.adapter.RaidersAdapter;
 import com.yuan7.tomcat.ui.main.raiders.inject.DaggerRaidersComponent;
@@ -42,6 +44,8 @@ public class RaidersFragment extends BaseFragment<RaidersContract.Presenter> imp
     RecyclerView rvContainer;
     @BindView(R.id.refreshLayout)
     TwinklingRefreshLayout refreshLayout;
+    @BindView(R.id.tv_errorMessage)
+    TextView tvErrorMessage;
 
     private RaidersAdapter adapter;
 
@@ -130,11 +134,28 @@ public class RaidersFragment extends BaseFragment<RaidersContract.Presenter> imp
     public void bindDataEvent(int eventCode, String message) {
         refreshLayout.finishRefreshing();
         adapter.loadMoreComplete();
+//        switch (eventCode) {
+//            case Constant.EVENT_SUCCESS:
+//                tvErrorMessage.setVisibility(View.GONE);
+//                refreshLayout.setVisibility(View.VISIBLE);
+//                break;
+//            case Constant.EVENT_ERROR:
+//                tvErrorMessage.setVisibility(View.VISIBLE);
+//                refreshLayout.setVisibility(View.GONE);
+//                break;
+//        }
         Toast.makeText(mActivity, "code:" + eventCode + "; message:" + message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onLoadMoreRequested() {
         mPresenter.bindRaidersData(Config.raidersPageNo);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
+        mPresenter = null;
     }
 }

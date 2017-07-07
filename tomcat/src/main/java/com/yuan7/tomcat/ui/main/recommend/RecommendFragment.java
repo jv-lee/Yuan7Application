@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -23,6 +24,7 @@ import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.bean.ResultBean;
 import com.yuan7.tomcat.bean.impl.RecommendBean;
+import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.ui.ToolbarControlInterface;
 import com.yuan7.tomcat.ui.main.recommend.adapter.RecommendAdapter;
 import com.yuan7.tomcat.ui.main.recommend.inject.DaggerRecommendComponent;
@@ -44,6 +46,8 @@ public class RecommendFragment extends BaseFragment<RecommendContract.Presenter>
     RecyclerView rvContainer;
     @BindView(R.id.refreshLayout)
     TwinklingRefreshLayout refreshLayout;
+    @BindView(R.id.tv_errorMessage)
+    TextView tvErrorMessage;
 
     private Drawable localIcon;
 
@@ -135,11 +139,28 @@ public class RecommendFragment extends BaseFragment<RecommendContract.Presenter>
     public void bindDataEvent(int eventCode, String message) {
         refreshLayout.finishRefreshing();
         adapter.loadMoreComplete();
+//        switch (eventCode) {
+//            case Constant.EVENT_SUCCESS:
+//                tvErrorMessage.setVisibility(View.GONE);
+//                refreshLayout.setVisibility(View.VISIBLE);
+//                break;
+//            case Constant.EVENT_ERROR:
+//                tvErrorMessage.setVisibility(View.VISIBLE);
+//                refreshLayout.setVisibility(View.GONE);
+//                break;
+//        }
         Toast.makeText(mActivity, "code:" + eventCode + "; message:" + message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onLoadMoreRequested() {
         mPresenter.bindRecommendData(Config.recommendPageNo);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
+        mPresenter = null;
     }
 }

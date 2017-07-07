@@ -23,9 +23,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceModule {
 
     public static final String BASE_URL = "http://120.25.82.88:8999/";
-    private static final long DEFAULT_TIMEOUT = 1; //连接时间为最小
-    private static final long READ_TIMEOUT = 15;
-    private static final long WRITE_TIMEOUT = 15;
+    private static final long DEFAULT_TIMEOUT = 5; //连接时间为最小
+    private static final long READ_TIMEOUT = 5;
+    private static final long WRITE_TIMEOUT = 5;
 
     @Provides
     @Singleton

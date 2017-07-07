@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.github.client.m.Am;
 import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
@@ -96,6 +97,7 @@ public class MainActivity extends BaseActivity implements ToolbarControlInterfac
             public void onTabReselected(int position) {
             }
         });
+        Am.screenInterface();
     }
 
     @Override

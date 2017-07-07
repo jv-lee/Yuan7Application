@@ -25,7 +25,8 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.Model, R
 
     @Override
     public void onDestroy() {
-
+        mView = null;
+        mModel = null;
     }
 
     @Override

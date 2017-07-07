@@ -24,7 +24,8 @@ public class RaidersPresenter extends BasePresenter<RaidersContract.Model, Raide
 
     @Override
     public void onDestroy() {
-
+        mView = null;
+        mModel = null;
     }
 
     @Override

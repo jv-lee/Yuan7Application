@@ -1,6 +1,5 @@
 package com.yuan7.tomcat;
 
-import android.graphics.drawable.Drawable;
 
 /**
  * Created by Administrator on 2017/5/18.
