@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-
 import com.umeng.analytics.MobclickAgent;
 import com.yuan7.tomcat.base.app.App;
 import com.yuan7.tomcat.base.app.AppComponent;
@@ -57,6 +56,17 @@ public abstract class BaseActivity<P extends IPresenter> extends IosBackActivity
     protected void onPause() {
         super.onPause();
         MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (unBinder != unBinder.EMPTY) {
+            unBinder.unbind();
+        }
+        if (mPresenter != null) {
+            mPresenter.onDestroy();
+        }
     }
 
     protected void setFragment() {

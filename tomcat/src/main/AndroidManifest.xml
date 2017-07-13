@@ -31,7 +31,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
-        android:name=".base.app.App"
+        android:name="com.yuan7.tomcat.base.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/tomcat_launcher"
         android:label="@string/app_name"
@@ -39,7 +39,7 @@
         android:supportsRtl="true"
         android:theme="@style/iosBackTheme">
         <activity
-            android:name=".ui.welcome.WelcomeActivity"
+            android:name="com.yuan7.tomcat.ui.welcome.WelcomeActivity"
             android:theme="@style/WelcomeTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,14 +48,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.yuan7.tomcat.ui.main.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.content.app.AppDataActivity" />
-        <activity android:name=".ui.content.raiders.RaidersDataActivity" />
+        <activity android:name="com.yuan7.tomcat.ui.content.app.AppDataActivity" />
+        <activity android:name="com.yuan7.tomcat.ui.content.raiders.RaidersDataActivity" />
         <activity
-            android:name=".ui.content.video.VideoDataActivity"
+            android:name="com.yuan7.tomcat.ui.content.video.VideoDataActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
 

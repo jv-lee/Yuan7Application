@@ -27,8 +27,12 @@ public class AppDataPresenter extends BasePresenter<AppDataContract.Model, AppDa
 
     @Override
     public void onDestroy() {
-        mView = null;
-        mModel = null;
+        if (mView != null) {
+            mView = null;
+        }
+        if (mModel != null) {
+            mModel = null;
+        }
     }
 
     @Override

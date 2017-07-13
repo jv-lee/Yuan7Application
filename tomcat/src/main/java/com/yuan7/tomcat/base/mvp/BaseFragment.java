@@ -95,11 +95,9 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mPresenter.onDestroy();
-        this.mPresenter = null;
-        this.mActivity = null;
-        this.mRootView = null;
-        this.unBinder = null;
+        if (mPresenter != null) {
+            mPresenter.onDestroy();
+        }
     }
 
     protected abstract void componentInject(AppComponent appComponent);
