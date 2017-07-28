@@ -6,14 +6,6 @@
     android:elevation="10dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_errorMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="没有获取到数据"
-        android:visibility="gone" />
-
     <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
@@ -28,5 +20,13 @@
             android:overScrollMode="never" />
 
     </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
+    <TextView
+        android:id="@+id/tv_errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="没有获取到数据"
+        android:visibility="gone" />
 
 </FrameLayout>

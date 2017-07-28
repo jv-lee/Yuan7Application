@@ -3,6 +3,8 @@ package com.yuan7.tomcat.ui.welcome;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
@@ -29,6 +31,12 @@ public class WelcomeActivity extends Activity {
 
     @Inject
     ApiService service;
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,7 +84,7 @@ public class WelcomeActivity extends Activity {
 
                                     @Override
                                     public void onError(Throwable e) {
-                                        Config.TAB_TAG = Config.getOpenTag();
+                                        Config.TAB_TAG = Config.getCloseTag();
                                         startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
                                         finish();
                                     }

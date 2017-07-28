@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -51,6 +52,8 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     RecyclerView rvContainer;
     @BindView(R.id.refreshLayout)
     TwinklingRefreshLayout refreshLayout;
+    @BindView(R.id.tv_errorMessage)
+    TextView tvErrorMessage;
 
 
     /**
@@ -226,12 +229,16 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
         Config.homePageNo++;
         refreshLayout.finishRefreshing();
         adapter.loadMoreComplete();
+        rvContainer.setVisibility(View.VISIBLE);
+        tvErrorMessage.setVisibility(View.GONE);
     }
 
     @Override
     public void bindDataEvent(int failCode, String message) {
         refreshLayout.finishRefreshing();
         adapter.loadMoreComplete();
+        rvContainer.setVisibility(View.GONE);
+        tvErrorMessage.setVisibility(View.VISIBLE);
         Toast.makeText(mActivity, "code:" + failCode + "; message:" + message, Toast.LENGTH_SHORT).show();
     }
 

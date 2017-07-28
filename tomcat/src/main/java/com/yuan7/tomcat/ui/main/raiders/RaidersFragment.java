@@ -128,12 +128,14 @@ public class RaidersFragment extends BaseFragment<RaidersContract.Presenter> imp
         Config.raidersPageNo++;
         refreshLayout.finishRefreshing();
         adapter.loadMoreComplete();
+        tvErrorMessage.setVisibility(View.GONE);
     }
 
     @Override
     public void bindDataEvent(int eventCode, String message) {
         refreshLayout.finishRefreshing();
         adapter.loadMoreComplete();
+        tvErrorMessage.setVisibility(View.VISIBLE);
 //        switch (eventCode) {
 //            case Constant.EVENT_SUCCESS:
 //                tvErrorMessage.setVisibility(View.GONE);

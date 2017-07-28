@@ -37,6 +37,9 @@ public class Helper {
                 context.startActivity(new Intent(context, RaidersDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()));
                 break;
             case Config.TYPE_VIDEO:
+                if (bean.getVedioUrl().contains("http") || bean.getVedioUrl().contains("https")) {
+                    context.startActivity(new Intent(context, VideoDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()).putExtra("apiUrl", bean.getVedioUrl()).putExtra("title", bean.getTitle()).putExtra("imageUrl", ServiceModule.BASE_URL + bean.getImgUrl()));
+                }
                 context.startActivity(new Intent(context, VideoDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()).putExtra("apiUrl", ServiceModule.BASE_URL + bean.getVedioUrl()).putExtra("title", bean.getTitle()).putExtra("imageUrl", ServiceModule.BASE_URL + bean.getImgUrl()));
                 break;
             case Config.TYPE_APP:

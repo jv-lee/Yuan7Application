@@ -19,4 +19,12 @@
 
     </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
 
+    <TextView
+        android:id="@+id/tv_errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="没有获取到数据"
+        android:visibility="gone" />
+
 </FrameLayout>
