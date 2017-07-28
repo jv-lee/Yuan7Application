@@ -139,8 +139,13 @@ public class RecommendFragment extends BaseFragment<RecommendContract.Presenter>
     @Override
     public void bindDataEvent(int eventCode, String message) {
         refreshLayout.finishRefreshing();
-        adapter.loadMoreComplete();
-        tvErrorMessage.setVisibility(View.VISIBLE);
+        if (adapter.getData().size() > 0) {
+            adapter.loadMoreFail();
+            tvErrorMessage.setVisibility(View.GONE);
+        } else {
+            adapter.loadMoreComplete();
+            tvErrorMessage.setVisibility(View.VISIBLE);
+        }
 //        switch (eventCode) {
 //            case Constant.EVENT_SUCCESS:
 //                tvErrorMessage.setVisibility(View.GONE);

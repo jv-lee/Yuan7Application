@@ -236,9 +236,15 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     @Override
     public void bindDataEvent(int failCode, String message) {
         refreshLayout.finishRefreshing();
-        adapter.loadMoreComplete();
-        rvContainer.setVisibility(View.GONE);
-        tvErrorMessage.setVisibility(View.VISIBLE);
+        if (adapter.getData().size() > 0) {
+            adapter.loadMoreFail();
+            rvContainer.setVisibility(View.VISIBLE);
+            tvErrorMessage.setVisibility(View.GONE);
+        } else {
+            adapter.loadMoreComplete();
+            rvContainer.setVisibility(View.GONE);
+            tvErrorMessage.setVisibility(View.VISIBLE);
+        }
         Toast.makeText(mActivity, "code:" + failCode + "; message:" + message, Toast.LENGTH_SHORT).show();
     }
 
