@@ -25,6 +25,7 @@ public class ResultBean {
     private Object addType;
     private String contentUrl;
     private String vedioUrl;
+    private String vedioLinkUrl;
     private String dlUrl;
     private String desc;
     private String appName;
@@ -196,5 +197,13 @@ public class ResultBean {
 
     public void setAppImgs(List<String> appImgs) {
         this.appImgs = appImgs;
+    }
+
+    public String getVedioLinkUrl() {
+        return vedioLinkUrl;
+    }
+
+    public void setVedioLinkUrl(String vedioLinkUrl) {
+        this.vedioLinkUrl = vedioLinkUrl;
     }
 }

@@ -1,5 +1,6 @@
 package com.yuan7.tomcat.ui.content.video;
 
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lcodecore.tkrefreshlayout.utils.LogUtil;
 import com.video.lib.VideoPlayer;
 import com.video.lib.VideoPlayerStandard;
 import com.yuan7.tomcat.R;
@@ -59,6 +61,7 @@ public class VideoDataActivity extends BaseActivity {
 
 //        String url = "http://data.vod.itc.cn/?rb=1&prot=1&key=jbZhEJhlqlUN-Wj_HEI8BjaVqKNFvDrn&prod=flash&pt=1&new=/86/173/5GipN9Q9kTylfL9xPZg7kN.mp4";
         String url = getIntent().getStringExtra("apiUrl");
+        Log.i(TAG, "url:"+url);
         videoView.setUp(url
                 , VideoPlayerStandard.SCREEN_LAYOUT_NORMAL, getIntent().getStringExtra("title"));
 //        videoView.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);

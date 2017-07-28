@@ -37,10 +37,21 @@ public class Helper {
                 context.startActivity(new Intent(context, RaidersDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()));
                 break;
             case Config.TYPE_VIDEO:
-                if (bean.getVedioUrl().contains("http") || bean.getVedioUrl().contains("https")) {
-                    context.startActivity(new Intent(context, VideoDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()).putExtra("apiUrl", bean.getVedioUrl()).putExtra("title", bean.getTitle()).putExtra("imageUrl", ServiceModule.BASE_URL + bean.getImgUrl()));
+                if (bean.getVedioUrl().equals("catServer")) {
+                    Log.i("VideoDataActivity", "catServer -> " + bean.getVedioLinkUrl());
+                    context.startActivity(new Intent(context, VideoDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()).putExtra("apiUrl", bean.getVedioLinkUrl()).putExtra("title", bean.getTitle()).putExtra("imageUrl", ServiceModule.BASE_URL + bean.getImgUrl()));
+                } else {
+                    Log.i("VideoDataActivity", "not catServer -> " + bean.getVedioUrl());
+                    context.startActivity(new Intent(context, VideoDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()).putExtra("apiUrl", ServiceModule.BASE_URL + bean.getVedioUrl()).putExtra("title", bean.getTitle()).putExtra("imageUrl", ServiceModule.BASE_URL + bean.getImgUrl()));
                 }
-                context.startActivity(new Intent(context, VideoDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()).putExtra("apiUrl", ServiceModule.BASE_URL + bean.getVedioUrl()).putExtra("title", bean.getTitle()).putExtra("imageUrl", ServiceModule.BASE_URL + bean.getImgUrl()));
+//                if (bean.getVedioUrl().contains("http") || bean.getVedioUrl().contains("https")) {
+//
+//                    context.startActivity(new Intent(context, VideoDataActivity.class).putExtra("contentUrl", ServiceModule.BASE_URL + bean.getContentUrl()).putExtra("apiUrl", bean.getVedioUrl()).putExtra("title", bean.getTitle()).putExtra("imageUrl", ServiceModule.BASE_URL + bean.getImgUrl()));
+//                } else {
+//
+//
+//                }
+
                 break;
             case Config.TYPE_APP:
                 if (Config.TAB_TAG.equals(Config.getCloseTag())) {
