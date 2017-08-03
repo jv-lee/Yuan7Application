@@ -142,24 +142,6 @@ public class VideoFragment extends BaseFragment<VideoContract.Presenter> impleme
             adapter.loadMoreComplete();
             tvErrorMessage.setVisibility(View.VISIBLE);
         }
-//        switch (eventCode) {
-//            case Constant.EVENT_SUCCESS:
-//                tvErrorMessage.setVisibility(View.GONE);
-//                refreshLayout.setVisibility(View.VISIBLE);
-//                adapter.loadMoreComplete();
-//                break;
-//            case Constant.EVENT_ERROR:
-//                tvErrorMessage.setVisibility(View.VISIBLE);
-//                refreshLayout.setVisibility(View.GONE);
-//                adapter.loadMoreComplete();
-//                break;
-//            case Constant.EVENT_LOAD_ERROR:
-//                adapter.loadMoreFail();
-//                break;
-//            case Constant.EVENT_LOAD_SUCCESS:
-//                adapter.loadMoreComplete();
-//                break;
-//        }
         Toast.makeText(mActivity, "code:" + eventCode + "; message:" + message, Toast.LENGTH_SHORT).show();
     }
 

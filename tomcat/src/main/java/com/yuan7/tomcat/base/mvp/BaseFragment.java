@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
+import com.github.nukc.stateview.StateView;
 import com.yuan7.tomcat.base.app.App;
 import com.yuan7.tomcat.base.app.AppComponent;
 
@@ -29,7 +30,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment {
     protected boolean isVisibleUser = false;
     protected boolean isVisibleView = false;
     protected boolean fistVisible = true;
-
+    protected StateView stateView;
     @Inject
     protected P mPresenter;
     private Unbinder unBinder;
@@ -42,6 +43,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = bindRootView(inflater, container, savedInstanceState);
         unBinder = ButterKnife.bind(this, mRootView);
+        stateView = StateView.inject(mRootView, true);
         return mRootView;
     }
 

@@ -65,4 +65,5 @@ dependencies {
     compile files('lib/qiji_cp.jar')
     compile files('lib/umeng-analytics-v6.1.1.jar')
     compile files('lib/utdid4all-1.0.4.jar')
+    compile 'com.github.nukc.stateview:library:1.2.1'
 }
