@@ -46,15 +46,15 @@ public class MainActivity extends BaseActivity implements ToolbarControlInterfac
 
     private BottomNavigationItem[] items;
     private BottomNavigationItem[] openItems = {
-            new BottomNavigationItem(R.drawable.ic_home, "首页").setActiveColorResource(R.color.colorPrimary)
+            new BottomNavigationItem(R.drawable.ic_home, "资讯").setActiveColorResource(R.color.colorPrimary)
             , new BottomNavigationItem(R.drawable.ic_video, "视频").setActiveColorResource(R.color.colorPrimary)
-            , new BottomNavigationItem(R.drawable.ic_raiders, "攻略").setActiveColorResource(R.color.colorPrimary)
+            , new BottomNavigationItem(R.drawable.ic_raiders, "新闻").setActiveColorResource(R.color.colorPrimary)
             , new BottomNavigationItem(R.drawable.ic_recommend, "推荐").setActiveColorResource(R.color.colorPrimary)
     };
     private BottomNavigationItem[] closeItems = {
-            new BottomNavigationItem(R.drawable.ic_home, "首页").setActiveColorResource(R.color.colorPrimary)
+            new BottomNavigationItem(R.drawable.ic_home, "资讯").setActiveColorResource(R.color.colorPrimary)
             , new BottomNavigationItem(R.drawable.ic_video, "视频").setActiveColorResource(R.color.colorPrimary)
-            , new BottomNavigationItem(R.drawable.ic_raiders, "攻略").setActiveColorResource(R.color.colorPrimary)
+            , new BottomNavigationItem(R.drawable.ic_raiders, "新闻").setActiveColorResource(R.color.colorPrimary)
     };
 
     @Override

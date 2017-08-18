@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.yuan7.tomcat.ui.login.fragment.RegisterFragment">
+
+    <include
+        android:id="@+id/layout"
+        layout="@layout/layout_back_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout"
+        android:orientation="vertical"
+        android:padding="45dp">
+
+
+        <EditText
+            android:id="@+id/et_userName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/shape_edit_bg"
+            android:drawableLeft="@drawable/ic_back"
+            android:hint="@string/register_input_userName"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="@dimen/sp_16" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/shape_edit_bg"
+            android:drawableLeft="@drawable/ic_back"
+            android:hint="@string/register_input_password"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="@dimen/sp_16" />
+
+        <EditText
+            android:id="@+id/et_rePassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/shape_edit_bg"
+            android:drawableLeft="@drawable/ic_back"
+            android:hint="@string/register_reInput_password"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="@dimen/sp_16" />
+
+        <Button
+            android:id="@+id/btn_register_ok"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46"
+            android:layout_marginTop="@dimen/dp_26"
+            android:background="@drawable/shape_btn_bg1"
+            android:text="@string/register_ok"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

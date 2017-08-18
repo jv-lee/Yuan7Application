@@ -110,7 +110,7 @@ public class RaidersFragment extends BaseFragment<RaidersContract.Presenter> imp
     protected void onFragmentResume() {
         super.onFragmentResume();
         mainControlInterface.setToolbarVisibility(true);
-        mainControlInterface.setTileText("攻略");
+        mainControlInterface.setTileText("新闻");
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.yuan7.tomcat.base.module;
 
 
-import com.google.gson.Gson;
 import com.yuan7.tomcat.service.ApiService;
 
 import java.util.concurrent.TimeUnit;
@@ -23,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceModule {
 
     public static final String BASE_URL = "http://120.25.82.88:8999/";
+//    public static final String BASE_URL = "http://192.168.3.83:8999/";
     private static final long DEFAULT_TIMEOUT = 5; //连接时间为最小
     private static final long READ_TIMEOUT = 5;
     private static final long WRITE_TIMEOUT = 5;

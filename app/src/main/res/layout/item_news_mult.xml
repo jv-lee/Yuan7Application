@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dp_16"
+    android:paddingRight="@dimen/dp_16"
+    android:paddingTop="@dimen/dp_16">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:ellipsize="end"
+        android:textColor="@color/colorAccent"
+        android:maxLines="2"
+        android:minLines="2"
+        android:text="汉克狗新闻咨询 汉克狗找了一个很漂亮的女朋友"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_image1"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_weight="3"
+            android:scaleType="fitXY"
+            android:background="@color/colorAccent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_weight="0.5" />
+
+        <ImageView
+            android:id="@+id/iv_image2"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:scaleType="fitXY"
+            android:layout_weight="3"
+            android:background="@color/colorAccent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_weight="0.5" />
+
+        <ImageView
+            android:id="@+id/iv_image3"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:scaleType="fitXY"
+            android:layout_weight="3"
+            android:background="@color/colorAccent" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:id="@+id/tv_timeStr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:text="14：23" />
+
+        <TextView
+            android:id="@+id/tv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_toRightOf="@+id/tv_timeStr"
+            android:background="@drawable/shape_text_bg"
+            android:padding="2dp"
+            android:text="热点"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@+id/tv_icon"
+            android:ellipsize="end"
+            android:textColor="@color/colorAccent"
+            android:maxLength="8"
+            android:maxLines="1"
+            android:text="我爱汉克狗"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_likeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/ic_favorite_white_16dp"
+            android:ellipsize="end"
+            android:textColor="@color/colorAccent"
+            android:maxLines="1"
+            android:text="喜欢(6666)"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@color/colorPrimaryDark" />
+
+</LinearLayout>

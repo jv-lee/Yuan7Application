@@ -135,7 +135,7 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     protected void onFragmentResume() {
         super.onFragmentResume();
         mainControlInterface.setToolbarVisibility(false);
-        mainControlInterface.setTileText("主页");
+        mainControlInterface.setTileText("资讯");
         Log.i(TAG, "onFragmentResume()");
 //        if (banner != null && banner.hasStart() == false) {
 //            banner.start();

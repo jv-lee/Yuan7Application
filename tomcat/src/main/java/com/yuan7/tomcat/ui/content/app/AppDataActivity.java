@@ -42,7 +42,6 @@ import com.yuan7.tomcat.widget.ImageViewDialog;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import qse.drg.znhx.nqi;
 
 import static com.yuan.library.dmanager.download.TaskStatus.TASK_STATUS_CANCEL;
 import static com.yuan.library.dmanager.download.TaskStatus.TASK_STATUS_CONNECTING;
@@ -113,7 +112,6 @@ public class AppDataActivity extends BaseActivity<AppDataContract.Presenter> imp
 
             @Override
             public void onClick(View v) {
-                nqi.Showb();
                 finish();
             }
         });

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/shape_tab_bg"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_new"
+            android:layout_width="70dp"
+            android:layout_height="26dp"
+            android:background="@drawable/selector_tab_bg_left"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/select_tab_new"
+            android:textColor="@drawable/selector_tab_text" />
+
+        <RadioButton
+            android:id="@+id/rb_good"
+            android:layout_width="70dp"
+            android:layout_height="26dp"
+            android:background="@drawable/selector_tab_bg_center"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/select_tab_good"
+            android:textColor="@drawable/selector_tab_text" />
+
+        <RadioButton
+            android:id="@+id/rb_hot"
+            android:layout_width="70dp"
+            android:layout_height="26dp"
+            android:background="@drawable/selector_tab_bg_right"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/select_tab_hot"
+            android:textColor="@drawable/selector_tab_text" />
+    </RadioGroup>
+
+</merge>

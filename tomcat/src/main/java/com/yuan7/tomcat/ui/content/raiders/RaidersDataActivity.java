@@ -13,7 +13,6 @@ import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
 
 import butterknife.BindView;
-import qse.drg.znhx.nqi;
 
 public class RaidersDataActivity extends BaseActivity {
 
@@ -39,7 +38,6 @@ public class RaidersDataActivity extends BaseActivity {
         ivLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nqi.Showb();
                 finish();
             }
         });

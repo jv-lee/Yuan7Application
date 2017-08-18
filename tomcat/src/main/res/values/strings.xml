@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">最爱我的汤姆猫</string>
+    <string name="app_name">最爱我的安吉拉</string>
     <string name="home_title_1">热门推荐</string>
     <string name="str_app">应用</string>
+    <string name="str_home">资讯</string>
     <string name="str_video">视频</string>
+    <string name="str_raiders">新闻</string>
+    <string name="str_recommend">推荐</string>
     <string name="str_news">资讯</string>
     <string name="str_read">已阅</string>
     <string name="str_download">下载</string>

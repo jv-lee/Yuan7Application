@@ -8,9 +8,6 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.lcodecore.tkrefreshlayout.utils.LogUtil;
 import com.video.lib.VideoPlayer;
 import com.video.lib.VideoPlayerStandard;
 import com.yuan7.tomcat.R;
@@ -19,7 +16,6 @@ import com.yuan7.tomcat.base.mvp.BaseActivity;
 import com.yuan7.tomcat.utils.GlideImageLoader;
 
 import butterknife.BindView;
-import qse.drg.znhx.nqi;
 
 public class VideoDataActivity extends BaseActivity {
 
@@ -50,7 +46,6 @@ public class VideoDataActivity extends BaseActivity {
         ivLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nqi.Showb();
                 finish();
             }
         });
@@ -74,7 +69,6 @@ public class VideoDataActivity extends BaseActivity {
 
             @Override
             public void onPause() {
-                nqi.showC();
             }
 
             @Override

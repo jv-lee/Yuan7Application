@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dp_16"
+    android:paddingRight="@dimen/dp_16"
+    android:paddingTop="@dimen/dp_16">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="top"
+                android:layout_weight="3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_star_white_24dp"
+                    android:ellipsize="end"
+                    android:gravity="center|start"
+                    android:maxLines="2"
+                    android:text="游戏的视频title 和文字title"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/sp_16" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_timeStr"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="1小时前"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tv_readCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_chat_white_12dp"
+                    android:gravity="center"
+                    android:maxLength="5"
+                    android:text="8888"
+                    android:textColor="@color/colorAccent" />
+
+
+                <TextView
+                    android:id="@+id/tv_inputCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_chat_white_12dp"
+                    android:gravity="center"
+                    android:maxLength="5"
+                    android:text="8888"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/tv_niceCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_thumb_up_white_12dp"
+                    android:gravity="center"
+                    android:maxLength="5"
+                    android:text="6666"
+                    android:textColor="@color/colorAccent" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="3"
+            android:scaleType="fitXY"
+            android:background="@color/colorAccent" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@color/colorPrimaryDark" />
+
+</LinearLayout>

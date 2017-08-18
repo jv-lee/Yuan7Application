@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    android:layout_marginTop="6dp">
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:background="@color/colorAccent"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@+id/iv_image"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical"
+        android:padding="3dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="我的汉克狗"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:text="汉克狗找不到回来的路"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_inputCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:drawableLeft="@drawable/ic_chat_white_12dp"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="评论(8888)"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_niceCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:drawableLeft="@drawable/ic_thumb_up_white_12dp"
+                android:gravity="center_vertical"
+                android:text="点赞(6666)"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

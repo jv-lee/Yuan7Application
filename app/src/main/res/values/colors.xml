@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9C9CA8</color>
+    <color name="colorPrimaryDark">#7C7E86</color>
+    <color name="colorAccent">#F1F1F1</color>
+
+    <color name="tabColor">#E4E7F0</color>
+    <color name="tabColorText">#9C9CA8</color>
+
+    <!--<color name="backgroundColor">#EFEFEF</color>-->
+    <!--<color name="backgroundColor">#FFFFFF</color>-->
+    <!--<color name="backgroundContainerColor">#FAFAFA</color>-->
+    <!--<color name="backgroundLineColor">#D8D8D8</color>-->
+    <!--<color name="backgroundTextColor">#222222</color>-->
+    <!--<color name="backgroundEditColor">#F3F3F3</color>-->
+    <!--<color name="backgroundEditHintTextColor">#D5D5D5</color>-->
+
+    <!--<color name="backgroundButtonColor">#FFB20C</color>-->
+    <!--<color name="backgroundButtonTextColor">#FFFFFF</color>-->
+
+    <!--<color name="isReadColor">#D6C498</color>-->
+
+    <!--<color name="typeColor_video">#8BC151</color>-->
+    <!--<color name="typeColor_app">#1F90E2</color>-->
+    <!--<color name="typeColor_news">#F5CD19</color>-->
+
+</resources>

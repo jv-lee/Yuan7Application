@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="71dp"
+    android:background="@color/colorPrimary"
+    android:elevation="5dp"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_26" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_46"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="6dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/register_text"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="6dp"
+            android:src="@drawable/ic_search_whith_26dp"
+            android:visibility="invisible" />
+
+    </FrameLayout>
+
+</LinearLayout>

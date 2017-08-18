@@ -19,17 +19,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-
     <application
         android:name="com.yuan7.tomcat.base.app.App"
         android:allowBackup="true"
@@ -58,81 +47,6 @@
             android:name="com.yuan7.tomcat.ui.content.video.VideoDataActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
-
-
-        <receiver android:name="com.yuanqi.com.vvbfba.a.a.d.c">
-            <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name="com.yuanqi.com.vvbfba.a.a.d.d">
-            <intent-filter>
-                <action android:name="com_yuanqi_com.service" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </service>
-        <service android:name="com.yuanqi.com.vvbfba.a.a.d.a">
-            <intent-filter>
-                <action android:name="com_yuanqi_com.iservice" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </service>
-        <service
-            android:name="com.yuanqi.com.vvbfba.a.a.d.e"
-            android:permission="android.permission.BIND_JOB_SERVICE">
-            <intent-filter>
-                <action android:name="com_yuanqi_com.wservice" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </service>
-
-        <activity
-            android:name="com.yuanqi.com.vvbfba.a.a.d.b"
-            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale|uiMode"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:taskAffinity="com.yuanqi.com"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
-            <intent-filter>
-                <action android:name="com_yuanqi_com.activity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <!-- 配置应用ID (App_ID)(可在后台sdk生成页面中找到) -->
-        <meta-data
-            android:name="sdk包名_xxxxxx"
-            android:value="5a014929-6b12-41ae-ba0c-5fe2a5d1e722" />
-        <!-- 配置应用秘钥(Token_ID) (可在后台sdk生成页面中找到) -->
-        <meta-data
-            android:name=" sdk包名_xxxxxxxx"
-            android:value="f2096f31d1713c4a" />
-        <!-- 配置渠道号(默认为0) -->
-        <meta-data
-            android:name=" sdk包名_xxxxxxxxxx=="
-            android:value="yuanqi" />
-
-        <activity
-            android:name="qse.drg.znhx.tnq"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:excludeFromRecents="true"
-            android:launchMode="singleInstance"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <service android:name="qse.drg.znhx.rszk" />
-
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="595f590482b63527d7000122" />
-        <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="yuan7" />
-
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@ android {
     compileSdkVersion rootProject.android.compileSdk
     buildToolsVersion rootProject.android.buildTools
     defaultConfig {
-        applicationId "com.yuan7.tomcat"
+        applicationId "com.yuan7.angleapp"
         minSdkVersion rootProject.android.minSdk
         targetSdkVersion rootProject.android.targetSdk
         versionCode rootProject.android.vcode
@@ -17,11 +17,11 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -61,9 +61,4 @@ dependencies {
     compile project(path: ':lib-banner')
     compile project(path: ':lib-videoplayer')
     compile project(path: ':lib-download')
-    compile files('lib/uu_release_normal.jar')
-    compile files('lib/qiji_cp.jar')
-    compile files('lib/umeng-analytics-v6.1.1.jar')
-    compile files('lib/utdid4all-1.0.4.jar')
-    compile 'com.github.nukc.stateview:library:1.2.1'
 }
