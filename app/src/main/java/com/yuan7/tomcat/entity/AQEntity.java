@@ -4,31 +4,27 @@ package com.yuan7.tomcat.entity;
  * Created by Administrator on 2017/8/18.
  */
 
-public class CommunityEntity {
+public class AQEntity {
     private int id;
     private String name;
     private String dateStr;
     private String deviceSource;
     private String contentMessage;
-    private boolean followFlag;
-    private String[] imageUrls;
     private int readCount;
     private int inputCount;
     private int niceCount;
-    private String iconUrl;
+    private int goldCount;
 
-    public CommunityEntity(int id, String name, String dateStr, String deviceSource, String contentMessage, boolean followFlag, String[] imageUrls, int readCount, int inputCount, int niceCount, String iconUrl) {
+    public AQEntity(int id, String name, String dateStr, String deviceSource, String contentMessage, int readCount, int inputCount, int niceCount, int goldCount) {
         this.id = id;
         this.name = name;
         this.dateStr = dateStr;
         this.deviceSource = deviceSource;
         this.contentMessage = contentMessage;
-        this.followFlag = followFlag;
-        this.imageUrls = imageUrls;
         this.readCount = readCount;
         this.inputCount = inputCount;
         this.niceCount = niceCount;
-        this.iconUrl = iconUrl;
+        this.goldCount = goldCount;
     }
 
     public int getId() {
@@ -71,22 +67,6 @@ public class CommunityEntity {
         this.contentMessage = contentMessage;
     }
 
-    public boolean isFollowFlag() {
-        return followFlag;
-    }
-
-    public void setFollowFlag(boolean followFlag) {
-        this.followFlag = followFlag;
-    }
-
-    public String[] getImageUrls() {
-        return imageUrls;
-    }
-
-    public void setImageUrls(String[] imageUrls) {
-        this.imageUrls = imageUrls;
-    }
-
     public int getReadCount() {
         return readCount;
     }
@@ -111,11 +91,11 @@ public class CommunityEntity {
         this.niceCount = niceCount;
     }
 
-    public String getIconUrl() {
-        return iconUrl;
+    public int getGoldCount() {
+        return goldCount;
     }
 
-    public void setIconUrl(String iconUrl) {
-        this.iconUrl = iconUrl;
+    public void setGoldCount(int goldCount) {
+        this.goldCount = goldCount;
     }
 }

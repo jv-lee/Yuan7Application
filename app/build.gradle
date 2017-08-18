@@ -59,9 +59,4 @@ dependencies {
     compile "com.lcodecorex:tkrefreshlayout:$rootProject.library.tkrefresh_version"
     //photoView
     compile "com.github.chrisbanes:PhotoView:$rootProject.library.photoView_version"
-//    compile project(path: ':lib-banner')
-//    compile project(path: ':lib-videoplayer')
-//    compile project(path: ':lib-download')
-//    compile 'com.github.nukc.stateview:library:1.2.1'
-    compile 'com.android.support:support-v4:25.3.1'
 }
