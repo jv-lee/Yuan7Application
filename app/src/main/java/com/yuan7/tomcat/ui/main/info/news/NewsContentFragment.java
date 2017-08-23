@@ -62,7 +62,6 @@ public class NewsContentFragment extends BaseFragment<NewsContract.Presenter> im
     @Override
     protected void bindData() {
         text = getArguments().getString("type");
-        Toast.makeText(mActivity, text, Toast.LENGTH_SHORT).show();
         newsAdapter = new NewsAdapter(newsEntities);
         newsAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override

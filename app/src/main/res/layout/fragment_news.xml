@@ -11,7 +11,7 @@
         android:id="@+id/news_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="6dp">
+        android:layout_marginTop="@dimen/fragment_margin_top_to_tab">
 
         <FrameLayout
             android:id="@+id/news_new_container"

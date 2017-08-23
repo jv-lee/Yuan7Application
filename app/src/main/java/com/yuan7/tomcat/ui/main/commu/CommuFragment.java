@@ -1,42 +1,43 @@
-package com.yuan7.tomcat.ui.main.community;
-
+package com.yuan7.tomcat.ui.main.commu;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.UiPagerAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
-import com.yuan7.tomcat.ui.main.community.content.CommunityContentFragment;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.yuan7.tomcat.ui.main.MainActivity;
+import com.yuan7.tomcat.ui.main.commu.aq.AQFragment;
+import com.yuan7.tomcat.ui.main.commu.community.CommunityFragment;
+import com.yuan7.tomcat.ui.main.commu.friend.FriendFragment;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Created by Administrator on 2017/8/21.
  */
-public class CommunityFragment extends BaseFragment {
+
+public class CommuFragment extends BaseFragment {
 
     @BindView(R.id.tab_title)
     TabLayout tabTitle;
     @BindView(R.id.vp_container)
     ViewPager vpContainer;
+    @BindView(R.id.iv_left)
+    ImageView ivLeft;
 
-    private String[] titles = {"社区", "问答", "成员"};
-    private List<Fragment> fragmentList = new ArrayList<>();
+    private Fragment[] fragments = {new CommunityFragment(), new AQFragment(), new FriendFragment()};
+    private String[] titles = {"社区", "回答", "好友"};
 
-
-    public CommunityFragment() {
+    public CommuFragment() {
     }
 
     @Override
@@ -45,26 +46,28 @@ public class CommunityFragment extends BaseFragment {
 
     @Override
     protected View bindRootView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_community, container, false);
+        return inflater.inflate(R.layout.fragment_commu, container, false);
     }
 
     @Override
     protected void bindData() {
         for (int i = 0; i < 3; i++) {
-            CommunityContentFragment fragment = new CommunityContentFragment();
             Bundle bundle = new Bundle();
             bundle.putString("content", titles[i]);
-            fragment.setArguments(bundle);
-            fragmentList.add(fragment);
+            fragments[i].setArguments(bundle);
         }
-        vpContainer.setAdapter(new UiPagerAdapter(getChildFragmentManager(), fragmentList, titles));
-        vpContainer.setOffscreenPageLimit(fragmentList.size() - 1);
+        vpContainer.setAdapter(new UiPagerAdapter(getChildFragmentManager(), fragments, titles));
+        vpContainer.setOffscreenPageLimit(fragments.length - 1);
         tabTitle.setupWithViewPager(vpContainer);
     }
 
     @Override
     protected void lazyLoad() {
-        Log.i(TAG, "lazyLoad()");
+    }
+
+    @OnClick(R.id.iv_left)
+    public void onClick(View view) {
+        ((MainActivity)getActivity()).openDrawer();
     }
 
 }

@@ -1,6 +1,8 @@
-package com.yuan7.tomcat.ui.main.community.content;
+package com.yuan7.tomcat.ui.control;
+
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,14 @@ import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
 
 /**
- * Created by Administrator on 2017/8/10.
+ * A simple {@link Fragment} subclass.
  */
+public class MyPostFragment extends BaseFragment {
 
-public class CommunityContentFragment extends BaseFragment {
+
+    public MyPostFragment() {
+        // Required empty public constructor
+    }
 
     @Override
     protected void componentInject(AppComponent appComponent) {
@@ -22,7 +28,7 @@ public class CommunityContentFragment extends BaseFragment {
 
     @Override
     protected View bindRootView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_community_content, container, false);
+        return inflater.inflate(R.layout.fragment_my_post, container, false);
     }
 
     @Override
@@ -34,4 +40,5 @@ public class CommunityContentFragment extends BaseFragment {
     protected void lazyLoad() {
 
     }
+
 }

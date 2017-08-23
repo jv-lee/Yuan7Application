@@ -10,25 +10,26 @@
     <FrameLayout
         android:id="@+id/video_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/fragment_margin_top_to_tab">
 
         <FrameLayout
             android:id="@+id/video_new_container"
-            android:visibility="visible"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="visible" />
 
         <FrameLayout
             android:id="@+id/video_good_container"
-            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="gone" />
 
         <FrameLayout
             android:id="@+id/video_hot_container"
-            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="gone" />
 
     </FrameLayout>
 

@@ -15,4 +15,11 @@
 
     <dimen name="nav_header_height">180dp</dimen>
 
+    <dimen name="fragment_margin_top_to_tab">6dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="fab_size_normal">100dp</dimen>
+
 </resources>

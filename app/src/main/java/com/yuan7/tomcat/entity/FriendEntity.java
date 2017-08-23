@@ -4,17 +4,19 @@ package com.yuan7.tomcat.entity;
  * Created by Administrator on 2017/8/18.
  */
 
-public class FirandEntity {
+public class FriendEntity {
     private int id;
     private String name;
     private String iconUrl;
-    private int level;
+    private int rankLevel;
+    private int userLevel;
 
-    public FirandEntity(int id, String name, String iconUrl, int level) {
+    public FriendEntity(int id, String name, String iconUrl, int rankLevel, int userLevel) {
         this.id = id;
         this.name = name;
         this.iconUrl = iconUrl;
-        this.level = level;
+        this.rankLevel = rankLevel;
+        this.userLevel = userLevel;
     }
 
     public int getId() {
@@ -41,11 +43,19 @@ public class FirandEntity {
         this.iconUrl = iconUrl;
     }
 
-    public int getLevel() {
-        return level;
+    public int getRankLevel() {
+        return rankLevel;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setRankLevel(int rankLevel) {
+        this.rankLevel = rankLevel;
+    }
+
+    public int getUserLevel() {
+        return userLevel;
+    }
+
+    public void setUserLevel(int userLevel) {
+        this.userLevel = userLevel;
     }
 }

@@ -14,8 +14,9 @@ public class AQEntity {
     private int inputCount;
     private int niceCount;
     private int goldCount;
+    private String iconUrl;
 
-    public AQEntity(int id, String name, String dateStr, String deviceSource, String contentMessage, int readCount, int inputCount, int niceCount, int goldCount) {
+    public AQEntity(int id, String name, String dateStr, String deviceSource, String contentMessage, int readCount, int inputCount, int niceCount, int goldCount, String iconUrl) {
         this.id = id;
         this.name = name;
         this.dateStr = dateStr;
@@ -25,6 +26,7 @@ public class AQEntity {
         this.inputCount = inputCount;
         this.niceCount = niceCount;
         this.goldCount = goldCount;
+        this.iconUrl = iconUrl;
     }
 
     public int getId() {
@@ -97,5 +99,13 @@ public class AQEntity {
 
     public void setGoldCount(int goldCount) {
         this.goldCount = goldCount;
+    }
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 }

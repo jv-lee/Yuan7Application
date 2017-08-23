@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_16"
     android:orientation="vertical"
     android:paddingLeft="@dimen/dp_16"
-    android:paddingRight="@dimen/dp_16"
-    android:paddingTop="@dimen/dp_16">
+    android:paddingRight="@dimen/dp_16">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,8 +17,8 @@
             android:layout_width="0dp"
             android:layout_height="66dp"
             android:layout_weight="3"
-            android:scaleType="fitXY"
-            android:background="@color/colorAccent" />
+            android:background="@color/colorAccent"
+            android:scaleType="fitXY" />
 
         <View
             android:layout_width="0dp"
@@ -37,9 +37,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="7"
                 android:ellipsize="end"
-                android:textColor="@color/colorAccent"
                 android:maxLines="2"
                 android:text="汉克狗新闻咨询 汉克狗找了一个很漂亮的女朋友"
+                android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
             <RelativeLayout
@@ -54,8 +54,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_text_bg"
                     android:padding="2dp"
-                    android:textColor="@color/colorAccent"
                     android:text="热点"
+                    android:textColor="@color/colorAccent"
                     android:textSize="10sp" />
 
                 <TextView
@@ -65,10 +65,10 @@
                     android:layout_marginLeft="6dp"
                     android:layout_toRightOf="@+id/tv_icon"
                     android:ellipsize="end"
-                    android:textColor="@color/colorAccent"
                     android:maxLength="8"
                     android:maxLines="1"
                     android:text="我爱汉克狗"
+                    android:textColor="@color/colorAccent"
                     android:textSize="12sp" />
 
                 <TextView
@@ -80,8 +80,8 @@
                     android:ellipsize="end"
                     android:maxLength="8"
                     android:maxLines="1"
-                    android:textColor="@color/colorAccent"
                     android:text="喜欢(6666)"
+                    android:textColor="@color/colorAccent"
                     android:textSize="12sp" />
 
 

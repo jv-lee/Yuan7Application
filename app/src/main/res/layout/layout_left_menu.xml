@@ -18,11 +18,12 @@
             android:layout_height="@dimen/dp_46"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:drawableLeft="@drawable/ic_group_black_24dp"
+            android:drawableLeft="@drawable/ic_group_gray_24dp"
             android:drawablePadding="10dp"
             android:gravity="start|center"
             android:paddingLeft="@dimen/dp_16"
             android:text="我的好友"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp" />
 
 
@@ -32,9 +33,10 @@
             android:layout_height="@dimen/dp_46"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:drawableLeft="@drawable/ic_border_color_black_24dp"
+            android:drawableLeft="@drawable/ic_border_gray_24dp"
             android:drawablePadding="10dp"
             android:gravity="start|center"
+            android:textColor="@color/colorPrimaryDark"
             android:paddingLeft="@dimen/dp_16"
             android:text="我的发帖"
             android:textSize="16sp" />
@@ -45,11 +47,12 @@
             android:layout_height="@dimen/dp_46"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:drawableLeft="@drawable/ic_chat_black_24dp"
+            android:drawableLeft="@drawable/ic_chat_gray_24dp"
             android:drawablePadding="10dp"
             android:gravity="start|center"
             android:paddingLeft="@dimen/dp_16"
             android:text="我的消息"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp" />
 
         <TextView
@@ -58,11 +61,42 @@
             android:layout_height="@dimen/dp_46"
             android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:drawableLeft="@drawable/ic_shopping_cart_black_24dp"
+            android:drawableLeft="@drawable/ic_shopping_gray_24dp"
+            android:drawablePadding="10dp"
+            android:gravity="start|center"
+            android:textColor="@color/colorPrimaryDark"
+            android:paddingLeft="@dimen/dp_16"
+            android:text="金币商城"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/tv_userSettings"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_person_gray_24dp"
             android:drawablePadding="10dp"
             android:gravity="start|center"
             android:paddingLeft="@dimen/dp_16"
-            android:text="金币商城"
+            android:text="个人账号"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/tv_appSettings"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_46"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_settings_gray_24dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:drawablePadding="10dp"
+            android:gravity="start|center"
+            android:paddingLeft="@dimen/dp_16"
+            android:text="设置"
             android:textSize="16sp" />
 
     </LinearLayout>

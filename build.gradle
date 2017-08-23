@@ -6,8 +6,8 @@ ext {
                targetSdk : 21,
                vcode     : 1,
                vname     : "1.0"]
-    library = [support_version         : "25.1.1",
-               constraint_version      : "1.0.0-beta4",
+    library = [support_version         : "25.3.1",
+               constraint_version      : "1.0.2",
                butterKnife_version     : "8.4.0",
                rxJava_version          : "2.0.7",
                rxAndroid_version       : "2.0.1",

@@ -2,15 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
     android:orientation="vertical"
-    tools:context="com.yuan7.tomcat.ui.main.community.CommunityFragment">
+    tools:context="com.yuan7.tomcat.ui.main.commu.community.CommunityFragment">
 
-    <include layout="@layout/layout_toolbar" />
+    <include layout="@layout/layout_select_tab" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_container"
+    <FrameLayout
+        android:id="@+id/community_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/fragment_margin_top_to_tab">
+
+        <FrameLayout
+            android:id="@+id/community_new_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:id="@+id/community_good_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:id="@+id/community_hot_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </FrameLayout>
 
 </LinearLayout>
+

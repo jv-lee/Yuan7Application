@@ -59,4 +59,5 @@ dependencies {
     compile "com.lcodecorex:tkrefreshlayout:$rootProject.library.tkrefresh_version"
     //photoView
     compile "com.github.chrisbanes:PhotoView:$rootProject.library.photoView_version"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

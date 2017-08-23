@@ -9,16 +9,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.UiPagerAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.ui.main.MainActivity;
 import com.yuan7.tomcat.ui.main.info.hot.HotFragment;
 import com.yuan7.tomcat.ui.main.info.news.NewsFragment;
 import com.yuan7.tomcat.ui.main.info.video.VideoFragment;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +32,8 @@ public class InfoFragment extends BaseFragment {
     TabLayout tabTitle;
     @BindView(R.id.vp_container)
     ViewPager vpContainer;
+    @BindView(R.id.iv_left)
+    ImageView ivLeft;
 
     private Fragment[] fragments = {new HotFragment(), new VideoFragment(), new NewsFragment()};
     private String[] titles = {"热点", "视频", "新闻"};
@@ -61,6 +66,11 @@ public class InfoFragment extends BaseFragment {
     @Override
     protected void lazyLoad() {
         Log.i(TAG, "lazyLoad()");
+    }
+
+    @OnClick(R.id.iv_left)
+    public void onClick(View view) {
+        ((MainActivity) getActivity()).openDrawer();
     }
 
 }

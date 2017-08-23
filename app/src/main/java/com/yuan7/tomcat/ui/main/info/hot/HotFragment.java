@@ -56,6 +56,7 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
     private List<BannerEntity> banners;
 
     public HotFragment() {
+
     }
 
     @Override
