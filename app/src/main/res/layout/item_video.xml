@@ -76,12 +76,8 @@
                 android:text="点赞(6666)"
                 android:textColor="@android:color/white"
                 android:textSize="10sp" />
-
-
         </RelativeLayout>
 
-
     </LinearLayout>
-
 
 </RelativeLayout>

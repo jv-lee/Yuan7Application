@@ -4,6 +4,21 @@
     <string name="title_community">community</string>
     <string name="title_start">start</string>
 
+    <string name="info_tab_hot">热点</string>
+    <string name="info_tab_video">视频</string>
+    <string name="info_tab_news">新闻</string>
+
+    <string name="select_tab_new">最新</string>
+    <string name="select_tab_good">精华</string>
+    <string name="select_tab_hot">最热</string>
+
+    <string name="menu_item_friend">我的好友</string>
+    <string name="menu_item_post">我的发帖</string>
+    <string name="menu_item_message">我的消息</string>
+    <string name="menu_item_shop">金币商城</string>
+    <string name="menu_item_userSettings">个人账号</string>
+    <string name="menu_item_appSettings">设置</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="login_title">最爱我的汉克狗</string>
@@ -20,9 +35,6 @@
     <string name="register_reInput_password">再次输入密码</string>
     <string name="register_ok">完成注册</string>
 
-    <string name="select_tab_new">最新</string>
-    <string name="select_tab_good">精华</string>
-    <string name="select_tab_hot">最热</string>
     <string name="title_activity_my_post">MyPostActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -114,4 +126,13 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="app_settings_font">字体大小</string>
+    <string name="app_settings_push">要文推送</string>
+    <string name="app_settings_message">跟帖消息</string>
+    <string name="app_settings_wifi">非wifi可用</string>
+    <string name="app_settings_update">检查更新</string>
+    <string name="user_settings_name">昵称</string>
+    <string name="app_settings_sex">性别</string>
+    <string name="user_settings_birthday">生日</string>
+    <string name="user_settings_level">等级</string>
 </resources>

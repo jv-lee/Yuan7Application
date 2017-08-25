@@ -16,7 +16,6 @@ import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.AQAdapter;
-import com.yuan7.tomcat.adapter.CommunityAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.entity.AQEntity;

@@ -14,7 +14,9 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.UiPagerAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
-import com.yuan7.tomcat.ui.control.MyPostActivity;
+import com.yuan7.tomcat.constant.Constant;
+import com.yuan7.tomcat.ui.menu.MenuActivity;
+import com.yuan7.tomcat.ui.menu.post.MyPostActivity;
 import com.yuan7.tomcat.ui.main.commu.CommuFragment;
 import com.yuan7.tomcat.ui.main.info.InfoFragment;
 import com.yuan7.tomcat.ui.main.start.StartFragment;
@@ -40,7 +42,7 @@ public class MainActivity extends BaseActivity {
     TextView tvPost;
     @BindView(R.id.tv_message)
     TextView tvMessage;
-    @BindView(R.id.tv_shopHome)
+    @BindView(R.id.tv_shop)
     TextView tvShopHome;
     @BindView(R.id.tv_userSettings)
     TextView tvUserSettings;
@@ -48,6 +50,8 @@ public class MainActivity extends BaseActivity {
     TextView tvAppSettings;
 
     private Fragment[] fragments = {new InfoFragment(), new CommuFragment(), new StartFragment()};
+    private String mode = "";
+    private boolean itemFlag = false;
 
 
     @Override
@@ -65,6 +69,28 @@ public class MainActivity extends BaseActivity {
         mainContainer.setNoScroll(true);
         mainContainer.setOffscreenPageLimit(fragments.length - 1);
         mainNav.setupWithViewPager(mainContainer);
+
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                startMenuItem();
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
     }
 
     @Override
@@ -89,27 +115,55 @@ public class MainActivity extends BaseActivity {
         drawer.openDrawer(Gravity.START);
     }
 
-    @OnClick({R.id.tv_friend,R.id.tv_post,R.id.tv_message,R.id.tv_shopHome,R.id.tv_userSettings,R.id.tv_appSettings})
+    @OnClick({R.id.tv_friend,R.id.tv_post,R.id.tv_message,R.id.tv_shop,R.id.tv_userSettings,R.id.tv_appSettings})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_friend:
-                Toast.makeText(mContext, "friend", Toast.LENGTH_SHORT).show();
+                mode = Constant.MENU_FRIEND;
                 break;
             case R.id.tv_post:
-                drawer.closeDrawer(Gravity.START);
-                startActivity(new Intent(this,MyPostActivity.class));
+                mode = Constant.MENU_POST;
                 break;
             case R.id.tv_message:
-                Toast.makeText(mContext, "message", Toast.LENGTH_SHORT).show();
+                mode = Constant.MENU_MESSAGE;
                 break;
-            case R.id.tv_shopHome:
-                Toast.makeText(mContext, "shopHome", Toast.LENGTH_SHORT).show();
+            case R.id.tv_shop:
+                mode = Constant.MENU_SHOP;
                 break;
             case R.id.tv_userSettings:
-                Toast.makeText(mContext, "userSettings", Toast.LENGTH_SHORT).show();
+                mode = Constant.MENU_USER_SETTINGS;
                 break;
             case R.id.tv_appSettings:
-                Toast.makeText(mContext, "appSettings", Toast.LENGTH_SHORT).show();
+                mode = Constant.MENU_APP_SETTINGS;
+                break;
+        }
+        itemFlag = true;
+        drawer.closeDrawer(Gravity.START);
+    }
+
+    public void startMenuItem(){
+        if (!itemFlag) {
+            return;
+        }
+        itemFlag = false;
+        switch (mode) {
+            case Constant.MENU_FRIEND:
+                Toast.makeText(mContext, "friend", Toast.LENGTH_SHORT).show();
+                break;
+            case Constant.MENU_POST:
+                startActivity(new Intent(this,MyPostActivity.class));
+                break;
+            case Constant.MENU_MESSAGE:
+                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG,Constant.MENU_MESSAGE));
+                break;
+            case Constant.MENU_SHOP:
+                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG,Constant.MENU_SHOP));
+                break;
+            case Constant.MENU_USER_SETTINGS:
+                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG,Constant.MENU_USER_SETTINGS));
+                break;
+            case Constant.MENU_APP_SETTINGS:
+                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG,Constant.MENU_APP_SETTINGS));
                 break;
         }
     }

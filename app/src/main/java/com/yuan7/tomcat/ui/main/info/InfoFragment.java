@@ -15,6 +15,7 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.UiPagerAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.ui.main.MainActivity;
 import com.yuan7.tomcat.ui.main.info.hot.HotFragment;
 import com.yuan7.tomcat.ui.main.info.news.NewsFragment;
@@ -36,7 +37,7 @@ public class InfoFragment extends BaseFragment {
     ImageView ivLeft;
 
     private Fragment[] fragments = {new HotFragment(), new VideoFragment(), new NewsFragment()};
-    private String[] titles = {"热点", "视频", "新闻"};
+    private String[] titles = {Constant.INFO_TAB_HOT, Constant.INFO_TAB_VIDEO, Constant.INFO_TAB_NEWS};
 
     public InfoFragment() {
     }

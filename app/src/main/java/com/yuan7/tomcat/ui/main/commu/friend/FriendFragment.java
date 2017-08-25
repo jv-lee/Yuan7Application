@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.constant.Constant;
 
 import butterknife.BindView;
 
@@ -40,7 +41,7 @@ public class FriendFragment extends BaseFragment {
     @BindView(R.id.rb_good)
     RadioButton rbGood;
 
-    private String[] selectTabStrs = {"发帖", "等级", "点赞"};
+    private String[] selectTabStrs = {Constant.SELECT_TAB_POST, Constant.SELECT_TAB_LEVEL, Constant.SELECT_TAB_NICE};
 
     private FriendContentFragment hotFragment, goodFragment, newFragment;
     private Bundle bundle;

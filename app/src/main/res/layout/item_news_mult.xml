@@ -32,7 +32,7 @@
             android:background="@color/colorAccent"
             android:scaleType="fitXY" />
 
-        <View
+        <Space
             android:layout_width="0dp"
             android:layout_height="66dp"
             android:layout_weight="0.5" />
@@ -45,7 +45,7 @@
             android:background="@color/colorAccent"
             android:scaleType="fitXY" />
 
-        <View
+        <Space
             android:layout_width="0dp"
             android:layout_height="66dp"
             android:layout_weight="0.5" />

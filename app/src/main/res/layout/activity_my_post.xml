@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.yuan7.tomcat.ui.control.MyPostActivity">
+    tools:context="com.yuan7.tomcat.ui.menu.post.MyPostActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -16,30 +16,99 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="140dp"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+    <LinearLayout
+        android:gravity="center|bottom"
+        android:orientation="vertical"
+        app:layout_collapseMode="parallax"
+        app:layout_collapseParallaxMultiplier="0.7"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="140dp">
+
+        <com.yuan7.tomcat.widget.roundImageView.RoundedImageView
+            android:id="@+id/riv_userIcon"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/icon"
+            app:riv_oval="true"
+            android:layout_width="56dp"
+            android:layout_height="56dp" />
+
+        <TextView
+            android:layout_marginTop="6dp"
+            android:id="@+id/tv_userName"
+            android:text="userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_marginTop="26dp"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
+                android:layout_marginTop="25dp"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/iosBackTheme.PopupOverlay" />
+                app:navigationIcon="@drawable/ic_back"
+                app:popupTheme="@style/iosBackTheme.PopupOverlay">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:id="@+id/tv_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/rating_userLevel"
+                        android:text="等级"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <RatingBar
+                        android:id="@+id/rating_userLevel"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="6dp"
+                        android:numStars="5"
+                        android:rating="3" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab"
+            app:tabMode="fixed"
+            app:tabGravity="center"
+            android:layout_gravity="bottom"
+            android:background="@color/colorAccent"
+            app:tabIndicatorColor="@android:color/transparent"
+            app:tabSelectedTextColor="@color/colorPrimaryDark"
+            app:tabTextColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+        </android.support.design.widget.TabLayout>
+
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_my_post" />
+    <com.yuan7.tomcat.widget.NoScrollViewPager
+        android:id="@+id/vp_container"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <!--<include layout="@layout/content_my_post" />-->
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+    
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="center"
-        app:srcCompat="@mipmap/icon" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -42,9 +42,9 @@
             <!-- </intent-filter> -->
 
         </activity>
-        <activity android:name=".ui.control.ControlActivity" />
+        <activity android:name=".ui.menu.MenuActivity" />
         <activity
-            android:name=".ui.control.MyPostActivity"
+            android:name=".ui.menu.post.MyPostActivity"
             android:label="@string/title_activity_my_post"
             android:theme="@style/iosBackTheme"></activity>
     </application>

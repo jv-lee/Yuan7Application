@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.constant.Constant;
 
 import butterknife.BindView;
 
@@ -44,6 +45,8 @@ public class AQFragment extends BaseFragment {
     private Bundle bundle;
     private boolean newReplaceFlag, goodReplaceFlag, hotReplaceFlag = false;
 
+    private String[] selectTabStrs = {Constant.SELECT_TAB_NEW, Constant.SELECT_TAB_GOOD, Constant.SELECT_TAB_HOT};
+
     public AQFragment() {
 
     }
@@ -64,6 +67,10 @@ public class AQFragment extends BaseFragment {
         newFragment = setFragmentArgs("new");
         goodFragment = setFragmentArgs("good");
         hotFragment = setFragmentArgs("hot");
+
+        rbNew.setText(selectTabStrs[0]);
+        rbGood.setText(selectTabStrs[1]);
+        rbHot.setText(selectTabStrs[2]);
 
         rgTab.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

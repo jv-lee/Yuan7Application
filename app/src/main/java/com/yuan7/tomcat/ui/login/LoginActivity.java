@@ -1,6 +1,7 @@
 package com.yuan7.tomcat.ui.login;
 
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
@@ -36,11 +37,11 @@ public class LoginActivity extends BaseActivity implements LoginInterface {
         FragmentTransaction ft = mFragmentManager.beginTransaction();
         if (fragmentFlag) {
             fragmentFlag = false;
-            ft.setCustomAnimations(R.anim.slide_right_in, R.anim.slide_left_out);
+            ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_right_out);
             ft.replace(R.id.login_container, loginFragment).commit();
         } else {
             fragmentFlag = true;
-            ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_right_out);
+            ft.setCustomAnimations(R.anim.slide_right_in, R.anim.slide_left_out);
             ft.replace(R.id.login_container, registerFragment).commit();
         }
     }
@@ -57,5 +58,16 @@ public class LoginActivity extends BaseActivity implements LoginInterface {
     @Override
     public void setup() {
         startFragment();
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (fragmentFlag == true) {
+                startFragment();
+                return true;
+            }
+        }
+        return super.onKeyUp(keyCode, event);
     }
 }

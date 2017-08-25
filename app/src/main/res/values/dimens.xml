@@ -3,6 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="toolbar_height">71dp</dimen>
+
     <dimen name="sp_16">16sp</dimen>
 
     <dimen name="dp_5">5dp</dimen>

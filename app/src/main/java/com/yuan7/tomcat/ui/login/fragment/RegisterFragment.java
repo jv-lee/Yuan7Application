@@ -58,5 +58,7 @@ public class RegisterFragment extends BaseFragment {
         loginInterface.setup();
     }
 
+    
+
 
 }
