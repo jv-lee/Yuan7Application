@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
  * Created by Administrator on 2017/5/24.
  */
 
-public class StatusBarUtils {
+public class StatusBarUtil {
 
     /**
      * 隐藏状态栏

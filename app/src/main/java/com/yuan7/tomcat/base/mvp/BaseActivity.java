@@ -4,13 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.yuan7.tomcat.base.app.App;
 import com.yuan7.tomcat.base.app.AppComponent;
-import com.yuan7.tomcat.utils.StatusBarUtils;
+import com.yuan7.tomcat.utils.StatusBarUtil;
 import com.yuan7.tomcat.widget.back.IosBackActivity;
 
 import javax.inject.Inject;
@@ -38,7 +37,7 @@ public abstract class BaseActivity<P extends IPresenter> extends IosBackActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarUtils.setStatusBar(this);//设置隐藏状态栏
+        StatusBarUtil.setStatusBar(this);//设置隐藏状态栏
         mApplication = (App) getApplication();
         mContext = this;
         mFragmentManager = getSupportFragmentManager();

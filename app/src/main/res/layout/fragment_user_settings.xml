@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorAccent"
     tools:context="com.yuan7.tomcat.ui.menu.settings.UserSettingsFragment">
 
@@ -9,6 +10,48 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/fl_item_icon"
+        android:background="@drawable/ripple_user_settings_item"
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16"
+        android:layout_height="46dp">
+
+        <TextView
+            android:text="@string/user_settings_icon"
+            android:layout_gravity="center_vertical|start"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center|end"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+
+        <com.yuan7.tomcat.widget.roundImageView.RoundedImageView
+            android:id="@+id/riv_userIcon"
+            android:layout_toLeftOf="@+id/tv_back"
+            android:src="@mipmap/icon"
+            app:riv_oval="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:textColor="@android:color/black"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/fl_item_name"
@@ -27,7 +70,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/tv_font"
+            android:id="@+id/tv_name"
             android:text="userName"
             android:layout_gravity="center_vertical|end"
             android:textColor="@android:color/black"
@@ -109,11 +152,11 @@
 
         <TextView
             android:id="@+id/tv_level"
-            android:text="level"
+            android:text="LV 7 连长"
+            android:layout_marginRight="24dp"
             android:layout_gravity="center_vertical|end"
             android:textColor="@android:color/black"
             android:gravity="center"
-            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </FrameLayout>

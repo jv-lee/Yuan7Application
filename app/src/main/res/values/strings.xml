@@ -131,8 +131,12 @@
     <string name="app_settings_message">跟帖消息</string>
     <string name="app_settings_wifi">非wifi可用</string>
     <string name="app_settings_update">检查更新</string>
+    <string name="user_settings_icon">头像</string>
     <string name="user_settings_name">昵称</string>
     <string name="app_settings_sex">性别</string>
     <string name="user_settings_birthday">生日</string>
-    <string name="user_settings_level">等级</string>
+    <string name="user_settings_level">我的等级</string>
+
+    <string name="user_settings_boy">男</string>
+    <string name="user_settings_girl">女</string>
 </resources>
