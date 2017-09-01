@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/dp_16"
-    android:paddingRight="@dimen/dp_16"
-    android:paddingTop="@dimen/dp_16">
+    android:paddingLeft="@dimen/content_padding"
+    android:paddingRight="@dimen/content_padding"
+    android:paddingTop="@dimen/content_padding">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="66dp"
+            android:layout_height="@dimen/item_height_66"
             android:layout_weight="7"
             android:orientation="vertical">
 
@@ -35,7 +35,7 @@
                     android:maxLines="2"
                     android:text="游戏的视频title 和文字title"
                     android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/sp_16" />
+                    android:textSize="@dimen/font_size_center" />
 
             </LinearLayout>
 
@@ -53,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
                     android:text="1小时前"
+                    android:textSize="@dimen/font_size_small"
                     android:textColor="@color/colorAccent" />
 
                 <TextView
@@ -64,6 +65,7 @@
                     android:gravity="center"
                     android:maxLength="5"
                     android:text="8888"
+                    android:textSize="@dimen/font_size_small"
                     android:textColor="@color/colorAccent" />
 
 
@@ -76,6 +78,7 @@
                     android:gravity="center"
                     android:maxLength="5"
                     android:text="8888"
+                    android:textSize="@dimen/font_size_small"
                     android:textColor="@color/colorAccent" />
 
                 <TextView
@@ -88,6 +91,7 @@
                     android:gravity="center"
                     android:maxLength="5"
                     android:text="6666"
+                    android:textSize="@dimen/font_size_small"
                     android:textColor="@color/colorAccent" />
 
             </LinearLayout>
@@ -97,8 +101,8 @@
         <ImageView
             android:id="@+id/iv_image"
             android:layout_width="0dp"
-            android:layout_height="66dp"
-            android:layout_marginLeft="6dp"
+            android:layout_height="@dimen/item_height_66"
+            android:layout_marginLeft="@dimen/content_margin_small"
             android:layout_weight="3"
             android:scaleType="fitXY"
             android:background="@color/colorAccent" />
@@ -108,7 +112,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginTop="@dimen/content_margin"
         android:background="@color/colorPrimaryDark" />
 
 </LinearLayout>

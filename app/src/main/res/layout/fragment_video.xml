@@ -5,7 +5,7 @@
     android:orientation="vertical"
     tools:context="com.yuan7.tomcat.ui.main.info.video.VideoFragment">
 
-    <include layout="@layout/layout_select_tab" />
+    <include layout="@layout/layout_tab_select" />
 
     <FrameLayout
         android:id="@+id/video_container"

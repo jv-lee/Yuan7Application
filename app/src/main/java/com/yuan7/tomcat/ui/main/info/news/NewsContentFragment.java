@@ -19,6 +19,7 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.NewsAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.entity.NewsEntity;
 import com.yuan7.tomcat.ui.main.info.news.inject.DaggerNewsComponent;
 import com.yuan7.tomcat.ui.main.info.news.inject.NewsModule;
@@ -61,7 +62,7 @@ public class NewsContentFragment extends BaseFragment<NewsContract.Presenter> im
 
     @Override
     protected void bindData() {
-        text = getArguments().getString("type");
+        text = getArguments().getString(Constant.FRAGMENT_TYPE);
         newsAdapter = new NewsAdapter(newsEntities);
         newsAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override

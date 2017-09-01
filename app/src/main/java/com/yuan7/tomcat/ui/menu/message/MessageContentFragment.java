@@ -18,6 +18,7 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.MessageAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.entity.MessageEntity;
 import com.yuan7.tomcat.ui.menu.message.inject.DaggerMessageComponent;
 import com.yuan7.tomcat.ui.menu.message.inject.MessageModule;
@@ -63,7 +64,7 @@ public class MessageContentFragment extends BaseFragment<MessageContract.Present
 
     @Override
     protected void bindData() {
-        type = getArguments().getString("type");
+        type = getArguments().getString(Constant.FRAGMENT_TYPE);
         messageAdapter = new MessageAdapter(messageEntities);
         messageAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         messageAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {

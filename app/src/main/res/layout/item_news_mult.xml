@@ -2,22 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/dp_16"
+    android:layout_marginBottom="@dimen/content_margin"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/dp_16"
-    android:paddingRight="@dimen/dp_16">
+    android:paddingLeft="@dimen/content_padding"
+    android:paddingRight="@dimen/content_padding">
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="@dimen/content_margin_small"
         android:ellipsize="end"
         android:maxLines="2"
         android:minLines="2"
         android:text="汉克狗新闻咨询 汉克狗找了一个很漂亮的女朋友"
         android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
+        android:textSize="@dimen/font_size_big" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,33 +27,33 @@
         <ImageView
             android:id="@+id/iv_image1"
             android:layout_width="0dp"
-            android:layout_height="66dp"
+            android:layout_height="@dimen/image_height2"
             android:layout_weight="3"
             android:background="@color/colorAccent"
             android:scaleType="fitXY" />
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="66dp"
+            android:layout_height="@dimen/image_height2"
             android:layout_weight="0.5" />
 
         <ImageView
             android:id="@+id/iv_image2"
             android:layout_width="0dp"
-            android:layout_height="66dp"
+            android:layout_height="@dimen/image_height2"
             android:layout_weight="3"
             android:background="@color/colorAccent"
             android:scaleType="fitXY" />
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="66dp"
+            android:layout_height="@dimen/image_height2"
             android:layout_weight="0.5" />
 
         <ImageView
             android:id="@+id/iv_image3"
             android:layout_width="0dp"
-            android:layout_height="66dp"
+            android:layout_height="@dimen/image_height2"
             android:layout_weight="3"
             android:background="@color/colorAccent"
             android:scaleType="fitXY" />
@@ -63,20 +63,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp">
+        android:layout_marginTop="@dimen/content_margin_small">
 
         <TextView
             android:id="@+id/tv_timeStr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="14：23"
+            android:textSize="@dimen/font_size_small"
             android:textColor="@color/colorAccent" />
 
         <TextView
             android:id="@+id/tv_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/content_margin_small"
             android:layout_toRightOf="@+id/tv_timeStr"
             android:background="@drawable/shape_text_bg"
             android:padding="2dp"
@@ -95,7 +96,7 @@
             android:maxLines="1"
             android:text="我爱汉克狗"
             android:textColor="@color/colorAccent"
-            android:textSize="12sp" />
+            android:textSize="@dimen/font_size_small" />
 
         <TextView
             android:id="@+id/tv_likeCount"
@@ -107,14 +108,14 @@
             android:maxLines="1"
             android:text="喜欢(6666)"
             android:textColor="@color/colorAccent"
-            android:textSize="12sp" />
+            android:textSize="@dimen/font_size_small" />
 
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginTop="@dimen/content_margin"
         android:background="@color/colorPrimaryDark" />
 
 </LinearLayout>

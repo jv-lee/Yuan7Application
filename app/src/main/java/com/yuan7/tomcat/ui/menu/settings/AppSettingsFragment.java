@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +15,7 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.interfaces.MenuTitleBarListener;
+import com.yuan7.tomcat.interfaces.TitleBarListener;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -46,9 +45,9 @@ public class AppSettingsFragment extends BaseFragment {
     TextView tvFont;
 
 
-    private MenuTitleBarListener listener;
+    private TitleBarListener listener;
 
-    public AppSettingsFragment(MenuTitleBarListener listener) {
+    public AppSettingsFragment(TitleBarListener listener) {
         this.listener = listener;
     }
 
@@ -65,7 +64,7 @@ public class AppSettingsFragment extends BaseFragment {
 
     @Override
     protected void bindData() {
-        listener.setTitleText(Constant.MENU_TITLE_APP_SETTINGS);
+        listener.setTitleText(getString(R.string.menu_item_appSettings));
     }
 
     @Override

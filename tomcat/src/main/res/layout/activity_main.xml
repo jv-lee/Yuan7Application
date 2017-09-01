@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,24 +7,39 @@
     android:background="@color/backgroundColor"
     tools:context="com.yuan7.tomcat.ui.main.MainActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/layout_toolbar" />
-
-    <com.yuan7.tomcat.widget.NoScrollViewPager
-        android:id="@+id/vp_container"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/navigationBar"
-        android:layout_below="@+id/toolbar" />
+        android:layout_height="match_parent">
 
-    <com.ashokvarma.bottomnavigation.BottomNavigationBar
-        android:id="@+id/navigationBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:elevation="32dp"
-        app:bnbMode="mode_fixed" />
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_toolbar" />
 
+        <com.yuan7.tomcat.widget.NoScrollViewPager
+            android:id="@+id/vp_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/navigationBar"
+            android:layout_below="@+id/toolbar" />
 
-</RelativeLayout>
+        <com.ashokvarma.bottomnavigation.BottomNavigationBar
+            android:id="@+id/navigationBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:elevation="32dp"
+            app:bnbMode="mode_fixed" />
+    </RelativeLayout>
+
+    <com.yuan7.tomcat.widget.FloatingImageView
+        android:id="@+id/iv_gif"
+        android:elevation="12dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_round_white"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="36dp"
+        android:layout_marginRight="36dp" />
+
+</FrameLayout>

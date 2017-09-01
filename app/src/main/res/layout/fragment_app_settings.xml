@@ -10,9 +10,9 @@
         android:id="@+id/fl_item_font"
         android:background="@drawable/ripple_app_settings_item"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_height="46dp">
+        android:paddingLeft="@dimen/content_padding"
+        android:paddingRight="@dimen/content_padding"
+        android:layout_height="@dimen/settings_item_height">
 
         <TextView
             android:text="@string/app_settings_font"
@@ -33,15 +33,15 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="2dp" />
+        android:layout_height="@dimen/settings_item_space" />
 
     <FrameLayout
         android:id="@+id/fl_item_push"
         android:background="@drawable/ripple_app_settings_item"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_height="46dp">
+        android:paddingLeft="@dimen/content_padding"
+        android:paddingRight="@dimen/content_padding"
+        android:layout_height="@dimen/settings_item_height">
 
         <TextView
             android:text="@string/app_settings_push"
@@ -61,15 +61,15 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="2dp" />
+        android:layout_height="@dimen/settings_item_space" />
 
     <FrameLayout
         android:id="@+id/fl_item_message"
         android:background="@drawable/ripple_app_settings_item"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_height="46dp">
+        android:paddingLeft="@dimen/content_padding"
+        android:paddingRight="@dimen/content_padding"
+        android:layout_height="@dimen/settings_item_height">
 
         <TextView
             android:text="@string/app_settings_message"
@@ -89,15 +89,15 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="2dp" />
+        android:layout_height="@dimen/settings_item_space" />
 
     <FrameLayout
         android:id="@+id/fl_item_wifi"
         android:background="@drawable/ripple_app_settings_item"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_height="46dp">
+        android:paddingLeft="@dimen/content_padding"
+        android:paddingRight="@dimen/content_padding"
+        android:layout_height="@dimen/settings_item_height">
 
         <TextView
             android:text="@string/app_settings_wifi"
@@ -117,15 +117,15 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="2dp" />
+        android:layout_height="@dimen/settings_item_space" />
 
     <FrameLayout
         android:id="@+id/fl_item_update"
         android:background="@drawable/ripple_app_settings_item"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_height="46dp">
+        android:paddingLeft="@dimen/content_padding"
+        android:paddingRight="@dimen/content_padding"
+        android:layout_height="@dimen/settings_item_height">
 
         <TextView
             android:text="@string/app_settings_update"
@@ -144,7 +144,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="2dp" />
+        android:layout_height="@dimen/settings_item_space" />
 
 
 </LinearLayout>

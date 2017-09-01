@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="@dimen/content_padding"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/post_reply_str"
+            android:textSize="@dimen/font_size_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_reply_message"
+            android:text="this is reply content message."
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="@dimen/font_size_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="@dimen/content_margin_small"
+        android:id="@+id/tv_reply_date"
+        android:text="2017-08-07"
+        android:textSize="@dimen/font_size_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <View
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_5"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/post_reply_str2"
+            android:textSize="@dimen/font_size_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_reply_title"
+            android:text="Content Title"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="@dimen/font_size_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/content_margin"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_readCount"
+            android:gravity="center_vertical"
+            android:text="3210"
+            android:maxLines="1"
+            android:maxLength="6"
+            android:ellipsize="end"
+            android:drawablePadding="@dimen/content_padding_small"
+            android:drawableLeft="@drawable/ic_chat_white_12dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:textSize="@dimen/font_size_small"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tv_inputCount"
+            android:drawablePadding="@dimen/content_padding_small"
+            android:gravity="center_vertical"
+            android:text="3210"
+            android:maxLines="1"
+            android:maxLength="6"
+            android:ellipsize="end"
+            android:drawableLeft="@drawable/ic_chat_white_12dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:textSize="@dimen/font_size_small"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_niceCount"
+            android:drawablePadding="@dimen/content_padding_small"
+            android:gravity="center_vertical"
+            android:text="3210"
+            android:maxLines="1"
+            android:maxLength="6"
+            android:ellipsize="end"
+            android:drawableLeft="@drawable/ic_thumb_up_white_12dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:textSize="@dimen/font_size_small"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:drawablePadding="@dimen/content_padding_small"
+            android:gravity="center"
+            android:text="查看主题"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:textSize="@dimen/font_size_small"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+
+</LinearLayout>

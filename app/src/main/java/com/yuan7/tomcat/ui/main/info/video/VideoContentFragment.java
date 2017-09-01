@@ -22,6 +22,7 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.VideoAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.entity.VideoEntity;
 import com.yuan7.tomcat.ui.main.info.video.inject.DaggerVideoComponent;
 import com.yuan7.tomcat.ui.main.info.video.inject.VideoModule;
@@ -64,7 +65,7 @@ public class VideoContentFragment extends BaseFragment<VideoContract.Presenter> 
 
     @Override
     protected void bindData() {
-        text = getArguments().getString("type");
+        text = getArguments().getString(Constant.FRAGMENT_TYPE);
         Toast.makeText(mActivity, text, Toast.LENGTH_SHORT).show();
         videoAdapter = new VideoAdapter(videoEntities);
         videoAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {

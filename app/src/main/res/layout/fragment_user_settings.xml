@@ -15,9 +15,9 @@
         android:id="@+id/fl_item_icon"
         android:background="@drawable/ripple_user_settings_item"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_height="46dp">
+        android:paddingLeft="@dimen/content_padding"
+        android:paddingRight="@dimen/content_padding"
+        android:layout_height="@dimen/settings_item_height">
 
         <TextView
             android:text="@string/user_settings_icon"
@@ -40,8 +40,8 @@
             android:layout_toLeftOf="@+id/tv_back"
             android:src="@mipmap/icon"
             app:riv_oval="true"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+            android:layout_width="@dimen/icon_size_small"
+            android:layout_height="@dimen/icon_size_small" />
 
         <TextView
             android:id="@+id/tv_back"
@@ -57,9 +57,9 @@
         android:id="@+id/fl_item_name"
         android:background="@drawable/ripple_user_settings_item"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_height="46dp">
+        android:paddingLeft="@dimen/content_padding"
+        android:paddingRight="@dimen/content_padding"
+        android:layout_height="@dimen/settings_item_height">
 
         <TextView
             android:text="@string/user_settings_name"
@@ -84,9 +84,9 @@
         android:id="@+id/fl_item_sex"
         android:background="@drawable/ripple_user_settings_item"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_height="46dp">
+        android:paddingLeft="@dimen/content_padding"
+        android:paddingRight="@dimen/content_padding"
+        android:layout_height="@dimen/settings_item_height">
 
         <TextView
             android:text="@string/app_settings_sex"
@@ -111,9 +111,9 @@
         android:id="@+id/fl_item_birthday"
         android:background="@drawable/ripple_user_settings_item"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_height="46dp">
+        android:paddingLeft="@dimen/content_padding"
+        android:paddingRight="@dimen/content_padding"
+        android:layout_height="@dimen/settings_item_height">
 
         <TextView
             android:text="@string/user_settings_birthday"
@@ -138,9 +138,9 @@
         android:id="@+id/fl_item_level"
         android:background="@drawable/ripple_user_settings_item"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dp_16"
-        android:paddingRight="@dimen/dp_16"
-        android:layout_height="46dp">
+        android:paddingLeft="@dimen/content_padding"
+        android:paddingRight="@dimen/content_padding"
+        android:layout_height="@dimen/settings_item_height">
 
         <TextView
             android:text="@string/user_settings_level"

@@ -2,17 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:paddingTop="@dimen/dp_10"
-    android:paddingLeft="@dimen/dp_10"
-    android:paddingBottom="@dimen/dp_10"
+    android:paddingTop="@dimen/content_padding"
+    android:paddingLeft="@dimen/content_padding"
+    android:paddingBottom="@dimen/content_padding"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <com.yuan7.tomcat.widget.roundImageView.RoundedImageView
         android:background="@color/colorPrimary"
         android:id="@+id/riv_userIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/icon_size_center"
+        android:layout_height="@dimen/icon_size_center"
         android:layout_centerVertical="true"
         android:scaleType="fitCenter"
         android:src="@mipmap/icon"
@@ -20,7 +20,7 @@
 
     <LinearLayout
         android:id="@+id/ll_layout"
-        android:layout_marginLeft="@dimen/dp_5"
+        android:layout_marginLeft="@dimen/content_margin_small"
         android:layout_toRightOf="@+id/riv_userIcon"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -33,15 +33,16 @@
             <TextView
                 android:id="@+id/tv_userName"
                 android:text="userName"
-                android:textSize="16sp"
+                android:textSize="@dimen/font_size_center"
                 android:layout_gravity="start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginRight="@dimen/content_margin_small"
                 android:id="@+id/tv_dateStr"
                 android:text="时间"
+                android:textSize="@dimen/font_size_center"
                 android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -53,11 +54,12 @@
             android:maxLines="2"
             android:ellipsize="end"
             android:text="this is message content"
+            android:textSize="@dimen/font_size_big"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <View
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/content_margin"
             android:id="@+id/view_line"
             android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"

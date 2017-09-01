@@ -17,27 +17,17 @@ public class Constant {
     public static final String MENU_USER_SETTINGS = "userSettings";
     public static final String MENU_APP_SETTINGS = "appSettings";
 
-    //侧滑菜单 bar 标题名
-    public static final String MENU_TITLE_MESSAGE = "我的消息";
-    public static final String MENU_TITLE_SHOP = "金币商城";
-    public static final String MENU_TITLE_UESR_SETTINGS = "个人账号";
-    public static final String MENU_TITLE_APP_SETTINGS = "设置";
+    //fragment 类型键名
+    public static final String FRAGMENT_CONTENT = "content";
+    public static final String FRAGMENT_TYPE = "type";
+    public static final String FRAGMENT_TYPE_NEW = "new";
+    public static final String FRAGMENT_TYPE_GOOD = "good";
+    public static final String FRAGMENT_TYPE_HOT = "hot";
 
-    //info页面 tab标题
-    public static final String INFO_TAB_HOT = "热门";
-    public static final String INFO_TAB_VIDEO = "视频";
-    public static final String INFO_TAB_NEWS = "新闻";
-
-    //副页面 选择 tab 标题
-    public static final String SELECT_TAB_NEW = "最新";
-    public static final String SELECT_TAB_GOOD = "精华";
-    public static final String SELECT_TAB_HOT = "最热";
-    public static final String SELECT_TAB_POST = "发帖";
-    public static final String SELECT_TAB_LEVEL = "等级";
-    public static final String SELECT_TAB_NICE = "点赞";
-
-
-
+    //RxBus 消息键值
+    public static final int RX_BUS_APPBAR_OPEN = 1;//appbar 打开状态 RxBus 通知
+    public static final int RX_BUS_APPBAR_CLOSE = 2;//appbar 关闭状态 RxBus 通知
+    public static final int RX_BUS_START_FRIEND = 3;//跳转到 好友页面 RxBus 通知
 
 
 

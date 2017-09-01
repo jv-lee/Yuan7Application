@@ -13,7 +13,7 @@ import com.yuan7.tomcat.adapter.UiPagerAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.interfaces.MenuTitleBarListener;
+import com.yuan7.tomcat.interfaces.TitleBarListener;
 import com.yuan7.tomcat.widget.NoScrollViewPager;
 
 import butterknife.BindView;
@@ -28,12 +28,12 @@ public class MessageFragment extends BaseFragment {
     @BindView(R.id.vp_container)
     NoScrollViewPager vpContainer;
 
-    private Fragment[] fragments = {new MessageContentFragment(), new MessageContentFragment(), new MessageContentFragment()};
-    private String[] titles = {"@我的", "评论我的", "赞我的"};
+    private Fragment[] fragments = null;
+    private String[] titles = null;
 
-    private MenuTitleBarListener listener;
+    private TitleBarListener listener;
 
-    public MessageFragment(MenuTitleBarListener listener) {
+    public MessageFragment(TitleBarListener listener) {
         this.listener = listener;
     }
 
@@ -50,10 +50,14 @@ public class MessageFragment extends BaseFragment {
 
     @Override
     protected void bindData() {
-        listener.setTitleText(Constant.MENU_TITLE_MESSAGE);
+        listener.setTitleText(getString(R.string.menu_item_message));
+
+        fragments = new Fragment[]{new MessageContentFragment(), new MessageContentFragment(), new MessageContentFragment()};
+        titles = new String[]{getString(R.string.select_tab_find_me), getString(R.string.select_tab_input_me), getString(R.string.select_tab_nice_me)};
+
         for (int i = 0; i < 3; i++) {
             Bundle bundle = new Bundle();
-            bundle.putString("type", titles[i]);
+            bundle.putString(Constant.FRAGMENT_TYPE, titles[i]);
             fragments[i].setArguments(bundle);
         }
         vpContainer.setAdapter(new UiPagerAdapter(getFragmentManager(), fragments, titles));

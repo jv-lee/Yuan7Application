@@ -6,40 +6,40 @@
     android:orientation="vertical"
     tools:context="com.yuan7.tomcat.ui.main.start.StartFragment">
 
-    <include layout="@layout/layout_start_toolbar" />
+    <include layout="@layout/layout_toolbar_start" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/dp_16">
+        android:padding="@dimen/content_padding">
 
         <ImageView
-            android:layout_width="86dp"
-            android:layout_height="86dp"
+            android:layout_width="@dimen/icon_size_big"
+            android:layout_height="@dimen/icon_size_big"
             android:background="@color/colorAccent" />
 
         <Button
-            android:layout_width="106dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_width="@dimen/start_btn_width"
+            android:layout_height="@dimen/start_btn_height"
+            android:layout_marginTop="@dimen/content_margin"
             android:background="@drawable/shape_btn_bg2"
-            android:text="启动游戏"
+            android:text="@string/start_game"
             android:textColor="@color/colorAccent" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="@dimen/start_layout_space"
         android:background="@color/colorPrimaryDark" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/dp_16">
+        android:padding="@dimen/content_padding">
 
         <com.yuan7.tomcat.widget.banner.MZBannerView
             android:id="@+id/banner"
@@ -55,7 +55,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginTop="@dimen/content_margin"
             android:layout_weight="2"
             android:text="超好玩的游戏"
             android:textColor="@color/colorAccent" />

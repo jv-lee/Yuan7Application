@@ -57,8 +57,7 @@ public class VideoDataActivity extends BaseActivity {
 //        String url = "http://data.vod.itc.cn/?rb=1&prot=1&key=jbZhEJhlqlUN-Wj_HEI8BjaVqKNFvDrn&prod=flash&pt=1&new=/86/173/5GipN9Q9kTylfL9xPZg7kN.mp4";
         String url = getIntent().getStringExtra("apiUrl");
         Log.i(TAG, "url:"+url);
-        videoView.setUp(url
-                , VideoPlayerStandard.SCREEN_LAYOUT_NORMAL, getIntent().getStringExtra("title"));
+        videoView.setUp(url, VideoPlayerStandard.SCREEN_LAYOUT_NORMAL, getIntent().getStringExtra("title"));
 //        videoView.thumbImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         GlideImageLoader.loadImage(this, getIntent().getStringExtra("imageUrl"), videoView.thumbImageView);
         videoView.setPayListener(new VideoPlayerStandard.PlayerListener() {

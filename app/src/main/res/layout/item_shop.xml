@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_marginBottom="0.5dp"
     android:layout_marginRight="0.5dp"
-    android:layout_height="176dp">
+    android:layout_height="@dimen/shop_layout_height">
 
     <ImageView
         android:id="@+id/iv_image"
@@ -14,22 +14,24 @@
         android:layout_height="match_parent" />
 
     <LinearLayout
-        android:padding="@dimen/dp_5"
+        android:padding="@dimen/content_padding_small"
         android:background="#99C8C8C8"
         android:layout_gravity="bottom"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="46dp">
+        android:layout_height="@dimen/item_height_46">
 
         <TextView
             android:id="@+id/tv_shopName"
             android:text="价值100元京东卡"
+            android:textSize="@dimen/font_size_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/tv_shopPrice"
             android:text="50000金币"
+            android:textSize="@dimen/font_size_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

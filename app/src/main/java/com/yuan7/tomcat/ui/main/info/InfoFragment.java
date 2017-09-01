@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.UiPagerAdapter;
@@ -36,8 +37,8 @@ public class InfoFragment extends BaseFragment {
     @BindView(R.id.iv_left)
     ImageView ivLeft;
 
-    private Fragment[] fragments = {new HotFragment(), new VideoFragment(), new NewsFragment()};
-    private String[] titles = {Constant.INFO_TAB_HOT, Constant.INFO_TAB_VIDEO, Constant.INFO_TAB_NEWS};
+    private Fragment[] fragments = null;
+    private String[] titles = null;
 
     public InfoFragment() {
     }
@@ -54,11 +55,15 @@ public class InfoFragment extends BaseFragment {
 
     @Override
     protected void bindData() {
+        fragments = new Fragment[]{new HotFragment(), new VideoFragment(), new NewsFragment()};
+        titles = new String[]{getString(R.string.info_tab_hot), getString(R.string.info_tab_video), getString(R.string.info_tab_news)};
+
         for (int i = 0; i < 3; i++) {
             Bundle bundle = new Bundle();
-            bundle.putString("content", titles[i]);
+            bundle.putString(Constant.FRAGMENT_CONTENT, titles[i]);
             fragments[i].setArguments(bundle);
         }
+
         vpContainer.setAdapter(new UiPagerAdapter(getChildFragmentManager(), fragments, titles));
         vpContainer.setOffscreenPageLimit(fragments.length - 1);
         tabTitle.setupWithViewPager(vpContainer);

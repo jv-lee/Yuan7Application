@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.yuan7.tomcat.ui.menu.post.PostActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appbar_max_height"
+        android:theme="@style/iosBackTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/appbar_collapsing_height"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="snap|exitUntilCollapsed">
+
+    <LinearLayout
+        android:gravity="center|bottom"
+        android:orientation="vertical"
+        app:layout_collapseMode="parallax"
+        app:layout_collapseParallaxMultiplier="0.7"
+        android:padding="@dimen/content_padding"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appbar_collapsing_height">
+
+        <com.yuan7.tomcat.widget.roundImageView.RoundedImageView
+            android:id="@+id/riv_userIcon"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/icon"
+            app:riv_oval="true"
+            android:layout_width="@dimen/icon_size_center"
+            android:layout_height="@dimen/icon_size_center" />
+
+        <TextView
+            android:layout_marginTop="@dimen/content_margin_small"
+            android:id="@+id/tv_userName"
+            android:text="userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="LV:12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_content_height"
+                android:layout_marginTop="@dimen/status_bar_height"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/ic_back"
+                app:popupTheme="@style/iosBackTheme.PopupOverlay">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.yuan7.tomcat.widget.roundImageView.RoundedImageView
+                        android:id="@+id/riv_userIcon_close"
+                        android:visibility="gone"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/icon"
+                        android:layout_marginRight="@dimen/content_margin"
+                        app:riv_oval="true"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_width="@dimen/icon_size_small"
+                        android:layout_height="@dimen/icon_size_small" />
+
+                </FrameLayout>
+
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab"
+            app:tabMode="fixed"
+            app:tabGravity="center"
+            android:layout_gravity="bottom"
+            android:background="@color/colorAccent"
+            app:tabIndicatorColor="@android:color/transparent"
+            app:tabSelectedTextColor="@color/colorPrimaryDark"
+            app:tabTextColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/appbar_tab_select">
+
+        </android.support.design.widget.TabLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <com.yuan7.tomcat.widget.NoScrollViewPager
+        android:id="@+id/vp_container"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</android.support.design.widget.CoordinatorLayout>

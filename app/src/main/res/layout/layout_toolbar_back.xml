@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbar_layout_height"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_marginTop="@dimen/status_bar_height"
+        android:layout_height="@dimen/toolbar_content_height"
+        android:layout_width="match_parent"
+        android:gravity="center">
+
+        <ImageView
+            android:padding="@dimen/content_padding_small"
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/register_text"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_big" />
+
+        <TextView
+            android:padding="6dp"
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:drawableRight="@drawable/ic_menu_send"
+            android:background="?android:attr/selectableItemBackground"
+            android:visibility="invisible"
+            android:clickable="true"/>
+
+    </FrameLayout>
+
+</LinearLayout>

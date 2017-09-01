@@ -10,6 +10,8 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.annotation.IntDef;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -193,6 +195,20 @@ public abstract class VideoPlayer extends FrameLayout implements View.OnClickLis
             Log.i(TAG, "onClick surfaceContainer State=Error [" + this.hashCode() + "] ");
             prepareMediaPlayer();
         }
+    }
+
+    public void onPause(){
+        if (currentState == CURRENT_STATE_PAUSE) {
+            onEvent(UserAction.ON_CLICK_RESUME);
+            MediaManager.instance().mediaPlayer.start();
+            setUiWitStateAndScreen(CURRENT_STATE_PLAYING);
+        }
+    }
+
+    @Override
+    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+
     }
 
     public void prepareMediaPlayer() {

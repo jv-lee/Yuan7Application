@@ -47,7 +47,7 @@ public class VideoFragment extends BaseFragment {
     private Bundle bundle;
     private boolean newReplaceFlag, goodReplaceFlag, hotReplaceFlag = false;
 
-    private String[] selectTabStrs = {Constant.SELECT_TAB_NEW, Constant.SELECT_TAB_GOOD, Constant.SELECT_TAB_HOT};
+    private String[] selectTabs = null;
 
     public VideoFragment() {
     }
@@ -64,14 +64,16 @@ public class VideoFragment extends BaseFragment {
 
     @Override
     protected void bindData() {
-        String content = getArguments().getString("content");
-        newFragment = setFragmentArgs("new");
-        goodFragment = setFragmentArgs("good");
-        hotFragment = setFragmentArgs("hot");
+        selectTabs = new String[]{getString(R.string.select_tab_new), getString(R.string.select_tab_good), getString(R.string.select_tab_hot)};
 
-        rbNew.setText(selectTabStrs[0]);
-        rbGood.setText(selectTabStrs[1]);
-        rbHot.setText(selectTabStrs[2]);
+        String content = getArguments().getString(Constant.FRAGMENT_CONTENT);
+        newFragment = setFragmentArgs(Constant.FRAGMENT_TYPE_NEW);
+        goodFragment = setFragmentArgs(Constant.FRAGMENT_TYPE_GOOD);
+        hotFragment = setFragmentArgs(Constant.FRAGMENT_TYPE_HOT);
+
+        rbNew.setText(selectTabs[0]);
+        rbGood.setText(selectTabs[1]);
+        rbHot.setText(selectTabs[2]);
 
         rgTab.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -95,7 +97,7 @@ public class VideoFragment extends BaseFragment {
     private VideoContentFragment setFragmentArgs(String type) {
         VideoContentFragment fragment = new VideoContentFragment();
         bundle = new Bundle();
-        bundle.putString("type", type);
+        bundle.putString(Constant.FRAGMENT_TYPE, type);
         fragment.setArguments(bundle);
         return fragment;
     }

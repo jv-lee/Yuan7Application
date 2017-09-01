@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yuan7.tomcat.ui.main.commu.friend.FriendContentFragment">
+    tools:context="com.yuan7.tomcat.ui.main.comm.friend.FriendContentFragment">
 
     <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
         android:id="@+id/refreshLayout"

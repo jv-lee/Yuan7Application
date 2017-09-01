@@ -18,18 +18,22 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.interfaces.MenuTitleBarListener;
+import com.yuan7.tomcat.interfaces.TitleBarListener;
 import com.yuan7.tomcat.utils.IconUtil;
-import com.yuan7.tomcat.utils.UriImageUtil;
 import com.yuan7.tomcat.widget.roundImageView.RoundedImageView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -65,6 +69,7 @@ public class UserSettingsFragment extends BaseFragment {
     private int REQUEST_IMAGE_GET = 0x001;
     private int REQUEST_IMAGE_CAPTURE = 0x002;
     private String picPatch = null;
+    List<LocalMedia> selectList = null;
 
     private AlertDialog alertIcon;
     private View vIcon;
@@ -80,9 +85,9 @@ public class UserSettingsFragment extends BaseFragment {
     private Calendar calendar;
     private DatePickerDialog alertDate;
 
-    private MenuTitleBarListener listener;
+    private TitleBarListener listener;
 
-    public UserSettingsFragment(MenuTitleBarListener listener) {
+    public UserSettingsFragment(TitleBarListener listener) {
         this.listener = listener;
     }
 
@@ -99,7 +104,7 @@ public class UserSettingsFragment extends BaseFragment {
 
     @Override
     protected void bindData() {
-        listener.setTitleText(Constant.MENU_TITLE_UESR_SETTINGS);
+        listener.setTitleText(getString(R.string.menu_item_userSettings));
 
 
     }
@@ -135,7 +140,11 @@ public class UserSettingsFragment extends BaseFragment {
             vIcon.findViewById(R.id.rl_photo).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    IconUtil.selectImage(UserSettingsFragment.this,REQUEST_IMAGE_GET);
+                    PictureSelector.create(UserSettingsFragment.this)
+                            .openGallery(PictureMimeType.ofImage())
+                            .maxSelectNum(1)
+                            .minSelectNum(1)
+                            .forResult(PictureConfig.CHOOSE_REQUEST);
                     if (alertIcon.isShowing()) {
                         alertIcon.hide();
                     }
@@ -144,14 +153,16 @@ public class UserSettingsFragment extends BaseFragment {
             vIcon.findViewById(R.id.rl_camera).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    picPatch = IconUtil.dispatchTakePictureIntent(UserSettingsFragment.this, REQUEST_IMAGE_CAPTURE);
+                    PictureSelector.create(UserSettingsFragment.this)
+                            .openCamera(PictureMimeType.ofImage())
+                            .forResult(PictureConfig.CHOOSE_REQUEST);
                     if (alertIcon.isShowing()) {
                         alertIcon.hide();
                     }
                 }
             });
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(mActivity);
-            alertIcon = alertBuilder.setTitle("设置你的头像")
+            alertIcon = alertBuilder.setTitle(getString(R.string.settings_icon))
                     .setView(vIcon)
                     .create();
         }
@@ -163,10 +174,10 @@ public class UserSettingsFragment extends BaseFragment {
             vName = LayoutInflater.from(mActivity).inflate(R.layout.layout_alert_name, null);
             etName = (EditText) vName.findViewById(R.id.et_name);
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(mActivity);
-            alertName = alertBuilder.setTitle("修改昵称")
+            alertName = alertBuilder.setTitle(getString(R.string.settings_name))
                     .setView(vName)
-                    .setNegativeButton("取消",null)
-                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.negative_str),null)
+                    .setPositiveButton(getString(R.string.positive_str), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             tvName.setText(etName.getText());
@@ -185,16 +196,16 @@ public class UserSettingsFragment extends BaseFragment {
             vSex = LayoutInflater.from(mActivity).inflate(R.layout.layout_alert_sex, null);
             groupSex = (RadioGroup) vSex.findViewById(R.id.sex_group);
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(mActivity);
-            alertSex = alertBuilder.setTitle("选择您的性别")
+            alertSex = alertBuilder.setTitle(getString(R.string.settings_sex))
                     .setView(vSex)
-                    .setNegativeButton("取消", null)
-                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.negative_str),null)
+                    .setPositiveButton(getString(R.string.positive_str), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (groupSex.getCheckedRadioButtonId() == R.id.rb_boy) {
-                                tvSex.setText("男");
+                                tvSex.setText(getString(R.string.settings_sex_boy));
                             }else{
-                                tvSex.setText("女");
+                                tvSex.setText(getString(R.string.settings_sex_girl));
                             }
                         }
                     })
@@ -231,13 +242,18 @@ public class UserSettingsFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
-            String filePath = null;
-            if (requestCode == REQUEST_IMAGE_GET) {
-                filePath = UriImageUtil.getRealPathFromUri(mActivity,data.getData());
-            } else if (requestCode == REQUEST_IMAGE_CAPTURE) {
-                filePath = picPatch;
+            switch (requestCode) {
+                case PictureConfig.CHOOSE_REQUEST:
+                    // 图片选择结果回调
+                    selectList = PictureSelector.obtainMultipleResult(data);
+                    // 例如 LocalMedia 里面返回三种path
+                    // 1.media.getPath(); 为原图path
+                    // 2.media.getCutPath();为裁剪后path，需判断media.isCut();是否为true
+                    // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true
+                    // 如果裁剪并压缩了，以取压缩路径为准，因为是先裁剪后压缩的
+                    break;
             }
-            Bitmap bitmap = IconUtil.getSmallBitmap(filePath, 200, 200);
+            Bitmap bitmap = IconUtil.getSmallBitmap(selectList.get(0).getPath(), 200, 200);
             rivUserIcon.setImageBitmap(bitmap);
             rivUserIcon.setScaleType(ImageView.ScaleType.CENTER_CROP);
 

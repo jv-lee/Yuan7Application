@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 
 public class NoScrollViewPager extends ViewPager {
     private boolean noScroll = false;
+    private boolean noSmoothScroll = false;
 
     public NoScrollViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -18,6 +19,10 @@ public class NoScrollViewPager extends ViewPager {
 
     public void setNoScroll(boolean noScroll) {
         this.noScroll = noScroll;
+    }
+
+    public void setNoSmoothScroll(boolean noSmoothScroll) {
+        this.noSmoothScroll = noSmoothScroll;
     }
 
     @Override
@@ -43,7 +48,12 @@ public class NoScrollViewPager extends ViewPager {
 
     @Override
     public void setCurrentItem(int item, boolean smoothScroll) {
-        super.setCurrentItem(item, smoothScroll);
+        if (noSmoothScroll == false) {
+            super.setCurrentItem(item, smoothScroll);
+        }else{
+            super.setCurrentItem(item,noSmoothScroll);
+        }
+
     }
 
     @Override

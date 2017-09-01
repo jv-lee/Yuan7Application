@@ -60,7 +60,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Log.i(TAG, "setUserVisibleHint()");
+        Log.i(TAG, "setUserVisibleHint() ->" + isVisibleToUser);
         if (isVisibleToUser) {
             isVisibleUser = true;
             onFragmentResume();

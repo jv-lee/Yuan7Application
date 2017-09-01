@@ -10,26 +10,26 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_16">
+        android:padding="@dimen/content_padding">
 
         <TextView
             android:id="@+id/tv_rankLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
-            android:textSize="16sp" />
+            android:textSize="@dimen/font_size_center" />
 
         <com.yuan7.tomcat.widget.roundImageView.RoundedImageView
             android:id="@+id/iv_icon"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_width="@dimen/icon_size_center"
+            android:layout_height="@dimen/icon_size_center"
+            android:layout_marginLeft="@dimen/content_margin"
             android:background="@color/colorWhite" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginLeft="@dimen/content_margin"
             android:orientation="vertical">
 
             <TextView
@@ -37,19 +37,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="userName"
-                android:textSize="16sp" />
+                android:textSize="@dimen/font_size_center" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/content_margin_small"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="等级" />
+                    android:textSize="@dimen/font_size_small"
+                    android:text="@string/item_level_str" />
 
                 <RatingBar
                     android:id="@+id/rating_userLevel"

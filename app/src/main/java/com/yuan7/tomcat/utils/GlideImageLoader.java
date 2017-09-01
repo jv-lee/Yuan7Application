@@ -25,8 +25,8 @@ public class GlideImageLoader {
                 .load(path)
 //                .placeholder(context.getResources().getDrawable(R.drawable.ic_photo)) //设置占位图
 //                .error(context.getResources().getDrawable(R.drawable.ic_photo)) //设置错误图
-                .diskCacheStrategy(DiskCacheStrategy.ALL) //设置缓存
-                .crossFade() //设置默认显示动画
+//                .(DiskCacheStrategy.ALL) //设置缓存
+//                .crossFade() //设置默认显示动画
                 .into(imageView);
     }
 

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/content_margin"
+    android:background="#AAAAB5"
+    android:orientation="vertical"
+    android:padding="@dimen/content_padding">
+
+    <RelativeLayout
+        android:padding="@dimen/content_padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.yuan7.tomcat.widget.roundImageView.RoundedImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/icon_size_small"
+            android:layout_height="@dimen/icon_size_small"
+            android:background="@color/colorAccent"
+            android:scaleType="fitCenter"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/content_margin"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="userName"
+            android:textSize="@dimen/font_size_small"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_timeStr"
+            android:layout_marginLeft="@dimen/content_margin"
+            android:text="18分钟前"
+            android:textColor="@color/colorWhite"
+            android:layout_toRightOf="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/content_margin"
+            android:layout_below="@+id/tv_name"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="lv:7"
+            android:textSize="@dimen/font_size_small"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_levelStr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_timeStr"
+            android:layout_marginLeft="@dimen/content_margin_small"
+            android:layout_toRightOf="@+id/tv_level"
+            android:text="小兵"
+            android:textSize="@dimen/font_size_small"
+            android:textColor="@color/colorWhite" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_contentMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/content_margin_small"
+        android:layout_marginTop="@dimen/content_margin_small"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="this is community friend message , this is community friend message, this is community friend message"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/font_size_big" />
+
+    <com.video.lib.VideoPlayerStandard
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:id="@+id/tv_readCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_inputCount"
+            android:layout_marginRight="@dimen/content_margin_small"
+            android:drawableLeft="@drawable/ic_thumb_up_white_12dp"
+            android:gravity="center"
+            android:maxLength="6"
+            android:text="5666"
+            android:textSize="@dimen/font_size_small"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_inputCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/content_margin_small"
+            android:layout_toLeftOf="@+id/tv_niceCount"
+            android:drawableLeft="@drawable/ic_chat_white_12dp"
+            android:gravity="center"
+            android:maxLength="6"
+            android:text="8855"
+            android:textSize="@dimen/font_size_small"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_niceCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/ic_thumb_up_white_12dp"
+            android:gravity="center"
+            android:maxLength="6"
+            android:text="5644"
+            android:textSize="@dimen/font_size_small"
+            android:textColor="@color/colorWhite" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,7 +1,9 @@
 package com.yuan7.tomcat.base.app;
 
 import android.app.Application;
+import android.widget.Toast;
 
+import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.module.AppModule;
 import com.yuan7.tomcat.base.module.ServiceModule;
 

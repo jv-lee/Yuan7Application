@@ -59,6 +59,10 @@ dependencies {
     compile "com.lcodecorex:tkrefreshlayout:$rootProject.library.tkrefresh_version"
     //photoView
     compile "com.github.chrisbanes:PhotoView:$rootProject.library.photoView_version"
+    compile "com.github.LuckSiege.PictureSelector:picture_library:$rootProject.library.picture_version"
+    compile project(path: ':lib-videoplayer')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.google.android.gms:play-services-ads:9.6.1'
+    compile 'com.android.support:gridlayout-v7:25.3.1'
 }

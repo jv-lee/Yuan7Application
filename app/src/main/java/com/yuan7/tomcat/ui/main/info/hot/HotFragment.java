@@ -2,6 +2,7 @@ package com.yuan7.tomcat.ui.main.info.hot;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,10 +23,12 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.HotAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.entity.BannerEntity;
 import com.yuan7.tomcat.entity.HotEntity;
 import com.yuan7.tomcat.entity.NewsEntity;
 import com.yuan7.tomcat.entity.VideoEntity;
+import com.yuan7.tomcat.ui.content.ContentActivity;
 import com.yuan7.tomcat.ui.main.info.hot.inject.DaggerHotComponent;
 import com.yuan7.tomcat.ui.main.info.hot.inject.HotModule;
 import com.yuan7.tomcat.widget.banner.MZBannerView;
@@ -75,7 +78,7 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
 
     @Override
     protected void bindData() {
-        String content = getArguments().getString("content");
+        String content = getArguments().getString(Constant.FRAGMENT_CONTENT);
         headView = LayoutInflater.from(mActivity).inflate(R.layout.layout_hot_head, null, false);
         banner = (MZBannerView<BannerEntity>) headView.findViewById(R.id.banner);
         banner.setDelayedTime(3000);
@@ -91,6 +94,12 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
         hotAdapter = new HotAdapter(new ArrayList<HotEntity>());
         hotAdapter.addHeaderView(headView);
         hotAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        hotAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                startActivity(new Intent(mActivity, ContentActivity.class));
+            }
+        });
         hotAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
@@ -100,12 +109,6 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
 
         rvContainer.setLayoutManager(new LinearLayoutManager(mActivity));
         rvContainer.setAdapter(hotAdapter);
-        rvContainer.addOnItemTouchListener(new OnItemChildClickListener() {
-            @Override
-            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
-            }
-        });
 
         ProgressLayout progressLayout = new ProgressLayout(mActivity);
 //        progressLayout.setColorSchemeColors(Color.parseColor("#000000"));

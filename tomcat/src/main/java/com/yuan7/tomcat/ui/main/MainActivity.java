@@ -5,9 +5,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.yuan7.tomcat.Config;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
@@ -17,10 +20,12 @@ import com.yuan7.tomcat.ui.main.home.HomeFragment;
 import com.yuan7.tomcat.ui.main.raiders.RaidersFragment;
 import com.yuan7.tomcat.ui.main.recommend.RecommendFragment;
 import com.yuan7.tomcat.ui.main.video.VideoFragment;
+import com.yuan7.tomcat.widget.FloatingImageView;
 import com.yuan7.tomcat.widget.NoScrollViewPager;
 
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements ToolbarControlInterface {
 
@@ -36,6 +41,8 @@ public class MainActivity extends BaseActivity implements ToolbarControlInterfac
     ImageView ivRight;
     @BindView(R.id.tv_title)
     TextView tvTitle;
+    @BindView(R.id.iv_gif)
+    FloatingImageView ivGif;
 
     private Fragment[] fragments;
     private Fragment[] openFragments = {
@@ -73,6 +80,8 @@ public class MainActivity extends BaseActivity implements ToolbarControlInterfac
             items = openItems;
             fragments = openFragments;
         }
+
+        Glide.with(this).load(R.drawable.anim).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(ivGif);
 
         vpContainer.setAdapter(new MainPagerAdapter(getSupportFragmentManager(), fragments));
         vpContainer.setNoScroll(true);
@@ -115,5 +124,11 @@ public class MainActivity extends BaseActivity implements ToolbarControlInterfac
     @Override
     public void setTileText(String title) {
         tvTitle.setText(title);
+    }
+
+    @OnClick(R.id.iv_gif)
+    public void onclick(View view) {
+        Toast.makeText(mContext, "gif", Toast.LENGTH_SHORT).show();
+
     }
 }

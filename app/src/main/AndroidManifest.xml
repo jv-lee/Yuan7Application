@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yuan7.tomcat">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.yuan7.tomcat">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".base.app.App"
@@ -33,22 +33,27 @@
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTask">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-
-        </activity>
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ui.menu.MenuActivity" />
         <activity
-            android:name=".ui.menu.post.MyPostActivity"
-            android:label="@string/title_activity_my_post"
-            android:theme="@style/iosBackTheme"></activity>
+            android:name=".ui.menu.post.PostActivity"
+            android:theme="@style/iosBackTheme" />
+        <activity android:name=".ui.send.SendActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".ui.content.ContentActivity"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

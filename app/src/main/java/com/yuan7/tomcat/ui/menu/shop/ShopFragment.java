@@ -22,11 +22,10 @@ import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.entity.ShopBannerEntity;
 import com.yuan7.tomcat.entity.ShopEntity;
-import com.yuan7.tomcat.interfaces.MenuTitleBarListener;
+import com.yuan7.tomcat.interfaces.TitleBarListener;
 import com.yuan7.tomcat.ui.menu.shop.inject.DaggerShopComponent;
 import com.yuan7.tomcat.ui.menu.shop.inject.ShopModule;
 import com.yuan7.tomcat.widget.banner.MZBannerView;
-import com.yuan7.tomcat.widget.banner.holder.BannerViewHolder;
 import com.yuan7.tomcat.widget.banner.holder.MZHolderCreator;
 import com.yuan7.tomcat.widget.banner.holder.MZViewHolder;
 import com.yuan7.tomcat.widget.banner.holder.ShopBannerViewHolder;
@@ -53,9 +52,9 @@ public class ShopFragment extends BaseFragment<ShopContract.Presenter> implement
     private MZBannerView<ShopBannerEntity> banner;
     private List<ShopBannerEntity> banners;
 
-    private MenuTitleBarListener listener;
+    private TitleBarListener listener;
 
-    public ShopFragment(MenuTitleBarListener listener) {
+    public ShopFragment(TitleBarListener listener) {
         this.listener = listener;
     }
 
@@ -75,7 +74,7 @@ public class ShopFragment extends BaseFragment<ShopContract.Presenter> implement
 
     @Override
     protected void bindData() {
-        listener.setTitleText(Constant.MENU_TITLE_SHOP);
+        listener.setTitleText(getString(R.string.menu_item_shop));
 
         headView = LayoutInflater.from(mActivity).inflate(R.layout.layout_hot_head, null, false);
         banner = (MZBannerView<ShopBannerEntity>) headView.findViewById(R.id.banner);

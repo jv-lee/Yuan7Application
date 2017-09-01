@@ -9,14 +9,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dp_26"
+        android:layout_marginTop="@dimen/status_bar_height"
         android:orientation="vertical"
-        android:padding="45dp">
+        android:padding="@dimen/layout_padding">
 
         <com.yuan7.tomcat.widget.roundImageView.RoundedImageView
             android:id="@+id/iv_icon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/icon_size_big"
+            android:layout_height="@dimen/icon_size_big"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitCenter"
             android:src="@mipmap/icon"
@@ -27,61 +27,62 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginTop="@dimen/content_margin"
             android:text="@string/login_title"
             android:textColor="@color/colorAccent"
-            android:textSize="@dimen/sp_16" />
+            android:textSize="@dimen/font_size_center" />
 
         <EditText
             android:id="@+id/et_userName"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_46"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_height="@dimen/et_login_height"
+            android:layout_marginTop="@dimen/content_margin"
             android:background="@drawable/shape_edit_bg"
             android:drawableLeft="@drawable/ic_back"
             android:hint="@string/login_userName"
             android:textColorHint="@color/colorAccent"
-            android:textSize="@dimen/sp_16" />
+            android:textSize="@dimen/font_size_center" />
 
         <EditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginTop="@dimen/dp_5"
+            android:layout_height="@dimen/et_login_height"
+            android:layout_marginTop="@dimen/content_margin_small"
             android:background="@drawable/shape_edit_bg"
             android:drawableLeft="@drawable/ic_back"
             android:hint="@string/login_password"
             android:textColorHint="@color/colorAccent"
-            android:textSize="@dimen/sp_16" />
+            android:textSize="@dimen/font_size_center" />
 
         <TextView
             android:id="@+id/tv_forgetPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dp_26"
+            android:layout_marginTop="@dimen/view_margin"
+            android:textSize="@dimen/font_size_small"
             android:text="@string/login_getPassword"
             android:textColor="@color/colorAccent" />
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_46"
-            android:layout_marginTop="@dimen/dp_26"
+            android:layout_height="@dimen/et_login_height"
+            android:layout_marginTop="@dimen/view_margin"
             android:background="@drawable/shape_btn_bg1"
             android:text="@string/login_login"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp" />
+            android:textSize="@dimen/font_size_center" />
 
         <Button
             android:id="@+id/btn_flyLogin"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_46"
-            android:layout_marginTop="@dimen/dp_26"
+            android:layout_height="@dimen/et_login_height"
+            android:layout_marginTop="@dimen/view_margin"
             android:background="@drawable/shape_btn_bg2"
             android:text="@string/login_flyLogin"
             android:textColor="@color/colorAccent"
-            android:textSize="@dimen/sp_16" />
+            android:textSize="@dimen/font_size_center" />
 
     </LinearLayout>
 
@@ -90,9 +91,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
-        android:layout_marginBottom="@dimen/dp_26"
+        android:layout_marginBottom="@dimen/view_margin"
         android:text="@string/login_register"
         android:textColor="@color/colorAccent"
-        android:textSize="@dimen/sp_16" />
+        android:textSize="@dimen/font_size_small" />
 
 </FrameLayout>

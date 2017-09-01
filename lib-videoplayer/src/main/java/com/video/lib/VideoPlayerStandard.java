@@ -37,9 +37,7 @@ public class VideoPlayerStandard extends VideoPlayer {
     public ImageView thumbImageView;
     public ImageView tinyBackImageView;
 
-
     protected DismissControlViewTimerTask mDismissControlViewTimerTask;
-
 
     public VideoPlayerStandard(Context context) {
         super(context);
@@ -59,6 +57,7 @@ public class VideoPlayerStandard extends VideoPlayer {
         loadingProgressBar = (ProgressBar) findViewById(com.video.lib.R.id.loading);
         tinyBackImageView = (ImageView) findViewById(com.video.lib.R.id.back_tiny);
 
+        thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
         thumbImageView.setOnClickListener(this);
         backButton.setOnClickListener(this);
         tinyBackImageView.setOnClickListener(this);
@@ -205,6 +204,10 @@ public class VideoPlayerStandard extends VideoPlayer {
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 
     @Override
     public void showWifiDialog() {
