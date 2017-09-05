@@ -69,7 +69,6 @@ public class ContentFragment extends BaseFragment {
 
     @Override
     protected void lazyLoad() {
-
     }
 
 }

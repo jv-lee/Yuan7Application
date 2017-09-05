@@ -67,18 +67,18 @@ public class PostActivity extends BaseActivity {
         appBar.addOnOffsetChangedListener(new AppBarStateChangeListener() {
             @Override
             public void onStateChanged(AppBarLayout appBarLayout, State state) {
-                if (state == State.EXPANDED) {
+                if (state == State.EXPANDED) {//展开
                     rivUserIconClose.setVisibility(View.GONE);
-                    RxBus.getInstance().post(new EventBase(Constant.RX_BUS_APPBAR_OPEN,null));
-                } else if (state == State.COLLAPSED) {
+                    RxBus.getInstance().post(new EventBase(Constant.RX_BUS_APPBAR_OPEN, null));
+                } else if (state == State.COLLAPSED) {//收缩
                     rivUserIconClose.setVisibility(View.VISIBLE);
-                    RxBus.getInstance().post(new EventBase(Constant.RX_BUS_APPBAR_CLOSE,null));
-                } else{
-                    RxBus.getInstance().post(new EventBase(Constant.RX_BUS_APPBAR_CLOSE,null));
+                    RxBus.getInstance().post(new EventBase(Constant.RX_BUS_APPBAR_CLOSE, null));
+                } else {//滑动中
+                    RxBus.getInstance().post(new EventBase(Constant.RX_BUS_APPBAR_CLOSE, null));
                 }
             }
         });
-        vpContainer.setAdapter(new UiPagerAdapter(mFragmentManager,fragments,titles));
+        vpContainer.setAdapter(new UiPagerAdapter(mFragmentManager, fragments, titles));
 //        vpContainer.setNoScroll(true);
         vpContainer.setOffscreenPageLimit(fragments.length - 1);
         tab.setupWithViewPager(vpContainer);

@@ -30,5 +30,14 @@ public class Constant {
     public static final int RX_BUS_START_FRIEND = 3;//跳转到 好友页面 RxBus 通知
 
 
+    //上传图片视频 返回code
+    public static final int PICTURE_CODE1 = 201;
+    public static final int PICTURE_CODE2 = 202;
+    public static final int PICTURE_CODE3 = 203;
+
+
+    public static final String PICTURE_TYPE_IMAGE = "image";
+    public static final String PICTURE_TYPE_VIDEO = "video";
+
 
 }

@@ -1,5 +1,8 @@
 package com.yuan7.tomcat.ui.send;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,9 +13,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
+import com.yuan7.tomcat.constant.Constant;
+import com.yuan7.tomcat.entity.PictureEntity;
+import com.yuan7.tomcat.utils.IconUtil;
+import com.yuan7.tomcat.utils.VideoPicUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -37,9 +50,17 @@ public class SendActivity extends BaseActivity {
     FrameLayout flPicture2;
     @BindView(R.id.fl_picture3)
     FrameLayout flPicture3;
+    @BindView(R.id.iv_delete1)
+    ImageView ivDelete1;
+    @BindView(R.id.iv_delete2)
+    ImageView ivDelete2;
+    @BindView(R.id.iv_delete3)
+    ImageView ivDelete3;
 
     private ArrayAdapter<String> typeAdapter;
     private ArrayAdapter<String> goldAdapter;
+
+    private List<LocalMedia> selectList = null;
 
     @Override
     protected int bindRootView() {
@@ -78,7 +99,7 @@ public class SendActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.iv_left,R.id.tv_right,R.id.btn_send,R.id.fl_picture1,R.id.fl_picture2,R.id.fl_picture3})
+    @OnClick({R.id.iv_left, R.id.tv_right, R.id.btn_send, R.id.fl_picture1, R.id.fl_picture2, R.id.fl_picture3, R.id.iv_delete1, R.id.iv_delete2, R.id.iv_delete3})
     public void onclick(View view) {
         switch (view.getId()) {
             case R.id.iv_left:
@@ -90,13 +111,149 @@ public class SendActivity extends BaseActivity {
                 Toast.makeText(mContext, "send", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.fl_picture1:
-                Toast.makeText(mContext, "picture1", Toast.LENGTH_SHORT).show();
+                if (hasImage) {
+                    openPicture(PictureMimeType.ofImage(), Constant.PICTURE_CODE2);
+                } else {
+                    openPicture(PictureMimeType.ofAll(), Constant.PICTURE_CODE1);
+                }
                 break;
             case R.id.fl_picture2:
-                Toast.makeText(mContext, "picture2", Toast.LENGTH_SHORT).show();
+                openPicture(PictureMimeType.ofImage(), Constant.PICTURE_CODE2);
                 break;
             case R.id.fl_picture3:
-                Toast.makeText(mContext, "picture3", Toast.LENGTH_SHORT).show();
+                openPicture(PictureMimeType.ofImage(), Constant.PICTURE_CODE3);
+                break;
+            case R.id.iv_delete1:
+                deletePicture(1);
+                break;
+            case R.id.iv_delete2:
+                deletePicture(2);
+                break;
+            case R.id.iv_delete3:
+                deletePicture(3);
+                break;
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case Constant.PICTURE_CODE1:
+                    setPicture(data, Constant.PICTURE_CODE1);
+                    break;
+                case Constant.PICTURE_CODE2:
+                    setPicture(data, Constant.PICTURE_CODE2);
+                    break;
+                case Constant.PICTURE_CODE3:
+                    setPicture(data, Constant.PICTURE_CODE3);
+                    break;
+            }
+        } else {
+            Toast.makeText(this, "取消", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public void openPicture(int mode, int code) {
+        PictureSelector.create(this)
+                .openGallery(mode)
+                .maxSelectNum(1)
+                .minSelectNum(1)
+                .forResult(code);
+    }
+
+    private ArrayList<PictureEntity> pics = new ArrayList<>();
+    private boolean hasImage = false;
+
+    public void setPicture(Intent data, int code) {
+        selectList = PictureSelector.obtainMultipleResult(data);
+        LocalMedia localMedia = selectList.get(0);
+
+        if (code == Constant.PICTURE_CODE1) {
+            if (localMedia.getPictureType().contains(Constant.PICTURE_TYPE_IMAGE)) {
+                Bitmap bitmap = IconUtil.getSmallBitmap(localMedia.getPath(), 200, 200);
+                flPicture1.setBackground(new BitmapDrawable(bitmap));
+                ivDelete1.setVisibility(View.VISIBLE);
+                flPicture2.setVisibility(View.VISIBLE);
+                hasImage = true;
+
+            } else if (localMedia.getPictureType().contains(Constant.PICTURE_TYPE_VIDEO)) {
+                Bitmap bitmap = VideoPicUtil.getVideoThumbnail(localMedia.getPath());
+                flPicture1.setBackground(new BitmapDrawable(bitmap));
+                hasImage = false;
+            }
+            if (pics.size() == 1) {
+                pics.get(0).setPath(localMedia.getPath());
+            } else {
+                pics.add(0, new PictureEntity(localMedia.getPath()));
+            }
+        } else if (code == Constant.PICTURE_CODE2) {
+            Bitmap bitmap = IconUtil.getSmallBitmap(localMedia.getPath(), 200, 200);
+            flPicture2.setBackground(new BitmapDrawable(bitmap));
+            ivDelete2.setVisibility(View.VISIBLE);
+            flPicture3.setVisibility(View.VISIBLE);
+            if (pics.size() == 2) {
+                pics.get(1).setPath(localMedia.getPath());
+            } else {
+                pics.add(1, new PictureEntity(localMedia.getPath()));
+            }
+
+        } else if (code == Constant.PICTURE_CODE3) {
+            Bitmap bitmap = IconUtil.getSmallBitmap(localMedia.getPath(), 200, 200);
+            flPicture3.setBackground(new BitmapDrawable(bitmap));
+            ivDelete3.setVisibility(View.VISIBLE);
+            if (pics.size() == 3) {
+                pics.get(2).setPath(localMedia.getPath());
+            } else {
+                pics.add(2, new PictureEntity(localMedia.getPath()));
+            }
+        }
+    }
+
+    private void deletePicture(int code) {
+        switch (code) {
+            case 1:
+                if (pics.size() == 3) {
+                    pics.remove(0);
+                    ivDelete3.setVisibility(View.INVISIBLE);
+                    flPicture3.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                    flPicture1.setBackground(new BitmapDrawable(IconUtil.getSmallBitmap(pics.get(0).getPath(), 200, 200)));
+                    flPicture2.setBackground(new BitmapDrawable(IconUtil.getSmallBitmap(pics.get(1).getPath(), 200, 200)));
+                } else if (pics.size() == 2) {
+                    pics.remove(0);
+                    ivDelete3.setVisibility(View.INVISIBLE);
+                    flPicture3.setVisibility(View.INVISIBLE);
+                    ivDelete2.setVisibility(View.INVISIBLE);
+                    flPicture2.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                    flPicture1.setBackground(new BitmapDrawable(IconUtil.getSmallBitmap(pics.get(0).getPath(), 200, 200)));
+                } else if (pics.size() == 1) {
+                    pics.remove(0);
+                    ivDelete2.setVisibility(View.INVISIBLE);
+                    flPicture2.setVisibility(View.INVISIBLE);
+                    ivDelete1.setVisibility(View.INVISIBLE);
+                    flPicture1.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                    hasImage = false;
+                }
+                break;
+            case 2:
+                if (pics.size() == 3) {
+                    pics.remove(1);
+                    ivDelete3.setVisibility(View.INVISIBLE);
+                    flPicture3.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                    flPicture2.setBackground(new BitmapDrawable(IconUtil.getSmallBitmap(pics.get(1).getPath(), 200, 200)));
+                } else if (pics.size() == 2) {
+                    pics.remove(1);
+                    flPicture3.setVisibility(View.INVISIBLE);
+                    ivDelete2.setVisibility(View.INVISIBLE);
+                    flPicture2.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                }
+                break;
+            case 3:
+                pics.remove(2);
+                ivDelete3.setVisibility(View.INVISIBLE);
+                flPicture3.setBackground(getResources().getDrawable(R.mipmap.send_pic));
                 break;
         }
     }

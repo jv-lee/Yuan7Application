@@ -36,12 +36,13 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv_delete1"
                 android:scaleType="fitXY"
                 android:layout_gravity="end"
-                android:background="@color/colorRed"
+                android:src="@drawable/ic_backspace_red_24dp"
                 android:visibility="gone"
-                android:layout_width="10dp"
-                android:layout_height="10dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </FrameLayout>
 
@@ -60,12 +61,13 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv_delete2"
                 android:scaleType="fitXY"
                 android:layout_gravity="end"
-                android:background="@color/colorRed"
+                android:src="@drawable/ic_backspace_red_24dp"
                 android:visibility="gone"
-                android:layout_width="10dp"
-                android:layout_height="10dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </FrameLayout>
 
@@ -84,12 +86,13 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv_delete3"
                 android:scaleType="fitXY"
                 android:layout_gravity="end"
-                android:background="@color/colorRed"
+                android:src="@drawable/ic_backspace_red_24dp"
                 android:visibility="gone"
-                android:layout_width="10dp"
-                android:layout_height="10dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </FrameLayout>
 
