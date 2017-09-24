@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="@dimen/content_padding_big"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:padding="@dimen/content_padding_small"
+        android:id="@+id/rl_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_round_red"
+            android:id="@+id/iv_camera"
+            android:src="@drawable/ic_camera_alt_white_36dp"
+            android:padding="@dimen/content_padding_small"
+            android:layout_width="@dimen/icon_size_center"
+            android:layout_height="@dimen/icon_size_center" />
+
+        <TextView
+            android:layout_marginTop="@dimen/content_margin_small"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/iv_camera"
+            android:text="@string/settings_icon_camera"
+            android:textSize="@dimen/font_size_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:padding="@dimen/content_margin_small"
+        android:id="@+id/rl_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_round_green"
+            android:id="@+id/iv_photo"
+            android:src="@drawable/ic_insert_photo_white_36dp"
+            android:padding="@dimen/content_padding_small"
+            android:layout_width="@dimen/icon_size_center"
+            android:layout_height="@dimen/icon_size_center" />
+
+        <TextView
+            android:layout_marginTop="@dimen/content_margin_small"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/iv_photo"
+            android:text="@string/settings_icon_picture"
+            android:textSize="@dimen/font_size_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

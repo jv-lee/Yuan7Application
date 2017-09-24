@@ -1,8 +1,12 @@
 package com.yuan7.tomcat.ui.main.comm.aq;
 
+import com.yuan7.tomcat.AppConfig;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.ContentEntity;
 import com.yuan7.tomcat.entity.AQEntity;
+import com.yuan7.tomcat.server.ApiServer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +25,9 @@ import io.reactivex.schedulers.Schedulers;
 @ActivityScope
 public class AQModel extends BaseModel implements AQContract.Model {
 
+    @Inject
+    public ApiServer apiServer;
+
     private String url = "https://developer.android.google.cn/images/home/kotlin-android.svg";
     private String content = "this is community friend message , this is community friend message, this is community friend message";
 
@@ -30,8 +37,10 @@ public class AQModel extends BaseModel implements AQContract.Model {
     }
 
     @Override
-    public Observable<List<AQEntity>> doGetAQEntity(int pageNo) {
-        return null;
+    public Observable<ResultEntity<ContentEntity>> doPostAQEntity(int pageNo, int type) {
+        return apiServer.doPostAQList(pageNo, AppConfig.PAGE_NUMBER, type, AppConfig.APP_ID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -42,11 +51,11 @@ public class AQModel extends BaseModel implements AQContract.Model {
                 List<AQEntity> aqEntities = new ArrayList<AQEntity>();
                 if (pageNo == 1) {
                     for (int i = 0; i < 10; i++) {
-                        aqEntities.add(new AQEntity(i, "userName", "8-4", 6,"小兵", content, new String[]{url, url},null,null,null, 86, 88, 66, 10,url,1));
+                        aqEntities.add(new AQEntity(i, "userName", "8-4", 6, "小兵", content, new String[]{url, url}, null, null, null, 86, 88, 66, 10, url, 1));
                     }
                 } else if (pageNo == 2) {
                     for (int i = 0; i < 10; i++) {
-                        aqEntities.add(new AQEntity(i, "userName", "8-4", 6,"小兵", content, null,"http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4","动物世界","http://yuan7.oss-cn-shenzhen.aliyuncs.com/image/luodiye-02.png", 86, 88, 66, 20,url,2));
+                        aqEntities.add(new AQEntity(i, "userName", "8-4", 6, "小兵", content, null, "http://gslb.miaopai.com/stream/ed5HCfnhovu3tyIQAiv60Q__.mp4", "动物世界", "http://yuan7.oss-cn-shenzhen.aliyuncs.com/image/luodiye-02.png", 86, 88, 66, 20, url, 2));
                     }
                 }
                 e.onNext(aqEntities);

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/content_margin_small"
+    android:background="@drawable/shape_content_bg"
+    android:orientation="horizontal"
+    android:padding="@dimen/content_padding_small">
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="会说话的汤姆猫毛绒玩具，纯棉无害，宝宝的成长伴侣。"
+            android:textColor="@color/fontColorYellowDark"
+            android:textSize="@dimen/font_size_center" />
+
+
+        <TextView
+            android:id="@+id/tv_put_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="消耗500金币"
+            android:textColor="@color/fontColorYellowDark"
+            android:textSize="@dimen/font_size_small" />
+
+        <TextView
+            android:id="@+id/tv_dateStr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="2017-09-08 20:59:55"
+            android:textColor="@color/fontColorYellowDark"
+            android:textSize="@dimen/font_size_small" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/iv_picture"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginLeft="@dimen/margin_top"
+        android:layout_weight="2" />
+
+</LinearLayout>

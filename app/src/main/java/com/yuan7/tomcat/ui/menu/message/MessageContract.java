@@ -3,7 +3,8 @@ package com.yuan7.tomcat.ui.menu.message;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
-import com.yuan7.tomcat.entity.MessageEntity;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.MessageEntity;
 
 import java.util.List;
 
@@ -15,17 +16,17 @@ import io.reactivex.Observable;
 
 public interface MessageContract {
     interface View extends IView {
-        void bindMessageData(List<MessageEntity> result);
+        void bindMessageData(int pageNo, ResultEntity<MessageEntity> result);
 
         void bindDataEvent(int code, String message);
     }
 
     interface Presenter extends IPresenter {
-        void bindMessageData(int pageNo);
+        void bindMessageData(int pageNo, int type);
     }
 
     interface Model extends IModel {
-        Observable<List<MessageEntity>> doGetMessage(int pageNo);
+        Observable<ResultEntity<MessageEntity>> doPostMessage(int pageNo, int type);
 
         Observable<List<MessageEntity>> doLocalMessage(int pageNo);
     }

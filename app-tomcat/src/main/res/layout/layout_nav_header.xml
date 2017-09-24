@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_header_height"
+    android:background="@mipmap/appbar_background"
+    android:clickable="true"
+    android:padding="@dimen/activity_vertical_margin"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.yuan7.tomcat.widget.roundImageView.RoundedImageView
+            android:id="@+id/riv_userIcon"
+            android:layout_width="@dimen/icon_size_center"
+            android:layout_height="@dimen/icon_size_center"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/icon"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/tv_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="角色名"
+            android:textColor="@color/fontColorBlack"
+            android:textSize="@dimen/font_size_center"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:background="@drawable/shape_name_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tv_levelNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="LV:12"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="@dimen/font_size_small_to"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_levelName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:text="连长"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="@dimen/font_size_small_to"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:text="等级" />-->
+
+    <!--<RatingBar-->
+    <!--android:id="@+id/rating_userLevel"-->
+    <!--style="?android:attr/ratingBarStyleSmall"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:numStars="5"-->
+    <!--android:rating="3" />-->
+
+    <!--</LinearLayout>-->
+
+</FrameLayout>

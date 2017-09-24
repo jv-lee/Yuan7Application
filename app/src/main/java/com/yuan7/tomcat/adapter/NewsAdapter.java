@@ -1,12 +1,9 @@
 package com.yuan7.tomcat.adapter;
 
-import android.widget.ImageView;
-
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yuan7.tomcat.R;
-import com.yuan7.tomcat.entity.NewsEntity;
-import com.yuan7.tomcat.utils.GlideImageLoader;
+import com.yuan7.tomcat.bean.impl.ContentEntity;
 
 import java.util.List;
 
@@ -14,7 +11,7 @@ import java.util.List;
  * Created by Administrator on 2017/8/17.
  */
 
-public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity, BaseViewHolder> {
+public class NewsAdapter extends BaseMultiItemQuickAdapter<ContentEntity, BaseViewHolder> {
 
     /**
      * Same as QuickAdapter#QuickAdapter(Context,int) but with
@@ -22,37 +19,37 @@ public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity, BaseViewH
      *
      * @param data A new list is created out of this one to avoid mutable list
      */
-    public NewsAdapter(List<NewsEntity> data) {
+    public NewsAdapter(List<ContentEntity> data) {
         super(data);
-        addItemType(NewsEntity.MULTI, R.layout.item_news_mult);
-        addItemType(NewsEntity.SIGNLE, R.layout.item_news_single);
+        addItemType(ContentEntity.MULTI, R.layout.item_news_mult);
+        addItemType(ContentEntity.SIGNLE, R.layout.item_news_single);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, NewsEntity item) {
+    protected void convert(BaseViewHolder helper, ContentEntity item) {
         switch (helper.getItemViewType()) {
-            case NewsEntity.MULTI:
-                if (null != item.getImageUrls()[0]) {
-                    GlideImageLoader.loadImage(mContext, item.getImageUrls()[0], (ImageView) helper.getView(R.id.iv_image1));
-                }
-                if (null != item.getImageUrls()[1]) {
-                    GlideImageLoader.loadImage(mContext, item.getImageUrls()[1], (ImageView) helper.getView(R.id.iv_image2));
-                }
-                if (null != item.getImageUrls()[2]) {
-                    GlideImageLoader.loadImage(mContext, item.getImageUrls()[2], (ImageView) helper.getView(R.id.iv_image3));
-                }
-                helper.setText(R.id.tv_timeStr, item.getTimeStr())
+            case ContentEntity.MULTI:
+//                if (item.getSize() > 0) {
+//                    GlideImageLoader.loadImage(mContext, item.getImages().get(0).getUrl(), (ImageView) helper.getView(R.id.iv_image1));
+//                }
+//                if (item.getSize() > 1) {
+//                    GlideImageLoader.loadImage(mContext, item.getImages().get(1).getUrl(), (ImageView) helper.getView(R.id.iv_image2));
+//                }
+//                if (item.getSize() > 2) {
+//                    GlideImageLoader.loadImage(mContext, item.getImages().get(2).getUrl(), (ImageView) helper.getView(R.id.iv_image3));
+//                }
+                helper.setText(R.id.tv_timeStr, item.getEditeTime())
                         .setText(R.id.tv_title, item.getTitle())
-                        .setText(R.id.tv_appName, item.getAppName())
-                        .setText(R.id.tv_likeCount, "喜欢(" + item.getLikeCount() + ")");
+                        .setText(R.id.tv_appName, item.getSource())
+                        .setText(R.id.tv_likeCount, "喜欢(" + item.getGootRate() + ")");
                 break;
-            case NewsEntity.SIGNLE:
-                if (null != item.getImageUrls()[0]) {
-                    GlideImageLoader.loadImage(mContext, item.getImageUrls()[0], (ImageView) helper.getView(R.id.iv_image));
-                }
+            case ContentEntity.SIGNLE:
+//                if (item.getSize() > 0) {
+//                    GlideImageLoader.loadImage(mContext, item.getImages().get(0).getUrl(), (ImageView) helper.getView(R.id.iv_image1));
+//                }
                 helper.setText(R.id.tv_title, item.getTitle())
-                        .setText(R.id.tv_appName, item.getAppName())
-                        .setText(R.id.tv_likeCount, "喜欢(" + item.getLikeCount() + ")");
+                        .setText(R.id.tv_appName, item.getSource())
+                        .setText(R.id.tv_likeCount, "喜欢(" + item.getGootRate() + ")");
                 break;
         }
     }

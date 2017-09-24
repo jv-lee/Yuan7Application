@@ -1,135 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorAccent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     android:orientation="vertical"
     tools:context="com.yuan7.tomcat.ui.send.SendActivity">
 
-    <include layout="@layout/layout_toolbar_send"/>
-
-    <EditText
-        android:padding="@dimen/content_padding"
-        android:gravity="start"
-        android:hint="@string/et_hint_input_way"
-        android:textSize="@dimen/font_size_center"
-        android:textCursorDrawable="@drawable/color_cursor"
-        android:cursorVisible="true"
-        android:background="@null"
-        android:layout_width="match_parent"
-        android:layout_weight="2"
-        android:layout_height="0dp" />
+    <include layout="@layout/layout_toolbar_send" />
 
     <LinearLayout
-        android:padding="@dimen/content_padding"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="126dp">
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/content_margin_small"
+        android:paddingRight="@dimen/content_margin_small">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="标题："
+            android:textSize="@dimen/font_size_big" />
+
+        <EditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:gravity="center"
+            android:maxLength="12"
+            android:maxLines="1"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="@dimen/font_size_center" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@null"
+        android:cursorVisible="true"
+        android:gravity="start"
+        android:hint="@string/et_hint_input_way"
+        android:padding="@dimen/content_padding"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="@dimen/font_size_center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/content_padding">
 
         <FrameLayout
             android:id="@+id/fl_picture1"
-            android:scaleType="fitXY"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="3"
             android:background="@mipmap/send_pic"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:scaleType="fitXY">
 
             <ImageView
                 android:id="@+id/iv_delete1"
-                android:scaleType="fitXY"
-                android:layout_gravity="end"
-                android:src="@drawable/ic_backspace_red_24dp"
-                android:visibility="gone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_backspace_red_24dp"
+                android:visibility="gone" />
 
         </FrameLayout>
 
         <Space
-            android:layout_weight="0.5"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
 
         <FrameLayout
             android:id="@+id/fl_picture2"
-            android:scaleType="fitXY"
-            android:layout_weight="3"
-            android:visibility="invisible"
-            android:background="@mipmap/send_pic"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@mipmap/send_pic"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/iv_delete2"
-                android:scaleType="fitXY"
-                android:layout_gravity="end"
-                android:src="@drawable/ic_backspace_red_24dp"
-                android:visibility="gone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_backspace_red_24dp"
+                android:visibility="gone" />
 
         </FrameLayout>
 
         <Space
-            android:layout_weight="0.5"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
 
         <FrameLayout
             android:id="@+id/fl_picture3"
-            android:scaleType="fitXY"
-            android:layout_weight="3"
-            android:visibility="invisible"
-            android:background="@mipmap/send_pic"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@mipmap/send_pic"
+            android:scaleType="fitXY"
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/iv_delete3"
-                android:scaleType="fitXY"
-                android:layout_gravity="end"
-                android:src="@drawable/ic_backspace_red_24dp"
-                android:visibility="gone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_backspace_red_24dp"
+                android:visibility="gone" />
 
         </FrameLayout>
 
     </LinearLayout>
 
     <View
-        android:layout_marginLeft="@dimen/content_margin"
-        android:background="#ababab"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/content_margin"
+        android:background="#ababab" />
 
     <RelativeLayout
-        android:padding="@dimen/content_padding"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="5"
-        android:layout_height="0dp">
+        android:padding="@dimen/content_padding">
 
         <Spinner
             android:id="@+id/spinner_type"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <Spinner
             android:id="@+id/spinner_gold"
-            android:visibility="invisible"
-            android:layout_toRightOf="@+id/spinner_type"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/spinner_type"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btn_send"
-            android:layout_alignParentRight="true"
-            android:text="发表"
-            android:background="@drawable/shape_btn_bg2"
-            android:textColor="@color/colorAccent"
             android:layout_width="72dp"
-            android:layout_height="32dp" />
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shape_btn_bg2"
+            android:text="发表"
+            android:textColor="@color/colorAccent" />
 
     </RelativeLayout>
 

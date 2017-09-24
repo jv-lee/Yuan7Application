@@ -1,43 +1,43 @@
 package com.yuan7.tomcat.ui.main.info.hot;
 
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
+import com.yuan7.tomcat.AppConfig;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.HotAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.bean.impl.ContentEntity;
+import com.yuan7.tomcat.bean.ResultEntity;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.entity.BannerEntity;
-import com.yuan7.tomcat.entity.HotEntity;
-import com.yuan7.tomcat.entity.NewsEntity;
-import com.yuan7.tomcat.entity.VideoEntity;
+import com.yuan7.tomcat.bean.impl.BannerEntity;
 import com.yuan7.tomcat.ui.content.ContentActivity;
 import com.yuan7.tomcat.ui.main.info.hot.inject.DaggerHotComponent;
 import com.yuan7.tomcat.ui.main.info.hot.inject.HotModule;
+import com.yuan7.tomcat.utils.IntentUtil;
+import com.yuan7.tomcat.utils.LogUtil;
 import com.yuan7.tomcat.widget.banner.MZBannerView;
 import com.yuan7.tomcat.widget.banner.holder.BannerViewHolder;
 import com.yuan7.tomcat.widget.banner.holder.MZHolderCreator;
 import com.yuan7.tomcat.widget.banner.holder.MZViewHolder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -53,10 +53,11 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
     RecyclerView rvContainer;
 
     private View headView;
-    private MZBannerView<BannerEntity> banner;
-    private HotAdapter hotAdapter;
+    private MZBannerView<ContentEntity> banner;
+    private HotAdapter dataAdapter;
 
-    private List<BannerEntity> banners;
+    private List<ContentEntity> banners;
+    private int page = 1;
 
     public HotFragment() {
 
@@ -80,35 +81,36 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
     protected void bindData() {
         String content = getArguments().getString(Constant.FRAGMENT_CONTENT);
         headView = LayoutInflater.from(mActivity).inflate(R.layout.layout_hot_head, null, false);
-        banner = (MZBannerView<BannerEntity>) headView.findViewById(R.id.banner);
+        banner = (MZBannerView<ContentEntity>) headView.findViewById(R.id.banner);
         banner.setDelayedTime(3000);
         banner.setBannerPageClickListener(new MZBannerView.BannerPageClickListener() {
             @Override
             public void onPageClick(View view, int position) {
                 if (banners != null && banners.size() > 0) {
-                    Toast.makeText(mActivity, banners.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                    IntentUtil.setParamsIntoActivity(mActivity, ContentActivity.class, IntentUtil.getParamsMap(banners.get(position)));
                 }
             }
         });
 
-        hotAdapter = new HotAdapter(new ArrayList<HotEntity>());
-        hotAdapter.addHeaderView(headView);
-        hotAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
-        hotAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        dataAdapter = new HotAdapter(new ArrayList<ContentEntity>());
+        dataAdapter.addHeaderView(headView);
+        dataAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        dataAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(mActivity, ContentActivity.class));
+                ContentEntity contentEntity = ((HotAdapter) adapter).getData().get(position);
+                IntentUtil.setParamsIntoActivity(mActivity, ContentActivity.class, IntentUtil.getParamsMap(contentEntity));
             }
         });
-        hotAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        dataAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                mPresenter.bindHotData(2);
+                mPresenter.bindHotData(page);
             }
         });
 
         rvContainer.setLayoutManager(new LinearLayoutManager(mActivity));
-        rvContainer.setAdapter(hotAdapter);
+        rvContainer.setAdapter(dataAdapter);
 
         ProgressLayout progressLayout = new ProgressLayout(mActivity);
 //        progressLayout.setColorSchemeColors(Color.parseColor("#000000"));
@@ -119,8 +121,9 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
             @Override
             public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
                 super.onRefresh(refreshLayout);
+                page = 1;
                 mPresenter.bindBannerData();
-                mPresenter.bindHotData(1);
+                mPresenter.bindHotData(page);
             }
         });
     }
@@ -130,34 +133,29 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
         if (refreshLayout != null) {
             refreshLayout.startRefresh();
         }
-
     }
 
     @Override
     protected void onFragmentResume() {
         super.onFragmentResume();
-        Log.i("lee", "onFragmentResume");
         if (banner != null) {
             banner.start();
         }
-
     }
 
     @Override
     protected void onFragmentPause() {
         super.onFragmentPause();
-        Log.i("lee", "onFragmentPause");
         if (banner != null) {
             banner.pause();
         }
-
     }
 
     @Override
-    public void bindBannerData(final List<BannerEntity> result, List<String> images) {
+    public void bindBannerData(BannerEntity<ContentEntity> result) {
         if (result != null) {
-            banners = result;
-            banner.setPages(result, new MZHolderCreator() {
+            banners = result.getObj();
+            banner.setPages(banners, new MZHolderCreator() {
                 @Override
                 public MZViewHolder createViewHolder() {
                     return new BannerViewHolder();
@@ -168,15 +166,31 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
     }
 
     @Override
-    public void bindHotData(List<HotEntity> result) {
-        hotAdapter.getData().addAll(result);
-        hotAdapter.notifyDataSetChanged();
+    public void bindHotData(int pageNo, ResultEntity<ContentEntity> result) {
+        if (pageNo == 1 && result.getObj().getRows().size() == 0) {
+            refreshLayout.finishRefreshing();
+            return;
+        }
+        if (pageNo > result.getObj().getCountPage()) {
+            dataAdapter.loadMoreEnd();
+            return;
+        }
+        if (pageNo == 1) {
+            dataAdapter.getData().clear();
+            dataAdapter.notifyDataSetChanged();
+        }
+        dataAdapter.getData().addAll(result.getObj().getRows());
+        dataAdapter.notifyDataSetChanged();
+        page++;
         refreshLayout.finishRefreshing();
-        hotAdapter.loadMoreComplete();
+        dataAdapter.loadMoreComplete();
     }
 
     @Override
     public void bindDataEvent(int code, String message) {
-
+        refreshLayout.finishRefreshing();
+        dataAdapter.loadMoreComplete();
+        Toast.makeText(mActivity, "code:" + code + "\nmessage:" + message, Toast.LENGTH_SHORT).show();
     }
+
 }

@@ -82,7 +82,12 @@
     <string name="item_level_str">等级</string>
     <string name="settings_icon_camera">照相</string>
     <string name="settings_icon_picture">图片库</string>
-    
+    <string name="str_like">关注</string>
+    <string name="str_send">发帖</string>
+    <string name="str_reply">回帖</string>
+
+    <string name="str_exit">再按一次退出程序</string>
+
     <string-array name="spinner_type">
         <item>社区</item>
         <item>问答</item>
@@ -94,5 +99,67 @@
         <item>50</item>
         <item>100</item>
     </string-array>
+
+    <string name="str_content">
+        public class RecyclerViewForEmpty extends RecyclerView {
+    private View emptyView;
+    private AdapterDataObserver observer = new AdapterDataObserver() {
+        @Override
+        public void onChanged() {//设置空view原理都一样，没有数据显示空view，有数据隐藏空view
+            Adapter adapter = getAdapter();
+            if (adapter.getItemCount() == 0) {
+                emptyView.setVisibility(VISIBLE);
+                RecyclerViewForEmpty.this.setVisibility(GONE);
+            } else {
+                emptyView.setVisibility(GONE);
+                RecyclerViewForEmpty.this.setVisibility(VISIBLE);
+            }
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+            onChanged();
+        }
+
+        @Override
+        public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+            onChanged();
+        }
+    };
+
+    public RecyclerViewForEmpty(Context context) {
+        super(context);
+    }
+
+    public RecyclerViewForEmpty(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public void setEmptyView(View view) {
+        this.emptyView = view;
+        ((ViewGroup) this.getRootView()).addView(view);
+    }
+
+    @Override
+    public void setAdapter(Adapter adapter) {
+        super.setAdapter(adapter);
+        adapter.registerAdapterDataObserver(observer);
+        observer.onChanged();
+    </string>
 
 </resources>

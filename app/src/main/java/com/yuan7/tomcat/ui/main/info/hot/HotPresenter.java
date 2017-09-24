@@ -2,16 +2,13 @@ package com.yuan7.tomcat.ui.main.info.hot;
 
 import com.yuan7.tomcat.base.mvp.BasePresenter;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.entity.BannerEntity;
-import com.yuan7.tomcat.entity.HotEntity;
-
-import java.util.List;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.BannerEntity;
+import com.yuan7.tomcat.bean.impl.ContentEntity;
+import com.yuan7.tomcat.utils.LogUtil;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -31,8 +28,8 @@ public class HotPresenter extends BasePresenter<HotContract.Model, HotContract.V
 
     @Override
     public void bindBannerData() {
-        mModel.doLocalBanner()
-                .subscribe(new Observer<List<BannerEntity>>() {
+        mModel.doPostBanner()
+                .subscribe(new Observer<BannerEntity<ContentEntity>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         if (d.isDisposed()) {
@@ -41,13 +38,15 @@ public class HotPresenter extends BasePresenter<HotContract.Model, HotContract.V
                     }
 
                     @Override
-                    public void onNext(List<BannerEntity> bannerEntities) {
-                        mView.bindBannerData(bannerEntities, null);
+                    public void onNext(BannerEntity<ContentEntity> bannerEntity2) {
+                        mView.bindBannerData(bannerEntity2);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        mView.bindDataEvent(0, e.getMessage());
+                        LogUtil.getStackTraceString(e);
+                        LogUtil.e(e.getMessage());
                     }
 
                     @Override
@@ -58,30 +57,55 @@ public class HotPresenter extends BasePresenter<HotContract.Model, HotContract.V
     }
 
     @Override
-    public void bindHotData(int pageNo) {
-        mModel.doLocalHot(pageNo)
-                .subscribe(new Observer<List<HotEntity>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        if (d.isDisposed()) {
-                            d.dispose();
-                        }
-                    }
+    public void bindHotData(final int pageNo) {
+        mModel.doPostHot(pageNo).subscribe(new Observer<ResultEntity<ContentEntity>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                if (d.isDisposed()) {
+                    d.dispose();
+                }
+            }
 
-                    @Override
-                    public void onNext(List<HotEntity> hotEntities) {
-                        mView.bindHotData(hotEntities);
-                    }
+            @Override
+            public void onNext(ResultEntity<ContentEntity> resultEntity) {
+                mView.bindHotData(pageNo, resultEntity);
+            }
 
-                    @Override
-                    public void onError(Throwable e) {
+            @Override
+            public void onError(Throwable e) {
+                mView.bindDataEvent(0, e.getMessage());
+                LogUtil.getStackTraceString(e);
+                LogUtil.e(e.getMessage());
+            }
 
-                    }
+            @Override
+            public void onComplete() {
 
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+            }
+        });
+//        mModel.doLocalHot(pageNo)
+//                .subscribe(new Observer<List<HotEntity>>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//                        if (d.isDisposed()) {
+//                            d.dispose();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onNext(List<HotEntity> hotEntities) {
+//                        mView.bindHotData(hotEntities);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
     }
 }

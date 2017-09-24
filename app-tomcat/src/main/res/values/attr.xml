@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--侧滑菜单-->
+    <declare-styleable name="SwipeMenu">
+        <!--动画的代码-->
+        <attr name="sm_type" format="integer" />
+        <!--滑出菜单的范围-->
+        <attr name="sm_dragoffset" format="dimension" />
+        <!--滑出菜单距边界的值-->
+        <attr name="sm_menuoffset" format="dimension" />
+        <!--滑动开始的缩放值-->
+        <attr name="sm_startscale" format="float" />
+        <!--滑动开始的alpha值-->
+        <attr name="sm_startalpha" format="float" />
+        <!--滑动开始的3D旋转角度-->
+        <attr name="sm_start3dangle" format="integer" />
+        <!--全局颜色-->
+        <attr name="sm_fullcolor" format="color" />
+        <!--全局背景-->
+        <attr name="sm_fullimage" format="reference" />
+        <!--以下方法只在设置全局图片背景时候有用-->
+        <!--标题栏颜色-->
+        <attr name="sm_statucolor" format="color" />
+        <!--全局背景的模糊度-->
+        <attr name="sm_fullimageblur" format="float" />
+    </declare-styleable>
+
+    <!-- 圆角图 -->
+    <declare-styleable name="RoundedImageView">
+        <attr name="riv_corner_radius" format="dimension" />
+        <attr name="riv_corner_radius_top_left" format="dimension" />
+        <attr name="riv_corner_radius_top_right" format="dimension" />
+        <attr name="riv_corner_radius_bottom_left" format="dimension" />
+        <attr name="riv_corner_radius_bottom_right" format="dimension" />
+        <attr name="riv_border_width" format="dimension" />
+        <attr name="riv_border_color" format="color" />
+        <attr name="riv_mutate_background" format="boolean" />
+        <attr name="riv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+        <attr name="riv_tile_mode">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="riv_tile_mode_x">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="riv_tile_mode_y">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <!--魅族Banner-->
+    <declare-styleable name="MZBannerView">
+        <attr name="open_mz_mode" format="boolean" />
+        <attr name="canLoop" format="boolean" />
+        <attr name="indicatorPaddingLeft" format="dimension" />
+        <attr name="indicatorPaddingRight" format="dimension" />
+        <attr name="indicatorAlign">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="AmountView">
+        <!-- 左右2边+-按钮的宽度 -->
+        <attr name="btnWidth" format="dimension" />
+        <!-- 中间TextView的宽度 -->
+        <attr name="tvWidth" format="dimension" />
+        <!--<attr name="tvColor" format="color"/>-->
+        <attr name="tvTextSize" format="dimension"/>
+        <attr name="btnTextSize" format="dimension"/>
+    </declare-styleable>
+
+</resources>

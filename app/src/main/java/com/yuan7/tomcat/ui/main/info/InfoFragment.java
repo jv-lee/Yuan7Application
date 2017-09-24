@@ -21,6 +21,7 @@ import com.yuan7.tomcat.ui.main.MainActivity;
 import com.yuan7.tomcat.ui.main.info.hot.HotFragment;
 import com.yuan7.tomcat.ui.main.info.news.NewsFragment;
 import com.yuan7.tomcat.ui.main.info.video.VideoFragment;
+import com.yuan7.tomcat.utils.LogUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -71,7 +72,7 @@ public class InfoFragment extends BaseFragment {
 
     @Override
     protected void lazyLoad() {
-        Log.i(TAG, "lazyLoad()");
+        LogUtil.i(TAG+":lazyLoad()");
     }
 
     @OnClick(R.id.iv_left)

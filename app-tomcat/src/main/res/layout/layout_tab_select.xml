@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_new"
+            android:layout_width="52dp"
+            android:layout_height="47dp"
+            android:background="@mipmap/denglun"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/select_tab_new"
+            android:textColor="@drawable/selector_tab_text"
+            android:textSize="@dimen/font_size_small" />
+
+        <RadioButton
+            android:id="@+id/rb_good"
+            android:layout_width="52dp"
+            android:layout_height="47dp"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/denglun"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/select_tab_good"
+            android:textColor="@drawable/selector_tab_text"
+            android:textSize="@dimen/font_size_small" />
+
+        <RadioButton
+            android:id="@+id/rb_hot"
+            android:layout_width="52dp"
+            android:layout_height="47dp"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/denglun"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/select_tab_hot"
+            android:textColor="@drawable/selector_tab_text"
+            android:textSize="@dimen/font_size_small" />
+    </RadioGroup>
+
+</merge>

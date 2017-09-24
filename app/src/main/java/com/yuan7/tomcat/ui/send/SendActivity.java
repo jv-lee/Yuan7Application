@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -16,21 +17,29 @@ import android.widget.Toast;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
+import com.yuan7.tomcat.AppConfig;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
 import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.entity.PictureEntity;
+import com.yuan7.tomcat.ui.send.inject.DaggerSendComponent;
+import com.yuan7.tomcat.ui.send.inject.SendModule;
 import com.yuan7.tomcat.utils.IconUtil;
+import com.yuan7.tomcat.utils.LogUtil;
 import com.yuan7.tomcat.utils.VideoPicUtil;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.OnClick;
 
-public class SendActivity extends BaseActivity {
+public class SendActivity extends BaseActivity<SendContract.Presenter> implements SendContract.View {
 
     @BindView(R.id.tv_title)
     TextView tvTitle;
@@ -56,6 +65,10 @@ public class SendActivity extends BaseActivity {
     ImageView ivDelete2;
     @BindView(R.id.iv_delete3)
     ImageView ivDelete3;
+    @BindView(R.id.et_title)
+    EditText etTitle;
+    @BindView(R.id.et_content)
+    EditText etContent;
 
     private ArrayAdapter<String> typeAdapter;
     private ArrayAdapter<String> goldAdapter;
@@ -96,7 +109,11 @@ public class SendActivity extends BaseActivity {
 
     @Override
     protected void setupActivityComponent(AppComponent appComponent) {
-
+        DaggerSendComponent.builder()
+                .appComponent(appComponent)
+                .sendModule(new SendModule(this))
+                .build()
+                .inject(this);
     }
 
     @OnClick({R.id.iv_left, R.id.tv_right, R.id.btn_send, R.id.fl_picture1, R.id.fl_picture2, R.id.fl_picture3, R.id.iv_delete1, R.id.iv_delete2, R.id.iv_delete3})
@@ -108,6 +125,7 @@ public class SendActivity extends BaseActivity {
             case R.id.tv_right:
                 break;
             case R.id.btn_send:
+                send();
                 Toast.makeText(mContext, "send", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.fl_picture1:
@@ -132,6 +150,44 @@ public class SendActivity extends BaseActivity {
             case R.id.iv_delete3:
                 deletePicture(3);
                 break;
+        }
+    }
+
+    private void send() {
+        String title = etTitle.getText().toString();
+        String content = etContent.getText().toString();
+        int typePosition = spinnerType.getSelectedItemPosition();
+
+        if (selectList != null && !title.equals("") && !content.equals("")) {
+            Map<String, Object> map = new HashMap<>();
+//            LogUtil.i("title:" + title);
+//            LogUtil.i("content:" + content);
+//            LogUtil.i("type:" + typePosition);
+//            for (int i = 0; i < selectList.size(); i++) {
+//                LogUtil.i("selectListType:" + selectList.get(i).getPictureType() + "   selectListPath:" + selectList.get(i).getPath());
+//            }
+            map.put("title", title);
+            map.put("type", typePosition + 1);
+            map.put("text", content);
+            map.put("appId", AppConfig.APP_ID);
+
+            if (selectList.size() > 1) {
+                String[] filePaths = new String[selectList.size()];
+                for (int i = 0; i < selectList.size(); i++) {
+                    filePaths[i] = selectList.get(i).getPath();
+                }
+                mPresenter.sendPictureMessage(map, filePaths);
+            } else {
+                if (selectList.get(0).getPictureType().contains("video")) {
+                    mPresenter.sendVideoMessage(map, selectList.get(0).getPath());
+                } else {
+                    mPresenter.sendPictureMessage(map, new String[]{selectList.get(0).getPath()});
+                }
+
+            }
+
+        } else {
+            Toast.makeText(mContext, "条件不符合", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -256,5 +312,10 @@ public class SendActivity extends BaseActivity {
                 flPicture3.setBackground(getResources().getDrawable(R.mipmap.send_pic));
                 break;
         }
+    }
+
+    @Override
+    public void bindDataEvent(int code, String message) {
+
     }
 }

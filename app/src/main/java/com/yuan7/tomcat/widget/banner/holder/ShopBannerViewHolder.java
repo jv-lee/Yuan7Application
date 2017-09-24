@@ -6,9 +6,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.yuan7.tomcat.entity.BannerEntity;
 import com.yuan7.tomcat.entity.ShopBannerEntity;
-import com.yuan7.tomcat.utils.GlideImageLoader;
+import com.yuan7.tomcat.helper.GlideImageLoader;
 
 /**
  * Created by Administrator on 2017/8/15.
@@ -27,6 +26,6 @@ public class ShopBannerViewHolder implements MZViewHolder<ShopBannerEntity> {
 
     @Override
     public void onBind(Context context, int position, ShopBannerEntity data) {
-        GlideImageLoader.loadImage(context, data.getImageUrl(), mImageView);
+        GlideImageLoader.loadImage(data.getImageUrl(), mImageView);
     }
 }

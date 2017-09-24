@@ -6,14 +6,14 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.yuan7.tomcat.entity.BannerEntity;
-import com.yuan7.tomcat.utils.GlideImageLoader;
+import com.yuan7.tomcat.bean.impl.ContentEntity;
+import com.yuan7.tomcat.helper.GlideImageLoader;
 
 /**
  * Created by Administrator on 2017/8/15.
  */
 
-public class BannerViewHolder implements MZViewHolder<BannerEntity> {
+public class BannerViewHolder implements MZViewHolder<ContentEntity> {
     private ImageView mImageView;
 
     @Override
@@ -25,7 +25,10 @@ public class BannerViewHolder implements MZViewHolder<BannerEntity> {
     }
 
     @Override
-    public void onBind(Context context, int position, BannerEntity data) {
-        GlideImageLoader.loadImage(context, data.getImageUrl(), mImageView);
+    public void onBind(Context context, int position, ContentEntity data) {
+        if (data.getImages() != null && data.getImages().size() > 0) {
+            GlideImageLoader.loadImage( data.getImages().get(0).getUrl(), mImageView);
+        }
+
     }
 }

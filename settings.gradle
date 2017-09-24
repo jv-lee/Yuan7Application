@@ -1,1 +1,1 @@
-include ':lib-banner', ':lib-download', ':lib-videoplayer', ':tomcat', ':app'
+include ':lib-banner', ':lib-download', ':lib-videoplayer', ':tomcat', ':app', ':app-tomcat', ':library'

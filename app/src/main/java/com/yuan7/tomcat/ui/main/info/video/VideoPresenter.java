@@ -2,9 +2,9 @@ package com.yuan7.tomcat.ui.main.info.video;
 
 import com.yuan7.tomcat.base.mvp.BasePresenter;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.entity.VideoEntity;
-
-import java.util.List;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.ContentEntity;
+import com.yuan7.tomcat.utils.LogUtil;
 
 import javax.inject.Inject;
 
@@ -27,9 +27,9 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
     }
 
     @Override
-    public void bindVideoData(int pageNo) {
-        mModel.doLocalVideo(pageNo)
-                .subscribe(new Observer<List<VideoEntity>>() {
+    public void bindVideoData(final int pageNo, int type) {
+        mModel.doPostVideo(pageNo,type)
+                .subscribe(new Observer<ResultEntity<ContentEntity>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         if (d.isDisposed()) {
@@ -38,13 +38,14 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
                     }
 
                     @Override
-                    public void onNext(List<VideoEntity> videoEntities) {
-                        mView.bindVideoData(videoEntities);
+                    public void onNext(ResultEntity<ContentEntity> videoEntity) {
+                        mView.bindVideoData(pageNo,videoEntity);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        LogUtil.getStackTraceString(e);
+                        LogUtil.e(e.getMessage());
                     }
 
                     @Override
@@ -52,5 +53,29 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
 
                     }
                 });
+//        mModel.doLocalVideo(pageNo)
+//                .subscribe(new Observer<List<VideoEntity>>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//                        if (d.isDisposed()) {
+//                            d.dispose();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onNext(List<VideoEntity> videoEntities) {
+//                        mView.bindVideoData(videoEntities);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//
+//                    }
+//                });
     }
 }

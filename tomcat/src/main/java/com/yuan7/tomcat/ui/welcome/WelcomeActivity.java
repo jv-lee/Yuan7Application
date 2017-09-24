@@ -76,6 +76,7 @@ public class WelcomeActivity extends Activity {
                                     @Override
                                     public void onNext(IsOpenBean isOpenBean) {
                                         Config.TAB_TAG = isOpenBean.getIsOpen();
+                                        Config.TAB_TAG = Config.getOpenTag();
                                         startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
                                         finish();
                                     }

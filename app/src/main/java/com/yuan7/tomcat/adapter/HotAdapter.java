@@ -6,8 +6,9 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yuan7.tomcat.R;
-import com.yuan7.tomcat.entity.HotEntity;
-import com.yuan7.tomcat.utils.GlideImageLoader;
+import com.yuan7.tomcat.bean.impl.ContentEntity;
+import com.yuan7.tomcat.helper.GlideImageLoader;
+import com.yuan7.tomcat.utils.TimeUtil;
 
 import java.util.List;
 
@@ -15,19 +16,21 @@ import java.util.List;
  * Created by Administrator on 2017/8/15.
  */
 
-public class HotAdapter extends BaseQuickAdapter<HotEntity, BaseViewHolder> {
+public class HotAdapter extends BaseQuickAdapter<ContentEntity, BaseViewHolder> {
 
-    public HotAdapter(@Nullable List<HotEntity> data) {
+    public HotAdapter(@Nullable List<ContentEntity> data) {
         super(R.layout.item_hot, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, HotEntity item) {
-        GlideImageLoader.loadImage(mContext, item.getImageUrl(), (ImageView) helper.getView(R.id.iv_image));
+    protected void convert(BaseViewHolder helper, ContentEntity item) {
+        if (item.getImages().size() > 0) {
+            GlideImageLoader.loadImage(item.getImages().get(0).getUrl(), (ImageView) helper.getView(R.id.iv_image));
+        }
         helper.setText(R.id.tv_title, item.getTitle())
-                .setText(R.id.tv_timeStr, item.getTimeStr())
-                .setText(R.id.tv_readCount, String.valueOf(item.getReadCount()))
-                .setText(R.id.tv_inputCount, String.valueOf(item.getInputCount()))
-                .setText(R.id.tv_niceCount, String.valueOf(item.getNiceCount()));
+                .setText(R.id.tv_timeStr, TimeUtil.getChineseTimeMill(item.getCreatTime()))
+                .setText(R.id.tv_readCount, String.valueOf(item.getViewTimes()))
+                .setText(R.id.tv_inputCount, String.valueOf(item.getCommentRate()))
+                .setText(R.id.tv_niceCount, String.valueOf(item.getGootRate()));
     }
 }

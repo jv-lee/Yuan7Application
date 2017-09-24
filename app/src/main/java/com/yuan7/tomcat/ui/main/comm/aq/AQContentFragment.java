@@ -1,6 +1,7 @@
 package com.yuan7.tomcat.ui.main.comm.aq;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,17 +15,23 @@ import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
 import com.video.lib.VideoPlayer;
+import com.yuan7.tomcat.AppConfig;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.AQAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.ContentEntity;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.entity.AQEntity;
+import com.yuan7.tomcat.ui.content.ContentActivity;
 import com.yuan7.tomcat.ui.main.comm.aq.inject.AQModule;
 import com.yuan7.tomcat.ui.main.comm.aq.inject.DaggerAQComponent;
+import com.yuan7.tomcat.utils.IntentUtil;
+import com.yuan7.tomcat.utils.LogUtil;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -33,14 +40,14 @@ import butterknife.BindView;
  */
 public class AQContentFragment extends BaseFragment<AQContract.Presenter> implements AQContract.View {
 
-    private String text;
     @BindView(R.id.refreshLayout)
     TwinklingRefreshLayout refreshLayout;
     @BindView(R.id.rv_container)
     RecyclerView rvContainer;
 
-    private AQAdapter aqAdapter;
-    private List<AQEntity> aqEntities = new ArrayList<>();
+    private int type;
+    private AQAdapter dataAdapter;
+    private int page = 1;
 
     public AQContentFragment() {
         // Required empty public constructor
@@ -62,17 +69,25 @@ public class AQContentFragment extends BaseFragment<AQContract.Presenter> implem
 
     @Override
     protected void bindData() {
-        text = getArguments().getString(Constant.FRAGMENT_TYPE);
-        aqAdapter = new AQAdapter(aqEntities);
-        aqAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        type = getArguments().getInt(Constant.FRAGMENT_TYPE);
+        dataAdapter = new AQAdapter(new ArrayList<ContentEntity>());
+        dataAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        dataAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ContentEntity contentEntity = ((AQAdapter) adapter).getData().get(position);
+                IntentUtil.setParamsIntoActivity(mActivity, ContentActivity.class, IntentUtil.getParamsMap(contentEntity));
+            }
+        });
+        dataAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                mPresenter.bindAQData(2);
+                mPresenter.bindAQData(page, type);
             }
         });
 
         rvContainer.setLayoutManager(new LinearLayoutManager(mActivity));
-        rvContainer.setAdapter(aqAdapter);
+        rvContainer.setAdapter(dataAdapter);
         rvContainer.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -92,7 +107,8 @@ public class AQContentFragment extends BaseFragment<AQContract.Presenter> implem
             @Override
             public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
                 super.onRefresh(refreshLayout);
-                mPresenter.bindAQData(1);
+                page = 1;
+                mPresenter.bindAQData(page, type);
             }
         });
         refreshLayout.startRefresh();
@@ -106,11 +122,25 @@ public class AQContentFragment extends BaseFragment<AQContract.Presenter> implem
     }
 
     @Override
-    public void bindAQData(List<AQEntity> result) {
-        aqAdapter.getData().addAll(result);
-        aqAdapter.notifyDataSetChanged();
+    public void bindAQData(int pageNo, ResultEntity<ContentEntity> result) {
+        LogUtil.i("bindAQData ->");
+        if (pageNo == 1 && result.getObj().getRows().size() == 0) {
+            refreshLayout.finishRefreshing();
+            return;
+        }
+        if (pageNo > result.getObj().getCountPage()) {
+            dataAdapter.loadMoreEnd();
+            return;
+        }
+        if (pageNo == 1) {
+            dataAdapter.getData().clear();
+            dataAdapter.notifyDataSetChanged();
+        }
+        dataAdapter.getData().addAll(result.getObj().getRows());
+        dataAdapter.notifyDataSetChanged();
+        page++;
         refreshLayout.finishRefreshing();
-        aqAdapter.loadMoreComplete();
+        dataAdapter.loadMoreComplete();
     }
 
     @Override

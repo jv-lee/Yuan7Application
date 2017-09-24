@@ -1,8 +1,12 @@
 package com.yuan7.tomcat.ui.main.info.video;
 
+import com.yuan7.tomcat.AppConfig;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.ContentEntity;
 import com.yuan7.tomcat.entity.VideoEntity;
+import com.yuan7.tomcat.server.ApiServer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +25,9 @@ import io.reactivex.schedulers.Schedulers;
 @ActivityScope
 public class VideoModel extends BaseModel implements VideoContract.Model {
 
+    @Inject
+    ApiServer apiServer;
+
     private String url = "https://developer.android.google.cn/images/home/kotlin-android.svg";
 
     @Inject
@@ -28,8 +35,10 @@ public class VideoModel extends BaseModel implements VideoContract.Model {
     }
 
     @Override
-    public Observable<VideoEntity> doGetVideo(int pageNo) {
-        return null;
+    public Observable<ResultEntity<ContentEntity>> doPostVideo(int pageNo, int type) {
+        return apiServer.doPostVideoList(pageNo, AppConfig.PAGE_NUMBER,type,AppConfig.APP_ID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

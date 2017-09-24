@@ -25,6 +25,8 @@
             android:background="@drawable/shape_edit_bg"
             android:drawableLeft="@drawable/ic_back"
             android:hint="@string/register_input_userName"
+            android:inputType="textEmailAddress"
+            android:maxLength="12"
             android:textColorHint="@color/colorAccent"
             android:textSize="@dimen/font_size_center" />
 
@@ -36,6 +38,8 @@
             android:background="@drawable/shape_edit_bg"
             android:drawableLeft="@drawable/ic_back"
             android:hint="@string/register_input_password"
+            android:inputType="textPassword"
+            android:maxLength="16"
             android:textColorHint="@color/colorAccent"
             android:textSize="@dimen/font_size_center" />
 
@@ -47,6 +51,8 @@
             android:background="@drawable/shape_edit_bg"
             android:drawableLeft="@drawable/ic_back"
             android:hint="@string/register_reInput_password"
+            android:inputType="textPassword"
+            android:maxLength="16"
             android:textColorHint="@color/colorAccent"
             android:textSize="@dimen/font_size_center" />
 

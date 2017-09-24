@@ -1,0 +1,25 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background">
+
+    <com.yuan7.tomcat.widget.NoScrollViewPager
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="40dp" />
+
+    <include layout="@layout/layout_tab_nav" />
+
+    <ImageView
+        android:id="@+id/iv_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="76dp"
+        android:layout_marginRight="@dimen/dp_26"
+        android:src="@drawable/selector_fab_icon" />
+
+
+</FrameLayout>

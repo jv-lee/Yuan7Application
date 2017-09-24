@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorAccent"
-    tools:context="com.yuan7.tomcat.ui.menu.settings.AppSettingsFragment">
+    tools:context="com.yuan7.tomcat.ui.menu.settings.app.AppSettingsFragment">
 
     <FrameLayout
         android:id="@+id/fl_item_font"

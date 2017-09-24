@@ -3,8 +3,9 @@ package com.yuan7.tomcat.ui.main.info.hot;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
-import com.yuan7.tomcat.entity.BannerEntity;
-import com.yuan7.tomcat.entity.HotEntity;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.BannerEntity;
+import com.yuan7.tomcat.bean.impl.ContentEntity;
 
 import java.util.List;
 
@@ -16,9 +17,9 @@ import io.reactivex.Observable;
 
 public interface HotContract {
     interface View extends IView {
-        void bindBannerData(List<BannerEntity> result, List<String> images);
+        void bindBannerData(BannerEntity<ContentEntity> result);
 
-        void bindHotData(List<HotEntity> result);
+        void bindHotData(int pageNo, ResultEntity<ContentEntity> result);
 
         void bindDataEvent(int code, String message);
     }
@@ -30,12 +31,12 @@ public interface HotContract {
     }
 
     interface Model extends IModel {
-        Observable<List<BannerEntity>> doGetBanner();
+        Observable<BannerEntity<ContentEntity>> doPostBanner();
 
-        Observable<List<HotEntity>> doGetHot(int pageNo);
+        Observable<ResultEntity<ContentEntity>> doPostHot(int pageNo);
 
-        Observable<List<BannerEntity>> doLocalBanner();
+        Observable<List<com.yuan7.tomcat.entity.BannerEntity>> doLocalBanner();
 
-        Observable<List<HotEntity>> doLocalHot(int pageNo);
+        Observable<List<com.yuan7.tomcat.entity.HotEntity>> doLocalHot(int pageNo);
     }
 }

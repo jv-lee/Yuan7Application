@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/content_margin_small"
+    android:background="@drawable/shape_content_bg"
+    android:orientation="vertical"
+    android:padding="@dimen/content_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/post_reply_str"
+            android:textSize="@dimen/font_size_small" />
+
+        <TextView
+            android:id="@+id/tv_reply_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="被回复的名称" />
+
+        <TextView
+            android:id="@+id/tv_reply_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/content_margin"
+            android:text="2017-08-07"
+            android:textSize="@dimen/font_size_small" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_reply_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="this is reply content message."
+        android:textSize="@dimen/font_size_small" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/colorPrimaryDark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/post_reply_str2"
+            android:textSize="@dimen/font_size_small" />
+
+        <TextView
+            android:id="@+id/tv_reply_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Content Title"
+            android:textSize="@dimen/font_size_small" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top">
+
+        <TextView
+            android:id="@+id/tv_timeStr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1小时前"
+            android:textSize="@dimen/font_size_small_to" />
+
+        <TextView
+            android:id="@+id/tv_readCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/content_margin_small"
+            android:layout_toRightOf="@+id/tv_timeStr"
+            android:drawableLeft="@mipmap/item_icon_read"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="5666"
+            android:textColor="@color/fontColorGray"
+            android:textSize="@dimen/font_size_small_to" />
+
+        <TextView
+            android:id="@+id/tv_inputCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/content_margin_small"
+            android:layout_toRightOf="@+id/tv_readCount"
+            android:drawableLeft="@mipmap/item_icon_input"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="8855"
+            android:textColor="@color/fontColorGray"
+            android:textSize="@dimen/font_size_small_to" />
+
+        <TextView
+            android:id="@+id/tv_niceCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/content_margin_small"
+            android:layout_toRightOf="@+id/tv_inputCount"
+            android:drawableLeft="@mipmap/item_icon_like"
+            android:gravity="center"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="5644"
+            android:textColor="@color/fontColorGray"
+            android:textSize="@dimen/font_size_small_to" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -8,10 +8,13 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 
 import com.yuan7.tomcat.R;
+import com.yuan7.tomcat.UserParams;
 import com.yuan7.tomcat.base.app.App;
-import com.yuan7.tomcat.bean.impl.IsOpenBean;
 import com.yuan7.tomcat.server.ApiServer;
+import com.yuan7.tomcat.ui.login.LoginActivity;
+import com.yuan7.tomcat.ui.main.MainActivity;
 import com.yuan7.tomcat.ui.welcome.inject.DaggerWelcomeComponent;
+import com.yuan7.tomcat.utils.SPUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +23,10 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public class WelcomeActivity extends Activity {
@@ -40,51 +46,23 @@ public class WelcomeActivity extends Activity {
         //2s 记时跳转
         Observable.timer(2000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
+                .map(new Function<Long, Boolean>() {
+                    @Override
+                    public Boolean apply(@NonNull Long aLong) throws Exception {
+                        boolean loginFlag = (boolean) SPUtil.get(UserParams.LOGIN_STATUS, false);
+                        return loginFlag;
+                    }
+                })
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Long>() {
+                .subscribe(new Consumer<Boolean>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
-                    }
-
-                    @Override
-                    public void onNext(Long aLong) {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onComplete() {
-//                        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-//                        service.isOpen(Config.APP_ID)
-//                                .subscribeOn(Schedulers.io())
-//                                .observeOn(AndroidSchedulers.mainThread())
-//                                .subscribe(new Observer<IsOpenBean>() {
-//                                    @Override
-//                                    public void onSubscribe(Disposable d) {
-//
-//                                    }
-//
-//                                    @Override
-//                                    public void onNext(IsOpenBean isOpenBean) {
-//                                        Config.TAB_TAG = isOpenBean.getIsOpen();
-//                                        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-//                                        finish();
-//                                    }
-//
-//                                    @Override
-//                                    public void onError(Throwable e) {
-//                                        Config.TAB_TAG = Config.getCloseTag();
-//                                        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-//                                        finish();
-//                                    }
-//
-//                                    @Override
-//                                    public void onComplete() {
-//
-//                                    }
-//                                });
+                    public void accept(@NonNull Boolean aBoolean) throws Exception {
+                        if (aBoolean) {
+                            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+                        }else{
+                            startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                        }
+                        finish();
                     }
                 });
     }

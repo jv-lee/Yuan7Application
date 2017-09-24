@@ -18,13 +18,13 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.MessageAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.bean.ResultEntity;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.entity.MessageEntity;
+import com.yuan7.tomcat.bean.impl.MessageEntity;
 import com.yuan7.tomcat.ui.menu.message.inject.DaggerMessageComponent;
 import com.yuan7.tomcat.ui.menu.message.inject.MessageModule;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -39,10 +39,10 @@ public class MessageContentFragment extends BaseFragment<MessageContract.Present
     @BindView(R.id.rv_container)
     RecyclerView rvContainer;
 
-    private String type;
+    private int type = 0;
+    private int page = 1;
 
-    private MessageAdapter messageAdapter;
-    private List<MessageEntity> messageEntities = new ArrayList<>();
+    private MessageAdapter dataAdapter;
 
     public MessageContentFragment() {
     }
@@ -64,18 +64,18 @@ public class MessageContentFragment extends BaseFragment<MessageContract.Present
 
     @Override
     protected void bindData() {
-        type = getArguments().getString(Constant.FRAGMENT_TYPE);
-        messageAdapter = new MessageAdapter(messageEntities);
-        messageAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
-        messageAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        type = getArguments().getInt(Constant.FRAGMENT_TYPE);
+        dataAdapter = new MessageAdapter(new ArrayList<MessageEntity>());
+        dataAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        dataAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                mPresenter.bindMessageData(2);
+                mPresenter.bindMessageData(page, type);
             }
         });
 
         rvContainer.setLayoutManager(new LinearLayoutManager(mActivity));
-        rvContainer.setAdapter(messageAdapter);
+        rvContainer.setAdapter(dataAdapter);
         rvContainer.addOnItemTouchListener(new OnItemChildClickListener() {
             @Override
             public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -92,7 +92,8 @@ public class MessageContentFragment extends BaseFragment<MessageContract.Present
             @Override
             public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
                 super.onRefresh(refreshLayout);
-                mPresenter.bindMessageData(1);
+                page = 1;
+                mPresenter.bindMessageData(page, type);
             }
         });
     }
@@ -105,11 +106,24 @@ public class MessageContentFragment extends BaseFragment<MessageContract.Present
     }
 
     @Override
-    public void bindMessageData(List<MessageEntity> result) {
-        messageAdapter.getData().addAll(result);
-        messageAdapter.notifyDataSetChanged();
+    public void bindMessageData(int pageNo, ResultEntity<MessageEntity> result) {
+        if (pageNo == 1 && result.getObj().getRows().size() == 0) {
+            refreshLayout.finishRefreshing();
+            return;
+        }
+        if (pageNo > result.getObj().getCountPage()) {
+            dataAdapter.loadMoreEnd();
+            return;
+        }
+        if (pageNo == 1) {
+            dataAdapter.getData().clear();
+            dataAdapter.notifyDataSetChanged();
+        }
+        dataAdapter.getData().addAll(result.getObj().getRows());
+        dataAdapter.notifyDataSetChanged();
+        page++;
         refreshLayout.finishRefreshing();
-        messageAdapter.loadMoreComplete();
+        dataAdapter.loadMoreComplete();
     }
 
     @Override

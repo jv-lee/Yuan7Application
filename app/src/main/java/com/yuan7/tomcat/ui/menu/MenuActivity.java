@@ -11,8 +11,8 @@ import com.yuan7.tomcat.base.mvp.BaseActivity;
 import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.interfaces.TitleBarListener;
 import com.yuan7.tomcat.ui.menu.message.MessageFragment;
-import com.yuan7.tomcat.ui.menu.settings.AppSettingsFragment;
-import com.yuan7.tomcat.ui.menu.settings.UserSettingsFragment;
+import com.yuan7.tomcat.ui.menu.settings.app.AppSettingsFragment;
+import com.yuan7.tomcat.ui.menu.settings.user.UserSettingsFragment;
 import com.yuan7.tomcat.ui.menu.shop.ShopFragment;
 
 import butterknife.BindView;

@@ -21,6 +21,7 @@ import com.yuan7.tomcat.ui.main.MainActivity;
 import com.yuan7.tomcat.ui.main.comm.aq.AQFragment;
 import com.yuan7.tomcat.ui.main.comm.community.CommunityFragment;
 import com.yuan7.tomcat.ui.main.comm.friend.FriendFragment;
+import com.yuan7.tomcat.utils.LogUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -101,6 +102,7 @@ public class CommuFragment extends BaseFragment {
 
     @Override
     protected void lazyLoad() {
+        LogUtil.i(TAG+":lazyLoad()");
     }
 
     @Override

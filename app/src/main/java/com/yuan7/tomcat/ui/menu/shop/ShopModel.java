@@ -1,9 +1,13 @@
 package com.yuan7.tomcat.ui.menu.shop;
 
+import com.yuan7.tomcat.AppConfig;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.ProdouctEntity;
 import com.yuan7.tomcat.entity.ShopBannerEntity;
 import com.yuan7.tomcat.entity.ShopEntity;
+import com.yuan7.tomcat.server.ApiServer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +24,15 @@ import io.reactivex.schedulers.Schedulers;
  * Created by Administrator on 2017/8/25.
  */
 @ActivityScope
-public class ShopModel extends BaseModel implements ShopContract.Model{
+public class ShopModel extends BaseModel implements ShopContract.Model {
 
     private String url = "https://developer.android.google.cn/images/home/kotlin-android.svg";
+    @Inject
+    ApiServer apiServer;
 
     @Inject
-    public ShopModel(){}
+    public ShopModel() {
+    }
 
     @Override
     public Observable<List<ShopBannerEntity>> doGetBanner() {
@@ -33,8 +40,10 @@ public class ShopModel extends BaseModel implements ShopContract.Model{
     }
 
     @Override
-    public Observable<List<ShopEntity>> doGetShop(int pageNo) {
-        return null;
+    public Observable<ResultEntity<ProdouctEntity>> doPostShop(int pageNo) {
+        return apiServer.doPostProdouct(pageNo, AppConfig.PAGE_NUMBER)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -61,11 +70,11 @@ public class ShopModel extends BaseModel implements ShopContract.Model{
                 List<ShopEntity> shopEntities = new ArrayList<>();
                 if (pageNo == 1) {
                     for (int i = 0; i < 10; i++) {
-                        shopEntities.add(new ShopEntity(i,"价值100元京东卡",50000,url));
+                        shopEntities.add(new ShopEntity(i, "价值100元京东卡", 50000, url));
                     }
                 } else if (pageNo == 2) {
                     for (int i = 0; i < 10; i++) {
-                        shopEntities.add(new ShopEntity(i,"价值100元淘宝卡",50000,url));
+                        shopEntities.add(new ShopEntity(i, "价值100元淘宝卡", 50000, url));
                     }
                 }
                 e.onNext(shopEntities);

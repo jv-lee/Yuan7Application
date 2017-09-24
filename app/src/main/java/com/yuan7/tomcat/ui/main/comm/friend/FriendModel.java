@@ -1,8 +1,11 @@
 package com.yuan7.tomcat.ui.main.comm.friend;
 
+import com.yuan7.tomcat.AppConfig;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.entity.FriendEntity;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.FriendEntity;
+import com.yuan7.tomcat.server.ApiServer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,9 @@ import io.reactivex.schedulers.Schedulers;
 @ActivityScope
 public class FriendModel extends BaseModel implements FriendContract.Model {
 
+    @Inject
+    ApiServer apiServer;
+
     private String url = "https://developer.android.google.cn/images/home/kotlin-android.svg";
 
     @Inject
@@ -28,8 +34,10 @@ public class FriendModel extends BaseModel implements FriendContract.Model {
     }
 
     @Override
-    public Observable<List<FriendEntity>> doGetFriend(int pageNo) {
-        return null;
+    public Observable<ResultEntity<FriendEntity>> doPostFriend(int pageNo, int type) {
+        return apiServer.doPostFriend(type,pageNo, AppConfig.PAGE_NUMBER)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -40,11 +48,11 @@ public class FriendModel extends BaseModel implements FriendContract.Model {
                 List<FriendEntity> friendEntitys = new ArrayList<>();
                 if (pageNo == 1) {
                     for (int i = 0; i < 10; i++) {
-                        friendEntitys.add(new FriendEntity(i, "userName", url, i, 3));
+//                        friendEntitys.add(new FriendEntity(i, "userName", url, i, 3));
                     }
                 } else if (pageNo == 2) {
                     for (int i = 0; i < 10; i++) {
-                        friendEntitys.add(new FriendEntity(i, "userName", url, i, 4));
+//                        friendEntitys.add(new FriendEntity(i, "userName", url, i, 4));
                     }
                 }
                 e.onNext(friendEntitys);

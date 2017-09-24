@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorContentBackground"
+        android:padding="@dimen/content_padding_content">
+
+        <TextView
+            android:id="@+id/tv_money_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:text="@string/str_this_money"
+            android:textColor="@color/fontColorYellowDark" />
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_close_yellow_24dp" />
+
+    </FrameLayout>
+
+    <com.yuan7.tomcat.widget.AmountView
+        android:id="@+id/av_edit_count"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/content_padding_big"
+        app:btnTextSize="14sp"
+        app:btnWidth="36dp"
+        app:tvWidth="50dp" />
+
+
+    <Button
+        android:id="@+id/btn_address_add"
+        android:layout_width="wrap_content"
+
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/shape_content_bg"
+        android:text="@string/str_save_get_address"
+        android:textSize="@dimen/font_size_small_to"
+        android:visibility="visible" />
+
+    <FrameLayout
+        android:id="@+id/fl_address"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_top"
+        android:background="@color/colorFragmentBackground"
+        android:padding="@dimen/content_padding_small"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_address_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="3"
+            android:text="元气小杰 1768879878 \n广东省 深圳市 南山区 深南大道2080号 706室 "
+            android:textColor="@color/fontColorYellowDark" />
+
+        <ImageView
+            android:id="@+id/iv_address_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:src="@drawable/ic_keyboard_arrow_right_yellow_dark_24dp" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/content_padding_big"
+        android:background="@color/colorContentBackground"
+        android:padding="@dimen/content_padding_content">
+
+        <TextView
+            android:id="@+id/tv_get_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:text="@string/str_put_money" />
+
+        <Button
+            android:id="@+id/btn_exchange"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="end|center_vertical"
+            android:background="@drawable/shape_btn_yellow_bg"
+            android:text="@string/str_time_get"
+            android:textColor="@color/colorAccent" />
+
+    </FrameLayout>
+
+</LinearLayout>

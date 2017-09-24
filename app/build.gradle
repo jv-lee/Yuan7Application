@@ -5,7 +5,7 @@ android {
     compileSdkVersion rootProject.android.compileSdk
     buildToolsVersion rootProject.android.buildTools
     defaultConfig {
-        applicationId "com.yuan7.tomcat"
+        applicationId "com.yuan7.tomcatsaimple"
         minSdkVersion rootProject.android.minSdk
         targetSdkVersion rootProject.android.targetSdk
         versionCode rootProject.android.vcode
@@ -26,6 +26,7 @@ android {
         }
     }
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+
 }
 
 dependencies {
@@ -62,7 +63,5 @@ dependencies {
     compile "com.github.LuckSiege.PictureSelector:picture_library:$rootProject.library.picture_version"
     compile project(path: ':lib-videoplayer')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.google.android.gms:play-services-ads:9.6.1'
-    compile 'com.android.support:gridlayout-v7:25.3.1'
+    compile 'cn.pedant.sweetalert:library:+'
 }

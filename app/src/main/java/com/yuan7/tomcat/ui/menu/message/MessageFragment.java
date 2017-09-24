@@ -30,6 +30,7 @@ public class MessageFragment extends BaseFragment {
 
     private Fragment[] fragments = null;
     private String[] titles = null;
+    private int[] args = new int[]{Constant.TYPE_MESSAGE_FIND_THIS, Constant.TYPE_MESSAGE_INPUT_THIS, Constant.TYPE_MESSAGE_NICE_THIS};
 
     private TitleBarListener listener;
 
@@ -57,7 +58,7 @@ public class MessageFragment extends BaseFragment {
 
         for (int i = 0; i < 3; i++) {
             Bundle bundle = new Bundle();
-            bundle.putString(Constant.FRAGMENT_TYPE, titles[i]);
+            bundle.putInt(Constant.FRAGMENT_TYPE, args[i]);
             fragments[i].setArguments(bundle);
         }
         vpContainer.setAdapter(new UiPagerAdapter(getFragmentManager(), fragments, titles));

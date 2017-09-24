@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context="com.yuan7.tomcat.ui.menu.post.reply.ReplyFragment">
+    tools:context=".ui.post.reply.ReplyFragment">
 
     <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
         android:id="@+id/refreshLayout"

@@ -19,9 +19,9 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.ShopAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
-import com.yuan7.tomcat.constant.Constant;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.ProdouctEntity;
 import com.yuan7.tomcat.entity.ShopBannerEntity;
-import com.yuan7.tomcat.entity.ShopEntity;
 import com.yuan7.tomcat.interfaces.TitleBarListener;
 import com.yuan7.tomcat.ui.menu.shop.inject.DaggerShopComponent;
 import com.yuan7.tomcat.ui.menu.shop.inject.ShopModule;
@@ -45,8 +45,8 @@ public class ShopFragment extends BaseFragment<ShopContract.Presenter> implement
     @BindView(R.id.rv_container)
     RecyclerView rvContainer;
 
-    private ShopAdapter shopAdapter;
-    private List<ShopEntity> shopEntities = new ArrayList<>();
+    private ShopAdapter dataAdapter;
+    private int page = 1;
 
     private View headView;
     private MZBannerView<ShopBannerEntity> banner;
@@ -89,18 +89,18 @@ public class ShopFragment extends BaseFragment<ShopContract.Presenter> implement
             }
         });
 
-        shopAdapter = new ShopAdapter(shopEntities);
-        shopAdapter.addHeaderView(headView);
-        shopAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
-        shopAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        dataAdapter = new ShopAdapter(new ArrayList<ProdouctEntity>());
+        dataAdapter.addHeaderView(headView);
+        dataAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        dataAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                mPresenter.bindShopData(2);
+                mPresenter.bindShopData(page);
             }
         });
 
-        rvContainer.setLayoutManager(new GridLayoutManager(mActivity,2));
-        rvContainer.setAdapter(shopAdapter);
+        rvContainer.setLayoutManager(new GridLayoutManager(mActivity, 2));
+        rvContainer.setAdapter(dataAdapter);
         rvContainer.addOnItemTouchListener(new OnItemChildClickListener() {
             @Override
             public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -117,8 +117,9 @@ public class ShopFragment extends BaseFragment<ShopContract.Presenter> implement
             @Override
             public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
                 super.onRefresh(refreshLayout);
+                page = 1;
                 mPresenter.bindBannerData();
-                mPresenter.bindShopData(1);
+                mPresenter.bindShopData(page);
             }
         });
         refreshLayout.startRefresh();
@@ -146,12 +147,26 @@ public class ShopFragment extends BaseFragment<ShopContract.Presenter> implement
     }
 
     @Override
-    public void bindShopData(List<ShopEntity> result) {
-        shopAdapter.getData().addAll(result);
-        shopAdapter.notifyDataSetChanged();
+    public void bindShopData(int pageNo, ResultEntity<ProdouctEntity> result) {
+        if (pageNo == 1 && result.getObj().getRows().size() == 0) {
+            refreshLayout.finishRefreshing();
+            return;
+        }
+        if (pageNo > result.getObj().getCountPage()) {
+            dataAdapter.loadMoreEnd();
+            return;
+        }
+        if (pageNo == 1) {
+            dataAdapter.getData().clear();
+            dataAdapter.notifyDataSetChanged();
+        }
+        dataAdapter.getData().addAll(result.getObj().getRows());
+        dataAdapter.notifyDataSetChanged();
+        page++;
         refreshLayout.finishRefreshing();
-        shopAdapter.loadMoreComplete();
+        dataAdapter.loadMoreComplete();
     }
+
 
     @Override
     public void bindDataEvent(int code, String Shop) {

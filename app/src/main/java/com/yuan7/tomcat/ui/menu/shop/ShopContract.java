@@ -3,6 +3,8 @@ package com.yuan7.tomcat.ui.menu.shop;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.ProdouctEntity;
 import com.yuan7.tomcat.entity.ShopBannerEntity;
 import com.yuan7.tomcat.entity.ShopEntity;
 
@@ -18,9 +20,9 @@ public interface ShopContract {
     interface View extends IView {
         void bindBannerData(List<ShopBannerEntity> result, List<String> images);
 
-        void bindShopData(List<ShopEntity> result);
+        void bindShopData(int pageNo, ResultEntity<ProdouctEntity> result);
 
-        void bindDataEvent(int code, String Shop);
+        void bindDataEvent(int code, String message);
     }
 
     interface Presenter extends IPresenter {
@@ -32,7 +34,7 @@ public interface ShopContract {
     interface Model extends IModel {
         Observable<List<ShopBannerEntity>> doGetBanner();
 
-        Observable<List<ShopEntity>> doGetShop(int pageNo);
+        Observable<ResultEntity<ProdouctEntity>> doPostShop(int pageNo);
 
         Observable<List<ShopBannerEntity>> doLocalBanner();
 

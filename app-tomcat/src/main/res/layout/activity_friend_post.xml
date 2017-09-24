@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorFragmentBackground"
+    android:orientation="vertical"
+    tools:context="com.yuan7.tomcat.ui.post.friend.FriendActivity">
+
+    <include layout="@layout/layout_toolbar_back" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_header_bottom_height"
+        android:background="@mipmap/appbar_bottom_background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/content_margin_small"
+        android:background="@mipmap/fragment_heder_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/content_padding_small">
+
+        <ImageView
+            android:id="@+id/iv_userIcon"
+            android:layout_width="@dimen/icon_size_center"
+            android:layout_height="@dimen/icon_size_center"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/icon" />
+
+        <TextView
+            android:id="@+id/tv_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="userName"
+            android:textColor="@color/fontColorWhite"
+            android:textSize="@dimen/font_size_center"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_levelNum"
+                    android:layout_width="56dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/shape_name_bg"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="LV12"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/font_size_small_to" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/level_icon" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_levelName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/content_margin_small"
+                android:text="连长"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="@dimen/font_size_small" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_top"
+            android:layout_marginLeft="@dimen/content_margin"
+            android:layout_marginRight="@dimen/content_margin"
+            android:layout_marginTop="@dimen/margin_top">
+
+            <TextView
+                android:id="@+id/tv_friendNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="关注 12"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="@dimen/font_size_center" />
+
+            <TextView
+                android:id="@+id/tv_postNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="发帖 12"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="@dimen/font_size_center" />
+
+            <TextView
+                android:id="@+id/tv_replyNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="回帖 12"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="@dimen/font_size_center" />
+
+        </FrameLayout>
+
+
+        <include layout="@layout/layout_tab_post_toolbar" />
+
+    </LinearLayout>
+
+
+    <com.yuan7.tomcat.widget.NoScrollViewPager
+        android:id="@+id/vp_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+</LinearLayout>

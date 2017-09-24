@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbar_layout_height"
+    android:background="@mipmap/appbar_background">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_content_height"
+        android:layout_marginTop="@dimen/status_bar_height"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:clickable="true"
+            android:src="@drawable/selector_appbar_menu" />
+
+        <include layout="@layout/layout_tab_info_toolbar" />
+
+
+        <!--<android.support.design.widget.TabLayout-->
+        <!--android:id="@+id/tab_title"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--app:tabIndicatorColor="@android:color/transparent"-->
+        <!--app:tabSelectedTextColor="#F1F1F1"-->
+        <!--app:tabTextColor="#7C7E86" />-->
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:clickable="true"
+            android:src="@drawable/selector_appbar_search" />
+
+    </FrameLayout>
+
+</FrameLayout>

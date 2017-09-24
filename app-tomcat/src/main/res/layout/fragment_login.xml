@@ -1,0 +1,105 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yuan7.tomcat.ui.login.fragment.LoginFragment">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@mipmap/login_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+
+        <EditText
+            android:id="@+id/et_userName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/et_login_height"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/shape_edit_bg"
+            android:drawableLeft="@mipmap/icon_user"
+            android:hint="@string/login_userName"
+            android:inputType="textEmailAddress"
+            android:maxLength="12"
+            android:text="test123456"
+            android:textColor="@color/editColor"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="@dimen/font_size_center" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/et_login_height"
+            android:layout_marginTop="@dimen/content_margin_small"
+            android:background="@drawable/shape_edit_bg"
+            android:drawableLeft="@mipmap/icon_password"
+            android:hint="@string/login_password"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            android:text="test123456"
+            android:textColor="@color/editColor"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="@dimen/font_size_center" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top">
+
+            <TextView
+                android:id="@+id/tv_forgetPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/login_getPassword"
+                android:textColor="@color/fontColorLogin"
+                android:textSize="@dimen/font_size_small" />
+
+
+            <TextView
+                android:id="@+id/tv_rightRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/login_register"
+                android:textColor="@color/fontColorLogin"
+                android:textSize="@dimen/font_size_small" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/content_margin">
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_gravity="start"
+                android:background="@drawable/shape_btn_login_bg"
+                android:text="@string/login_login"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="@dimen/font_size_center" />
+
+            <Button
+                android:id="@+id/btn_flyLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_gravity="end"
+                android:background="@drawable/shape_btn_login_bg"
+                android:text="@string/login_flyLogin"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="@dimen/font_size_center" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

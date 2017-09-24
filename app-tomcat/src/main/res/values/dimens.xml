@@ -1,0 +1,80 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="toolbar_layout_height">66dp</dimen>
+    <dimen name="toolbar_content_height">46dp</dimen>
+    <dimen name="status_bar_height">20dp</dimen>
+
+    <dimen name="appbar_max_height">200dp</dimen>
+    <dimen name="appbar_collapsing_height">160dp</dimen>
+    <dimen name="appbar_tab_select">40dp</dimen>
+
+    <dimen name="layout_padding">46dp</dimen>
+    <dimen name="content_padding_big">26dp</dimen>
+    <dimen name="content_padding">16dp</dimen>
+    <dimen name="content_padding_content">10dp</dimen>
+    <dimen name="content_padding_small">6dp</dimen>
+    <dimen name="content_margin">16dp</dimen>
+    <dimen name="content_margin_small">6dp</dimen>
+    <dimen name="view_margin">26dp</dimen>
+
+    <dimen name="item_layout_margin_left_or_right">16dp</dimen>
+    <dimen name="item_layout_margin_bottom_or_top">8dp</dimen>
+    <dimen name="item_layout_padding_bottom_or_top">16dp</dimen>
+    <dimen name="item_layout_padding_left_or_right">12dp</dimen>
+
+    <dimen name="settings_item_height">46dp</dimen>
+    <dimen name="settings_item_space">2dp</dimen>
+
+    <dimen name="icon_size_big">86dp</dimen>
+    <dimen name="icon_size_center">64dp</dimen>
+    <dimen name="icon_size_center_to">46dp</dimen>
+    <dimen name="icon_size_small">30dp</dimen>
+
+    <dimen name="image_height">86dp</dimen>
+    <dimen name="image_height2">66dp</dimen>
+
+    <!--字体size-->
+    <dimen name="font_size_big_to">22sp</dimen>
+    <dimen name="font_size_big">18sp</dimen>
+    <dimen name="font_size_center">16sp</dimen>
+    <dimen name="font_size_small">14sp</dimen>
+    <dimen name="font_size_small_to">12sp</dimen>
+
+    <dimen name="et_login_height">36dp</dimen>
+
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="nav_header_bottom_height">12dp</dimen>
+
+    <dimen name="fragment_margin_top_to_tab">36dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="start_btn_width">106dp</dimen>
+    <dimen name="start_btn_height">26dp</dimen>
+    <dimen name="start_layout_space">10dp</dimen>
+
+    <dimen name="item_height_46">46dp</dimen>
+    <dimen name="item_height_56">56dp</dimen>
+    <dimen name="item_height_66">66dp</dimen>
+    <dimen name="item_height_76">76dp</dimen>
+
+    <dimen name="fab_size_normal">100dp</dimen>
+
+    <dimen name="shop_layout_height">176dp</dimen>
+    <dimen name="video_image_height">86dp</dimen>
+
+    <dimen name="sp_16">16sp</dimen>
+
+    <dimen name="dp_5">5dp</dimen>
+
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_26">26dp</dimen>
+    <dimen name="dp_36">36dp</dimen>
+    <dimen name="dp_46">46dp</dimen>
+    <dimen name="dp_56">56dp</dimen>
+
+</resources>

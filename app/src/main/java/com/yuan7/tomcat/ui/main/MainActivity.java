@@ -10,23 +10,29 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.video.lib.VideoPlayer;
 import com.yuan7.tomcat.R;
+import com.yuan7.tomcat.UserParams;
 import com.yuan7.tomcat.adapter.UiPagerAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
+import com.yuan7.tomcat.bean.impl.SettingsUserEntity;
 import com.yuan7.tomcat.constant.Constant;
 import com.yuan7.tomcat.rx.EventBase;
 import com.yuan7.tomcat.rx.RxBus;
 import com.yuan7.tomcat.ui.menu.MenuActivity;
-import com.yuan7.tomcat.ui.menu.post.PostActivity;
+import com.yuan7.tomcat.ui.post.MyPostActivity;
 import com.yuan7.tomcat.ui.main.comm.CommuFragment;
 import com.yuan7.tomcat.ui.main.info.InfoFragment;
 import com.yuan7.tomcat.ui.main.start.StartFragment;
 import com.yuan7.tomcat.ui.send.SendActivity;
+import com.yuan7.tomcat.helper.GlideImageLoader;
+import com.yuan7.tomcat.utils.SPUtil;
 import com.yuan7.tomcat.widget.BottomNavigationViewEx;
 import com.yuan7.tomcat.widget.NoScrollViewPager;
+import com.yuan7.tomcat.widget.roundImageView.RoundedImageView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -60,6 +66,13 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.item_appSettings)
     FrameLayout tvAppSettings;
 
+    @BindView(R.id.riv_userIcon)
+    RoundedImageView rivUserIcon;
+    @BindView(R.id.tv_userName)
+    TextView tvUserName;
+    @BindView(R.id.tv_levelNum)
+    TextView tvLevelNum;
+
     private Fragment[] fragments = {new InfoFragment(), new CommuFragment(), new StartFragment()};
     private String mode = "";
     private boolean itemFlag = false;
@@ -76,6 +89,8 @@ public class MainActivity extends BaseActivity {
         setBackEnable(false);
         setFinishFlag(false);
         backExitEnable(true);
+
+        SPUtil.save(UserParams.LOGIN_STATUS, true); //进入登陆状态
 
         mainContainer.setAdapter(new UiPagerAdapter(mFragmentManager, fragments));
         mainContainer.setNoScroll(true);
@@ -107,7 +122,13 @@ public class MainActivity extends BaseActivity {
                     public void accept(@NonNull EventBase eventBase) throws Exception {
                         if ((int) eventBase.getOption() == Constant.RX_BUS_START_FRIEND) {
                             mainNav.setCurrentItem(1);
+                        } else if ((int) eventBase.getOption() == Constant.RX_BUS_START_MENU) {
+                            SettingsUserEntity entity = (SettingsUserEntity) eventBase.getObj();
+                            GlideImageLoader.loadCircleCrop(entity.getObj().getImage(), rivUserIcon);
+                            tvUserName.setText(entity.getObj().getName());
+                            tvLevelNum.setText("LV:" + entity.getObj().getLevel());
                         }
+
                     }
                 });
 
@@ -129,6 +150,11 @@ public class MainActivity extends BaseActivity {
             public void onDrawerStateChanged(int newState) {
             }
         });
+
+        GlideImageLoader.loadCircleCrop(SPUtil.get(UserParams.USER_ICON_URL, ""), rivUserIcon);
+        tvUserName.setText((String) SPUtil.get(UserParams.USER_NAME, ""));
+        tvLevelNum.setText("LV:" + SPUtil.get(UserParams.USER_LEVEL, 0));
+
     }
 
     @Override
@@ -173,7 +199,7 @@ public class MainActivity extends BaseActivity {
         drawer.openDrawer(Gravity.START);
     }
 
-    @OnClick({R.id.item_friend,R.id.item_post,R.id.item_message,R.id.item_shop,R.id.item_userSettings,R.id.item_appSettings,R.id.fab_send})
+    @OnClick({R.id.item_friend, R.id.item_post, R.id.item_message, R.id.item_shop, R.id.item_userSettings, R.id.item_appSettings, R.id.fab_send})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.item_friend:
@@ -202,29 +228,29 @@ public class MainActivity extends BaseActivity {
         drawer.closeDrawer(Gravity.START);
     }
 
-    public void startMenuItem(){
+    public void startMenuItem() {
         if (!itemFlag) {
             return;
         }
         itemFlag = false;
         switch (mode) {
             case Constant.MENU_FRIEND:
-                RxBus.getInstance().post(new EventBase(Constant.RX_BUS_START_FRIEND,null));
+                RxBus.getInstance().post(new EventBase(Constant.RX_BUS_START_FRIEND, null));
                 break;
             case Constant.MENU_POST:
-                startActivity(new Intent(this,PostActivity.class));
+                startActivity(new Intent(this, MyPostActivity.class));
                 break;
             case Constant.MENU_MESSAGE:
-                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG,Constant.MENU_MESSAGE));
+                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG, Constant.MENU_MESSAGE));
                 break;
             case Constant.MENU_SHOP:
-                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG,Constant.MENU_SHOP));
+                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG, Constant.MENU_SHOP));
                 break;
             case Constant.MENU_USER_SETTINGS:
-                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG,Constant.MENU_USER_SETTINGS));
+                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG, Constant.MENU_USER_SETTINGS));
                 break;
             case Constant.MENU_APP_SETTINGS:
-                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG,Constant.MENU_APP_SETTINGS));
+                startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG, Constant.MENU_APP_SETTINGS));
                 break;
         }
     }

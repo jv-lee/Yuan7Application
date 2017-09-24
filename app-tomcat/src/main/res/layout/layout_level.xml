@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@drawable/shape_name_bg"
+        android:gravity="center"
+        android:layout_below="@+id/ll_line1"
+        android:layout_marginLeft="@dimen/content_margin_small"
+        android:layout_toRightOf="@+id/iv_icon"
+        android:orientation="horizontal"
+        android:paddingBottom="1dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="1dp">
+
+        <TextView
+            android:id="@+id/tv_levelNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="LV:12"
+            android:textColor="@color/fontColorWhite"
+            android:textSize="@dimen/font_size_small_to" />
+
+        <TextView
+            android:id="@+id/tv_levelName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:gravity="center"
+            android:text="连长"
+            android:textColor="@color/fontColorWhite"
+            android:textSize="@dimen/font_size_small_to" />
+
+    </LinearLayout>
+
+</merge>

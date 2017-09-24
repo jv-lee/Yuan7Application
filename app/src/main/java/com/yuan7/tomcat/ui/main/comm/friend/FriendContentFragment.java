@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
@@ -18,13 +17,17 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.FriendAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.bean.ResultEntity;
+import com.yuan7.tomcat.bean.impl.FriendEntity;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.entity.FriendEntity;
 import com.yuan7.tomcat.ui.main.comm.friend.inject.DaggerFriendComponent;
 import com.yuan7.tomcat.ui.main.comm.friend.inject.FriendModule;
+import com.yuan7.tomcat.ui.post.FriendPostActivity;
+import com.yuan7.tomcat.utils.IntentUtil;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -33,14 +36,14 @@ import butterknife.BindView;
  */
 public class FriendContentFragment extends BaseFragment<FriendContract.Presenter> implements FriendContract.View {
 
-    private String text;
+    private int type;
     @BindView(R.id.refreshLayout)
     TwinklingRefreshLayout refreshLayout;
     @BindView(R.id.rv_container)
     RecyclerView rvContainer;
 
-    private FriendAdapter friendAdapter;
-    private List<FriendEntity> friendEntities = new ArrayList<>();
+    private FriendAdapter dataAdapter;
+    private int page = 1;
 
     public FriendContentFragment() {
     }
@@ -61,23 +64,33 @@ public class FriendContentFragment extends BaseFragment<FriendContract.Presenter
 
     @Override
     protected void bindData() {
-        text = getArguments().getString(Constant.FRAGMENT_TYPE);
-        friendAdapter = new FriendAdapter(friendEntities);
-        friendAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        type = getArguments().getInt(Constant.FRAGMENT_TYPE);
+        dataAdapter = new FriendAdapter(new ArrayList<FriendEntity>());
+        dataAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        dataAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                FriendEntity contentEntity = ((FriendAdapter) adapter).getData().get(position);
+                Map<String, Object> map = new HashMap<>();
+                map.put(Constant.FRIEND_USER_ID, contentEntity.getId());
+                map.put(Constant.FRIEND_USER_NAME, contentEntity.getName());
+                map.put(Constant.FRIEND_USER_IMAGE, contentEntity.getImage());
+                map.put(Constant.FRIEND_USER_LEVEL, contentEntity.getLevel());
+                map.put(Constant.FRIEND_USER_SEND_COUNT, contentEntity.getNewsNum());
+                map.put(Constant.FRIEND_USER_REPLY_COUNT, contentEntity.getGoodNum());
+                map.put(Constant.FRIEND_USER_FRIEND_COUNT, 0);
+                IntentUtil.setParamsIntoActivity(mActivity, FriendPostActivity.class, map);
+            }
+        });
+        dataAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                mPresenter.bindFriendData(2);
+                mPresenter.bindFriendData(page, type);
             }
         });
 
         rvContainer.setLayoutManager(new LinearLayoutManager(mActivity));
-        rvContainer.setAdapter(friendAdapter);
-        rvContainer.addOnItemTouchListener(new OnItemChildClickListener() {
-            @Override
-            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
-            }
-        });
+        rvContainer.setAdapter(dataAdapter);
 
         ProgressLayout progressLayout = new ProgressLayout(mActivity);
 //        progressLayout.setColorSchemeColors(Color.parseColor("#000000"));
@@ -88,7 +101,8 @@ public class FriendContentFragment extends BaseFragment<FriendContract.Presenter
             @Override
             public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
                 super.onRefresh(refreshLayout);
-                mPresenter.bindFriendData(1);
+                page = 1;
+                mPresenter.bindFriendData(page, type);
             }
         });
         refreshLayout.startRefresh();
@@ -102,11 +116,28 @@ public class FriendContentFragment extends BaseFragment<FriendContract.Presenter
     }
 
     @Override
-    public void bindFriendData(List<FriendEntity> result) {
-        friendAdapter.getData().addAll(result);
-        friendAdapter.notifyDataSetChanged();
+    public void bindFriendData(int pageNo, ResultEntity<FriendEntity> result) {
+        if (pageNo == 1 && result.getObj().getRows().size() == 0) {
+            refreshLayout.finishRefreshing();
+            return;
+        }
+        if (pageNo > 1) {
+            dataAdapter.loadMoreEnd();
+            return;
+        }
+        if (pageNo > result.getObj().getCountPage()) {
+            dataAdapter.loadMoreEnd();
+            return;
+        }
+        if (pageNo == 1) {
+            dataAdapter.getData().clear();
+            dataAdapter.notifyDataSetChanged();
+        }
+        dataAdapter.getData().addAll(result.getObj().getRows());
+        dataAdapter.notifyDataSetChanged();
+        page++;
         refreshLayout.finishRefreshing();
-        friendAdapter.loadMoreComplete();
+        dataAdapter.loadMoreComplete();
     }
 
     @Override

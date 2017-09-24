@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorFragmentBackground"
+    android:orientation="vertical"
+    tools:context="com.yuan7.tomcat.ui.product.AddressActivity">
+
+    <include layout="@layout/layout_toolbar_back" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_header_bottom_height"
+        android:background="@mipmap/appbar_bottom_background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/content_padding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_content_bg"
+            android:padding="@dimen/content_padding_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="联系人"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_small" />
+
+            <EditText
+                android:id="@+id/et_linkman"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="8"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="输入收货人真实姓名"
+                android:inputType="text"
+                android:textSize="@dimen/font_size_small" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@drawable/shape_content_bg"
+            android:padding="@dimen/content_padding_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="手机号"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_small" />
+
+            <EditText
+                android:id="@+id/et_phone_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="8"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="输入收货人手机号"
+                android:inputType="phone"
+                android:textSize="@dimen/font_size_small" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_item_province"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@drawable/shape_content_bg"
+            android:padding="@dimen/content_padding_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="省份"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_small" />
+
+            <TextView
+                android:id="@+id/tv_province"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="6"
+                android:background="@null"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_small" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_yellow_dark_24dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_item_city"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@drawable/shape_content_bg"
+            android:padding="@dimen/content_padding_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="城市"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_small" />
+
+            <TextView
+                android:id="@+id/tv_city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="6"
+                android:background="@null"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_small" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_yellow_dark_24dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_item_county"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@drawable/ripple_user_settings_item"
+            android:padding="@dimen/content_padding_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_small"
+                android:text="县/区"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_county"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="6"
+                android:background="@null"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_small"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_yellow_dark_24dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_item_street"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@drawable/shape_content_bg"
+            android:padding="@dimen/content_padding_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_small"
+                android:text="街道"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_street"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="6"
+                android:background="@null"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_small" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_yellow_dark_24dp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_address_des"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@drawable/shape_content_bg"
+            android:gravity="start"
+            android:hint="详细地址"
+            android:inputType="text"
+            android:padding="@dimen/content_padding_small"
+            android:textSize="@dimen/font_size_small">
+
+        </EditText>
+
+
+    </LinearLayout>
+
+</LinearLayout>

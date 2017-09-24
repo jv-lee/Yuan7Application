@@ -1,132 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="@dimen/content_padding"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/content_padding">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
-            android:text="@string/post_reply_str"
-            android:textSize="@dimen/font_size_small"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/post_reply_str"
+            android:textSize="@dimen/font_size_small" />
 
         <TextView
             android:id="@+id/tv_reply_message"
-            android:text="this is reply content message."
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textSize="@dimen/font_size_small"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="this is reply content message."
+            android:textSize="@dimen/font_size_small" />
 
     </LinearLayout>
 
     <TextView
-        android:layout_marginTop="@dimen/content_margin_small"
         android:id="@+id/tv_reply_date"
-        android:text="2017-08-07"
-        android:textSize="@dimen/font_size_small"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/content_margin_small"
+        android:text="2017-08-07"
+        android:textSize="@dimen/font_size_small" />
+
     <View
-        android:layout_marginTop="@dimen/dp_5"
-        android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/colorPrimaryDark" />
 
     <LinearLayout
-        android:layout_marginTop="@dimen/dp_5"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:orientation="horizontal">
 
         <TextView
-            android:text="@string/post_reply_str2"
-            android:textSize="@dimen/font_size_small"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/post_reply_str2"
+            android:textSize="@dimen/font_size_small" />
 
         <TextView
             android:id="@+id/tv_reply_title"
-            android:text="Content Title"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textSize="@dimen/font_size_small"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Content Title"
+            android:textSize="@dimen/font_size_small" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="@dimen/content_margin"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/content_margin"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_readCount"
-            android:gravity="center_vertical"
-            android:text="3210"
-            android:maxLines="1"
-            android:maxLength="6"
-            android:ellipsize="end"
-            android:drawablePadding="@dimen/content_padding_small"
-            android:drawableLeft="@drawable/ic_chat_white_12dp"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:textSize="@dimen/font_size_small"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_chat_white_12dp"
+            android:drawablePadding="@dimen/content_padding_small"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLength="6"
+            android:maxLines="1"
+            android:text="3210"
+            android:textSize="@dimen/font_size_small" />
 
 
         <TextView
             android:id="@+id/tv_inputCount"
-            android:drawablePadding="@dimen/content_padding_small"
-            android:gravity="center_vertical"
-            android:text="3210"
-            android:maxLines="1"
-            android:maxLength="6"
-            android:ellipsize="end"
-            android:drawableLeft="@drawable/ic_chat_white_12dp"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:textSize="@dimen/font_size_small"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_chat_white_12dp"
+            android:drawablePadding="@dimen/content_padding_small"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLength="6"
+            android:maxLines="1"
+            android:text="3210"
+            android:textSize="@dimen/font_size_small" />
 
         <TextView
             android:id="@+id/tv_niceCount"
-            android:drawablePadding="@dimen/content_padding_small"
-            android:gravity="center_vertical"
-            android:text="3210"
-            android:maxLines="1"
-            android:maxLength="6"
-            android:ellipsize="end"
-            android:drawableLeft="@drawable/ic_thumb_up_white_12dp"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:textSize="@dimen/font_size_small"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_thumb_up_white_12dp"
+            android:drawablePadding="@dimen/content_padding_small"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLength="6"
+            android:maxLines="1"
+            android:text="3210"
+            android:textSize="@dimen/font_size_small" />
 
         <TextView
+            android:id="@+id/tv_click_read"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:drawablePadding="@dimen/content_padding_small"
             android:gravity="center"
             android:text="查看主题"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:textSize="@dimen/font_size_small"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/font_size_small" />
     </LinearLayout>
 
     <View
-        android:layout_marginTop="@dimen/dp_5"
-        android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/colorPrimaryDark" />
 
 </LinearLayout>

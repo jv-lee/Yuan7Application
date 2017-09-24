@@ -39,7 +39,10 @@
             android:layout_marginTop="@dimen/content_margin"
             android:background="@drawable/shape_edit_bg"
             android:drawableLeft="@drawable/ic_back"
+            android:inputType="textEmailAddress"
             android:hint="@string/login_userName"
+            android:maxLength="12"
+            android:text="test123456"
             android:textColorHint="@color/colorAccent"
             android:textSize="@dimen/font_size_center" />
 
@@ -51,6 +54,9 @@
             android:background="@drawable/shape_edit_bg"
             android:drawableLeft="@drawable/ic_back"
             android:hint="@string/login_password"
+            android:text="test123456"
+            android:maxLength="16"
+            android:inputType="textPassword"
             android:textColorHint="@color/colorAccent"
             android:textSize="@dimen/font_size_center" />
 
