@@ -7,9 +7,9 @@ package com.yuan7.tomcat.constant;
 public class Constant {
     //服务地址
 //    public static String BASE_URL = SERVER_URL;
-//    public static String final String BASE_URL = "http://120.25.82.88:8484";
-    public static String BASE_URL = "http://192.168.3.73:9999/";
-    //        public static final String BASE_URL = "http://192.168.3.80:8080/";
+    public static final String BASE_URL = "http://120.25.82.88:8484/";
+    //        public static String BASE_URL = "http://192.168.3.73:9999/";
+//    public static final String TEST_URL = "http://192.168.3.80:8080/";
     //    public static final String BASE_URL = "http://192.168.3.143:8080/";
     public static final String CONTENT_URL = BASE_URL + "news/detail/";
     public static final String ACTIVI_URL = BASE_URL + "signin/home";

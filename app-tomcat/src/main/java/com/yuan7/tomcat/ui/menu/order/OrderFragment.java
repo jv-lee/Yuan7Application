@@ -67,6 +67,7 @@ public class OrderFragment extends BaseFragment<OrderContract.Presenter> impleme
 
         dataAdapter = new OrderAdapter(new ArrayList<ProductOrderEntity>());
         dataAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        dataAdapter.setEmptyView(LayoutInflater.from(mActivity).inflate(R.layout.layout_empty_product_order, null));
         dataAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {

@@ -2,7 +2,7 @@
     <string name="app_name">Tomcat</string>
     <string name="title_info">资讯</string>
     <string name="title_community">社区</string>
-    <string name="title_start">启动</string>
+    <string name="title_start">游戏</string>
 
     <string name="info_tab_hot">热点</string>
     <string name="info_tab_video">视频</string>
@@ -97,10 +97,10 @@
     </string-array>
 
     <string-array name="spinner_gold">
-        <item>10</item>
-        <item>30</item>
-        <item>50</item>
-        <item>100</item>
+        <item>悬赏10金币</item>
+        <item>悬赏30金币</item>
+        <item>悬赏50金币</item>
+        <item>悬赏100金币</item>
     </string-array>
 
     <string name="str_put_address">运费到付</string>

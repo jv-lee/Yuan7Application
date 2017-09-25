@@ -34,6 +34,7 @@ public class ActiveActivity extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
+//                overridePendingTransition(R.anim.scale_in, R.anim.scale_out);
             }
         });
         web = (WebView) findViewById(R.id.web);
@@ -81,4 +82,16 @@ public class ActiveActivity extends Activity {
         return super.onKeyUp(keyCode, event);
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        StatusBarUtil.backgroundAlpha(this, 0.5f);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+//        StatusBarUtil.backgroundAlpha(this, 1.0f);
+    }
 }

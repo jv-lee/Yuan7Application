@@ -33,10 +33,8 @@ import butterknife.OnClick;
  */
 public class CodeFragment extends BaseFragment<CodeContract.Presenter> implements CodeContract.View {
 
-    @BindView(R.id.tv_my_code)
-    TextView tvMyCode;
-    @BindView(R.id.tv_input_code)
-    TextView tvInputCode;
+    @BindView(R.id.et_my_code)
+    EditText etMyCode;
     @BindView(R.id.et_input_code)
     EditText etInputCode;
     @BindView(R.id.btn_code)
@@ -75,27 +73,24 @@ public class CodeFragment extends BaseFragment<CodeContract.Presenter> implement
 
         String myCode = (String) SPUtil.get(UserParams.USER_INVITECODE, "");
         if (!myCode.equals("")) {
-            tvMyCode.setText(myCode);
+            etMyCode.setText(myCode);
         } else {
-            tvMyCode.setText("邀请码异常");
+            etMyCode.setText("邀请码异常");
         }
 
         hasCode = (boolean) SPUtil.get(UserParams.USER_HAS_INVITECODE, false);
         if (hasCode) {
-            etInputCode.setVisibility(View.GONE);
-            btnCode.setVisibility(View.GONE);
-            tvInputCode.setVisibility(View.VISIBLE);
             String toCode = (String) SPUtil.get(UserParams.USER_WRITE_INVITECODE, "");
+            etInputCode.setEnabled(false);
+            etInputCode.setTextIsSelectable(true);
             if (!toCode.equals("")) {
-                tvInputCode.setText(toCode);
+                etInputCode.setText(toCode);
             } else {
-                tvInputCode.setText("邀请码异常");
+                etInputCode.setText("邀请码异常");
             }
 
         } else {
-            etInputCode.setVisibility(View.VISIBLE);
-            btnCode.setVisibility(View.VISIBLE);
-            tvInputCode.setVisibility(View.GONE);
+            etInputCode.setEnabled(true);
         }
 
         mPresenter.bindCodeData();
@@ -120,26 +115,21 @@ public class CodeFragment extends BaseFragment<CodeContract.Presenter> implement
         }
     }
 
-
     @Override
     public void sendCodeResponse(ResultBeanEntity resultBeanEntity) {
         if (resultBeanEntity.getCode() == 2000) {
-            tvInputCode.setText(etInputCode.getText().toString());
-            tvInputCode.setVisibility(View.VISIBLE);
-            etInputCode.setVisibility(View.GONE);
+            etInputCode.setEnabled(false);
+            etInputCode.setTextIsSelectable(true);
             btnCode.setVisibility(View.GONE);
             SPUtil.save(UserParams.USER_HAS_INVITECODE, true);
-            SPUtil.save(UserParams.USER_WRITE_INVITECODE, etInputCode.getText().toString());
-            etInputCode.setText("");
+            SPUtil.save(UserParams.USER_WRITE_INVITECODE, etInputCode.getText().toString() );
             Toast.makeText(mActivity, resultBeanEntity.getMessage(), Toast.LENGTH_SHORT).show();
         } else if (resultBeanEntity.getCode() == 4404) {
-            tvInputCode.setVisibility(View.GONE);
-            etInputCode.setVisibility(View.VISIBLE);
+            etInputCode.setEnabled(true);
             btnCode.setVisibility(View.VISIBLE);
             Toast.makeText(mActivity, resultBeanEntity.getMessage(), Toast.LENGTH_SHORT).show();
         } else if (resultBeanEntity.getCode() == 4405) {
-            tvInputCode.setVisibility(View.GONE);
-            etInputCode.setVisibility(View.VISIBLE);
+            etInputCode.setEnabled(true);
             btnCode.setVisibility(View.VISIBLE);
             Toast.makeText(mActivity, resultBeanEntity.getMessage(), Toast.LENGTH_SHORT).show();
         }

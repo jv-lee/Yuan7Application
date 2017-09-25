@@ -75,7 +75,6 @@ public class StartFragment extends BaseFragment<StartContract.Presenter> impleme
 
     @Override
     protected void bindData() {
-        Toast.makeText(mActivity, Build.BRAND, Toast.LENGTH_SHORT).show();
         dataAdapter = new StartAdapter(new ArrayList<String>());
         rvContainer.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.HORIZONTAL, false));
         rvContainer.setAdapter(dataAdapter);
@@ -109,6 +108,7 @@ public class StartFragment extends BaseFragment<StartContract.Presenter> impleme
 
         if (resultEntity.getObj().getAppConfig().getActivity()) {
             startActivity(new Intent(mActivity, ActiveActivity.class));
+//            mActivity.overridePendingTransition(R.anim.scale_in, R.anim.scale_out);
         }
 
     }

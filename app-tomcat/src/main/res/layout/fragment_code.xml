@@ -29,16 +29,23 @@
                 android:textColor="@color/fontColorYellow"
                 android:textSize="@dimen/font_size_small" />
 
-            <TextView
-                android:id="@+id/tv_my_code"
+
+            <EditText
+                android:id="@+id/et_my_code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="8"
+                android:background="@null"
+                android:editable="false"
                 android:gravity="start"
-                android:text="156546546"
+                android:lines="1"
                 android:textColor="@color/fontColorYellow"
-                android:textSize="@dimen/font_size_small" />
+                android:textCursorDrawable="@null"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/font_size_small"
+                tools:text="2382787482347" />
+
 
         </LinearLayout>
 
@@ -60,42 +67,27 @@
                 android:gravity="end"
                 android:text="邀请ID："
                 android:textColor="@color/fontColorYellow"
+                android:textIsSelectable="true"
                 android:textSize="@dimen/font_size_small" />
 
-            <FrameLayout
+
+            <EditText
+                android:id="@+id/et_input_code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="8">
-
-                <EditText
-                    android:id="@+id/et_input_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@null"
-                    android:ellipsize="end"
-                    android:gravity="start"
-                    android:hint="请输入邀请用户邀请码"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textColor="@color/fontColorYellow"
-                    android:textColorHint="@color/fontColorYellow"
-                    android:textSize="@dimen/font_size_small"
-                    android:visibility="gone" />
-
-
-                <TextView
-                    android:id="@+id/tv_input_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="544564"
-                    android:textColor="@color/fontColorYellow"
-                    android:textSize="@dimen/font_size_small"
-                    android:visibility="visible" />
-
-            </FrameLayout>
+                android:layout_gravity="start|center_vertical"
+                android:layout_weight="8"
+                android:background="@null"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:hint="请输入邀请用户邀请码"
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:textColor="@color/fontColorYellow"
+                android:textColorHint="@color/fontColorYellow"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/font_size_small" />
 
         </LinearLayout>
 

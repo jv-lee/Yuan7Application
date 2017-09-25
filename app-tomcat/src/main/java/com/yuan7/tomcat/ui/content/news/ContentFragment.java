@@ -4,6 +4,7 @@ package com.yuan7.tomcat.ui.content.news;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,6 +112,19 @@ public class ContentFragment extends BaseFragment {
                 LogUtil.i("URL:" + url);
                 view.loadUrl(url, map);
                 return true;
+            }
+        });
+        web.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK && web.canGoBack()) {  //表示按返回键
+                        web.goBack();   //后退
+                        //web.goForward();//前进
+                        return true;
+                    }
+                }
+                return false;
             }
         });
         Map<String, String> map = new HashMap<>();
