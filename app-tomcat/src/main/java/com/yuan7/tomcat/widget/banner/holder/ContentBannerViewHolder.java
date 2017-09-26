@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.yuan7.tomcat.bean.impl.ContentEntity;
+import com.yuan7.tomcat.entity.impl.ContentEntity;
 import com.yuan7.tomcat.helper.GlideImageLoader;
 
 /**

@@ -3,9 +3,7 @@ package com.yuan7.tomcat.ui.login;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
-import com.yuan7.tomcat.bean.impl.UserEntity;
-
-import java.util.Map;
+import com.yuan7.tomcat.entity.impl.UserEntity;
 
 import io.reactivex.Observable;
 import retrofit2.Response;

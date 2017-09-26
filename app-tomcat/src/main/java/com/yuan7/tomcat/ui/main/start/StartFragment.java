@@ -2,7 +2,6 @@ package com.yuan7.tomcat.ui.main.start;
 
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,15 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.StartAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
-import com.yuan7.tomcat.bean.impl.StartEntity;
+import com.yuan7.tomcat.entity.impl.StartEntity;
 import com.yuan7.tomcat.helper.GlideImageLoader;
-import com.yuan7.tomcat.ui.content.news.ActiveActivity;
+import com.yuan7.tomcat.ui.content.ActiveActivity;
 import com.yuan7.tomcat.ui.main.MainActivity;
 import com.yuan7.tomcat.ui.main.start.inject.DaggerStartComponent;
 import com.yuan7.tomcat.ui.main.start.inject.StartModule;
@@ -108,7 +106,7 @@ public class StartFragment extends BaseFragment<StartContract.Presenter> impleme
 
         if (resultEntity.getObj().getAppConfig().getActivity()) {
             startActivity(new Intent(mActivity, ActiveActivity.class));
-//            mActivity.overridePendingTransition(R.anim.scale_in, R.anim.scale_out);
+            mActivity.overridePendingTransition(R.anim.scale_in, R.anim.scale_out);
         }
 
     }

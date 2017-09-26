@@ -3,12 +3,10 @@ package com.yuan7.tomcat.ui.menu.shop;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
-import com.yuan7.tomcat.bean.ResultBeanEntity;
-import com.yuan7.tomcat.bean.ResultBeansEntity;
-import com.yuan7.tomcat.bean.ResultDataEntity;
-import com.yuan7.tomcat.bean.impl.ProductEntity;
-import com.yuan7.tomcat.entity.ShopBannerEntity;
-import com.yuan7.tomcat.entity.ShopEntity;
+import com.yuan7.tomcat.entity.ResultBeansEntity;
+import com.yuan7.tomcat.entity.ResultDataEntity;
+import com.yuan7.tomcat.entity.impl.ProductEntity;
+
 
 import java.util.List;
 
@@ -38,8 +36,8 @@ public interface ShopContract {
 
         Observable<ResultDataEntity<ProductEntity>> doPostShop(int pageNo);
 
-        Observable<List<ShopBannerEntity>> doLocalBanner();
+        Observable<List> doLocalBanner();
 
-        Observable<List<ShopEntity>> doLocalShop(int pageNo);
+        Observable<List> doLocalShop(int pageNo);
     }
 }

@@ -14,9 +14,10 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.SearchAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
-import com.yuan7.tomcat.bean.ResultDataEntity;
-import com.yuan7.tomcat.bean.impl.SearchEntity;
-import com.yuan7.tomcat.ui.content.news.ContentActivity;
+import com.yuan7.tomcat.entity.ResultDataEntity;
+import com.yuan7.tomcat.entity.impl.SearchEntity;
+import com.yuan7.tomcat.helper.AHelper;
+import com.yuan7.tomcat.ui.content.ContentActivity;
 import com.yuan7.tomcat.ui.search.inject.DaggerSearchComponent;
 import com.yuan7.tomcat.ui.search.inject.SearchModule;
 import com.yuan7.tomcat.utils.IntentUtil;
@@ -113,6 +114,8 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
                 finish();
                 break;
             case R.id.iv_right:
+                AHelper.toEvent(this,"T_1004");
+                AHelper.showB(this);
                 page = 1;
                 title = etSearch.getText().toString();
                 if (!title.equals("")) {

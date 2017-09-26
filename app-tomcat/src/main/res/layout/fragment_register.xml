@@ -76,8 +76,6 @@
             android:textColor="@color/fontColorLogin"
             android:textSize="@dimen/font_size_small" />
 
-
     </LinearLayout>
-
 
 </FrameLayout>

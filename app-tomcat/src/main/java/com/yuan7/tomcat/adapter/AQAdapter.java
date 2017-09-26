@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.video.lib.VideoPlayerStandard;
 import com.yuan7.tomcat.R;
-import com.yuan7.tomcat.bean.impl.ContentEntity;
+import com.yuan7.tomcat.entity.impl.ContentEntity;
 import com.yuan7.tomcat.helper.GlideImageLoader;
 import com.yuan7.tomcat.utils.TimeUtil;
 

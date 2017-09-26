@@ -2,8 +2,8 @@ package com.yuan7.tomcat.ui.search;
 
 import com.yuan7.tomcat.base.mvp.BasePresenter;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.bean.ResultDataEntity;
-import com.yuan7.tomcat.bean.impl.SearchEntity;
+import com.yuan7.tomcat.entity.ResultDataEntity;
+import com.yuan7.tomcat.entity.impl.SearchEntity;
 import com.yuan7.tomcat.utils.LogUtil;
 
 import javax.inject.Inject;

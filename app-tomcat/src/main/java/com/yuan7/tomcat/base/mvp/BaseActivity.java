@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
+import com.umeng.analytics.MobclickAgent;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.App;
 import com.yuan7.tomcat.base.app.AppComponent;
@@ -55,13 +56,13 @@ public abstract class BaseActivity<P extends IPresenter> extends IosBackActivity
     @Override
     protected void onResume() {
         super.onResume();
-//        MobclickAgent.onResume(this);
+        MobclickAgent.onResume(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-//        MobclickAgent.onResume(this);
+        MobclickAgent.onPause(this);
     }
 
     @Override

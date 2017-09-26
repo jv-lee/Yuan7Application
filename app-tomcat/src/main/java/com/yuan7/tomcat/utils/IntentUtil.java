@@ -3,12 +3,12 @@ package com.yuan7.tomcat.utils;
 import android.content.Context;
 import android.content.Intent;
 
-import com.yuan7.tomcat.bean.impl.ContentEntity;
-import com.yuan7.tomcat.bean.impl.FriendEntity;
-import com.yuan7.tomcat.bean.impl.ProductEntity;
-import com.yuan7.tomcat.bean.impl.ReplyEntity;
-import com.yuan7.tomcat.bean.impl.PostEntity;
-import com.yuan7.tomcat.bean.impl.SearchEntity;
+import com.yuan7.tomcat.entity.impl.ContentEntity;
+import com.yuan7.tomcat.entity.impl.FriendEntity;
+import com.yuan7.tomcat.entity.impl.ProductEntity;
+import com.yuan7.tomcat.entity.impl.ReplyEntity;
+import com.yuan7.tomcat.entity.impl.PostEntity;
+import com.yuan7.tomcat.entity.impl.SearchEntity;
 import com.yuan7.tomcat.constant.Constant;
 
 import java.util.HashMap;

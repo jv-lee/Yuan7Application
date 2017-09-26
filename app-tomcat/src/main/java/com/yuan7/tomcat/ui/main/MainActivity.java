@@ -13,17 +13,21 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.md.listener.OnPlayListenner;
+import com.md.videosdkshell.VideoSdk;
 import com.video.lib.VideoPlayer;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.UserParams;
 import com.yuan7.tomcat.adapter.UiPagerAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
-import com.yuan7.tomcat.bean.ResultBeanEntity;
-import com.yuan7.tomcat.bean.impl.SettingsUserEntity;
-import com.yuan7.tomcat.bean.impl.UserMessage;
+import com.yuan7.tomcat.entity.ResultBeanEntity;
+import com.yuan7.tomcat.entity.impl.SettingsUserEntity;
+import com.yuan7.tomcat.entity.impl.UserMessage;
 import com.yuan7.tomcat.constant.Constant;
+import com.yuan7.tomcat.helper.AHelper;
 import com.yuan7.tomcat.rx.EventBase;
 import com.yuan7.tomcat.rx.RxBus;
 import com.yuan7.tomcat.ui.main.inject.DaggerMainComponent;
@@ -35,6 +39,7 @@ import com.yuan7.tomcat.ui.main.info.InfoFragment;
 import com.yuan7.tomcat.ui.main.start.StartFragment;
 import com.yuan7.tomcat.ui.send.SendActivity;
 import com.yuan7.tomcat.helper.GlideImageLoader;
+import com.yuan7.tomcat.utils.NetworkUtil;
 import com.yuan7.tomcat.utils.SPUtil;
 import com.yuan7.tomcat.widget.NoScrollViewPager;
 import com.yuan7.tomcat.widget.roundImageView.RoundedImageView;
@@ -54,8 +59,6 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
     RadioGroup mainNav;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
-    //    @BindView(R.id.fab_send)
-//    FloatingActionButton fabSend;
     @BindView(R.id.iv_fab)
     ImageView ivFab;
 
@@ -76,6 +79,8 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
     RelativeLayout itemAppSettings;
     @BindView(R.id.item_code)
     RelativeLayout itemCode;
+    @BindView(R.id.item_ad)
+    RelativeLayout itemAd;
 
     @BindView(R.id.riv_userIcon)
     RoundedImageView rivUserIcon;
@@ -130,13 +135,13 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
                         mainContainer.setCurrentItem(1, false);
                         break;
                     case R.id.rb_start:
+                        AHelper.toEvent(MainActivity.this, "T_1009");
+                        AHelper.showS(MainActivity.this);
                         mainContainer.setCurrentItem(2, false);
                         break;
                 }
             }
         });
-//        mainNav.enableAnimation(false);
-//        mainNav.setupWithViewPager(mainContainer);
 
         observable = RxBus.getInstance().register(this);
         observable.observeOn(AndroidSchedulers.mainThread())
@@ -144,7 +149,6 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
                     @Override
                     public void accept(@NonNull EventBase eventBase) throws Exception {
                         if ((int) eventBase.getOption() == Constant.RX_BUS_START_FRIEND) {
-//                            mainNav.getChildCount();
                             if (mainNav != null) {
                                 RadioButton radioButton = (RadioButton) mainNav.findViewById(R.id.rb_community);
                                 if (radioButton != null) {
@@ -188,8 +192,12 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         });
 
 
-        mPresenter.firstLogin();
-        mPresenter.bindMenuData();
+        if (NetworkUtil.isConnected(this)) {
+            mPresenter.firstLogin();
+            mPresenter.bindMenuData();
+        } else {
+            Toast.makeText(mContext, "网络未连接", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -238,7 +246,7 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         drawer.openDrawer(Gravity.START);
     }
 
-    @OnClick({R.id.item_friend, R.id.item_post, R.id.item_message, R.id.item_shop, R.id.item_record, R.id.item_userSettings, R.id.item_appSettings, R.id.item_code, R.id.iv_fab})
+    @OnClick({R.id.item_friend, R.id.item_post, R.id.item_message, R.id.item_shop, R.id.item_record, R.id.item_userSettings, R.id.item_appSettings, R.id.item_code, R.id.item_ad, R.id.iv_fab})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.item_friend:
@@ -267,7 +275,11 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
             case R.id.item_code:
                 mode = Constant.MENU_CODE;
                 break;
+            case R.id.item_ad:
+                mode = Constant.MENU_AD;
+                break;
             case R.id.iv_fab:
+                AHelper.toEvent(this, "T_1006");
                 startActivity(new Intent(this, SendActivity.class));
                 break;
         }
@@ -291,6 +303,7 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
                 startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG, Constant.MENU_MESSAGE));
                 break;
             case Constant.MENU_SHOP:
+                AHelper.toEvent(this, "T_1005");
                 startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG, Constant.MENU_SHOP));
                 break;
             case Constant.MENU_RECORD:
@@ -304,6 +317,30 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
                 break;
             case Constant.MENU_CODE:
                 startActivity(new Intent(this, MenuActivity.class).putExtra(Constant.MENU_DATE_TAG, Constant.MENU_CODE));
+                break;
+            case Constant.MENU_AD:
+                AHelper.toEvent(this, "T_1013");
+                VideoSdk.playInterstitialVideo(new OnPlayListenner() {
+                    @Override
+                    public void onPlayFinish() {
+
+                    }
+
+                    @Override
+                    public void onPlayFail(String s) {
+
+                    }
+
+                    @Override
+                    public void onDownloadAction() {
+
+                    }
+
+                    @Override
+                    public void onVideoDetailClose() {
+
+                    }
+                });
                 break;
         }
     }

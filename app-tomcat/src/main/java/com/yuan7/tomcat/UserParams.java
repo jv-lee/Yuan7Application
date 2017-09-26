@@ -9,6 +9,7 @@ public class UserParams {
 
     public static final String USER_TOKEN = "token";//token
     public static final String USER_ID = "user_id";//id
+    public static final String USER_USERNAME = "user_username";
     public static final String USER_ICON_URL = "user_icon_url";//头像
     public static final String USER_NAME = "user_name";//昵称
     public static final String USER_SEX = "user_sex";//性别

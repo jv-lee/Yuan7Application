@@ -18,18 +18,16 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.NewsAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
-import com.yuan7.tomcat.bean.ResultDataEntity;
-import com.yuan7.tomcat.bean.impl.ContentEntity;
+import com.yuan7.tomcat.entity.ResultDataEntity;
+import com.yuan7.tomcat.entity.impl.ContentEntity;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.ui.content.news.ContentActivity;
+import com.yuan7.tomcat.ui.content.ContentActivity;
 import com.yuan7.tomcat.ui.main.info.news.inject.DaggerNewsComponent;
 import com.yuan7.tomcat.ui.main.info.news.inject.NewsModule;
 import com.yuan7.tomcat.utils.IntentUtil;
 import com.yuan7.tomcat.utils.SizeUtil;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 

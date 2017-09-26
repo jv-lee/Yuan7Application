@@ -3,8 +3,8 @@ package com.yuan7.tomcat.ui.menu.settings.user;
 import com.yuan7.tomcat.UserParams;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.bean.impl.FileResponseEntity;
-import com.yuan7.tomcat.bean.impl.SettingsUserEntity;
+import com.yuan7.tomcat.entity.impl.FileResponseEntity;
+import com.yuan7.tomcat.entity.impl.SettingsUserEntity;
 import com.yuan7.tomcat.server.ApiServer;
 import com.yuan7.tomcat.utils.SPUtil;
 

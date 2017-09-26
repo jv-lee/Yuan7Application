@@ -3,8 +3,8 @@ package com.yuan7.tomcat.ui.main;
 import com.yuan7.tomcat.UserParams;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.bean.ResultBeanEntity;
-import com.yuan7.tomcat.bean.impl.UserMessage;
+import com.yuan7.tomcat.entity.ResultBeanEntity;
+import com.yuan7.tomcat.entity.impl.UserMessage;
 import com.yuan7.tomcat.server.ApiServer;
 import com.yuan7.tomcat.utils.SPUtil;
 

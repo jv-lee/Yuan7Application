@@ -6,8 +6,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.yuan7.tomcat.bean.impl.ProductEntity;
-import com.yuan7.tomcat.entity.ShopBannerEntity;
+import com.yuan7.tomcat.entity.impl.ProductEntity;
 import com.yuan7.tomcat.helper.GlideImageLoader;
 
 /**

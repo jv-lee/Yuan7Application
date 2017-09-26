@@ -26,8 +26,9 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
-import com.yuan7.tomcat.bean.impl.SettingsUserEntity;
+import com.yuan7.tomcat.entity.impl.SettingsUserEntity;
 import com.yuan7.tomcat.constant.Constant;
+import com.yuan7.tomcat.helper.AHelper;
 import com.yuan7.tomcat.interfaces.TitleBarListener;
 import com.yuan7.tomcat.rx.EventBase;
 import com.yuan7.tomcat.rx.RxBus;
@@ -140,6 +141,7 @@ public class UserSettingsFragment extends BaseFragment<UserSettingsContract.Pres
             case R.id.fl_item_level:
                 break;
             case R.id.btn_unLogin:
+                AHelper.showS(mActivity);
                 SPUtil.save(Constant.ADDRESS_LINKMAN, "");
                 SPUtil.save(Constant.ADDRESS_PHONE_NUMBER, "");
                 SPUtil.save(Constant.ADDRESS_DES, "");

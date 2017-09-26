@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yuan7.tomcat.ui.content.news.WebFragment">
-
+    tools:context="com.yuan7.tomcat.ui.content.WebFragment">
 
     <WebView
         android:id="@+id/web"

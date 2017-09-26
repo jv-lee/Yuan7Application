@@ -3,9 +3,9 @@ package com.yuan7.tomcat.ui.main.info.hot;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
-import com.yuan7.tomcat.bean.ResultDataEntity;
-import com.yuan7.tomcat.bean.impl.BannerEntity;
-import com.yuan7.tomcat.bean.impl.ContentEntity;
+import com.yuan7.tomcat.entity.ResultDataEntity;
+import com.yuan7.tomcat.entity.impl.BannerEntity;
+import com.yuan7.tomcat.entity.impl.ContentEntity;
 
 import java.util.List;
 
@@ -35,8 +35,8 @@ public interface HotContract {
 
         Observable<ResultDataEntity<ContentEntity>> doPostHot(int pageNo);
 
-        Observable<List<com.yuan7.tomcat.entity.BannerEntity>> doLocalBanner();
+        Observable<List> doLocalBanner();
 
-        Observable<List<com.yuan7.tomcat.entity.HotEntity>> doLocalHot(int pageNo);
+        Observable<List> doLocalHot(int pageNo);
     }
 }

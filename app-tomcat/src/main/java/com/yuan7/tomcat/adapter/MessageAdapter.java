@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yuan7.tomcat.R;
-import com.yuan7.tomcat.bean.impl.MessageEntity;
+import com.yuan7.tomcat.entity.impl.MessageEntity;
 import com.yuan7.tomcat.helper.GlideImageLoader;
 import com.yuan7.tomcat.utils.TimeUtil;
 

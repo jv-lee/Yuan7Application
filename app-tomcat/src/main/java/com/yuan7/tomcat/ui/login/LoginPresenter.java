@@ -3,7 +3,7 @@ package com.yuan7.tomcat.ui.login;
 import com.yuan7.tomcat.UserParams;
 import com.yuan7.tomcat.base.mvp.BasePresenter;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.bean.impl.UserEntity;
+import com.yuan7.tomcat.entity.impl.UserEntity;
 import com.yuan7.tomcat.utils.LogUtil;
 import com.yuan7.tomcat.utils.RegexUtils;
 import com.yuan7.tomcat.utils.SPUtil;

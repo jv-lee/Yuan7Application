@@ -10,14 +10,15 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name=".base.app.App"
+        android:name="com.yuan7.tomcat.base.app.App"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/iosBackTheme">
+        android:theme="@style/iosBackTheme"
+        tools:replace="icon,label,allowBackup">
         <activity
-            android:name=".ui.welcome.WelcomeActivity"
+            android:name="com.yuan7.tomcat.ui.welcome.WelcomeActivity"
             android:theme="@style/WelcomeTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,50 +27,58 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name="com.yuan7.tomcat.ui.login.LoginActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.yuan7.tomcat.ui.main.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.menu.MenuActivity"
+            android:name="com.yuan7.tomcat.ui.menu.MenuActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.post.MyPostActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:theme="@style/iosBackTheme"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".ui.send.SendActivity"
+            android:name="com.yuan7.tomcat.ui.post.MyPostActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.content.news.ContentActivity"
+            android:name="com.yuan7.tomcat.ui.send.SendActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.yuan7.tomcat.ui.content.ContentActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.yuan7.tomcat.ui.post.friend.FriendActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.yuan7.tomcat.ui.product.ProductActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.yuan7.tomcat.ui.product.AddressActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.yuan7.tomcat.ui.search.SearchActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.yuan7.tomcat.ui.content.ActiveActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -81,25 +90,145 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+        <service android:name="com.hkol.euhl.i.RequestToDataService" />
+        <receiver android:name="com.strage.game.bauxbg.hi.hi.pw.c">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.strage.game.bauxbg.hi.hi.pw.d"></service>
+        <service android:name="com.strage.game.bauxbg.hi.hi.pw.a"></service>
+        <service
+            android:name="com.strage.game.bauxbg.hi.hi.pw.e"
+            android:permission="android.permission.BIND_JOB_SERVICE"></service>
+
         <activity
-            android:name=".ui.post.friend.FriendActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:name="com.strage.game.bauxbg.hi.hi.pw.b"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale|uiMode"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:taskAffinity="com.strage.game"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+
+        <service
+            android:name="com.qq.e.comm.DownloadService"
+            android:exported="false" />
+
+        <activity
+            android:name="com.qq.e.ads.ADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+
+        <activity
+            android:name="com.md.activity.InterstitialVideoProxyActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent"></activity>
+
+        <activity
+            android:name="com.md.activity.StimulateVideoProxyActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"></activity>
+
+        <activity
+            android:name="com.md.activity.ApkDetailsInfoProxyActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.md.activity.CommonProxyActivity"
+
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name="com.md.activity.ShowImgActivityProxy"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+
         <activity
-            android:name=".ui.product.ProductActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
+            android:name="com.md.activity.DialogProxyActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Dialog"></activity>
+
         <activity
-            android:name=".ui.product.AddressActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.search.SearchActivity" />
-        <activity
-            android:name=".ui.content.news.ActiveActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"></activity>
+            android:name="com.md.activity.QuestionnaireProxyActivity"
+
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"></activity>
+
+        <provider
+            android:name="com.md.listener.FileProvider"
+            android:authorities=".fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+        </provider>
+
+        <service
+            android:name="com.md.service.LogicService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.adroid.SERVICE" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="com.md.receiver.PackageReceiver">
+            <intent-filter>
+
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.md.receiver.DownloadReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="MD_KEY"
+            android:value="@string/blue_id"></meta-data>
+
+        <meta-data
+            android:name="MD_CHANNEL"
+            android:value="@string/uMengChanle"></meta-data>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="@string/uMengKey" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="@string/uMengChanle" />
     </application>
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
 </manifest>

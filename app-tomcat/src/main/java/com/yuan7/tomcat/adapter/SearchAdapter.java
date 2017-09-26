@@ -1,12 +1,11 @@
 package com.yuan7.tomcat.adapter;
 
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yuan7.tomcat.R;
-import com.yuan7.tomcat.bean.impl.SearchEntity;
+import com.yuan7.tomcat.entity.impl.SearchEntity;
 
 import java.util.List;
 

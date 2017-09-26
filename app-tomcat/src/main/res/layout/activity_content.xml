@@ -6,7 +6,7 @@
     android:background="@color/colorFragmentBackground"
     android:orientation="vertical"
     android:id="@+id/root_view"
-    tools:context="com.yuan7.tomcat.ui.content.news.ContentActivity">
+    tools:context="com.yuan7.tomcat.ui.content.ContentActivity">
 
     <include layout="@layout/layout_toolbar_back" />
 

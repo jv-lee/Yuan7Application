@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yuan7.tomcat.ui.content.news.ContentFragment">
+    tools:context="com.yuan7.tomcat.ui.content.ContentFragment">
 
     <com.video.lib.VideoPlayerStandard
         android:id="@+id/video_container"

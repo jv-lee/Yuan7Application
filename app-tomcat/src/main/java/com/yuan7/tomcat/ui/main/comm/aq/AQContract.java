@@ -3,9 +3,9 @@ package com.yuan7.tomcat.ui.main.comm.aq;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
-import com.yuan7.tomcat.bean.ResultDataEntity;
-import com.yuan7.tomcat.bean.impl.ContentEntity;
-import com.yuan7.tomcat.entity.AQEntity;
+import com.yuan7.tomcat.entity.ResultDataEntity;
+import com.yuan7.tomcat.entity.impl.ContentEntity;
+
 
 import java.util.List;
 
@@ -29,6 +29,6 @@ public interface AQContract {
     interface Model extends IModel {
         Observable<ResultDataEntity<ContentEntity>> doPostAQEntity(int pageNo, int type);
 
-        Observable<List<AQEntity>> doLocalEntity(int pageNo);
+        Observable<List<ContentEntity>> doLocalEntity(int pageNo);
     }
 }

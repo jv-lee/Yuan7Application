@@ -47,7 +47,7 @@
                         android:layout_width="@dimen/icon_size_small"
                         android:layout_height="@dimen/icon_size_small"
                         android:layout_toLeftOf="@+id/tv_back"
-                        android:src="@mipmap/icon" />
+                         />
 
                     <TextView
                         android:id="@+id/tv_back"

@@ -30,7 +30,7 @@
             android:layout_height="@dimen/icon_size_center"
             android:layout_marginTop="@dimen/margin_top"
             android:scaleType="fitCenter"
-            android:src="@mipmap/icon" />
+             />
 
         <TextView
             android:id="@+id/tv_userName"

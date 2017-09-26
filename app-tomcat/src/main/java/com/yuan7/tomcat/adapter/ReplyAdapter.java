@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yuan7.tomcat.R;
-import com.yuan7.tomcat.bean.impl.ReplyEntity;
+import com.yuan7.tomcat.entity.impl.ReplyEntity;
 import com.yuan7.tomcat.utils.TimeUtil;
 
 import java.util.List;

@@ -1,8 +1,8 @@
 package com.yuan7.tomcat.utils;
 
 import com.yuan7.tomcat.UserParams;
-import com.yuan7.tomcat.bean.impl.SettingsUserEntity;
-import com.yuan7.tomcat.bean.impl.UserEntity;
+import com.yuan7.tomcat.entity.impl.SettingsUserEntity;
+import com.yuan7.tomcat.entity.impl.UserEntity;
 
 import retrofit2.Response;
 
@@ -26,6 +26,7 @@ public class SaveUserUtil {
     public static void saveUserSP(Response<UserEntity> userEntityResponse) {
         SPUtil.save(UserParams.USER_TOKEN, userEntityResponse.body().getObj().getToken());
         SPUtil.save(UserParams.USER_ID, userEntityResponse.body().getObj().getUser().getId());
+        SPUtil.save(UserParams.USER_USERNAME, userEntityResponse.body().getObj().getUser().getUserName());
         SPUtil.save(UserParams.USER_ICON_URL, userEntityResponse.body().getObj().getUser().getImage());
         SPUtil.save(UserParams.USER_NAME, userEntityResponse.body().getObj().getUser().getName());
         SPUtil.save(UserParams.USER_SEX, userEntityResponse.body().getObj().getUser().isSex());

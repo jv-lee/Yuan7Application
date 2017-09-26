@@ -2,14 +2,11 @@ package com.yuan7.tomcat.ui.menu.shop;
 
 import com.yuan7.tomcat.base.mvp.BasePresenter;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.bean.ResultBeanEntity;
-import com.yuan7.tomcat.bean.ResultBeansEntity;
-import com.yuan7.tomcat.bean.ResultDataEntity;
-import com.yuan7.tomcat.bean.impl.ProductEntity;
-import com.yuan7.tomcat.entity.ShopBannerEntity;
+import com.yuan7.tomcat.entity.ResultBeansEntity;
+import com.yuan7.tomcat.entity.ResultDataEntity;
+import com.yuan7.tomcat.entity.impl.ProductEntity;
 import com.yuan7.tomcat.utils.LogUtil;
 
-import java.util.List;
 
 import javax.inject.Inject;
 

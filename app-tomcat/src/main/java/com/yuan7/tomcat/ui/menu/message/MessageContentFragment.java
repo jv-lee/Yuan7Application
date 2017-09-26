@@ -18,9 +18,9 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.adapter.MessageAdapter;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
-import com.yuan7.tomcat.bean.ResultDataEntity;
+import com.yuan7.tomcat.entity.ResultDataEntity;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.bean.impl.MessageEntity;
+import com.yuan7.tomcat.entity.impl.MessageEntity;
 import com.yuan7.tomcat.ui.menu.message.inject.DaggerMessageComponent;
 import com.yuan7.tomcat.ui.menu.message.inject.MessageModule;
 

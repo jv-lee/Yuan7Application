@@ -3,9 +3,8 @@ package com.yuan7.tomcat.ui.main.info.news;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
-import com.yuan7.tomcat.bean.ResultDataEntity;
-import com.yuan7.tomcat.bean.impl.ContentEntity;
-import com.yuan7.tomcat.entity.NewsEntity;
+import com.yuan7.tomcat.entity.ResultDataEntity;
+import com.yuan7.tomcat.entity.impl.ContentEntity;
 
 import java.util.List;
 
@@ -30,6 +29,6 @@ public interface NewsContract {
     interface Model extends IModel {
         Observable<ResultDataEntity<ContentEntity>> doPostNews(int pageNo, int type);
 
-        Observable<List<NewsEntity>> doLocalNews(int pageNo);
+        Observable<List> doLocalNews(int pageNo);
     }
 }

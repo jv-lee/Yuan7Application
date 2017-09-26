@@ -2,7 +2,7 @@ package com.yuan7.tomcat.ui.send;
 
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.bean.ResultBeanEntity;
+import com.yuan7.tomcat.entity.ResultBeanEntity;
 import com.yuan7.tomcat.server.ApiServer;
 
 import java.util.Map;

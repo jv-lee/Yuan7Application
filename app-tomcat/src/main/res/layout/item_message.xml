@@ -16,7 +16,7 @@
         android:layout_height="@dimen/icon_size_center"
         android:layout_centerVertical="true"
         android:scaleType="fitCenter"
-        android:src="@mipmap/icon"
+
         app:riv_oval="true" />
 
 
@@ -31,35 +31,6 @@
         android:maxLength="18"
         android:text="userName"
         android:textSize="@dimen/font_size_big" />
-
-    <!--<LinearLayout-->
-    <!--android:id="@+id/ll_layout"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginLeft="@dimen/content_margin_small"-->
-    <!--android:layout_toRightOf="@+id/riv_userIcon"-->
-    <!--android:orientation="vertical">-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/tv_userName"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="start"-->
-    <!--android:maxLength="18"-->
-    <!--android:text="userName"-->
-    <!--android:textSize="@dimen/font_size_center" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/tv_messageContent"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:ellipsize="end"-->
-    <!--android:maxLines="2"-->
-    <!--android:text="this is message content"-->
-    <!--android:textSize="@dimen/font_size_big" />-->
-
-    <!--</LinearLayout>-->
-
 
     <TextView
         android:id="@+id/tv_dateStr"

@@ -1,15 +1,13 @@
 package com.yuan7.tomcat.adapter;
 
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yuan7.tomcat.R;
-import com.yuan7.tomcat.bean.impl.ProductOrderEntity;
+import com.yuan7.tomcat.entity.impl.ProductOrderEntity;
 import com.yuan7.tomcat.helper.GlideImageLoader;
-import com.yuan7.tomcat.utils.TimeUtil;
 
 import java.util.List;
 

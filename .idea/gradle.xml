@@ -10,11 +10,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app-tomcat" />
+            <option value="$PROJECT_DIR$/app-tomcat-old" />
+            <option value="$PROJECT_DIR$/lib-address" />
             <option value="$PROJECT_DIR$/lib-banner" />
             <option value="$PROJECT_DIR$/lib-download" />
             <option value="$PROJECT_DIR$/lib-videoplayer" />
-            <option value="$PROJECT_DIR$/library" />
-            <option value="$PROJECT_DIR$/tomcat" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

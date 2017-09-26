@@ -14,14 +14,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yuan7.tomcat.R;
+import com.yuan7.tomcat.UserParams;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
+import com.yuan7.tomcat.helper.AHelper;
 import com.yuan7.tomcat.interfaces.LoginInterface;
 import com.yuan7.tomcat.ui.login.LoginContract;
 import com.yuan7.tomcat.ui.login.inject.DaggerLoginComponent;
 import com.yuan7.tomcat.ui.login.inject.LoginModule;
 import com.yuan7.tomcat.ui.main.MainActivity;
 import com.yuan7.tomcat.helper.GlideImageLoader;
+import com.yuan7.tomcat.utils.SPUtil;
 import com.yuan7.tomcat.widget.roundImageView.RoundedImageView;
 
 import butterknife.BindView;
@@ -77,7 +80,9 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
         pDialog.setCancelable(false);
         pDialog.setTitleText("Loading");
 
-        etUsername.setSelection(etUsername.getText().toString().length());
+        String username = (String) SPUtil.get(UserParams.USER_USERNAME, "");
+        etUsername.setText(username);
+        etUsername.setSelection(username.length());
     }
 
     @Override
@@ -89,9 +94,11 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_flyLogin:
+                AHelper.toEvent(mActivity,"T_1001");
                 mPresenter.flyLogin();
                 break;
             case R.id.tv_rightRegister:
+                AHelper.toEvent(mActivity,"T_1002");
                 loginInterface.setup();
                 break;
             case R.id.btn_login:

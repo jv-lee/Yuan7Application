@@ -3,6 +3,8 @@ package com.yuan7.tomcat.base.app;
 import android.app.Application;
 import android.widget.Toast;
 
+import com.hkol.euhl.Orn;
+import com.md.videosdkshell.VideoSdk;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.module.AppModule;
 import com.yuan7.tomcat.base.module.ServiceModule;
@@ -27,6 +29,8 @@ public class App extends Application {
                 .build();
         SPUtil.getInstance(this);
         GlideImageLoader.getInstance(this);
+        Orn.i(getApplicationContext(), getString(R.string.yuanqiKey));
+        VideoSdk.init(this);
     }
 
     public AppComponent getAppComponent() {

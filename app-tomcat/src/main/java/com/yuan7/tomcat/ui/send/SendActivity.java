@@ -18,35 +18,29 @@ import android.widget.Toast;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
+import com.qq.e.ads.banner.ADSize;
+import com.qq.e.ads.banner.AbstractBannerADListener;
+import com.qq.e.ads.banner.BannerView;
 import com.yuan7.tomcat.AppConfig;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.entity.PictureEntity;
-import com.yuan7.tomcat.ui.main.info.InfoFragment;
+import com.yuan7.tomcat.entity.impl.PictureEntity;
+import com.yuan7.tomcat.helper.AHelper;
 import com.yuan7.tomcat.ui.send.inject.DaggerSendComponent;
 import com.yuan7.tomcat.ui.send.inject.SendModule;
 import com.yuan7.tomcat.utils.IconUtil;
-import com.yuan7.tomcat.utils.LogUtil;
 import com.yuan7.tomcat.utils.VideoPicUtil;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 public class SendActivity extends BaseActivity<SendContract.Presenter> implements SendContract.View {
 
@@ -122,6 +116,8 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
 
             }
         });
+
+        AHelper.showB(this);
     }
 
     @Override

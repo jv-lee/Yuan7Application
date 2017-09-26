@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,8 +15,8 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.UserParams;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
-import com.yuan7.tomcat.bean.ResultBeanEntity;
-import com.yuan7.tomcat.bean.impl.UserEntity;
+import com.yuan7.tomcat.entity.ResultBeanEntity;
+import com.yuan7.tomcat.entity.impl.UserEntity;
 import com.yuan7.tomcat.interfaces.TitleBarListener;
 import com.yuan7.tomcat.ui.menu.code.inject.CodeModule;
 import com.yuan7.tomcat.ui.menu.code.inject.DaggerCodeComponent;

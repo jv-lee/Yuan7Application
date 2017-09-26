@@ -3,7 +3,7 @@ package com.yuan7.tomcat.ui.main.start;
 import com.yuan7.tomcat.AppConfig;
 import com.yuan7.tomcat.base.mvp.BaseModel;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.bean.impl.StartEntity;
+import com.yuan7.tomcat.entity.impl.StartEntity;
 import com.yuan7.tomcat.server.ApiServer;
 
 import javax.inject.Inject;

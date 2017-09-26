@@ -2,8 +2,8 @@ package com.yuan7.tomcat.ui.menu.code;
 
 import com.yuan7.tomcat.base.mvp.BasePresenter;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.bean.ResultBeanEntity;
-import com.yuan7.tomcat.bean.impl.UserEntity;
+import com.yuan7.tomcat.entity.ResultBeanEntity;
+import com.yuan7.tomcat.entity.impl.UserEntity;
 import com.yuan7.tomcat.utils.LogUtil;
 
 import java.util.List;

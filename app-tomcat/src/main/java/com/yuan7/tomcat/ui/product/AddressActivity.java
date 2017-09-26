@@ -18,9 +18,11 @@ import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseActivity;
 import com.yuan7.tomcat.constant.Constant;
+import com.yuan7.tomcat.helper.AHelper;
 import com.yuan7.tomcat.rx.EventBase;
 import com.yuan7.tomcat.rx.RxBus;
 import com.yuan7.tomcat.rx.entity.AddressEntity;
+import com.yuan7.tomcat.ui.main.MainActivity;
 import com.yuan7.tomcat.utils.SPUtil;
 
 import butterknife.BindView;
@@ -100,6 +102,7 @@ public class AddressActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.iv_right:
+                AHelper.toEvent(this,"T_1010");
                 saveAddressData();
                 break;
             case R.id.ll_item_province:

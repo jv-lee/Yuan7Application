@@ -26,6 +26,7 @@ public class Constant {
     public static final String MENU_USER_SETTINGS = "userSettings";
     public static final String MENU_APP_SETTINGS = "appSettings";
     public static final String MENU_CODE = "code";
+    public static final String MENU_AD = "ad";
 
     //fragment 类型键名
     public static final String FRAGMENT_TITLE = "title";

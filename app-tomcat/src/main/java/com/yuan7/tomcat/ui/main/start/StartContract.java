@@ -3,7 +3,7 @@ package com.yuan7.tomcat.ui.main.start;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
-import com.yuan7.tomcat.bean.impl.StartEntity;
+import com.yuan7.tomcat.entity.impl.StartEntity;
 
 import io.reactivex.Observable;
 

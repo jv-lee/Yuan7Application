@@ -24,7 +24,7 @@
             android:layout_height="@dimen/icon_size_center"
             android:layout_marginTop="@dimen/margin_top"
             android:scaleType="fitCenter"
-            android:src="@mipmap/icon" />
+             />
 
         <TextView
             android:id="@+id/tv_userName"
@@ -74,7 +74,6 @@
                 android:text="连长"
                 android:textColor="@color/fontColorWhite"
                 android:textSize="@dimen/font_size_small" />
-
 
         </LinearLayout>
 

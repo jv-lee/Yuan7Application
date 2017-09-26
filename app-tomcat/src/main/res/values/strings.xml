@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tomcat</string>
+    <!--<string name="app_name">Tomcat</string>-->
     <string name="title_info">资讯</string>
     <string name="title_community">社区</string>
     <string name="title_start">游戏</string>
@@ -30,6 +30,7 @@
     <string name="menu_item_shop">金币商城</string>
     <string name="menu_item_record">兑换记录</string>
     <string name="menu_item_code">邀请码</string>
+    <string name="menu_item_ad">更多金币</string>
     <string name="menu_item_userSettings">个人账号</string>
     <string name="menu_item_appSettings">设置</string>
 
@@ -118,5 +119,7 @@
     </string>
     <string name="str_time_get">立即兑换</string>
     <string name="str_save_get_address">添加收货地址</string>
+
+    <string name="click_to_skip">点击跳过</string>
 
 </resources>

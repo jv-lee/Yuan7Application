@@ -2,8 +2,8 @@ package com.yuan7.tomcat.ui.menu.settings.user;
 
 import com.yuan7.tomcat.base.mvp.BasePresenter;
 import com.yuan7.tomcat.base.scope.ActivityScope;
-import com.yuan7.tomcat.bean.impl.FileResponseEntity;
-import com.yuan7.tomcat.bean.impl.SettingsUserEntity;
+import com.yuan7.tomcat.entity.impl.FileResponseEntity;
+import com.yuan7.tomcat.entity.impl.SettingsUserEntity;
 import com.yuan7.tomcat.utils.LogUtil;
 
 import java.io.File;

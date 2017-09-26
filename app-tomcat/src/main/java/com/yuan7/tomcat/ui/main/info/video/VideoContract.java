@@ -3,9 +3,8 @@ package com.yuan7.tomcat.ui.main.info.video;
 import com.yuan7.tomcat.base.mvp.IModel;
 import com.yuan7.tomcat.base.mvp.IPresenter;
 import com.yuan7.tomcat.base.mvp.IView;
-import com.yuan7.tomcat.bean.ResultDataEntity;
-import com.yuan7.tomcat.bean.impl.ContentEntity;
-import com.yuan7.tomcat.entity.VideoEntity;
+import com.yuan7.tomcat.entity.ResultDataEntity;
+import com.yuan7.tomcat.entity.impl.ContentEntity;
 
 import java.util.List;
 
@@ -31,6 +30,6 @@ public interface VideoContract {
     interface Model extends IModel {
         Observable<ResultDataEntity<ContentEntity>> doPostVideo(int pageNo, int type);
 
-        Observable<List<VideoEntity>> doLocalVideo(int pageNo);
+        Observable<List> doLocalVideo(int pageNo);
     }
 }
