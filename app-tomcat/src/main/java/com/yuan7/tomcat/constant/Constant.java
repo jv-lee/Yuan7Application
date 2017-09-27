@@ -6,8 +6,8 @@ package com.yuan7.tomcat.constant;
 
 public class Constant {
     //服务地址
-//    public static String BASE_URL = SERVER_URL;
-    public static final String BASE_URL = "http://120.25.82.88:8484/";
+//    public static String BASE_URL = "http://192.168.3.83:8080/";
+        public static final String BASE_URL = "http://120.25.82.88:8484/";
     //        public static String BASE_URL = "http://192.168.3.73:9999/";
 //    public static final String TEST_URL = "http://192.168.3.80:8080/";
     //    public static final String BASE_URL = "http://192.168.3.143:8080/";
@@ -60,7 +60,6 @@ public class Constant {
     public static final int TYPE_MESSAGE_INPUT_THIS = 2;//@评论我的
     public static final int TYPE_MESSAGE_NICE_THIS = 3;//@赞我的
 
-
     //RxBus 消息键值
     public static final int RX_BUS_APPBAR_OPEN = 1;//appbar 打开状态 RxBus 通知
     public static final int RX_BUS_APPBAR_CLOSE = 2;//appbar 关闭状态 RxBus 通知
@@ -69,7 +68,6 @@ public class Constant {
     public static final int RX_BUS_START_UNLOGIN = 5; //退出登陆
     public static final int RX_BUS_PRODUCT_ADDRESS = 6; //发送 地址信息 状态通知更新页面
     public static final int RX_BUS_START_ICON = 7; //修改Menu 用户头像
-
 
     //上传图片视频 返回code
     public static final int PICTURE_CODE1 = 201;

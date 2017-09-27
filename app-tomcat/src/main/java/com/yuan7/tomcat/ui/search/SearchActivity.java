@@ -115,7 +115,6 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
                 break;
             case R.id.iv_right:
                 AHelper.toEvent(this,"T_1004");
-                AHelper.showB(this);
                 page = 1;
                 title = etSearch.getText().toString();
                 if (!title.equals("")) {

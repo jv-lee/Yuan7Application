@@ -18,9 +18,6 @@ import android.widget.Toast;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.qq.e.ads.banner.ADSize;
-import com.qq.e.ads.banner.AbstractBannerADListener;
-import com.qq.e.ads.banner.BannerView;
 import com.yuan7.tomcat.AppConfig;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.AppComponent;
@@ -31,6 +28,7 @@ import com.yuan7.tomcat.helper.AHelper;
 import com.yuan7.tomcat.ui.send.inject.DaggerSendComponent;
 import com.yuan7.tomcat.ui.send.inject.SendModule;
 import com.yuan7.tomcat.utils.IconUtil;
+import com.yuan7.tomcat.utils.LogUtil;
 import com.yuan7.tomcat.utils.VideoPicUtil;
 
 import java.util.ArrayList;
@@ -78,7 +76,8 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
     private ArrayAdapter<String> typeAdapter;
     private ArrayAdapter<String> goldAdapter;
 
-    private List<LocalMedia> selectList = null;
+    private List<LocalMedia> selectList = new ArrayList<>();
+
 
     @Override
     protected int bindRootView() {
@@ -116,8 +115,6 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
 
             }
         });
-
-        AHelper.showB(this);
     }
 
     @Override
@@ -172,21 +169,21 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
 
         if (selectList != null && !title.equals("") && !content.equals("")) {
             Map<String, Object> map = new HashMap<>();
-//            LogUtil.i("title:" + title);
-//            LogUtil.i("content:" + content);
-//            LogUtil.i("type:" + typePosition);
-//            for (int i = 0; i < selectList.size(); i++) {
-//                LogUtil.i("selectListType:" + selectList.get(i).getPictureType() + "   selectListPath:" + selectList.get(i).getPath());
-//            }
+            LogUtil.i("title:" + title);
+            LogUtil.i("content:" + content);
+            LogUtil.i("type:" + typePosition);
+            for (int i = 0; i < selectList.size(); i++) {
+                LogUtil.i("selectListType:" + selectList.get(i).getPictureType() + "   selectListPath:" + selectList.get(i).getPath());
+            }
             map.put("title", title);
             map.put("type", typePosition + 1);
             map.put("text", content);
             map.put("appId", AppConfig.APP_ID);
 
-            if (selectList.size() > 1) {
-                String[] filePaths = new String[selectList.size()];
-                for (int i = 0; i < selectList.size(); i++) {
-                    filePaths[i] = selectList.get(i).getPath();
+            if (pics.size() > 1) {
+                String[] filePaths = new String[pics.size()];
+                for (int i = 0; i < pics.size(); i++) {
+                    filePaths[i] = pics.get(i).getPath();
                 }
                 mPresenter.sendPictureMessage(map, filePaths);
             } else {
@@ -246,6 +243,7 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
     public void setPicture(Intent data, int code) {
         selectList = PictureSelector.obtainMultipleResult(data);
         LocalMedia localMedia = selectList.get(0);
+
 
         if (code == Constant.PICTURE_CODE1) {
             if (localMedia.getPictureType().contains(Constant.PICTURE_TYPE_IMAGE)) {

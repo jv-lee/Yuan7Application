@@ -54,7 +54,7 @@ public class VideoPicUtil {
             //retriever.setDataSource(filePath);
             retriever.setDataSource(url, new HashMap());
             //获得第一帧图片
-            bitmap = retriever.getFrameAtTime();
+            bitmap = retriever.getFrameAtTime(2000);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         } catch (RuntimeException e) {

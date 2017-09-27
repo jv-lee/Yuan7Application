@@ -21,8 +21,6 @@
 
     <application
         android:name="com.yuan7.tomcat.base.app.App"
-        android:allowBackup="true"
-        android:supportsRtl="true"
         android:theme="@style/iosBackTheme">
         <activity
             android:name="com.yuan7.tomcat.ui.welcome.WelcomeActivity"

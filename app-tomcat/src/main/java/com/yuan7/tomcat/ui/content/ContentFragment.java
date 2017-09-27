@@ -74,7 +74,6 @@ public class ContentFragment extends BaseFragment {
         if (type != 0) {
             video.setVisibility(View.GONE);
         } else {
-            AHelper.showB(mActivity);
             if (content != null && title != null) {
                 video.setUp(content, VideoPlayerStandard.SCREEN_LAYOUT_LIST, title);
             }
@@ -91,7 +90,6 @@ public class ContentFragment extends BaseFragment {
 
             @Override
             public void onPause() {
-                AHelper.showS(mActivity);
             }
 
             @Override

@@ -136,7 +136,6 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
                         break;
                     case R.id.rb_start:
                         AHelper.toEvent(MainActivity.this, "T_1009");
-                        AHelper.showS(MainActivity.this);
                         mainContainer.setCurrentItem(2, false);
                         break;
                 }

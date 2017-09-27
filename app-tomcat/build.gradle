@@ -28,33 +28,11 @@ android {
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 
     productFlavors {
-//        tomcat_oppo {
-//            resValue("string", "app_name", "最爱我的汤姆猫");
-//            applicationId "com.yuan7.lovemytalkingtom.oppo"
-//            versionCode 13
-//            versionName "2.0"
-//
-//            resValue("string", "yuanqiKey", "8a9db9ce5d318e1a015d3aa860f9000e")
-//            resValue("string", "serverId", "")
-//
-//            //统计
-//            resValue("string", "uMengKey", "596718b8cae7e7127e000c9f")
-//            resValue("string", "uMengChanle", "oppo")
-//
-//            //oppo
-//            resValue("string", "oppo_appId", "3575859")
-//            resValue("string", "oppo_kaiping_id", "2157")
-//            resValue("string", "oppo_chaping_id", "2156")
-//            resValue("string", "oppo_banner_id", "2155")
-//
-//            //蓝莓视频
-//            resValue("string", "blue_id", "bf08df1f-6cf9-4186-aa69-881315dfeb7d")
-//        }
 
-        tomcat_bd {
-            resValue("string", "app_name", "最爱我的汤姆猫");
-            applicationId "com.yuan7.lovemytalkingtom.bd"
-            versionCode 8
+        tomcat_qihoo {
+            resValue("string", "app_names", "最爱我的汤姆猫");
+            applicationId "com.yuan7.lovemytalkingtom.qihoo"
+            versionCode 1
             versionName "2.0"
 
             resValue("string", "yuanqiKey", "8a9db9ce5d318e1a015d3aa860f9000e")
@@ -62,22 +40,16 @@ android {
 
             //统计
             resValue("string", "uMengKey", "596718b8cae7e7127e000c9f")
-            resValue("string", "uMengChanle", "baidu")
-
-            //广点通
-            resValue("string", "gdt_appId", "1106270602")
-            resValue("string", "gdt_kaiping_id", "1050726456015009")
-            resValue("string", "gdt_chaping_id", "5060427426914018")
-            resValue("string", "gdt_banner_id", "7030425466017037")
+            resValue("string", "uMengChanle", "qihoo")
 
             //蓝莓视频
             resValue("string", "blue_id", "bf08df1f-6cf9-4186-aa69-881315dfeb7d")
         }
 
-        tomcat_tencent {
-            resValue("string", "app_name", "最爱我的汤姆猫");
-            applicationId "com.yuan7.lovemytalkingtom.qq"
-            versionCode 8
+        tomcat_xiaomi {
+            resValue("string", "app_names", "最爱我的汤姆猫");
+            applicationId "com.yuan7.lovemytalkingtom.xiaomi"
+            versionCode 1
             versionName "2.0"
 
             resValue("string", "yuanqiKey", "8a9db9ce5d318e1a015d3aa860f9000e")
@@ -85,106 +57,7 @@ android {
 
             //统计
             resValue("string", "uMengKey", "596718b8cae7e7127e000c9f")
-            resValue("string", "uMengChanle", "qq")
-
-            //广点通
-            resValue("string", "gdt_appId", "1106270602")
-            resValue("string", "gdt_kaiping_id", "1050726456015009")
-            resValue("string", "gdt_chaping_id", "5060427426914018")
-            resValue("string", "gdt_banner_id", "7030425466017037")
-
-            //蓝莓视频
-            resValue("string", "blue_id", "bf08df1f-6cf9-4186-aa69-881315dfeb7d")
-        }
-
-
-        tomcat_sogou {
-            resValue("string", "app_name", "最爱我的汤姆猫");
-            applicationId "com.yuan7.lovemytalkingtom.sogou"
-            versionCode 3
-            versionName "2.0"
-
-            resValue("string", "yuanqiKey", "8a9db9ce5d318e1a015d3aa860f9000e")
-            resValue("string", "serverId", "")
-
-            //统计
-            resValue("string", "uMengKey", "596718b8cae7e7127e000c9f")
-            resValue("string", "uMengChanle", "sogou")
-
-            //广点通
-            resValue("string", "gdt_appId", "1106270602")
-            resValue("string", "gdt_kaiping_id", "1050726456015009")
-            resValue("string", "gdt_chaping_id", "5060427426914018")
-            resValue("string", "gdt_banner_id", "7030425466017037")
-
-            //蓝莓视频
-            resValue("string", "blue_id", "bf08df1f-6cf9-4186-aa69-881315dfeb7d")
-        }
-
-        tomcat_anzhi {
-            resValue("string", "app_name", "最爱我的汤姆猫");
-            applicationId "com.yuan7.lovemytalkingtom.anzhi"
-            versionCode 3
-            versionName "2.0"
-
-            resValue("string", "yuanqiKey", "8a9db9ce5d318e1a015d3aa860f9000e")
-            resValue("string", "serverId", "")
-
-            //统计
-            resValue("string", "uMengKey", "596718b8cae7e7127e000c9f")
-            resValue("string", "uMengChanle", "anzhi")
-
-            //广点通
-            resValue("string", "gdt_appId", "1106270602")
-            resValue("string", "gdt_kaiping_id", "1050726456015009")
-            resValue("string", "gdt_chaping_id", "5060427426914018")
-            resValue("string", "gdt_banner_id", "7030425466017037")
-
-            //蓝莓视频
-            resValue("string", "blue_id", "bf08df1f-6cf9-4186-aa69-881315dfeb7d")
-        }
-
-        tomcat_flyme {
-            resValue("string", "app_name", "最爱我的汤姆猫");
-            applicationId "com.yuan7.lovemytalkingtom.flyme"
-            versionCode 3
-            versionName "2.0"
-
-            resValue("string", "yuanqiKey", "8a9db9ce5d318e1a015d3aa860f9000e")
-            resValue("string", "serverId", "")
-
-            //统计
-            resValue("string", "uMengKey", "596718b8cae7e7127e000c9f")
-            resValue("string", "uMengChanle", "flyme")
-
-            //广点通
-            resValue("string", "gdt_appId", "1106270602")
-            resValue("string", "gdt_kaiping_id", "1050726456015009")
-            resValue("string", "gdt_chaping_id", "5060427426914018")
-            resValue("string", "gdt_banner_id", "7030425466017037")
-
-            //蓝莓视频
-            resValue("string", "blue_id", "bf08df1f-6cf9-4186-aa69-881315dfeb7d")
-        }
-
-        tomcat_eoe {
-            resValue("string", "app_name", "最爱我的汤姆猫");
-            applicationId "com.yuan7.lovemytalkingtom.eoe"
-            versionCode 3
-            versionName "2.0"
-
-            resValue("string", "yuanqiKey", "8a9db9ce5d318e1a015d3aa860f9000e")
-            resValue("string", "serverId", "")
-
-            //统计
-            resValue("string", "uMengKey", "596718b8cae7e7127e000c9f")
-            resValue("string", "uMengChanle", "eoe")
-
-            //广点通
-            resValue("string", "gdt_appId", "1106270602")
-            resValue("string", "gdt_kaiping_id", "1050726456015009")
-            resValue("string", "gdt_chaping_id", "5060427426914018")
-            resValue("string", "gdt_banner_id", "7030425466017037")
+            resValue("string", "uMengChanle", "xiaomi")
 
             //蓝莓视频
             resValue("string", "blue_id", "bf08df1f-6cf9-4186-aa69-881315dfeb7d")
@@ -234,6 +107,5 @@ dependencies {
     compile files('libs/umeng-analytics-v6.1.1.jar')
     compile files('libs/utdid4all-1.0.4.jar')
     compile files('libs/client_v3.1.8.jar')
-    compile files('libs/GDTUnionSDK.4.10.549.min.jar')
     compile files('libs/VideoSdk.jar')
 }

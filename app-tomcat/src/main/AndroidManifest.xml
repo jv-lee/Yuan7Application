@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
@@ -13,10 +14,10 @@
         android:name="com.yuan7.tomcat.base.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/app_names"
         android:supportsRtl="true"
         android:theme="@style/iosBackTheme"
-        tools:replace="icon,label,allowBackup">
+        tools:replace="icon,label,allowBackup,theme,name">
         <activity
             android:name="com.yuan7.tomcat.ui.welcome.WelcomeActivity"
             android:theme="@style/WelcomeTheme">
@@ -117,14 +118,6 @@
             android:exported="true"
             android:taskAffinity="com.strage.game"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
-
-        <service
-            android:name="com.qq.e.comm.DownloadService"
-            android:exported="false" />
-
-        <activity
-            android:name="com.qq.e.ads.ADActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
         <activity
             android:name="com.md.activity.InterstitialVideoProxyActivity"

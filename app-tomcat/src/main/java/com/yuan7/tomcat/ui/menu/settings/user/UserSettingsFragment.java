@@ -141,7 +141,6 @@ public class UserSettingsFragment extends BaseFragment<UserSettingsContract.Pres
             case R.id.fl_item_level:
                 break;
             case R.id.btn_unLogin:
-                AHelper.showS(mActivity);
                 SPUtil.save(Constant.ADDRESS_LINKMAN, "");
                 SPUtil.save(Constant.ADDRESS_PHONE_NUMBER, "");
                 SPUtil.save(Constant.ADDRESS_DES, "");
