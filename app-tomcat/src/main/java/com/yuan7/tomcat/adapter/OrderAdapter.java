@@ -23,10 +23,12 @@ public class OrderAdapter extends BaseQuickAdapter<ProductOrderEntity, BaseViewH
 
     @Override
     protected void convert(BaseViewHolder helper, ProductOrderEntity item) {
-        ProductOrderEntity.CommodityDetailBean entity = item.getCommodityDetail().get(0);
-        GlideImageLoader.loadCircleCrop(entity.getPhotos(), (ImageView) helper.getView(R.id.iv_picture));
-        helper.setText(R.id.tv_title, entity.getTitle())
-                .setText(R.id.tv_put_money, "消费" + String.valueOf(entity.getPrice() * entity.getStock()) + "金币")
-                .setText(R.id.tv_dateStr, entity.getCreatTime());
+        if (item.getCommodityDetail().size() > 0) {
+            ProductOrderEntity.CommodityDetailBean entity = item.getCommodityDetail().get(0);
+            GlideImageLoader.loadCircleCrop(entity.getPhotos(), (ImageView) helper.getView(R.id.iv_picture));
+            helper.setText(R.id.tv_title, entity.getTitle())
+                    .setText(R.id.tv_put_money, "消费" + String.valueOf(entity.getPrice() * entity.getCount()) + "金币")
+                    .setText(R.id.tv_dateStr, entity.getCreatTime());
+        }
     }
 }

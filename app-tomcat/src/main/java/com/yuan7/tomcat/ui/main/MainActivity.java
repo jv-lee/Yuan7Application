@@ -15,8 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.md.listener.OnPlayListenner;
-import com.md.videosdkshell.VideoSdk;
 import com.video.lib.VideoPlayer;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.UserParams;
@@ -157,15 +155,21 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
 
                         } else if ((int) eventBase.getOption() == Constant.RX_BUS_START_MENU) {
                             SettingsUserEntity entity = (SettingsUserEntity) eventBase.getObj();
-                            GlideImageLoader.loadCircleCrop(entity.getObj().getImage(), rivUserIcon);
-                            tvUserName.setText(entity.getObj().getName());
-                            tvLevelNum.setText("LV:" + entity.getObj().getLevel());
+                            if (entity != null) {
+                                if (rivUserIcon != null && tvUserName != null && tvLevelNum != null) {
+                                    GlideImageLoader.loadCircleCrop(entity.getObj().getImage(), rivUserIcon);
+                                    tvUserName.setText(entity.getObj().getName());
+                                    tvLevelNum.setText("LV:" + entity.getObj().getLevel());
+                                }
+                            }
                         } else if ((int) eventBase.getOption() == Constant.RX_BUS_START_UNLOGIN) {
                             SPUtil.save(UserParams.LOGIN_STATUS, false); //退出登陆
                             finish();
                         } else if ((int) eventBase.getOption() == Constant.RX_BUS_START_ICON) {
-                            SPUtil.save(UserParams.USER_ICON_URL, (String) eventBase.getObj());
-                            GlideImageLoader.loadCircleCropBg((String) eventBase.getObj(), rivUserIcon);
+                            if (rivUserIcon != null) {
+                                SPUtil.save(UserParams.USER_ICON_URL, (String) eventBase.getObj());
+                                GlideImageLoader.loadCircleCropBg((String) eventBase.getObj(), rivUserIcon);
+                            }
                         }
 
                     }
@@ -319,27 +323,6 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
                 break;
             case Constant.MENU_AD:
                 AHelper.toEvent(this, "T_1013");
-                VideoSdk.playInterstitialVideo(new OnPlayListenner() {
-                    @Override
-                    public void onPlayFinish() {
-
-                    }
-
-                    @Override
-                    public void onPlayFail(String s) {
-
-                    }
-
-                    @Override
-                    public void onDownloadAction() {
-
-                    }
-
-                    @Override
-                    public void onVideoDetailClose() {
-
-                    }
-                });
                 break;
         }
     }

@@ -1,136 +1,142 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorFragmentBackground"
-    android:orientation="vertical"
     tools:context="com.yuan7.tomcat.ui.menu.code.CodeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="36dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_white_bg"
-            android:paddingBottom="@dimen/content_padding_content"
-            android:paddingTop="@dimen/content_padding_content">
+            android:orientation="vertical"
+            android:padding="36dp">
 
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="4"
-                android:gravity="end"
-                android:text="ID："
-                android:textColor="@color/fontColorYellow"
-                android:textSize="@dimen/font_size_small" />
+                android:background="@drawable/shape_white_bg"
+                android:paddingBottom="@dimen/content_padding_content"
+                android:paddingTop="@dimen/content_padding_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="4"
+                    android:gravity="end"
+                    android:text="ID："
+                    android:textColor="@color/fontColorYellow"
+                    android:textSize="@dimen/font_size_small" />
 
 
-            <EditText
-                android:id="@+id/et_my_code"
-                android:layout_width="0dp"
+                <EditText
+                    android:id="@+id/et_my_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="8"
+                    android:background="@null"
+                    android:editable="false"
+                    android:gravity="start"
+                    android:lines="1"
+                    android:textColor="@color/fontColorYellow"
+                    android:textCursorDrawable="@null"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_size_small"
+                    tools:text="2382787482347" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="8"
-                android:background="@null"
-                android:editable="false"
-                android:gravity="start"
-                android:lines="1"
-                android:textColor="@color/fontColorYellow"
-                android:textCursorDrawable="@null"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_size_small"
-                tools:text="2382787482347" />
+                android:layout_marginTop="@dimen/margin_top"
+                android:background="@drawable/shape_white_bg"
+                android:paddingBottom="@dimen/content_padding_content"
+                android:paddingTop="@dimen/content_padding_content">
 
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="4"
+                    android:gravity="end"
+                    android:text="邀请ID："
+                    android:textColor="@color/fontColorYellow"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/font_size_small" />
+
+
+                <EditText
+                    android:id="@+id/et_input_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_weight="8"
+                    android:background="@null"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:hint="请输入邀请用户邀请码"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:textColor="@color/fontColorYellow"
+                    android:textColorHint="@color/fontColorYellow"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/font_size_small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:gravity="center"
+                android:paddingBottom="@dimen/content_padding_content"
+                android:paddingTop="@dimen/content_padding_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="end"
+                    android:text="已邀请人数："
+                    android:textColor="@color/fontColorYellow"
+                    android:textSize="@dimen/font_size_small" />
+
+                <TextView
+                    android:id="@+id/tv_code_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="3"
+                    android:textColor="@color/fontColorYellow"
+                    android:textSize="@dimen/font_size_small" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_code"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/shape_btn_login_bg"
+                android:text="邀请"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="@dimen/font_size_small_to" />
 
         </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top"
-            android:background="@drawable/shape_white_bg"
-            android:paddingBottom="@dimen/content_padding_content"
-            android:paddingTop="@dimen/content_padding_content">
-
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="4"
-                android:gravity="end"
-                android:text="邀请ID："
-                android:textColor="@color/fontColorYellow"
-                android:textIsSelectable="true"
-                android:textSize="@dimen/font_size_small" />
-
-
-            <EditText
-                android:id="@+id/et_input_code"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start|center_vertical"
-                android:layout_weight="8"
-                android:background="@null"
-                android:ellipsize="end"
-                android:gravity="start"
-                android:hint="请输入邀请用户邀请码"
-                android:inputType="text"
-                android:lines="1"
-                android:maxLines="1"
-                android:textColor="@color/fontColorYellow"
-                android:textColorHint="@color/fontColorYellow"
-                android:textCursorDrawable="@null"
-                android:textSize="@dimen/font_size_small" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top"
-            android:gravity="center"
-            android:paddingBottom="@dimen/content_padding_content"
-            android:paddingTop="@dimen/content_padding_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="end"
-                android:text="已邀请人数："
-                android:textColor="@color/fontColorYellow"
-                android:textSize="@dimen/font_size_small" />
-
-            <TextView
-                android:id="@+id/tv_code_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:text="3"
-                android:textColor="@color/fontColorYellow"
-                android:textSize="@dimen/font_size_small" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_code"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/shape_btn_login_bg"
-            android:text="邀请"
-            android:textColor="@color/fontColorWhite"
-            android:textSize="@dimen/font_size_small_to" />
 
     </LinearLayout>
 
-
-</LinearLayout>
+</FrameLayout>

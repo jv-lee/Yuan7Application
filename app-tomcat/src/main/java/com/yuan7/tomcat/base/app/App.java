@@ -1,15 +1,17 @@
 package com.yuan7.tomcat.base.app;
 
 import android.app.Application;
-import android.widget.Toast;
 
-import com.hkol.euhl.Orn;
-import com.md.videosdkshell.VideoSdk;
-import com.yuan7.tomcat.R;
+import com.kingja.loadsir.core.LoadSir;
 import com.yuan7.tomcat.base.module.AppModule;
 import com.yuan7.tomcat.base.module.ServiceModule;
 import com.yuan7.tomcat.helper.GlideImageLoader;
 import com.yuan7.tomcat.utils.SPUtil;
+import com.yuan7.tomcat.widget.call.CustomCallback;
+import com.yuan7.tomcat.widget.call.EmptyCallback;
+import com.yuan7.tomcat.widget.call.ErrorCallback;
+import com.yuan7.tomcat.widget.call.LoadCallback;
+import com.yuan7.tomcat.widget.call.TimeoutCallback;
 
 /**
  * Created by Administrator on 2017/5/16.
@@ -29,8 +31,14 @@ public class App extends Application {
                 .build();
         SPUtil.getInstance(this);
         GlideImageLoader.getInstance(this);
-        Orn.i(getApplicationContext(), getString(R.string.yuanqiKey));
-        VideoSdk.init(this);
+        LoadSir.beginBuilder()
+                .addCallback(new CustomCallback())
+                .addCallback(new EmptyCallback())
+                .addCallback(new ErrorCallback())
+                .addCallback(new LoadCallback())
+                .addCallback(new TimeoutCallback())
+                .setDefaultCallback(LoadCallback.class)
+                .commit();
     }
 
     public AppComponent getAppComponent() {

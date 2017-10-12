@@ -26,7 +26,6 @@ import com.yuan7.tomcat.UserParams;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.base.mvp.BaseFragment;
 import com.yuan7.tomcat.constant.Constant;
-import com.yuan7.tomcat.helper.GlideImageLoader;
 import com.yuan7.tomcat.interfaces.ProductSelectInterface;
 import com.yuan7.tomcat.rx.EventBase;
 import com.yuan7.tomcat.rx.RxBus;
@@ -39,7 +38,6 @@ import com.yuan7.tomcat.utils.SPUtil;
 import com.yuan7.tomcat.utils.StatusBarUtil;
 import com.yuan7.tomcat.widget.AmountView;
 import com.yuan7.tomcat.widget.banner.MZBannerView;
-import com.yuan7.tomcat.widget.banner.holder.ContentBannerViewHolder;
 import com.yuan7.tomcat.widget.banner.holder.MZHolderCreator;
 import com.yuan7.tomcat.widget.banner.holder.MZViewHolder;
 import com.yuan7.tomcat.widget.banner.holder.StringBannerViewHolder;
@@ -59,7 +57,7 @@ import io.reactivex.functions.Consumer;
  */
 public class ProductFragment extends BaseFragment<ProductContract.Presenter> implements ProductContract.View {
 
-    @BindView(R.id.product_container)
+    @BindView(R.id.fragment_container)
     LinearLayout productContainer;
     @BindView(R.id.iv_left)
     ImageView ivLeft;

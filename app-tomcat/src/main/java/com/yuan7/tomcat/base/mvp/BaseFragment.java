@@ -7,7 +7,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
+import com.kingja.loadsir.callback.Callback;
+import com.kingja.loadsir.core.LoadService;
+import com.kingja.loadsir.core.LoadSir;
+import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.base.app.App;
 import com.yuan7.tomcat.base.app.AppComponent;
 import com.yuan7.tomcat.utils.LogUtil;
@@ -32,6 +38,8 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment {
     protected P mPresenter;
     private Unbinder unBinder;
 
+    protected LoadService mLoadService;
+
     public BaseFragment() {
     }
 
@@ -43,6 +51,18 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment {
         LogUtil.i("onCreateView()");
         return mRootView;
     }
+
+//    @Override
+//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        FrameLayout frameLayout = (FrameLayout) mRootView.findViewById(R.id.fragment_container);
+//        mLoadService = LoadSir.getDefault().register(frameLayout, new Callback.OnReloadListener() {
+//            @Override
+//            public void onReload(View v) {
+//
+//            }
+//        });
+//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

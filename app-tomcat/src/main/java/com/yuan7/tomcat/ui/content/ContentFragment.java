@@ -3,6 +3,7 @@ package com.yuan7.tomcat.ui.content;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -14,6 +15,9 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.kingja.loadsir.callback.Callback;
+import com.kingja.loadsir.core.LoadService;
+import com.kingja.loadsir.core.LoadSir;
 import com.video.lib.VideoPlayerStandard;
 import com.yuan7.tomcat.R;
 import com.yuan7.tomcat.UserParams;
@@ -60,6 +64,18 @@ public class ContentFragment extends BaseFragment {
     @Override
     protected View bindRootView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_content, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        FrameLayout frameLayout = (FrameLayout) mRootView.findViewById(R.id.fragment_container);
+        mLoadService = LoadSir.getDefault().register(frameLayout, new Callback.OnReloadListener() {
+            @Override
+            public void onReload(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -118,6 +134,7 @@ public class ContentFragment extends BaseFragment {
                 super.onProgressChanged(view, newProgress);
                 if (newProgress == 100) {
 //                    view.loadUrl("javascript:token('Toast');");
+                    mLoadService.showSuccess();
                 }
             }
         });

@@ -1,11 +1,15 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorFragmentBackground"
-    android:orientation="vertical"
     tools:context="com.yuan7.tomcat.ui.content.ContentFragment">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <com.video.lib.VideoPlayerStandard
         android:id="@+id/video_container"
@@ -18,4 +22,6 @@
         android:layout_height="match_parent"
         android:background="@color/colorFragmentBackground" />
 
-</LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

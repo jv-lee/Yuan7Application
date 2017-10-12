@@ -30,7 +30,7 @@ android {
     productFlavors {
 
         tomcat_qihoo {
-            resValue("string", "app_names", "最爱我的汤姆猫");
+            resValue("string", "application_name", "最爱我的汤姆猫");
             applicationId "com.yuan7.lovemytalkingtom.qihoo"
             versionCode 1
             versionName "2.0"
@@ -38,29 +38,17 @@ android {
             resValue("string", "yuanqiKey", "8a9db9ce5d318e1a015d3aa860f9000e")
             resValue("string", "serverId", "")
 
-            //统计
-            resValue("string", "uMengKey", "596718b8cae7e7127e000c9f")
-            resValue("string", "uMengChanle", "qihoo")
-
-            //蓝莓视频
-            resValue("string", "blue_id", "bf08df1f-6cf9-4186-aa69-881315dfeb7d")
         }
 
         tomcat_xiaomi {
-            resValue("string", "app_names", "最爱我的汤姆猫");
+            resValue("string", "application_name", "最爱我的汤姆猫");
             applicationId "com.yuan7.lovemytalkingtom.xiaomi"
             versionCode 1
             versionName "2.0"
 
-            resValue("string", "yuanqiKey", "8a9db9ce5d318e1a015d3aa860f9000e")
-            resValue("string", "serverId", "")
-
             //统计
             resValue("string", "uMengKey", "596718b8cae7e7127e000c9f")
             resValue("string", "uMengChanle", "xiaomi")
-
-            //蓝莓视频
-            resValue("string", "blue_id", "bf08df1f-6cf9-4186-aa69-881315dfeb7d")
         }
 
     }
@@ -102,10 +90,9 @@ dependencies {
     compile project(path: ':lib-videoplayer')
     compile project(path: ':lib-address')
     compile 'cn.pedant.sweetalert:library:+'
+    compile 'com.kingja.loadsir:loadsir:1.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.3.1'
     compile files('libs/umeng-analytics-v6.1.1.jar')
     compile files('libs/utdid4all-1.0.4.jar')
-    compile files('libs/client_v3.1.8.jar')
-    compile files('libs/VideoSdk.jar')
 }

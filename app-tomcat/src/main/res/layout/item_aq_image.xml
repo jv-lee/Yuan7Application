@@ -32,9 +32,11 @@
 
             <TextView
                 android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
+                android:layout_width="86dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/content_margin_small"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="userName"
                 android:textColor="@color/fontColorBlackDark"
                 android:textSize="@dimen/font_size_center"

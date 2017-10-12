@@ -1,5 +1,4 @@
 <resources>
-    <!--<string name="app_name">Tomcat</string>-->
     <string name="title_info">资讯</string>
     <string name="title_community">社区</string>
     <string name="title_start">游戏</string>
@@ -115,7 +114,7 @@
     <string name="str_content">尊敬的用户\n您好!\n我们已经收到您的礼品兑换订单，我们的工作人员将在24小时之内寄出礼品，请您耐心等待，谢谢。\n
 
                                         最爱你的汤姆猫团队\n
-                                        2017.6.8
+                                        2017.6.8\n
     </string>
     <string name="str_time_get">立即兑换</string>
     <string name="str_save_get_address">添加收货地址</string>

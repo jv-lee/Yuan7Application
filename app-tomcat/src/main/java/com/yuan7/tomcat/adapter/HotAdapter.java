@@ -31,7 +31,6 @@ public class HotAdapter extends BaseQuickAdapter<ContentEntity, BaseViewHolder> 
                     .setText(R.id.tv_readCount, String.valueOf(item.getViewTimes()))
                     .setText(R.id.tv_inputCount, String.valueOf(item.getCommentRate()))
                     .setText(R.id.tv_niceCount, String.valueOf(item.getGootRate()));
-
         } else {
             if (item.getImages().size() > 0) {
                 GlideImageLoader.loadImage(item.getImages().get(0).getUrl(), (ImageView) helper.getView(R.id.iv_image));
@@ -42,6 +41,5 @@ public class HotAdapter extends BaseQuickAdapter<ContentEntity, BaseViewHolder> 
                     .setText(R.id.tv_inputCount, String.valueOf(item.getCommentRate()))
                     .setText(R.id.tv_niceCount, String.valueOf(item.getGootRate()));
         }
-
     }
 }

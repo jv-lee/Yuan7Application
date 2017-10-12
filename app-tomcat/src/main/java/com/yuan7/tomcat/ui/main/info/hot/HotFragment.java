@@ -10,9 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.kingja.loadsir.callback.Callback;
+import com.kingja.loadsir.callback.SuccessCallback;
+import com.kingja.loadsir.core.LoadService;
+import com.kingja.loadsir.core.LoadSir;
 import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
 import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.progresslayout.ProgressLayout;
@@ -32,6 +37,7 @@ import com.yuan7.tomcat.widget.banner.MZBannerView;
 import com.yuan7.tomcat.widget.banner.holder.ContentBannerViewHolder;
 import com.yuan7.tomcat.widget.banner.holder.MZHolderCreator;
 import com.yuan7.tomcat.widget.banner.holder.MZViewHolder;
+import com.yuan7.tomcat.widget.call.ErrorCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +62,7 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
     private List<ContentEntity> banners;
     private int page = 1;
 
+    private LoadService mLoadService;
 
     public HotFragment() {
 
@@ -72,7 +79,16 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
 
     @Override
     protected View bindRootView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_hot, container, false);
+        View view = inflater.inflate(R.layout.fragment_hot, container, false);
+
+//        LoadService loadService = LoadSir.getDefault().register(view, new Callback.OnReloadListener() {
+//            @Override
+//            public void onReload(View v) {
+//
+//            }
+//        });
+//        return loadService.getLoadLayout();
+        return view;
     }
 
     @Override
@@ -104,14 +120,6 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
                     Uri content_url = Uri.parse(contentEntity.getAdvertisement().getSourceUrl());
                     intent.setData(content_url);
                     startActivity(intent);
-//                    mActivity.startActivity(new Intent(mActivity, ContentActivity.class)
-//                            .putExtra(Constant.FRAGMENT_CONTENT, contentEntity.getSourceUrl())
-//                            .putExtra(Constant.FRAGMENT_AD, true));
-//                    if (contentEntity.getAdvertisement().getSourceType() == 0) {
-//                        Toast.makeText(mActivity, "0:" + contentEntity.getAdvertisement().getSourceUrl(), Toast.LENGTH_SHORT).show();
-//                    } else if (contentEntity.getAdvertisement().getSourceType() == 1) {
-//                        Toast.makeText(mActivity, "1:" + contentEntity.getAdvertisement().getSourceUrl(), Toast.LENGTH_SHORT).show();
-//                    }
                 } else {
                     IntentUtil.setParamsIntoActivity(mActivity, ContentActivity.class, IntentUtil.getParamsMap(contentEntity));
                 }
@@ -147,7 +155,9 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
     @Override
     protected void lazyLoad() {
         if (refreshLayout != null) {
-            refreshLayout.startRefresh();
+            page = 1;
+            mPresenter.bindBannerData();
+            mPresenter.bindHotData(page);
         }
     }
 
@@ -200,12 +210,14 @@ public class HotFragment extends BaseFragment<HotContract.Presenter> implements 
         page++;
         refreshLayout.finishRefreshing();
         dataAdapter.loadMoreComplete();
+//        mLoadService.showCallback(SuccessCallback.class);
     }
 
     @Override
     public void bindDataEvent(int code, String message) {
         refreshLayout.finishRefreshing();
         dataAdapter.loadMoreComplete();
+//        mLoadService.showCallback(ErrorCallback.class);
         Toast.makeText(mActivity, "code:" + code + "\nmessage:" + message, Toast.LENGTH_SHORT).show();
     }
 

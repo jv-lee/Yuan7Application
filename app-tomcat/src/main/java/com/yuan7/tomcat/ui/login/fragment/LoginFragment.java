@@ -82,7 +82,7 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
 
         String username = (String) SPUtil.get(UserParams.USER_USERNAME, "");
         etUsername.setText(username);
-        etUsername.setSelection(username.length());
+        etUsername.setSelection(etUsername.getText().toString().length());
     }
 
     @Override
@@ -94,11 +94,11 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_flyLogin:
-                AHelper.toEvent(mActivity,"T_1001");
+                AHelper.toEvent(mActivity, "T_1001");
                 mPresenter.flyLogin();
                 break;
             case R.id.tv_rightRegister:
-                AHelper.toEvent(mActivity,"T_1002");
+                AHelper.toEvent(mActivity, "T_1002");
                 loginInterface.setup();
                 break;
             case R.id.btn_login:

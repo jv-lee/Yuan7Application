@@ -163,9 +163,9 @@ public class FriendActivity extends BaseActivity<FriendContract.Presenter> imple
         tvUserName.setText(friendEntity.getName());
         tvUserLevel.setText("LV" + friendEntity.getLevel());
         tvUserLevelName.setText(friendEntity.getLevelname());
-        tvFriendNum.setText("关注 " + friendEntity.getFriendCount());
-        tvPostNum.setText("发帖 " + friendEntity.getNewsNum());
-        tvReplyNum.setText("回帖 " + friendEntity.getGoodNum());
+        tvFriendNum.setText(getString(R.string.str_like)+" " + friendEntity.getFriendCount());
+        tvPostNum.setText(getString(R.string.str_send)+" " + friendEntity.getNewsNum());
+        tvReplyNum.setText(getString(R.string.str_reply)+" " + friendEntity.getGoodNum());
     }
 
     @Override

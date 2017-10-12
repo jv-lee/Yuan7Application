@@ -14,7 +14,7 @@
         android:name="com.yuan7.tomcat.base.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_names"
+        android:label="@string/application_name"
         android:supportsRtl="true"
         android:theme="@style/iosBackTheme"
         tools:replace="icon,label,allowBackup,theme,name">
@@ -81,6 +81,10 @@
             android:name="com.yuan7.tomcat.ui.content.ActiveActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 
+        <activity
+            android:name="com.yuan7.tomcat.ui.content.AcActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -90,113 +94,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
-        <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
-        <service android:name="com.hkol.euhl.i.RequestToDataService" />
-        <receiver android:name="com.strage.game.bauxbg.hi.hi.pw.c">
-            <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name="com.strage.game.bauxbg.hi.hi.pw.d"></service>
-        <service android:name="com.strage.game.bauxbg.hi.hi.pw.a"></service>
-        <service
-            android:name="com.strage.game.bauxbg.hi.hi.pw.e"
-            android:permission="android.permission.BIND_JOB_SERVICE"></service>
-
-        <activity
-            android:name="com.strage.game.bauxbg.hi.hi.pw.b"
-            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale|uiMode"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:taskAffinity="com.strage.game"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
-
-        <activity
-            android:name="com.md.activity.InterstitialVideoProxyActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Translucent"></activity>
-
-        <activity
-            android:name="com.md.activity.StimulateVideoProxyActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleTask"></activity>
-
-        <activity
-            android:name="com.md.activity.ApkDetailsInfoProxyActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name="com.md.activity.CommonProxyActivity"
-
-            android:launchMode="singleTask"
-            android:screenOrientation="landscape"></activity>
-        <activity
-            android:name="com.md.activity.ShowImgActivityProxy"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
-
-        <activity
-            android:name="com.md.activity.DialogProxyActivity"
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Dialog"></activity>
-
-        <activity
-            android:name="com.md.activity.QuestionnaireProxyActivity"
-
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"></activity>
-
-        <provider
-            android:name="com.md.listener.FileProvider"
-            android:authorities=".fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-
-        </provider>
-
-        <service
-            android:name="com.md.service.LogicService"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.adroid.SERVICE" />
-            </intent-filter>
-        </service>
-
-        <receiver android:name="com.md.receiver.PackageReceiver">
-            <intent-filter>
-
-                <action android:name="android.intent.action.PACKAGE_REPLACED" />
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name="com.md.receiver.DownloadReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
-            </intent-filter>
-        </receiver>
-
-        <meta-data
-            android:name="MD_KEY"
-            android:value="@string/blue_id"></meta-data>
-
-        <meta-data
-            android:name="MD_CHANNEL"
-            android:value="@string/uMengChanle"></meta-data>
 
         <meta-data
             android:name="UMENG_APPKEY"

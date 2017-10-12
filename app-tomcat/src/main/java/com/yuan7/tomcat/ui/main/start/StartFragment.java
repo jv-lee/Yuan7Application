@@ -98,11 +98,11 @@ public class StartFragment extends BaseFragment<StartContract.Presenter> impleme
 
     @Override
     public void bindStartData(StartEntity resultEntity) {
-        List<String> list = Arrays.asList(resultEntity.getObj().getPromotedApp().getImages().split("，"));
+        List<String> list = Arrays.asList(resultEntity.getObj().getPromotedApp().getImages().split(","));
         dataAdapter.getData().addAll(list);
         dataAdapter.notifyDataSetChanged();
         GlideImageLoader.loadImage(resultEntity.getObj().getPromotedApp().getBannerimage(), ivAppIcon);
-        tvContent.setText(resultEntity.getObj().getPromotedApp().getContent());
+        tvContent.setText(resultEntity.getObj().getPromotedApp().getContent()+"\n");
 
         if (resultEntity.getObj().getAppConfig().getActivity()) {
             startActivity(new Intent(mActivity, ActiveActivity.class));

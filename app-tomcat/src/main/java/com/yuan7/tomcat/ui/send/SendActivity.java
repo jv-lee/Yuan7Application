@@ -73,6 +73,8 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
 
     SweetAlertDialog pDialog = null;
 
+    boolean sendFlag = true;
+
     private ArrayAdapter<String> typeAdapter;
     private ArrayAdapter<String> goldAdapter;
 
@@ -163,6 +165,10 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
     }
 
     private void send() {
+        if (sendFlag == false) {
+            return;
+        }
+        sendFlag = false;
         String title = etTitle.getText().toString();
         String content = etContent.getText().toString();
         int typePosition = spinnerType.getSelectedItemPosition();
@@ -196,6 +202,7 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
             }
 
         } else {
+            sendFlag = true;
             if (title.equals("")) {
                 Toast.makeText(mContext, "请输入标题", Toast.LENGTH_SHORT).show();
             } else if (content.equals("")) {
@@ -292,7 +299,7 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
                 if (pics.size() == 3) {
                     pics.remove(0);
                     ivDelete3.setVisibility(View.INVISIBLE);
-                    flPicture3.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                    flPicture3.setBackground(getResources().getDrawable(R.mipmap.send_picture_background));
                     flPicture1.setBackground(new BitmapDrawable(IconUtil.getSmallBitmap(pics.get(0).getPath(), 200, 200)));
                     flPicture2.setBackground(new BitmapDrawable(IconUtil.getSmallBitmap(pics.get(1).getPath(), 200, 200)));
                 } else if (pics.size() == 2) {
@@ -300,14 +307,14 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
                     ivDelete3.setVisibility(View.INVISIBLE);
                     flPicture3.setVisibility(View.INVISIBLE);
                     ivDelete2.setVisibility(View.INVISIBLE);
-                    flPicture2.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                    flPicture2.setBackground(getResources().getDrawable(R.mipmap.send_picture_background));
                     flPicture1.setBackground(new BitmapDrawable(IconUtil.getSmallBitmap(pics.get(0).getPath(), 200, 200)));
                 } else if (pics.size() == 1) {
                     pics.remove(0);
                     ivDelete2.setVisibility(View.INVISIBLE);
                     flPicture2.setVisibility(View.INVISIBLE);
                     ivDelete1.setVisibility(View.INVISIBLE);
-                    flPicture1.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                    flPicture1.setBackground(getResources().getDrawable(R.mipmap.send_picture_background));
                     hasImage = false;
                 }
                 break;
@@ -315,19 +322,19 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
                 if (pics.size() == 3) {
                     pics.remove(1);
                     ivDelete3.setVisibility(View.INVISIBLE);
-                    flPicture3.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                    flPicture3.setBackground(getResources().getDrawable(R.mipmap.send_picture_background));
                     flPicture2.setBackground(new BitmapDrawable(IconUtil.getSmallBitmap(pics.get(1).getPath(), 200, 200)));
                 } else if (pics.size() == 2) {
                     pics.remove(1);
                     flPicture3.setVisibility(View.INVISIBLE);
                     ivDelete2.setVisibility(View.INVISIBLE);
-                    flPicture2.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                    flPicture2.setBackground(getResources().getDrawable(R.mipmap.send_picture_background));
                 }
                 break;
             case 3:
                 pics.remove(2);
                 ivDelete3.setVisibility(View.INVISIBLE);
-                flPicture3.setBackground(getResources().getDrawable(R.mipmap.send_pic));
+                flPicture3.setBackground(getResources().getDrawable(R.mipmap.send_picture_background));
                 break;
         }
     }
@@ -336,8 +343,10 @@ public class SendActivity extends BaseActivity<SendContract.Presenter> implement
     public void bindDataEvent(int code, String message) {
         pDialog.hide();
         if (code == 2000) {
+            sendFlag = false;
             showSuccessDialog(message);
         } else {
+            sendFlag = true;
             showErrorDialog(message);
         }
     }
