@@ -95,4 +95,5 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile files('libs/umeng-analytics-v6.1.1.jar')
     compile files('libs/utdid4all-1.0.4.jar')
+
 }
